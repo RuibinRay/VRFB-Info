@@ -11,7 +11,7 @@ export const state = {
   flowCell: 0,    // serpentine flow particles
   reveal: 0,      // slides layers off the centre flow field so the camera can see it
   flowSystem: 0,  // pipe flow + pump rotation
-  soc: 0.5,       // tank state of charge
+  soc: 0.04,      // tank state of charge: starts discharged (blue VO²⁺ / green V³⁺), charges to yellow / violet
   grid: 0,        // solar + grid reveal
   canvas: 1,      // canvas opacity at the end of the journey
 };

@@ -45,7 +45,7 @@ export function buildSystem(M, opts = {}) {
     liquids.push({ mat: liqMat, id });
     reg(g, id); periphery.add(g); return g;
   }
-  tank(-3.4, 'tank_neg'); tank(3.4, 'tank_pos');
+  tank(-3.4, 'tank_pos'); tank(3.4, 'tank_neg');
 
   // --- pumps --------------------------------------------------------------
   const fans = [];
@@ -89,13 +89,14 @@ export function buildSystem(M, opts = {}) {
     flows.push({ curve, pipeMat: mat, pts, pm, off, side, len: curve.getLength() });
     return mesh;
   }
-  // negative loop (left): tank → pump → stack lower port; stack upper port → tank
+  // positive loop (left, blue→yellow) and negative loop (right, green→violet):
+  // tank → pump → stack lower port; stack upper port → tank
   const L = (p) => p, Rr = (p) => p.map(([x, y, z]) => [-x, y, z]);
   const supplyA = [[-3.4, -0.95, 0], [-3.4, -1.02, 0], [-2.6, -1.02, 0], [-2.6, -0.8, 0], [-2.37, -0.8, 0]];
   const supplyB = [[-2.3, -0.6, 0], [-2.3, -0.3, 0], [-1.6, -0.3, 0], [-1.05, -0.3, 0]];
   const ret = [[-1.05, 0.3, 0], [-1.7, 0.3, 0], [-1.7, 1.6, 0], [-3.15, 1.6, 0], [-3.15, 1.4, 0]];
-  pipe(L(supplyA), 'neg'); pipe(L(supplyB), 'neg'); pipe(L(ret), 'neg');
-  pipe(Rr(supplyA), 'pos'); pipe(Rr(supplyB), 'pos'); pipe(Rr(ret), 'pos');
+  pipe(L(supplyA), 'pos'); pipe(L(supplyB), 'pos'); pipe(L(ret), 'pos');
+  pipe(Rr(supplyA), 'neg'); pipe(Rr(supplyB), 'neg'); pipe(Rr(ret), 'neg');
   // valves on return lines
   [[-1.7, 1.0, 0], [1.7, 1.0, 0]].forEach(([x, y, z]) => { const v = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.16, 16), fade(M.steel())); v.position.set(x, y, z); periphery.add(v); const w = new THREE.Mesh(new THREE.TorusGeometry(0.1, 0.018, 8, 24), fade(M.paint(x < 0 ? 0x2452d9 : 0x2da84a))); w.position.set(x + (x < 0 ? -0.14 : 0.14), y, z); w.rotation.y = Math.PI / 2; periphery.add(w); });
 

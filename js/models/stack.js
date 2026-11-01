@@ -54,14 +54,14 @@ export function buildStack(M, T, opts = {}) {
       });
     });
     // ports
-    const ringHex = side < 0 ? 0x26d9e3 : 0xff9b2f;
+    const ringHex = side < 0 ? 0xff9b2f : 0x26d9e3; // left end plate serves the positive loop, right the negative
     [-0.3, 0.3].forEach(y => {
       const port = new THREE.Group(); port.position.set(out * 0.06, y, 0);
       const barb = new THREE.Mesh(G.barb, M.steel()); barb.position.x = out * 0.15; port.add(barb);
       [0.2, 0.24, 0.28].forEach(d => { const r = new THREE.Mesh(G.ridge, M.steel()); r.position.x = out * d; port.add(r); });
       const collar = new THREE.Mesh(G.collar, M.steel()); collar.position.x = out * 0.03; port.add(collar);
       const o = new THREE.Mesh(G.oring, M.oring(ringHex)); o.position.x = out * 0.012; port.add(o);
-      port.traverse(c => { c.userData.component = side < 0 ? 'port_neg' : 'port_pos'; c.castShadow = shadows; });
+      port.traverse(c => { c.userData.component = side < 0 ? 'port_pos' : 'port_neg'; c.castShadow = shadows; });
       m.add(port);
     });
     return m;
