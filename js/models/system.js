@@ -113,7 +113,7 @@ export function buildSystem(M, opts = {}) {
     fans.forEach(f => { f.rotation.x += dt * 18 * speed; });
     for (const f of flows) {
       const c = f.side === 'neg' ? cNeg : cPos;
-      f.pipeMat.color.copy(c).lerp(cTmp.set(0xffffff), 0.15); f.pipeMat.emissive.copy(c);
+      f.pipeMat.color.copy(c).lerp(cTmp.set(0xffffff), 0.06); f.pipeMat.emissive.copy(c);
       f.pm.color.copy(c).lerp(cTmp.set(0xffffff), 0.5); f.pm.opacity = speed * o;
       if (speed * o < 0.01) { f.pts.visible = false; continue; }
       f.pts.visible = true;

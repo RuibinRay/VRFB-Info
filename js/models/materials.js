@@ -14,9 +14,9 @@ export function makeMaterials(T) {
     gasket: () => std({ color: 0xaab0b8, metalness: 0.55, roughness: 0.5 }),
     polymer: (hex) => std({ color: hex, metalness: 0.05, roughness: 0.5 }),
     oring: (hex) => std({ color: hex, roughness: 0.45, metalness: 0, emissive: hex, emissiveIntensity: 0.35 }),
-    glass: () => phy({ color: 0xdff0ff, transmission: 0.9, roughness: 0.06, thickness: 0.15, ior: 1.45, transparent: true, opacity: 1, side: THREE.DoubleSide, depthWrite: false }),
-    liquid: (hex) => std({ color: hex, roughness: 0.3, metalness: 0.0, transparent: true, opacity: 0.9, emissive: hex, emissiveIntensity: 0.45 }),
-    pipe: (hex) => phy({ color: hex, transmission: 0.15, roughness: 0.3, metalness: 0.05, emissive: hex, emissiveIntensity: 0.35, transparent: true, opacity: 0.96 }),
+    glass: () => phy({ color: 0xffffff, transmission: 0.92, roughness: 0.12, thickness: 0.08, ior: 1.4, envMapIntensity: 0.45, transparent: true, opacity: 1, side: THREE.DoubleSide, depthWrite: false }),
+    liquid: (hex) => std({ color: hex, roughness: 0.55, metalness: 0.0, envMapIntensity: 0.35, transparent: true, opacity: 0.94, emissive: hex, emissiveIntensity: 0.22 }),
+    pipe: (hex) => phy({ color: hex, transmission: 0.1, roughness: 0.4, metalness: 0.05, envMapIntensity: 0.5, emissive: hex, emissiveIntensity: 0.18, transparent: true, opacity: 0.97 }),
     paint: (hex) => std({ color: hex, metalness: 0.25, roughness: 0.45 }),
     cabinet: () => std({ map: T.louver, metalness: 0.35, roughness: 0.55 }),
     panel: () => std({ map: T.panel, metalness: 0.5, roughness: 0.25, envMapIntensity: 1.4 }),
@@ -28,10 +28,10 @@ export function makeMaterials(T) {
 
 /** Vanadium oxidation-state colours (linear-space hex for three.js). */
 export const V_COLORS = {
-  v2: new THREE.Color(0x8b4dff), // V²⁺  violet (charged negative)
-  v3: new THREE.Color(0x3fcf5a), // V³⁺  green  (discharged negative)
-  v4: new THREE.Color(0x2f7bff), // VO²⁺ blue   (discharged positive)
-  v5: new THREE.Color(0xffcf33), // VO₂⁺ yellow (charged positive)
+  v2: new THREE.Color(0x7c3aed), // V²⁺  violet (charged negative)
+  v3: new THREE.Color(0x1fae45), // V³⁺  green  (discharged negative)
+  v4: new THREE.Color(0x1d63f0), // VO²⁺ blue   (discharged positive)
+  v5: new THREE.Color(0xf2c21a), // VO₂⁺ yellow (charged positive)
 };
 export function negColor(soc, out = new THREE.Color()) { return out.lerpColors(V_COLORS.v3, V_COLORS.v2, soc); }
 export function posColor(soc, out = new THREE.Color()) { return out.lerpColors(V_COLORS.v4, V_COLORS.v5, soc); }
