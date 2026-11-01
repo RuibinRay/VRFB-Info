@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Battery anatomy — VRFB: The Science of Flow Energy</title>
+  <meta name="description" content="Every layer of the stack and every box on the skid: what it is made of, what it does, and how it fails.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>:root { --accent: #26d9e3; }</style>
+</head>
+<body class="page" data-level="beginner">
+  <header class="topbar">
+    <a class="brand" href="../">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>Science of Flow Energy</small></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav" aria-label="Pillars"><a href="../">Journey</a><a href="chemistry.html">Chemistry</a><a href="anatomy.html" aria-current="page">Anatomy</a><a href="engineering.html">Engineering</a><a href="economics.html">Economics</a><a href="applications.html">Applications</a><a href="references.html">Sources</a></nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">Pillar 02 · Anatomy</div>
+      <h1>Battery anatomy</h1>
+      <p class="lede">Every layer of the stack and every box on the skid: what it is made of, what it does, and how it fails.</p>
+      <div class="level" role="group" aria-label="Reading level"><button type="button" data-level="beginner">Beginner</button><button type="button" data-level="advanced">Advanced</button></div><p class="level-note">Advanced reveals the equations, data tables and modelling notes.</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="On this page"><div class="eyebrow">On this page</div><ol><li><a href="#overview">Cell to power station</a></li><li><a href="#components">The stack, layer by layer</a></li><li><a href="#balance-of-plant">Balance of plant</a></li><li><a href="#failure-modes">Failure and maintenance</a></li></ol></aside>
+      <article class="article">
+
+<section id="overview">
+  <h2>From a single cell to a power station</h2>
+  <p>A VRFB is three things bolted together: a <strong>stack</strong> that converts chemistry to current, <strong>tanks</strong> that store the chemistry, and a <strong>balance of plant</strong> (pumps, pipes, power electronics and controls) that moves liquid and electrons between them. The stack decides power in kilowatts; the tanks decide energy in kilowatt-hours; the two can be sized independently.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-4">[4]</a></span></p>
+  <figure class="figure"><img src="../assets/img/stack-exploded.webp" alt="Exploded view of a single VRFB cell between its end plates" loading="lazy"><figcaption>One cell exploded: end plate, copper collector, flow frame, bipolar plate, felt, membrane, felt, bipolar plate, flow frame, collector, end plate. The same layers are modelled in the homepage journey.</figcaption></figure>
+  <p>Inside the stack, every cell is a sandwich: a membrane between two carbon-felt electrodes, each backed by a bipolar plate. Cells are stacked electrically in series and hydraulically in parallel, fed from manifolds that run the length of the stack.<span class="cite"><a href="references.html#ref-4">[4]</a></span></p>
+</section>
+<section id="components">
+  <h2>The stack, layer by layer</h2>
+  <p>Click any component on the homepage for the same specification. Figures are typical values from the reviews cited; specific products vary.</p>
+
+  <article id="endplate" class="component">
+    <h3>End plate</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../assets/img/endplate-negative.webp" alt="End plate" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">Stainless steel or aluminium plate, 10–30 mm, that carries the clamping load and hosts the hose-barb ports. The cyan O-rings mark the negative loop; the orange ones on the opposite plate mark the positive loop.</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">Material</dt><dd style="margin:0">Stainless steel · aluminium · GFRP</dd><dt class="muted">Clamping pressure</dt><dd style="margin:0">0.5–1.5 MPa on the felt</dd><dt class="muted">Insulation</dt><dd style="margin:0">Polymer sheet to the copper collector</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">Sources <span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p></div></div>
+  </article>
+  <article id="collector" class="component">
+    <h3>Current collector</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../assets/img/current-collector.png" alt="Current collector" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">A copper sheet with a terminal tab that gathers current from the full electrode area. It sits dry, behind the first bipolar plate, because copper corrodes rapidly in the acid electrolyte.</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">Material</dt><dd style="margin:0">Copper, 1–3 mm, sometimes plated</dd><dt class="muted">Resistivity</dt><dd style="margin:0">1.7 × 10⁻⁸ Ω·m</dd><dt class="muted">Count</dt><dd style="margin:0">Two per stack (terminals)</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">Sources <span class="cite"><a href="references.html#ref-4">[4]</a></span></p></div></div>
+  </article>
+  <article id="gasket" class="component">
+    <h3>Flow frame & gasket</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../assets/img/gasket-frame.png" alt="Flow frame & gasket" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">A polymer frame holds the felt in its window and routes electrolyte from the manifold holes in the corners into the electrode. Elastomer gaskets on each face seal the cell. Long, narrow channels deliberately add resistance to limit shunt currents through the shared manifold.</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">Frame</dt><dd style="margin:0">PVC · PP · PVDF</dd><dt class="muted">Gasket</dt><dd style="margin:0">EPDM · Viton® · PTFE</dd><dt class="muted">Thickness</dt><dd style="margin:0">Sets felt compression, 20–30 %</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">Sources <span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p></div></div>
+  </article>
+  <article id="bipolar" class="component">
+    <h3>Bipolar plate</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../assets/img/bipolar-plate.webp" alt="Bipolar plate" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">A graphite–polymer composite plate shared by neighbouring cells: positive face of one, negative face of the next. Electrons pass through it so cells connect in series. The serpentine flow field spreads electrolyte across the felt and cuts pumping losses by 30–50 % versus flow-through designs.</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">Material</dt><dd style="margin:0">Graphite-filled PP / PE / PVDF, 2–6 mm</dd><dt class="muted">Resistivity</dt><dd style="margin:0">10⁻³–10⁻² Ω·cm</dd><dt class="muted">Flow field</dt><dd style="margin:0">Serpentine · interdigitated · flow-through</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">Sources <span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-10">[10]</a><a href="references.html#ref-14">[14]</a></span></p></div></div>
+  </article>
+  <article id="felt_neg" class="component">
+    <h3>Negative electrode (carbon felt)</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../assets/img/carbon-felt.webp" alt="Negative electrode (carbon felt)" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">A porous mat of 8–12 µm carbon fibres, 90–95 % porosity, where V²⁺/V³⁺ exchange electrons with the fibre surface. Felts are activated by heating in air or acid treatment, which adds oxygen groups that accelerate the reaction.</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">Material</dt><dd style="margin:0">PAN- or rayon-based carbon felt</dd><dt class="muted">Thickness</dt><dd style="margin:0">3–6 mm, compressed 20–30 %</dd><dt class="muted">Fibre diameter</dt><dd style="margin:0">≈ 10 µm</dd><dt class="muted">Side reaction</dt><dd style="margin:0">H₂ evolution near full charge</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">Sources <span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-10">[10]</a></span></p></div></div>
+  </article>
+  <article id="membrane" class="component">
+    <h3>Ion-exchange membrane</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../assets/img/membrane.png" alt="Ion-exchange membrane" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">A 25–200 µm polymer film that conducts protons and blocks vanadium. Perfluorosulfonic-acid membranes (Nafion®) are the benchmark; cheaper hydrocarbon and anion-exchange membranes trade some selectivity or conductivity for cost. It is usually the most expensive single component of the stack.</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">Material</dt><dd style="margin:0">PFSA (Nafion® 115/212) · hydrocarbon · AEM</dd><dt class="muted">Area resistance</dt><dd style="margin:0">0.5–2 Ω·cm²</dd><dt class="muted">Crossover</dt><dd style="margin:0">Causes self-discharge; corrected by rebalancing</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">Sources <span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p></div></div>
+  </article>
+  <article id="felt_pos" class="component">
+    <h3>Positive electrode (carbon felt)</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../assets/img/carbon-felt-2.webp" alt="Positive electrode (carbon felt)" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">The mirror of the negative felt, hosting VO²⁺/VO₂⁺. Kinetics are slower here, so catalysts (bismuth, metal oxides) and surface functionalisation are active research areas. At high SOC the strongly oxidising VO₂⁺ can corrode the carbon itself.</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">Material</dt><dd style="margin:0">Carbon or graphite felt, O-functionalised</dd><dt class="muted">Limit</dt><dd style="margin:0">Keep below ≈ 95 % SOC</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">Sources <span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-10">[10]</a></span></p></div></div>
+  </article>
+  <article id="tierod" class="component">
+    <h3>Tie rods and clamp brackets</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../assets/img/stack-assembled.webp" alt="Tie rods and clamp brackets" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">Threaded rods through the corner holes pull the end plates together; external brackets keep the plates flat. Tightened in a star pattern, like a wheel, to seal evenly.</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">Material</dt><dd style="margin:0">Stainless steel with insulating sleeves</dd><dt class="muted">Count</dt><dd style="margin:0">4–12 per stack</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">Sources <span class="cite"><a href="references.html#ref-4">[4]</a></span></p></div></div>
+  </article>
+</section>
+<section id="balance-of-plant">
+  <h2>Balance of plant</h2>
+  <figure class="figure"><img src="../assets/img/system-cabinet.webp" alt="VRFB system on a skid with tanks, pumps, stack and power-conversion cabinet" loading="lazy"><figcaption>A complete system: electrolyte tanks left and right, pumps beneath them, the stack in the centre, inverter cabinet and control panel behind.</figcaption></figure>
+  <div class="table-wrap"><table><thead><tr><th>Item</th><th>What it does</th><th>Typical specification</th></tr></thead><tbody>
+  <tr><td>Electrolyte tanks</td><td>Store energy; volume sets duration</td><td>HDPE/PP or lined steel; nitrogen blanket on the negative tank; ≈ 40 L per kWh total<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>Pumps (one per loop)</td><td>Circulate electrolyte at 5–10× stoichiometric flow</td><td>Magnetic-drive centrifugal, PP/PVDF wetted parts; 2–5 % of throughput as parasitic load<span class="cite"><a href="references.html#ref-14">[14]</a></span></td></tr>
+  <tr><td>Piping and valves</td><td>Connect tanks, pumps and stack manifolds</td><td>PVC/PP/PVDF; colour-coded loops so they cannot be swapped</td></tr>
+  <tr><td>Power conversion system</td><td>DC ⇄ AC conversion, grid synchronisation</td><td>Bidirectional inverter, 96–98 % efficient each way<span class="cite"><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>Battery management system</td><td>SOC estimation, pump scheduling, protection, rebalancing</td><td>Reference OCV cell, temperature and level sensors<span class="cite"><a href="references.html#ref-14">[14]</a><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>Heat exchanger</td><td>Keep electrolyte in the 10–40 °C window</td><td>Required in hot climates; often liquid-to-air<span class="cite"><a href="references.html#ref-11">[11]</a></span></td></tr>
+  </tbody></table></div>
+  <div class="callout adv"><div class="eyebrow">Advanced · shunt currents</div><p>Because every cell shares the same conductive electrolyte through the manifolds, a parallel electrical path exists around each cell. The resulting shunt currents waste charge and corrode plates near the ends of the stack. Designers lengthen the inlet channels in each flow frame, limit the number of cells per manifold and sometimes split long stacks into hydraulically separate modules to keep this loss to a few percent.<span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p></div>
+</section>
+<section id="failure-modes">
+  <h2>How stacks fail, and how they are maintained</h2>
+  <ul>
+    <li><strong>Leaks</strong> from gasket creep or uneven clamping: the most common field fault; fixed by re-torquing or gasket replacement.<span class="cite"><a href="references.html#ref-14">[14]</a></span></li>
+    <li><strong>Membrane fouling or degradation</strong> after years of service raises resistance; membranes are replaced during a stack rebuild, typically after 10–15 years.<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-14">[14]</a></span></li>
+    <li><strong>Capacity fade</strong> from crossover and side reactions is corrected by rebalancing the electrolytes, not by replacing them.<span class="cite"><a href="references.html#ref-16">[16]</a></span></li>
+    <li><strong>Pump and seal wear</strong> on the balance of plant is ordinary industrial maintenance.</li>
+  </ul>
+  <p>Because the electrolyte is recoverable at end of life, a VRFB installation retains residual value that lithium-ion systems do not. That matters for the economics, covered in the next pillar.</p>
+</section>
+
+        <nav class="pillar-nav" aria-label="Other pillars"><a href="chemistry.html" style="--c:#a36bff"><small>Pillar 01</small>Chemistry</a><a href="engineering.html" style="--c:#5ee37a"><small>Pillar 03</small>Engineering</a><a href="economics.html" style="--c:#ff9b2f"><small>Pillar 04</small>Economics</a><a href="applications.html" style="--c:#ffd23f"><small>Pillar 05</small>Applications</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — The Science of Flow Energy · Educational, non-commercial.</span><span><a href="references.html">Sources &amp; citations</a> · <a href="../">Back to the journey</a></span></div></footer>
+  <script src="../js/pillar.js"></script>
+  
+</body>
+</html>

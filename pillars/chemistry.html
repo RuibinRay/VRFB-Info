@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chemistry — VRFB: The Science of Flow Energy</title>
+  <meta name="description" content="Why one metal in four oxidation states makes a battery that never wears out its fuel: the half-reactions, the Nernst equation, and an interactive open">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>:root { --accent: #a36bff; }</style>
+</head>
+<body class="page" data-level="beginner">
+  <header class="topbar">
+    <a class="brand" href="../">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>Science of Flow Energy</small></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav" aria-label="Pillars"><a href="../">Journey</a><a href="chemistry.html" aria-current="page">Chemistry</a><a href="anatomy.html">Anatomy</a><a href="engineering.html">Engineering</a><a href="economics.html">Economics</a><a href="applications.html">Applications</a><a href="references.html">Sources</a></nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">Pillar 01 · Chemistry</div>
+      <h1>Chemistry</h1>
+      <p class="lede">Why one metal in four oxidation states makes a battery that never wears out its fuel: the half-reactions, the Nernst equation, and an interactive open-circuit-voltage explorer.</p>
+      <div class="level" role="group" aria-label="Reading level"><button type="button" data-level="beginner">Beginner</button><button type="button" data-level="advanced">Advanced</button></div><p class="level-note">Advanced reveals the equations, data tables and modelling notes.</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="On this page"><div class="eyebrow">On this page</div><ol><li><a href="#why-vanadium">Four oxidation states</a></li><li><a href="#half-reactions">Half-reactions</a></li><li><a href="#nernst">Nernst equation & explorer</a></li><li><a href="#electrolyte">The electrolyte</a></li><li><a href="#side-reactions">Side reactions</a></li></ol></aside>
+      <article class="article">
+
+<section id="why-vanadium">
+  <h2>One element, four oxidation states</h2>
+  <p>Most batteries use two different materials for their two sides. The vanadium flow battery uses the same element on both, in two different pairs of oxidation states. The negative tank holds V²⁺ and V³⁺; the positive tank holds VO²⁺ (vanadium +4) and VO₂⁺ (vanadium +5), all dissolved in sulfuric acid.<span class="cite"><a href="references.html#ref-1">[1]</a><a href="references.html#ref-2">[2]</a></span></p>
+  <p>This is the single idea that makes the VRFB practical. Every other flow chemistry suffers when a little of one electrolyte leaks through the membrane into the other, poisoning it for good. In a VRFB the leaked ion is still vanadium; it just needs a periodic <em>rebalancing</em> to restore the two tanks to the same state of charge. The electrolyte itself never wears out.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-16">[16]</a></span></p>
+  <div class="table-wrap"><table><thead><tr><th>Species</th><th>Vanadium oxidation state</th><th>Colour</th><th>Where</th></tr></thead><tbody>
+  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#8b4dff"></span>Violet</td><td>Negative tank, charged</td></tr>
+  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#3fcf5a"></span>Green</td><td>Negative tank, discharged</td></tr>
+  <tr><td>VO²⁺ (vanadyl)</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#2f7bff"></span>Blue</td><td>Positive tank, discharged</td></tr>
+  <tr><td>VO₂⁺ (dioxovanadium)</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#ffcf33"></span>Yellow</td><td>Positive tank, charged</td></tr>
+  </tbody></table></div>
+  <p class="beginner-only">In the homepage journey the tanks change colour exactly this way: green-to-violet on the left, blue-to-yellow on the right, as the battery charges.</p>
+</section>
+<section id="half-reactions">
+  <h2>The half-reactions</h2>
+  <p>During discharge, the negative electrode gives up electrons and the positive electrode takes them in. Written in the discharge direction:<span class="cite"><a href="references.html#ref-1">[1]</a><a href="references.html#ref-9">[9]</a></span></p>
+  <div class="equation">Negative electrode:&nbsp; V²⁺ → V³⁺ + e⁻ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E° = −0.255 V vs SHE<br>
+Positive electrode:&nbsp;&nbsp; VO₂⁺ + 2H⁺ + e⁻ → VO²⁺ + H₂O &nbsp;&nbsp;&nbsp;E° = +1.004 V vs SHE<br>
+Overall:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V²⁺ + VO₂⁺ + 2H⁺ → V³⁺ + VO²⁺ + H₂O &nbsp;&nbsp;E°<sub>cell</sub> = 1.259 V
+<small>Standard reduction potentials for the vanadium couples; charging runs every arrow backwards.</small></div>
+  <p>Notice the protons. Two H⁺ are consumed on the positive side every time an electron is delivered, so protons must cross the membrane from the negative side to keep both electrolytes electrically neutral. That is the membrane's whole job: let H⁺ (and some water) through, keep vanadium out.<span class="cite"><a href="references.html#ref-4">[4]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">Advanced · why the electrons move</div><p>The driving force is the difference in the two couples' electrode potentials. Each is set by the Gibbs free energy of its reduction, ΔG = −nFE. With n = 1 for both vanadium couples, the cell delivers 1.259 V × 96 485 C/mol ≈ 121 kJ per mole of electrons, or about 34 Wh per mole of vanadium transferred. Kinetically the V²⁺/V³⁺ couple is a simple outer-sphere electron transfer; the VO²⁺/VO₂⁺ couple requires an oxygen transfer and has the slower kinetics, which is why most electrode-activation research targets the positive side.<span class="cite"><a href="references.html#ref-10">[10]</a></span></p></div>
+</section>
+<section id="nernst">
+  <h2>Voltage depends on state of charge: the Nernst equation</h2>
+  <p>A fully charged VRFB sits at a higher voltage than a nearly empty one. The relationship is the Nernst equation, which adds a concentration-dependent term to the standard potential. For the overall cell, writing the state of charge as SOC (the fraction of vanadium in the charged form on each side):<span class="cite"><a href="references.html#ref-9">[9]</a><a href="references.html#ref-15">[15]</a></span></p>
+  <div class="equation">E = E° + (RT/F) · ln [ (c<sub>V²⁺</sub> · c<sub>VO₂⁺</sub> · c<sub>H⁺</sub>²) / (c<sub>V³⁺</sub> · c<sub>VO²⁺</sub>) ]<br>
+&nbsp;&nbsp;= E° + (RT/F) · [ 2 ln( SOC / (1 − SOC) ) + 2 ln c<sub>H⁺</sub> ]
+<small>R = 8.314 J mol⁻¹ K⁻¹, F = 96 485 C mol⁻¹, T in kelvin. RT/F = 25.7 mV at 25 °C.</small></div>
+  <p>Measured open-circuit voltages are consistently about 50–60 mV higher than this equation predicts at 50 % SOC (≈ 1.40 V rather than ≈ 1.34 V). Knehr and Kumbur showed the gap comes from proton activity and the Donnan potential at the membrane, which the simple form ignores.<span class="cite"><a href="references.html#ref-15">[15]</a></span> The explorer below lets you add that empirical offset.</p>
+  <div class="tool" id="tool-nernst">
+    <div class="tool__head"><h3>Open-circuit voltage explorer</h3><span class="muted mono">Nernst model · interactive</span></div>
+    <div class="tool__grid">
+      <label class="field"><span>State of charge <span class="val">50 %</span></span><input type="range" data-k="soc" data-unit=" %" value="50" min="1" max="99" step="1"></label>
+      <label class="field"><span>Temperature <span class="val">25 °C</span></span><input type="range" data-k="T" data-unit=" °C" value="25" min="5" max="50" step="1"></label>
+      <label class="field"><span>Proton concentration c<sub>H⁺</sub> <span class="val">5 M</span></span><input type="range" data-k="cH" data-unit=" M" value="5" min="1" max="8" step="0.1"></label>
+      <label class="field"><span>Cells in series <span class="val">40</span></span><input type="range" data-k="N" data-unit="" value="40" min="1" max="120" step="1"></label>
+      <label class="field"><span>Donnan / activity offset</span><span><input type="checkbox" data-k="donnan" checked> add +60 mV (empirical)</span></label>
+    </div>
+    <div class="stats"><div class="stat accent"><b data-out="ocv">—</b><span>Cell open-circuit voltage</span></div><div class="stat"><b data-out="stack">—</b><span>Stack open-circuit voltage</span></div><div class="stat"><b data-out="ratio">—</b><span>Charged : discharged vanadium</span></div><div class="stat"><b data-out="nernst">—</b><span>RT/F at this temperature</span></div></div>
+    <div class="stats"><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="negtank"></b><span>Negative tank colour (V³⁺ → V²⁺)</span></div><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="postank"></b><span>Positive tank colour (VO²⁺ → VO₂⁺)</span></div></div>
+    <div class="legend"></div>
+    <div class="chart" role="img" aria-label="Open-circuit voltage against state of charge"></div>
+    <p class="note">The curve is steep near 0 % and 100 % SOC: this is why battery-management systems keep the operating window at roughly 10–90 %, and why OCV is a useful SOC sensor in the middle of the range but a poor one at the extremes.</p>
+  </div>
+</section>
+<section id="electrolyte">
+  <h2>The electrolyte</h2>
+  <p>Commercial electrolyte is roughly 1.5–2 mol/L of vanadium in 2–5 mol/L sulfuric acid. The vanadium concentration sets how much energy a litre can hold; the acid supplies the protons, keeps the vanadium dissolved and makes the solution conductive.<span class="cite"><a href="references.html#ref-2">[2]</a></span></p>
+  <p>Energy density is modest: around 25 Wh per litre of total electrolyte at 1.6 M, roughly a tenth of a lithium-ion cell. That is acceptable for stationary storage, where the tanks simply get bigger, but it rules out vehicles.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-5">[5]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">Advanced · solubility and temperature</div><p>Vanadium concentration is capped by solubility. V²⁺ and V³⁺ sulfates precipitate at low temperature (below ≈ 10 °C for ~2 M solutions), while VO₂⁺ forms solid V₂O₅ above ≈ 40 °C when the battery is highly charged. Practical systems therefore run between 10 and 40 °C and avoid parking the positive electrolyte at very high SOC in hot weather.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-11">[11]</a></span> The mixed-acid electrolyte developed at PNNL (sulfate + chloride) raises the usable concentration to about 2.5 M and widens the window to −5 to 50 °C, a 70 % energy-density gain.<span class="cite"><a href="references.html#ref-3">[3]</a></span> Roe et al. pushed sulfate electrolyte to 3 M with phosphate stabilisers.<span class="cite"><a href="references.html#ref-18">[18]</a></span></p></div>
+  <div class="table-wrap"><table><thead><tr><th>Parameter</th><th class="num">Typical value</th><th>Source</th></tr></thead><tbody>
+  <tr><td>Vanadium concentration</td><td class="num">1.5–2.0 M (2.5 M mixed acid)</td><td><span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-3">[3]</a></span></td></tr>
+  <tr><td>Supporting acid</td><td class="num">2–5 M H₂SO₄</td><td><span class="cite"><a href="references.html#ref-2">[2]</a></span></td></tr>
+  <tr><td>Energy density (total electrolyte)</td><td class="num">20–35 Wh/L</td><td><span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>Operating temperature</td><td class="num">10–40 °C</td><td><span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-11">[11]</a></span></td></tr>
+  <tr><td>Standard cell potential</td><td class="num">1.259 V</td><td><span class="cite"><a href="references.html#ref-1">[1]</a><a href="references.html#ref-9">[9]</a></span></td></tr>
+  <tr><td>Open-circuit voltage at 50 % SOC</td><td class="num">≈ 1.40 V</td><td><span class="cite"><a href="references.html#ref-15">[15]</a></span></td></tr>
+  </tbody></table></div>
+</section>
+<section id="side-reactions">
+  <h2>What can go wrong chemically</h2>
+  <ul>
+    <li><strong>Hydrogen evolution.</strong> At the negative electrode near full charge, some current splits water into H₂ instead of reducing V³⁺. It wastes charge and slowly unbalances the tanks.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-16">[16]</a></span></li>
+    <li><strong>Air oxidation.</strong> V²⁺ reacts with oxygen, so the negative tank is blanketed with nitrogen or kept sealed.<span class="cite"><a href="references.html#ref-2">[2]</a></span></li>
+    <li><strong>Crossover.</strong> Vanadium ions diffuse through the membrane, self-discharging the cell and moving volume from one tank to the other. Unlike other chemistries this is reversible by remixing or electrochemical rebalancing.<span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-16">[16]</a></span></li>
+    <li><strong>Carbon corrosion.</strong> VO₂⁺ at high SOC can oxidise the positive felt and the bipolar plate, so stacks are rarely charged past about 95 %.<span class="cite"><a href="references.html#ref-10">[10]</a></span></li>
+  </ul>
+</section>
+
+        <nav class="pillar-nav" aria-label="Other pillars"><a href="anatomy.html" style="--c:#26d9e3"><small>Pillar 02</small>Battery anatomy</a><a href="engineering.html" style="--c:#5ee37a"><small>Pillar 03</small>Engineering</a><a href="economics.html" style="--c:#ff9b2f"><small>Pillar 04</small>Economics</a><a href="applications.html" style="--c:#ffd23f"><small>Pillar 05</small>Applications</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — The Science of Flow Energy · Educational, non-commercial.</span><span><a href="references.html">Sources &amp; citations</a> · <a href="../">Back to the journey</a></span></div></footer>
+  <script src="../js/pillar.js"></script>
+  <script type="module" src="../js/calc/chemistry.js"></script>
+</body>
+</html>

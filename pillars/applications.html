@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Real-world applications — VRFB: The Science of Flow Energy</title>
+  <meta name="description" content="Solar shifting, grid services and the flagship projects from Dalian to Hokkaido, with a 24-hour dispatch simulator.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>:root { --accent: #ffd23f; }</style>
+</head>
+<body class="page" data-level="beginner">
+  <header class="topbar">
+    <a class="brand" href="../">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>Science of Flow Energy</small></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav" aria-label="Pillars"><a href="../">Journey</a><a href="chemistry.html">Chemistry</a><a href="anatomy.html">Anatomy</a><a href="engineering.html">Engineering</a><a href="economics.html">Economics</a><a href="applications.html" aria-current="page">Applications</a><a href="references.html">Sources</a></nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">Pillar 05 · Applications</div>
+      <h1>Real-world applications</h1>
+      <p class="lede">Solar shifting, grid services and the flagship projects from Dalian to Hokkaido, with a 24-hour dispatch simulator.</p>
+      <div class="level" role="group" aria-label="Reading level"><button type="button" data-level="beginner">Beginner</button><button type="button" data-level="advanced">Advanced</button></div><p class="level-note">Advanced reveals the equations, data tables and modelling notes.</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="On this page"><div class="eyebrow">On this page</div><ol><li><a href="#why-flow">What they are for</a></li><li><a href="#dispatch-tool">Dispatch simulator</a></li><li><a href="#case-studies">Flagship installations</a></li><li><a href="#integration">Grid integration</a></li><li><a href="#outlook">Outlook</a></li></ol></aside>
+      <article class="article">
+
+<section id="why-flow">
+  <h2>What flow batteries are for</h2>
+  <p>A VRFB is slow to build, heavy, and about 70–75 % efficient, so it is not a phone battery or a car battery. It is a <strong>stationary, long-duration</strong> battery: it cycles every day for decades without wearing out, cannot catch fire, and gets cheaper per kilowatt-hour the longer it is asked to run. Those properties match three jobs.<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-16">[16]</a></span></p>
+  <ul>
+    <li><strong>Solar shifting.</strong> Store the midday surplus and deliver it over the evening peak, four to twelve hours later.</li>
+    <li><strong>Grid services.</strong> Frequency regulation, peak shaving, deferring transmission upgrades, and black-start support.</li>
+    <li><strong>Microgrids and off-grid sites.</strong> Islands, mines and campuses that want renewables plus firm overnight supply.</li>
+  </ul>
+</section>
+<section id="dispatch-tool">
+  <h2>Simulate a solar-plus-storage day</h2>
+  <div class="tool" id="tool-dispatch">
+    <div class="tool__head"><h3>24-hour dispatch simulator</h3><span class="muted mono">15-minute steps · idealised profiles</span></div>
+    <div class="tool__grid">
+      <label class="field"><span>Solar farm peak output <span class="val">50 MW</span></span><input type="range" data-k="solar" data-unit=" MW" value="50" min="5" max="500" step="5"></label>
+      <label class="field"><span>Battery power <span class="val">20 MW</span></span><input type="range" data-k="Pbat" data-unit=" MW" value="20" min="1" max="300" step="1"></label>
+      <label class="field"><span>Battery energy <span class="val">160 MWh</span></span><input type="range" data-k="Ecap" data-unit=" MWh" value="160" min="5" max="3000" step="5"></label>
+      <label class="field"><span>Base load <span class="val">20 MW</span></span><input type="range" data-k="base" data-unit=" MW" value="20" min="1" max="300" step="1"></label>
+      <label class="field"><span>Evening peak on top of base <span class="val">25 MW</span></span><input type="range" data-k="peak" data-unit=" MW" value="25" min="0" max="300" step="1"></label>
+      <label class="field"><span>Round-trip efficiency <span class="val">72 %</span></span><input type="range" data-k="rte" data-unit=" %" value="72" min="50" max="95" step="1"></label>
+      <label class="field"><span>State of charge at midnight <span class="val">20 %</span></span><input type="range" data-k="soc0" data-unit=" %" value="20" min="0" max="100" step="5"></label>
+    </div>
+    <div class="stats"><div class="stat"><b data-out="solarE">—</b><span>Solar energy generated</span></div><div class="stat accent"><b data-out="shifted">—</b><span>Delivered from the battery</span></div><div class="stat"><b data-out="exported">—</b><span>Surplus exported or curtailed</span></div><div class="stat"><b data-out="imported">—</b><span>Imported from the grid</span></div><div class="stat accent"><b data-out="self">—</b><span>Load met by solar + battery</span></div><div class="stat"><b data-out="hours">—</b><span>Battery duration</span></div></div>
+    <div class="legend"></div>
+    <div class="chart" role="img" aria-label="Solar output, load and battery power over a day"></div>
+    <div class="chart chart--soc" role="img" aria-label="Battery state of charge over a day" style="aspect-ratio:16/5;min-height:140px;margin-top:10px"></div>
+    <p class="note">Solar follows a clear-sky curve from 06:00 to 19:00; load is a base with a morning bump and an evening peak around 19:30. The battery charges only from solar surplus and discharges only into a deficit, with losses split evenly between charging and discharging. Try doubling the energy while keeping the power fixed: that is the VRFB's cheapest upgrade.</p>
+  </div>
+</section>
+<section id="case-studies">
+  <h2>Flagship installations</h2>
+  <div class="table-wrap"><table><thead><tr><th>Project</th><th class="num">Power / energy</th><th>Year</th><th>Role</th><th>Source</th></tr></thead><tbody>
+  <tr><td>Dalian Flow Battery Energy Storage Peak-shaving Power Station, China (Rongke Power / DICP)</td><td class="num">100 MW / 400 MWh (phase 1)</td><td>2022</td><td>Peak shaving and renewable integration for the Dalian grid; largest flow battery in the world</td><td><span class="cite"><a href="references.html#ref-7">[7]</a></span></td></tr>
+  <tr><td>Hokkaido Electric Power Network, Minami-Hayakita substation, Japan (Sumitomo Electric)</td><td class="num">15 MW / 60 MWh, then 17 MW / 51 MWh</td><td>2015, 2022</td><td>Smoothing wind and solar output; frequency and voltage support</td><td><span class="cite"><a href="references.html#ref-8">[8]</a></span></td></tr>
+  <tr><td>Energy Superhub Oxford, UK (Invinity)</td><td class="num">2 MW / 5 MWh (hybrid with Li-ion)</td><td>2022</td><td>Grid services alongside EV charging in a hybrid battery</td><td><span class="cite"><a href="references.html#ref-12">[12]</a></span></td></tr>
+  <tr><td>San Diego Gas &amp; Electric, Escondido, USA (Sumitomo Electric)</td><td class="num">2 MW / 8 MWh</td><td>2017</td><td>Four-hour distribution-level demonstration</td><td><span class="cite"><a href="references.html#ref-12">[12]</a></span></td></tr>
+  </tbody></table></div>
+  <p>The Dalian project is the clearest signal of where the technology sits: a utility-scale, four-hour (and later eight-hour) asset built around a tank farm, in a market that values safety and cycle life over footprint.<span class="cite"><a href="references.html#ref-7">[7]</a></span></p>
+</section>
+<section id="integration">
+  <h2>How a VRFB connects to a solar farm and the grid</h2>
+  <p>Electrically the battery is just another inverter-based resource. DC from the stacks goes to a bidirectional inverter and a step-up transformer, then to the same point of interconnection as the solar farm. The energy-management system decides when to charge (negative prices, curtailment, midday surplus) and when to discharge (evening peak, ancillary-service calls).<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-13">[13]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">Advanced · sizing rule of thumb</div><p>For evening solar shifting, battery energy should cover the evening deficit: roughly (peak load − overnight solar, which is zero) × 4–6 hours. Battery power only needs to match the deficit's peak, which is often a third to a half of the solar farm's rating. That asymmetry (modest power, long duration) is precisely the shape a flow battery produces cheaply. The dispatch simulator above lets you test it.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p></div>
+</section>
+<section id="outlook">
+  <h2>Outlook</h2>
+  <p>Vanadium flow batteries remain a small share of grid storage, but the market for 8-hour-plus duration is growing fastest, and flow chemistry's fire safety is increasingly valued near population centres. Cost declines will come less from the chemistry, which is mature, than from manufacturing scale, cheaper membranes and vanadium leasing.<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-13">[13]</a><a href="references.html#ref-14">[14]</a></span></p>
+</section>
+
+        <nav class="pillar-nav" aria-label="Other pillars"><a href="chemistry.html" style="--c:#a36bff"><small>Pillar 01</small>Chemistry</a><a href="anatomy.html" style="--c:#26d9e3"><small>Pillar 02</small>Battery anatomy</a><a href="engineering.html" style="--c:#5ee37a"><small>Pillar 03</small>Engineering</a><a href="economics.html" style="--c:#ff9b2f"><small>Pillar 04</small>Economics</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — The Science of Flow Energy · Educational, non-commercial.</span><span><a href="references.html">Sources &amp; citations</a> · <a href="../">Back to the journey</a></span></div></footer>
+  <script src="../js/pillar.js"></script>
+  <script type="module" src="../js/calc/applications.js"></script>
+</body>
+</html>

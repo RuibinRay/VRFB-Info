@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>VRFB — The Science of Flow Energy</title>
+  <meta name="description" content="An interactive, scientifically sourced documentary on vanadium redox flow batteries: scroll to zoom into a VRFB system, take the stack apart, watch the electrochemistry, follow the electrolyte, and see how it connects to solar farms and the grid.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/home.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="home">
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div><div class="loader__ring"></div><p>Building the cell</p></div>
+  </div>
+
+  <canvas id="stage" aria-label="3D model of a vanadium redox flow battery system that responds to scrolling"></canvas>
+  <div class="iris" id="iris"></div>
+  <div class="labels" id="labels"></div>
+
+  <header class="topbar">
+    <a class="brand" href="./">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>Science of Flow Energy</small></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav" aria-label="Pillars">
+      <a href="./" aria-current="page">Journey</a>
+      <a href="pillars/chemistry.html">Chemistry</a>
+      <a href="pillars/anatomy.html">Anatomy</a>
+      <a href="pillars/engineering.html">Engineering</a>
+      <a href="pillars/economics.html">Economics</a>
+      <a href="pillars/applications.html">Applications</a>
+      <a href="pillars/references.html">Sources</a>
+    </nav>
+  </header>
+
+  <nav class="chapters-nav" id="chapters-nav" aria-label="Chapters"></nav>
+
+  <main id="scroll-track" class="scroll-track">
+
+    <section class="chapter" data-chapter="hero" data-title="The system" style="--vh:170">
+      <div class="chapter__sticky">
+        <div class="caption caption--hero">
+          <div class="eyebrow">Interactive scientific documentary</div>
+          <h1>VRFB</h1>
+          <p class="sub">The Science of Flow Energy</p>
+          <p class="lede">A battery that stores electricity in two tanks of liquid vanadium. Scroll to zoom in, take the stack apart layer by layer, watch electrons change hands, follow the electrolyte, and put it all back together before plugging it into the grid.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="#pillars">Jump to the five pillars</a>
+            <a class="btn btn--ghost" href="pillars/references.html">Verified sources</a>
+          </div>
+        </div>
+        <div class="scroll-cue">Scroll</div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="approach" data-title="The stack" style="--vh:130">
+      <div class="chapter__sticky">
+        <div class="caption caption--right caption--glass">
+          <div class="eyebrow">01 · Power and energy, separated</div>
+          <h2>Power lives in the stack. Energy lives in the tanks.</h2>
+          <p>Dozens of cells are pressed between two steel end plates. Their total electrode area sets how many kilowatts the battery can deliver. The two tanks beside it hold the electrolyte, and their volume alone sets how many hours it can run. Need more hours? Buy bigger tanks, not more stacks.<span class="cite">[2]</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="explode" data-title="Anatomy" style="--vh:200">
+      <div class="chapter__sticky">
+        <div class="caption caption--glass">
+          <div class="eyebrow">02 · Anatomy of a cell</div>
+          <h2>Eleven layers, one cell.</h2>
+          <p>End plate, copper current collector, flow frame, graphite bipolar plate, carbon-felt electrode, ion-exchange membrane, and the same again in mirror. Every neighbouring cell shares a bipolar plate, so a stack of 40 cells is 40 membranes and 41 plates.<span class="cite">[4]</span></p>
+          <p class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 13V5a2 2 0 1 1 4 0v6M12 11V9a2 2 0 1 1 4 0v3M16 12a2 2 0 1 1 4 0v3a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.3L3.7 15a2 2 0 0 1 3.3-2.3L8 14"/></svg> Click any component for its specification</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="dive" data-title="Into the electrode" style="--vh:120">
+      <div class="chapter__sticky">
+        <div class="caption caption--center">
+          <div class="eyebrow">03 · Going microscopic</div>
+          <h2>Into the felt.</h2>
+          <p>The electrode is a mat of carbon fibres a few millimetres thick, each fibre about 10 µm across. Electrolyte seeps through the pores and the reaction happens on the fibre surface, where ions meet electrons.<span class="cite">[10]</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="micro" data-title="Electrochemistry" style="--vh:240">
+      <div class="chapter__sticky">
+        <div class="caption caption--glass caption--bottom">
+          <div class="eyebrow">04 · Discharge, at the fibre surface</div>
+          <h2>Four oxidation states of one metal.</h2>
+          <div class="equation">Negative:&nbsp; V<sup>2+</sup> → V<sup>3+</sup> + e<sup>−</sup> &nbsp;&nbsp; E° = −0.255 V<br>Positive:&nbsp;&nbsp; VO<sub>2</sub><sup>+</sup> + 2H<sup>+</sup> + e<sup>−</sup> → VO<sup>2+</sup> + H<sub>2</sub>O &nbsp;&nbsp; E° = +1.004 V<br>Cell:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E°<sub>cell</sub> ≈ 1.26 V (open-circuit ≈ 1.4 V at 50 % SOC)<small>Standard potentials vs SHE; Skyllas-Kazacos et al. 1986; Knehr &amp; Kumbur 2011.<span class="cite">[1][15]</span></small></div>
+          <div class="legend-dots">
+            <span><i style="color:#a36bff"></i>V²⁺ violet</span>
+            <span><i style="color:#5ee37a"></i>V³⁺ green</span>
+            <span><i style="color:#3b8cff"></i>VO²⁺ blue</span>
+            <span><i style="color:#ffd23f"></i>VO₂⁺ yellow</span>
+            <span><i style="color:#ffffff"></i>H⁺ crossing membrane</span>
+            <span><i style="color:#26d9e3"></i>e⁻ in the fibre</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="flowcell" data-title="Electrolyte flow" style="--vh:170">
+      <div class="chapter__sticky">
+        <div class="caption caption--right caption--glass">
+          <div class="eyebrow">05 · Follow the flow</div>
+          <h2>A serpentine for every cell.</h2>
+          <p>Pumps push electrolyte through channels machined into the bipolar plate so that it sweeps evenly across the felt. Engineers run the pumps at 5–10× the stoichiometric minimum: too little flow starves the fibres of vanadium, too much wastes pump power.<span class="cite">[14]</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="rebuild" data-title="Reassembly" style="--vh:150">
+      <div class="chapter__sticky">
+        <div class="caption caption--glass">
+          <div class="eyebrow">06 · Back together</div>
+          <h2>Cells in series add volts.</h2>
+          <p>Tie rods clamp the layers to about 1 MPa so the felt is compressed and the gaskets seal. Forty cells at 1.3 V make a 52 V stack; a container of stacks makes a megawatt.<span class="cite">[4]</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="system" data-title="Charging" style="--vh:190">
+      <div class="chapter__sticky">
+        <div class="caption caption--right caption--glass">
+          <div class="eyebrow">07 · Energy in the tanks</div>
+          <h2>Watch the colour change as it charges.</h2>
+          <p>Nothing is plated, nothing is consumed. Charging simply converts V³⁺ to V²⁺ in the negative tank (green to violet) and VO²⁺ to VO₂⁺ in the positive tank (blue to yellow). The same electrolyte has cycled more than 20,000 times in field systems.<span class="cite">[5][8]</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="grid" data-title="Solar and grid" style="--vh:190">
+      <div class="chapter__sticky">
+        <div class="caption caption--glass">
+          <div class="eyebrow">08 · From the solar farm to the grid</div>
+          <h2>Midday sun, delivered at dinner time.</h2>
+          <p>A flow battery sized for 4–12 hours soaks up the midday solar peak and releases it through the evening ramp. The world's largest, in Dalian, China, stores 400 MWh and delivers 100 MW.<span class="cite">[7]</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="outro" data-title="Pillars" style="--vh:90">
+      <div class="chapter__sticky">
+        <div class="caption caption--center">
+          <div class="eyebrow">Choose your depth</div>
+          <h2>Five pillars, beginner to advanced.</h2>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section id="pillars" class="pillars">
+    <div class="pillars__inner">
+      <div class="pillars__intro">
+        <div class="eyebrow">The curriculum</div>
+        <h2>Everything a VRFB is, in five pillars.</h2>
+        <p>Each pillar starts at beginner level and lets you switch to advanced for the equations, the data, and the citations. Every number on this site links to a published source.</p>
+      </div>
+      <div class="pillar-grid">
+        <a class="pillar-card" href="pillars/chemistry.html" style="--c:#a36bff">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6M10 3v6.5L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9.5V3"/><path d="M7 15h10"/></svg>
+          <span class="num">PILLAR 01</span><h3>Chemistry</h3>
+          <p>Vanadium's four oxidation states, the half-reactions, the Nernst equation and an interactive open-circuit-voltage explorer.</p>
+          <div class="tags"><span>Redox</span><span>Nernst</span><span>Simulator</span></div>
+        </a>
+        <a class="pillar-card" href="pillars/anatomy.html" style="--c:#26d9e3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="4" height="16" rx="1"/><rect x="10" y="4" width="4" height="16" rx="1"/><rect x="17" y="4" width="4" height="16" rx="1"/></svg>
+          <span class="num">PILLAR 02</span><h3>Battery anatomy</h3>
+          <p>Every component of the stack and the balance of plant: materials, dimensions, why each exists and how it fails.</p>
+          <div class="tags"><span>Stack</span><span>Membrane</span><span>Materials</span></div>
+        </a>
+        <a class="pillar-card" href="pillars/engineering.html" style="--c:#5ee37a">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+          <span class="num">PILLAR 03</span><h3>Engineering</h3>
+          <p>Sizing stacks, tanks and pumps; efficiency losses; thermal limits; and a system-design calculator you can play with.</p>
+          <div class="tags"><span>Sizing</span><span>Efficiency</span><span>Calculator</span></div>
+        </a>
+        <a class="pillar-card" href="pillars/economics.html" style="--c:#ff9b2f">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20h18M5 16l4-5 4 3 6-8"/><path d="M15 6h4v4"/></svg>
+          <span class="num">PILLAR 04</span><h3>Economics</h3>
+          <p>Capital cost, vanadium price sensitivity, electrolyte leasing and a levelised-cost-of-storage calculator against lithium-ion.</p>
+          <div class="tags"><span>LCOS</span><span>Capex</span><span>Calculator</span></div>
+        </a>
+        <a class="pillar-card" href="pillars/applications.html" style="--c:#ffd23f">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <span class="num">PILLAR 05</span><h3>Real-world applications</h3>
+          <p>Solar shifting, grid services and the flagship projects from Dalian to Hokkaido, with a 24-hour dispatch simulator.</p>
+          <div class="tags"><span>Solar</span><span>Grid</span><span>Case studies</span></div>
+        </a>
+      </div>
+      <div class="sourcing">
+        <div><h3>Scientifically verified</h3><p>Standard potentials, concentrations, efficiencies and costs are taken from peer-reviewed papers and national-laboratory reports, listed with DOIs on the <a href="pillars/references.html">sources page</a>. Where a figure is an estimate or an assumption, the page says so.</p></div>
+        <div><h3>Built as one experience</h3><p>The 3D journey is driven entirely by your scroll position, so it plays forwards and backwards. The model geometry is procedural, built in Three.js from the reference renders, and the colours of the tanks follow the real oxidation-state colours of vanadium.</p></div>
+        <div><h3>Open and portable</h3><p>Plain HTML, CSS and JavaScript with no build step. Fork the repository, edit the data files, and host it on GitHub Pages.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>VRFB — The Science of Flow Energy · Educational, non-commercial.</span>
+      <span><a href="pillars/references.html">Sources &amp; citations</a> · <a href="https://github.com/">GitHub repository</a></span>
+    </div>
+  </footer>
+
+  <aside id="panel" class="panel" aria-hidden="true" role="dialog" aria-labelledby="panel-title">
+    <div class="panel__head">
+      <div><div class="eyebrow" id="panel-kicker">Component</div><h3 id="panel-title">—</h3></div>
+      <button class="panel__close" id="panel-close" aria-label="Close">✕</button>
+    </div>
+    <div class="panel__body" id="panel-body"></div>
+  </aside>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

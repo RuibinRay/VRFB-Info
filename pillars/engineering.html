@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Engineering — VRFB: The Science of Flow Energy</title>
+  <meta name="description" content="Sizing stacks, tanks and pumps; where the efficiency goes; thermal limits; and a calculator that designs a system from first principles.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>:root { --accent: #5ee37a; }</style>
+</head>
+<body class="page" data-level="beginner">
+  <header class="topbar">
+    <a class="brand" href="../">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>Science of Flow Energy</small></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav" aria-label="Pillars"><a href="../">Journey</a><a href="chemistry.html">Chemistry</a><a href="anatomy.html">Anatomy</a><a href="engineering.html" aria-current="page">Engineering</a><a href="economics.html">Economics</a><a href="applications.html">Applications</a><a href="references.html">Sources</a></nav>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">Pillar 03 · Engineering</div>
+      <h1>Engineering</h1>
+      <p class="lede">Sizing stacks, tanks and pumps; where the efficiency goes; thermal limits; and a calculator that designs a system from first principles.</p>
+      <div class="level" role="group" aria-label="Reading level"><button type="button" data-level="beginner">Beginner</button><button type="button" data-level="advanced">Advanced</button></div><p class="level-note">Advanced reveals the equations, data tables and modelling notes.</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="On this page"><div class="eyebrow">On this page</div><ol><li><a href="#power-vs-energy">Power vs energy</a></li><li><a href="#sizing-tool">Sizing calculator</a></li><li><a href="#efficiency">Efficiency</a></li><li><a href="#thermal">Thermal & flow</a></li><li><a href="#scaling">Scaling up</a></li></ol></aside>
+      <article class="article">
+
+<section id="power-vs-energy">
+  <h2>Decoupling power from energy</h2>
+  <p>In a conventional battery, power and energy scale together: more cells means more of both. In a flow battery they are separate purchases. <strong>Power</strong> (kW) is set by the total electrode area in the stacks, since current scales with area at a chosen current density. <strong>Energy</strong> (kWh) is set by how much vanadium is dissolved in the tanks.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-4">[4]</a></span></p>
+  <div class="equation">P ≈ N<sub>cells</sub> · A · j · V<sub>cell</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ 2 · V<sub>tank</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>nominal</sub> / 2
+<small>A: active area per cell · j: current density · c<sub>V</sub>: vanadium concentration · ΔSOC: usable window · the factor ½ appears because each electron needs one vanadium ion on <em>each</em> side.</small></div>
+  <p>The practical consequence: a 4-hour system and a 10-hour system can share identical stacks and differ only in tank size. Longer durations get cheaper per kWh, which is the VRFB's commercial niche.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
+</section>
+<section id="sizing-tool">
+  <h2>Design a system</h2>
+  <div class="tool" id="tool-sizing">
+    <div class="tool__head"><h3>Stack, tank and pump sizing calculator</h3><span class="muted mono">first-order model · editable assumptions</span></div>
+    <div class="tool__grid">
+      <label class="field"><span>Rated power (kW)</span><input type="number" data-k="P" value="250" min="1" max="100000" step="1"></label>
+      <label class="field"><span>Energy capacity (kWh)</span><input type="number" data-k="E" value="1000" min="1" max="1000000" step="1"></label>
+      <label class="field"><span>Cell voltage under load (V)</span><input type="number" data-k="Vcell" value="1.3" min="1.0" max="1.6" step="0.01"></label>
+      <label class="field"><span>Current density (mA/cm²)</span><input type="number" data-k="j" value="80" min="10" max="300" step="5"></label>
+      <label class="field"><span>Active area per cell (cm²)</span><input type="number" data-k="A" value="2500" min="100" max="20000" step="50"></label>
+      <label class="field"><span>Cells per stack</span><input type="number" data-k="N" value="40" min="1" max="200" step="1"></label>
+      <label class="field"><span>Vanadium concentration (mol/L)</span><input type="number" data-k="c" value="1.6" min="0.5" max="3" step="0.1"></label>
+      <label class="field"><span>Usable SOC window (fraction)</span><input type="number" data-k="dod" value="0.8" min="0.3" max="1" step="0.05"></label>
+      <label class="field"><span>Flow factor λ (× stoichiometric)</span><input type="number" data-k="lambda" value="8" min="1" max="20" step="0.5"></label>
+      <label class="field"><span>Stack pressure drop (bar)</span><input type="number" data-k="dp" value="0.6" min="0.1" max="3" step="0.1"></label>
+      <label class="field"><span>Pump efficiency (fraction)</span><input type="number" data-k="eta" value="0.55" min="0.2" max="0.9" step="0.05"></label>
+      <label class="field"><span>Area-specific resistance (Ω·cm²)</span><input type="number" data-k="asr" value="1.2" min="0.3" max="4" step="0.1"></label>
+      <label class="field"><span>Coulombic efficiency (%)</span><input type="number" data-k="ce" value="96" min="80" max="100" step="0.5"></label>
+      <label class="field"><span>Inverter efficiency (one way) (%)</span><input type="number" data-k="inv" value="97" min="90" max="99.5" step="0.5"></label>
+    </div>
+    <h4 class="eyebrow">Stack</h4>
+    <div class="stats"><div class="stat"><b data-out="stackI">—</b><span>Stack current</span></div><div class="stat"><b data-out="stackV">—</b><span>Stack voltage under load</span></div><div class="stat"><b data-out="stackP">—</b><span>Power per stack</span></div><div class="stat accent"><b data-out="nStacks">—</b><span>Stacks required</span></div></div>
+    <h4 class="eyebrow">Electrolyte and tanks</h4>
+    <div class="stats"><div class="stat accent"><b data-out="litres">—</b><span>Total electrolyte (both tanks)</span></div><div class="stat"><b data-out="whL">—</b><span>Energy density, total electrolyte</span></div><div class="stat"><b data-out="tank">—</b><span>Each tank (cylinder, H = 1.5 D)</span></div></div>
+    <h4 class="eyebrow">Pumping</h4>
+    <div class="stats"><div class="stat"><b data-out="flow">—</b><span>Flow per stack, per loop</span></div><div class="stat"><b data-out="pump">—</b><span>Total pump power</span></div><div class="stat accent"><b data-out="pumpFrac">—</b><span>Pump share of rated power</span></div></div>
+    <h4 class="eyebrow">Efficiency at the chosen current density</h4>
+    <div class="stats"><div class="stat"><b data-out="ve">—</b><span>Voltage efficiency</span></div><div class="stat"><b data-out="cell">—</b><span>Cell energy efficiency</span></div><div class="stat accent"><b data-out="sys">—</b><span>System AC-to-AC efficiency</span></div></div>
+    <div class="legend"></div>
+    <div class="chart" role="img" aria-label="Efficiency against current density"></div>
+    <details><summary>Model notes and formulas</summary><p>Stack current I = j·A. Electrolyte per side = E / (c · 26.8 Ah/mol · ΔSOC · V<sub>cell</sub>). Stoichiometric flow per stack = N·I / (F·c); the pump delivers λ times that. Pump power = Q·Δp / η for two loops per stack. Voltage efficiency uses a lumped area-specific resistance around an open-circuit voltage of 1.40 V: VE = (OCV − j·ASR)/(OCV + j·ASR). System efficiency multiplies cell efficiency by (1 − pump fraction) and the inverter efficiency twice. Shunt currents, thermal management and the SOC-dependence of ASR are neglected; published system values of 65–80 % AC-AC are consistent with this model at 60–100 mA/cm².<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-14">[14]</a></span></p></details>
+  </div>
+</section>
+<section id="efficiency">
+  <h2>Where the energy goes</h2>
+  <p>Three efficiencies multiply to give the battery's round-trip figure.<span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p>
+  <ul>
+    <li><strong>Coulombic efficiency</strong> (95–98 %): charge lost to crossover, shunt currents and hydrogen evolution.</li>
+    <li><strong>Voltage efficiency</strong> (80–92 %): the voltage gap between charging and discharging caused by resistance and reaction kinetics. It falls as current density rises, so running harder trades efficiency for a smaller, cheaper stack.</li>
+    <li><strong>System losses</strong>: pumps (2–5 %) and the inverter (2–4 % each way).</li>
+  </ul>
+  <p>Put together, cells reach 80–90 % DC and complete systems 65–80 % AC-to-AC, lower than lithium-ion's 85–90 % but stable over tens of thousands of cycles.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">Advanced · polarisation</div><p>Cell voltage under load is V = OCV ± (η<sub>act</sub> + η<sub>ohm</sub> + η<sub>conc</sub>). Activation overpotential follows Butler–Volmer kinetics and is dominated by the positive electrode; ohmic loss is the membrane plus electrolyte plus contact resistance (together ≈ 1–2 Ω·cm² in commercial cells); concentration overpotential appears when the flow factor is too low to replenish vanadium at the fibre surface, especially near the ends of the SOC window. Flow-field plates and thinner, compressed felts reduce all three.<span class="cite"><a href="references.html#ref-10">[10]</a><a href="references.html#ref-14">[14]</a></span></p></div>
+</section>
+<section id="thermal">
+  <h2>Thermal and flow management</h2>
+  <p>Resistive heating and pump work warm the electrolyte. Because VO₂⁺ precipitates above about 40 °C and V²⁺/V³⁺ sulfates below about 10 °C, large systems add a heat exchanger and keep the pumps running during idle periods in hot weather to stop the stack from cooking.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-11">[11]</a></span></p>
+  <p>Variable-speed pumps scheduled against state of charge are a cheap efficiency win: high flow is needed only near the ends of the SOC window, where vanadium concentration at the electrode runs low.<span class="cite"><a href="references.html#ref-14">[14]</a></span></p>
+</section>
+<section id="scaling">
+  <h2>Scaling up</h2>
+  <p>Commercial stacks run from a few kilowatts to roughly 30–40 kW each, with cell areas of 0.1–0.4 m² and 20–100 cells per stack. Megawatt systems connect many stacks in series–parallel to reach a DC bus voltage of several hundred volts, then share tanks that hold hundreds of cubic metres of electrolyte.<span class="cite"><a href="references.html#ref-14">[14]</a><a href="references.html#ref-16">[16]</a></span> The Dalian station reaches 100 MW and 400 MWh this way, using containerised stacks fed from a tank farm.<span class="cite"><a href="references.html#ref-7">[7]</a></span></p>
+</section>
+
+        <nav class="pillar-nav" aria-label="Other pillars"><a href="chemistry.html" style="--c:#a36bff"><small>Pillar 01</small>Chemistry</a><a href="anatomy.html" style="--c:#26d9e3"><small>Pillar 02</small>Battery anatomy</a><a href="economics.html" style="--c:#ff9b2f"><small>Pillar 04</small>Economics</a><a href="applications.html" style="--c:#ffd23f"><small>Pillar 05</small>Applications</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — The Science of Flow Energy · Educational, non-commercial.</span><span><a href="references.html">Sources &amp; citations</a> · <a href="../">Back to the journey</a></span></div></footer>
+  <script src="../js/pillar.js"></script>
+  <script type="module" src="../js/calc/engineering.js"></script>
+</body>
+</html>
