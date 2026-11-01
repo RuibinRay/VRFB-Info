@@ -22,7 +22,7 @@ Then open <http://localhost:8765/>.
 
 ## Deploy to GitHub Pages
 
-1. Create a repository named `VRFB-Info` and push this folder as its root (keep `.nojekyll`).
+1. Repository: <https://github.com/RuibinRay/VRFB-Info>. Live site: <https://ruibinray.github.io/VRFB-Info/>. To fork: push this folder as the repository root (keep `.nojekyll`).
 2. In **Settings → Pages**, choose *Deploy from a branch*, branch `main`, folder `/ (root)`.
 3. The site is served at `https://<your-user>.github.io/VRFB-Info/`. All links are relative, so it works
    under that sub-path without changes.
