@@ -3,6 +3,8 @@
   const toggle = document.getElementById('nav-toggle'), nav = document.getElementById('nav');
   if (toggle && nav) toggle.addEventListener('click', () => { const o = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', String(o)); });
 
+  document.querySelectorAll('.lang-switch a[data-lang]').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('vrfb-lang', a.dataset.lang); } catch {} }));
+
   // level toggle (persisted)
   const body = document.body;
   const saved = (() => { try { return localStorage.getItem('vrfb-level'); } catch { return null; } })();

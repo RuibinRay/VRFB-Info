@@ -140,7 +140,7 @@ export function buildStack(M, T, opts = {}) {
     ['membrane', C, 'Ion-exchange membrane', 'Nafion®', 'down', -0.72],
     ['felt_pos', C, 'Positive electrode', 'carbon felt · VO²⁺/VO₂⁺', 'up', 1.0],
     ['endplate', N + 1, 'Tie rods & clamps', '4 × M12', 'down', -1.0],
-  ].map(([type, cell, text, sub, dir, dy]) => ({ object: find(type, cell).mesh, text, sub, dir, id: type === 'endplate' && cell > 0 ? 'tierod' : type, offset: [0, dy, 0] }));
+  ].map(([type, cell, text, sub, dir, dy]) => { const id = type === 'endplate' && cell > 0 ? 'tierod' : type; return { object: find(type, cell).mesh, text, sub, dir, id, key: id, offset: [0, dy, 0] }; });
 
   const revealFrom = layers.indexOf(find('bipolar', C)) + 1;
   function update(state) {

@@ -1,4 +1,5 @@
 import { lineChart, legend, readInputs, CHART_COLORS } from './chart.js';
+import { CS } from './strings.js';
 /** Open-circuit voltage explorer: Nernst equation for the all-vanadium cell. */
 const R = 8.314, F = 96485, E0 = 1.259; // V, standard cell potential (1.004 − (−0.255))
 const V2 = [139, 77, 255], V3 = [63, 207, 90], V4 = [47, 123, 255], V5 = [255, 207, 51];
@@ -12,12 +13,12 @@ if (root) {
     const p = readInputs(root); const T = p.T + 273.15; const donnan = root.querySelector('[data-k="donnan"]').checked;
     const pts = (fn) => Array.from({ length: 97 }, (_, i) => { const s = 0.02 + i * 0.01; return [s * 100, fn(s)]; });
     return { p, T, donnan, list: [
-      { name: 'Your settings', color: CHART_COLORS[0], points: pts(s => ocv(s, T, p.cH, donnan)) },
-      { name: 'Reference: 25 °C, 5 M H⁺, no offset', color: CHART_COLORS[1], dash: [5, 4], points: pts(s => ocv(s, 298.15, 5, false)) },
+      { name: CS.chem.yours, color: CHART_COLORS[0], points: pts(s => ocv(s, T, p.cH, donnan)) },
+      { name: CS.chem.ref, color: CHART_COLORS[1], dash: [5, 4], points: pts(s => ocv(s, 298.15, 5, false)) },
     ] };
   };
   const first = series();
-  const chart = lineChart(chartEl, { series: first.list, xLabel: 'State of charge (%)', yLabel: 'Open-circuit voltage (V)', xFormat: v => `${v}`, yFormat: v => Number(v).toFixed(2), yMin: 1.0, yMax: 1.7, marker: first.p.soc });
+  const chart = lineChart(chartEl, { series: first.list, xLabel: CS.chem.x, yLabel: CS.chem.y, xFormat: v => `${v}`, yFormat: v => Number(v).toFixed(2), yMin: 1.0, yMax: 1.7, marker: first.p.soc });
   legend(legEl, first.list);
   const out = (k) => root.querySelector(`[data-out="${k}"]`);
   function update() {

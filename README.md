@@ -8,6 +8,11 @@ system's place between a solar farm and the grid. Five pillar pages (chemistry, 
 economics, applications) go deeper with beginner/advanced text, interactive simulators and financial
 calculators, and every figure links to a cited source.
 
+Available in **English, Spanish and Mandarin (Simplified Chinese)**. The switcher in the top bar changes
+language everywhere; the choice is remembered in the browser. The homepage translates at runtime
+(`js/i18n/*.js`), while the pillar pages are generated as static copies per language
+(`pillars/`, `pillars/es/`, `pillars/zh/`) so each is a plain, indexable HTML page.
+
 No build step. Plain HTML, CSS and ES modules; libraries load from CDNs.
 
 ## Run locally
@@ -54,8 +59,10 @@ VRFB-Info/
 │   ├── data/components.js     Component specifications shown in the panel
 │   ├── calc/                  Chart helper and the four calculators (Nernst, sizing, LCOS, dispatch)
 │   └── pillar.js              Shared pillar-page behaviour (level toggle, TOC, nav)
-├── pillars/                   Generated pages: chemistry, anatomy, engineering, economics, applications, references
-├── tools/gen_pages.py         Regenerates pillars/*.html from one template (python3 tools/gen_pages.py)
+│   ├── i18n/                  Homepage dictionaries: en.js, es.js, zh.js + index.js (detection, DOM apply)
+├── pillars/                   Generated pages (English); pillars/es/ and pillars/zh/ hold the translations
+├── tools/gen_pages.py         Regenerates every pillars/**/*.html from one template (python3 tools/gen_pages.py)
+├── tools/content_<lang>.py    Page content per language (en, es, zh); tools/helpers.py holds shared HTML helpers
 └── assets/img/                Reference renders used on the anatomy page
 ```
 
@@ -73,9 +80,13 @@ midpoint, so the camera jump is never visible in either direction.
 
 ## Editing the science
 
-* Component text and sources: `js/data/components.js` and `tools/gen_pages.py` (ANAT_ITEMS).
-* Calculator formulas and defaults: `js/calc/*.js` and the `field()` calls in `tools/gen_pages.py`.
-* References: the `REFS` list in `tools/gen_pages.py`. Citation numbers across the site refer to that list.
+* Component text and sources: `js/data/components.js` (English), translated in `js/i18n/es.js` and `js/i18n/zh.js`,
+  and `ANAT_ITEMS` in each `tools/content_<lang>.py`.
+* Calculator formulas and defaults: `js/calc/*.js`; input labels in the `field()` calls of each content module;
+  chart labels in `js/calc/strings.js`.
+* References: the `REFS` list in `tools/content_en.py` (shared by all languages). Citation numbers refer to that list.
+* Adding a language: copy `tools/content_en.py` and `js/i18n/en.js`, translate, register the code in
+  `tools/gen_pages.py` (LANGS, SWITCHER) and `js/i18n/index.js` (LANGS), then run the generator.
 
 ## Credits
 

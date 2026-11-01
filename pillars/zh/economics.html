@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>经济分析 — VRFB：液流储能的科学</title>
+  <meta name="description" content="全钒液流电池的成本、钒价为何重要，以及一个与锂离子电池对比的平准化储能成本计算器。">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="../../pillars/economics.html">
+  <link rel="alternate" hreflang="es" href="../../pillars/es/economics.html">
+  <link rel="alternate" hreflang="zh" href="../../pillars/zh/economics.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <style>:root { --accent: #ff9b2f; }</style>
+</head>
+<body class="page" data-level="beginner" data-lang="zh">
+  <header class="topbar">
+    <a class="brand" href="../../?lang=zh">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>液流储能的科学</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="支柱"><a href="../../?lang=zh">沉浸之旅</a><a href="chemistry.html">化学原理</a><a href="anatomy.html">电池结构</a><a href="engineering.html">工程设计</a><a href="economics.html" aria-current="page">经济分析</a><a href="applications.html">实际应用</a><a href="references.html">参考文献</a></nav>
+    <div class="topbar__right">
+      <div class="lang-switch" role="group"><a href="../economics.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/economics.html" lang="es" data-lang="es" title="Español">ES</a><a href="../zh/economics.html" lang="zh" data-lang="zh" title="中文" aria-current="true">中文</a></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">支柱 04 · 经济分析</div>
+      <h1>经济分析</h1>
+      <p class="lede">全钒液流电池的成本、钒价为何重要，以及一个与锂离子电池对比的平准化储能成本计算器。</p>
+      <div class="level" role="group" aria-label="阅读层级"><button type="button" data-level="beginner">入门</button><button type="button" data-level="advanced">进阶</button></div><p class="level-note">切换到“进阶”可查看公式、数据表和建模说明。</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="本页内容"><div class="eyebrow">本页内容</div><ol><li><a href="#cost-structure">成本构成</a></li><li><a href="#lcos-tool">LCOS 计算器</a></li><li><a href="#vanadium-market">钒的问题</a></li><li><a href="#comparison">技术对比</a></li></ol></aside>
+      <article class="article">
+
+<section id="cost-structure">
+  <h2>VRFB 的成本构成及原因</h2>
+  <p>锂离子系统的成本主要是电芯。VRFB 则大致是三分之一电堆、三分之一电解液、三分之一其他，并且这一比例随时长变化：2 小时系统以电堆为主；10 小时系统以电解液为主。<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-14">[14]</a></span></p>
+  <ul>
+    <li><strong>电堆与电力电子</strong>随千瓦数增长。隔膜和双极板是电堆中最贵的部件。<span class="cite"><a href="references.html#ref-14">[14]</a></span></li>
+    <li><strong>电解液</strong>随千瓦时数增长，并跟随五氧化二钒（V₂O₅）价格波动，后者在十年内曾从每磅约 5 美元升至 25 美元以上。<span class="cite"><a href="references.html#ref-17">[17]</a></span></li>
+    <li><strong>储液罐、泵、管路、控制、安装</strong>同时随两者增长。</li>
+  </ul>
+  <p>美国能源部 2022 年评估把 10 小时时长的电网级全钒液流系统的安装成本定在每 kWh 几百美元的低位区间，其中电解液是最大的单项；确切数字取决于年份、规模和钒价，因此请把计算器的输入当作可编辑的假设而非报价。<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
+</section>
+<section id="lcos-tool">
+  <h2>平准化储能成本计算器</h2>
+  <p>平准化储能成本（LCOS）把全寿命周期内的全部成本分摊到电池一生将放出的每一兆瓦时上，并折现到今天。它是比较寿命不同的技术时最公平的单一指标。<span class="cite"><a href="references.html#ref-6">[6]</a><a href="references.html#ref-13">[13]</a></span></p>
+  <div class="equation">LCOS = [ CAPEX + Σ<sub>t</sub> (运维<sub>t</sub> + 充电成本<sub>t</sub> + 更换<sub>t</sub>) / (1+r)<sup>t</sup> − 残值 / (1+r)<sup>N</sup> ] / Σ<sub>t</sub> E<sub>放电,t</sub> / (1+r)<sup>t</sup></div>
+  <div class="tool" id="tool-lcos">
+    <div class="tool__head"><h3>VRFB 与锂离子电池的 LCOS 对比</h3><span class="muted mono">所有输入可编辑 · 默认值仅作示意</span></div>
+    <h4 class="eyebrow">项目</h4>
+    <div class="tool__grid">
+      <label class="field"><span>功率 (MW)</span><input type="number" data-k="P" value="10" min="0.1" max="1000" step="0.1"></label>
+      <label class="field"><span>时长 (小时)</span><input type="number" data-k="h" value="8" min="1" max="24" step="0.5"></label>
+      <label class="field"><span>每年完整循环次数</span><input type="number" data-k="cycles" value="330" min="1" max="730" step="1"></label>
+      <label class="field"><span>VRFB 项目寿命 (年)</span><input type="number" data-k="life" value="25" min="5" max="40" step="1"></label>
+      <label class="field"><span>折现率 (%)</span><input type="number" data-k="disc" value="7" min="0" max="20" step="0.5"></label>
+      <label class="field"><span>充电电价 ($/MWh)</span><input type="number" data-k="chg" value="30" min="0" max="200" step="1"></label>
+    </div>
+    <h4 class="eyebrow">VRFB 成本</h4>
+    <div class="tool__grid">
+      <label class="field"><span>V₂O₅ 价格 ($/kg)</span><input type="number" data-k="v2o5" value="18" min="5" max="60" step="0.5"></label>
+      <label class="field"><span>钒浓度 (mol/L)</span><input type="number" data-k="c" value="1.6" min="0.8" max="3" step="0.1"></label>
+      <label class="field"><span>可用 SOC 窗口 (分数)</span><input type="number" data-k="dod" value="0.8" min="0.4" max="1" step="0.05"></label>
+      <label class="field"><span>酸、水与加工 ($/kWh)</span><input type="number" data-k="acidProc" value="15" min="0" max="100" step="1"></label>
+      <label class="field"><span>电堆 + 电力电子 ($/kW)</span><input type="number" data-k="stackCost" value="650" min="100" max="3000" step="10"></label>
+      <label class="field"><span>储液罐与辅助系统（能量部分） ($/kWh)</span><input type="number" data-k="bosE" value="60" min="0" max="300" step="5"></label>
+      <label class="field"><span>泵与辅助系统（功率部分） ($/kW)</span><input type="number" data-k="bosP" value="150" min="0" max="1000" step="10"></label>
+      <label class="field"><span>EPC 与安装 (% 设备成本)</span><input type="number" data-k="epc" value="20" min="0" max="60" step="1"></label>
+      <label class="field"><span>运行与维护 ($/kW·年)</span><input type="number" data-k="om" value="15" min="0" max="100" step="1"></label>
+      <label class="field"><span>往返效率（交流） (%)</span><input type="number" data-k="rte" value="72" min="50" max="90" step="1"></label>
+      <label class="field"><span>年容量衰减 (%)</span><input type="number" data-k="deg" value="0.3" min="0" max="5" step="0.1"></label>
+      <label class="field"><span>电堆翻新年份</span><input type="number" data-k="stackYear" value="12" min="1" max="40" step="1"></label>
+      <label class="field"><span>翻新成本 (% 电堆成本)</span><input type="number" data-k="stackRepl" value="50" min="0" max="100" step="5"></label>
+      <label class="field"><span>电解液残值 (% 电解液成本)</span><input type="number" data-k="resid" value="60" min="0" max="100" step="5"></label>
+    </div>
+    <h4 class="eyebrow">锂离子对比方案</h4>
+    <div class="tool__grid">
+      <label class="field"><span>安装成本 ($/kWh)</span><input type="number" data-k="liCapex" value="320" min="50" max="1500" step="5"></label>
+      <label class="field"><span>往返效率（交流） (%)</span><input type="number" data-k="liRte" value="87" min="60" max="95" step="1"></label>
+      <label class="field"><span>项目寿命 (年)</span><input type="number" data-k="liLife" value="15" min="3" max="30" step="1"></label>
+      <label class="field"><span>年容量衰减 (%)</span><input type="number" data-k="liDeg" value="2" min="0" max="10" step="0.1"></label>
+      <label class="field"><span>运行与维护 ($/kW·年)</span><input type="number" data-k="liOm" value="10" min="0" max="100" step="1"></label>
+    </div>
+    <div class="stats"><div class="stat accent"><b data-out="lcos">—</b><span>VRFB 的 LCOS</span></div><div class="stat"><b data-out="lcosLi">—</b><span>锂离子的 LCOS</span></div><div class="stat"><b data-out="capex">—</b><span>VRFB 总资本成本</span></div><div class="stat"><b data-out="perKwh">—</b><span>VRFB 安装成本</span></div><div class="stat"><b data-out="liPerKwh">—</b><span>锂离子安装成本</span></div><div class="stat"><b data-out="kg">—</b><span>每 kWh 容量所需 V₂O₅</span></div><div class="stat"><b data-out="elecShare">—</b><span>电解液占资本成本比例</span></div></div>
+    <div class="costbar" style="display:flex;height:22px;border-radius:8px;overflow:hidden;gap:2px;background:var(--bg-2)"></div>
+    <div class="legend costbar-legend"></div>
+    <div class="legend"></div>
+    <div class="chart" role="img" aria-label="平准化储能成本随五氧化二钒价格的变化"></div>
+    <p class="note">每 kWh 的钒质量由浓度和 SOC 窗口在 1.35 V 标称单电池电压下推算；1.6 M、80 % 窗口时约为每 kWh 6 kg V₂O₅。残值反映了钒电解液在寿命终止时可回收或再租赁。<span class="cite"><a href="references.html#ref-14">[14]</a><a href="references.html#ref-17">[17]</a></span> 锂离子曲线采用 90 % 可用窗口且无残值。</p>
+  </div>
+</section>
+<section id="vanadium-market">
+  <h2>钒的问题</h2>
+  <p>约 85 % 的钒用于炼钢作为强化添加剂，因此其价格跟随钢铁周期而非电池市场。2018 年 V₂O₅ 价格飙升至每磅 25 美元以上，使电解液成本几乎翻倍；2020 年代中期价格则维持在每磅个位数美元。<span class="cite"><a href="references.html#ref-17">[17]</a></span></p>
+  <p>业界出现了两种应对。<strong>电解液租赁</strong>把钒移出项目的资产负债表：供应商保留所有权并在寿命终止时回收金属，把资本支出变成运营费用。<span class="cite"><a href="references.html#ref-14">[14]</a></span> <strong>替代电解液</strong>（混合酸、更高浓度）则从每公斤钒中榨取更多能量。<span class="cite"><a href="references.html#ref-3">[3]</a><a href="references.html#ref-18">[18]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">进阶 · 敏感性</div><p>由于电解液与能量成正比，LCOS 对钒价的敏感性随时长增加。把 V₂O₅ 从 10 $/kg 翻倍到 20 $/kg，计算器默认的 8 小时 LCOS 大约上升五分之一；4 小时时影响约为一半。电堆成本的敏感性则相反。这就是 VRFB 厂商瞄准 6–12 小时应用、而锂离子主导 1–4 小时应用的原因。<span class="cite"><a href="references.html#ref-5">[5]</a></span></p></div>
+</section>
+<section id="comparison">
+  <h2>技术对比</h2>
+  <div class="table-wrap"><table><thead><tr><th>指标</th><th>全钒液流</th><th>锂离子（LFP）</th><th>来源</th></tr></thead><tbody>
+  <tr><td>往返效率（交流）</td><td class="num">65–80 %</td><td class="num">85–90 %</td><td><span class="cite"><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>循环寿命</td><td class="num">&gt; 15 000–20 000 次，电解液不耗损</td><td class="num">3 000–8 000 次</td><td><span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>日历寿命</td><td class="num">20–25 年（约 12–15 年翻新电堆）</td><td class="num">10–15 年</td><td><span class="cite"><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>能量密度</td><td class="num">20–35 Wh/L</td><td class="num">250–400 Wh/L</td><td><span class="cite"><a href="references.html#ref-2">[2]</a></span></td></tr>
+  <tr><td>放电深度</td><td class="num">100 % 且无损伤</td><td class="num">通常 80–90 %</td><td><span class="cite"><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>火灾风险</td><td>水系，不可燃</td><td>可能热失控</td><td><span class="cite"><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>占地</td><td>大（储液罐）</td><td>紧凑</td><td><span class="cite"><a href="references.html#ref-2">[2]</a></span></td></tr>
+  <tr><td>寿命终止</td><td>电解液可回收</td><td>回收体系仍在发展</td><td><span class="cite"><a href="references.html#ref-14">[14]</a></span></td></tr>
+  </tbody></table></div>
+</section>
+
+        <nav class="pillar-nav" aria-label="其他支柱"><a href="chemistry.html" style="--c:#a36bff"><small>支柱 01</small>化学原理</a><a href="anatomy.html" style="--c:#26d9e3"><small>支柱 02</small>电池结构</a><a href="engineering.html" style="--c:#5ee37a"><small>支柱 03</small>工程设计</a><a href="applications.html" style="--c:#ffd23f"><small>支柱 05</small>实际应用</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — 液流储能的科学 · 教育用途，非商业。</span><span><a href="references.html">参考文献与引用</a> · <a href="../../?lang=zh">返回沉浸之旅</a></span></div></footer>
+  <script src="../../js/pillar.js"></script>
+  <script type="module" src="../../js/calc/economics.js"></script>
+</body>
+</html>

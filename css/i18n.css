@@ -1,0 +1,10 @@
+/* Language switcher + CJK typography */
+.topbar__right { display: flex; align-items: center; gap: 10px; }
+.lang-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: rgba(255,255,255,0.03); }
+.lang-switch a, .lang-switch button { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); background: none; border: 0; padding: 5px 9px; border-radius: 999px; cursor: pointer; text-decoration: none; line-height: 1; }
+.lang-switch a:hover, .lang-switch button:hover { color: var(--fg); text-decoration: none; }
+.lang-switch [aria-current="true"] { background: rgba(255,255,255,0.12); color: var(--fg); }
+:lang(zh), :lang(zh-CN) { --font-display: "Sora", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif; --font-body: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif; }
+:lang(zh) h1, :lang(zh-CN) h1, :lang(zh) h2, :lang(zh-CN) h2 { letter-spacing: 0; }
+:lang(zh) .caption--hero h1 { letter-spacing: -0.04em; }
+@media (max-width: 900px) { .lang-switch a, .lang-switch button { padding: 5px 7px; } }

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Economía — VRFB: La ciencia de la energía de flujo</title>
+  <meta name="description" content="Qué cuesta una batería de flujo de vanadio, por qué importa el precio del vanadio y una calculadora de coste nivelado de almacenamiento para compararl">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="../../pillars/economics.html">
+  <link rel="alternate" hreflang="es" href="../../pillars/es/economics.html">
+  <link rel="alternate" hreflang="zh" href="../../pillars/zh/economics.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <style>:root { --accent: #ff9b2f; }</style>
+</head>
+<body class="page" data-level="beginner" data-lang="es">
+  <header class="topbar">
+    <a class="brand" href="../../?lang=es">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>La ciencia de la energía de flujo</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Pilar"><a href="../../?lang=es">Recorrido</a><a href="chemistry.html">Química</a><a href="anatomy.html">Anatomía</a><a href="engineering.html">Ingeniería</a><a href="economics.html" aria-current="page">Economía</a><a href="applications.html">Aplicaciones</a><a href="references.html">Fuentes</a></nav>
+    <div class="topbar__right">
+      <div class="lang-switch" role="group"><a href="../economics.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/economics.html" lang="es" data-lang="es" title="Español" aria-current="true">ES</a><a href="../zh/economics.html" lang="zh" data-lang="zh" title="中文">中文</a></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">Pilar 04 · Economía</div>
+      <h1>Economía</h1>
+      <p class="lede">Qué cuesta una batería de flujo de vanadio, por qué importa el precio del vanadio y una calculadora de coste nivelado de almacenamiento para compararla con el ion-litio.</p>
+      <div class="level" role="group" aria-label="Nivel de lectura"><button type="button" data-level="beginner">Principiante</button><button type="button" data-level="advanced">Avanzado</button></div><p class="level-note">El nivel avanzado muestra las ecuaciones, las tablas de datos y las notas de modelado.</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="En esta página"><div class="eyebrow">En esta página</div><ol><li><a href="#cost-structure">Estructura de costes</a></li><li><a href="#lcos-tool">Calculadora de LCOS</a></li><li><a href="#vanadium-market">La cuestión del vanadio</a></li><li><a href="#comparison">Comparación de tecnologías</a></li></ol></aside>
+      <article class="article">
+
+<section id="cost-structure">
+  <h2>Qué cuesta una VRFB, y por qué</h2>
+  <p>Un sistema de ion-litio es sobre todo celdas. Una VRFB es, grosso modo, un tercio pilas, un tercio electrolito y un tercio todo lo demás, y el reparto cambia con la duración: a 2 horas dominan las pilas; a 10 horas, el electrolito.<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-14">[14]</a></span></p>
+  <ul>
+    <li><strong>Pilas y electrónica de potencia</strong> escalan con los kilovatios. La membrana y las placas bipolares son las partes más caras de la pila.<span class="cite"><a href="references.html#ref-14">[14]</a></span></li>
+    <li><strong>Electrolito</strong> escala con los kilovatios-hora y sigue el precio del pentóxido de vanadio (V₂O₅), que ha oscilado entre unos 5 y más de 25 dólares por libra en una década.<span class="cite"><a href="references.html#ref-17">[17]</a></span></li>
+    <li><strong>Tanques, bombas, tuberías, controles, instalación</strong> escalan con ambos.</li>
+  </ul>
+  <p>La evaluación de 2022 del Departamento de Energía de EE. UU. sitúa los costes instalados de los sistemas de flujo de vanadio a escala de red en los pocos cientos de dólares por kWh para duraciones de 10 horas, con el electrolito como mayor partida; las cifras exactas dependen del año, el tamaño y el precio del vanadio, así que usa las entradas de la calculadora como supuestos editables, no como cotizaciones.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
+</section>
+<section id="lcos-tool">
+  <h2>Calculadora de coste nivelado de almacenamiento</h2>
+  <p>El coste nivelado de almacenamiento (LCOS) reparte todos los costes a lo largo de la vida útil entre todos los megavatios-hora que la batería llegará a descargar, descontados a hoy. Es la cifra única más justa para comparar tecnologías con vidas útiles distintas.<span class="cite"><a href="references.html#ref-6">[6]</a><a href="references.html#ref-13">[13]</a></span></p>
+  <div class="equation">LCOS = [ CAPEX + Σ<sub>t</sub> (O&amp;M<sub>t</sub> + carga<sub>t</sub> + reemplazos<sub>t</sub>) / (1+r)<sup>t</sup> − residual / (1+r)<sup>N</sup> ] / Σ<sub>t</sub> E<sub>descargada,t</sub> / (1+r)<sup>t</sup></div>
+  <div class="tool" id="tool-lcos">
+    <div class="tool__head"><h3>LCOS de VRFB frente a ion-litio</h3><span class="muted mono">todas las entradas editables · valores por defecto ilustrativos</span></div>
+    <h4 class="eyebrow">Proyecto</h4>
+    <div class="tool__grid">
+      <label class="field"><span>Potencia (MW)</span><input type="number" data-k="P" value="10" min="0.1" max="1000" step="0.1"></label>
+      <label class="field"><span>Duración (horas)</span><input type="number" data-k="h" value="8" min="1" max="24" step="0.5"></label>
+      <label class="field"><span>Ciclos completos por año</span><input type="number" data-k="cycles" value="330" min="1" max="730" step="1"></label>
+      <label class="field"><span>Vida del proyecto VRFB (años)</span><input type="number" data-k="life" value="25" min="5" max="40" step="1"></label>
+      <label class="field"><span>Tasa de descuento (%)</span><input type="number" data-k="disc" value="7" min="0" max="20" step="0.5"></label>
+      <label class="field"><span>Precio de la electricidad de carga ($/MWh)</span><input type="number" data-k="chg" value="30" min="0" max="200" step="1"></label>
+    </div>
+    <h4 class="eyebrow">Costes de la VRFB</h4>
+    <div class="tool__grid">
+      <label class="field"><span>Precio del V₂O₅ ($/kg)</span><input type="number" data-k="v2o5" value="18" min="5" max="60" step="0.5"></label>
+      <label class="field"><span>Concentración de vanadio (mol/L)</span><input type="number" data-k="c" value="1.6" min="0.8" max="3" step="0.1"></label>
+      <label class="field"><span>Ventana de SOC útil (fracción)</span><input type="number" data-k="dod" value="0.8" min="0.4" max="1" step="0.05"></label>
+      <label class="field"><span>Ácido, agua, procesado ($/kWh)</span><input type="number" data-k="acidProc" value="15" min="0" max="100" step="1"></label>
+      <label class="field"><span>Pilas + electrónica de potencia ($/kW)</span><input type="number" data-k="stackCost" value="650" min="100" max="3000" step="10"></label>
+      <label class="field"><span>Tanques y BOS (parte de energía) ($/kWh)</span><input type="number" data-k="bosE" value="60" min="0" max="300" step="5"></label>
+      <label class="field"><span>Bombas y BOS (parte de potencia) ($/kW)</span><input type="number" data-k="bosP" value="150" min="0" max="1000" step="10"></label>
+      <label class="field"><span>EPC e instalación (% del equipo)</span><input type="number" data-k="epc" value="20" min="0" max="60" step="1"></label>
+      <label class="field"><span>Operación y mantenimiento ($/kW·año)</span><input type="number" data-k="om" value="15" min="0" max="100" step="1"></label>
+      <label class="field"><span>Eficiencia de ida y vuelta (CA) (%)</span><input type="number" data-k="rte" value="72" min="50" max="90" step="1"></label>
+      <label class="field"><span>Pérdida de capacidad anual (%)</span><input type="number" data-k="deg" value="0.3" min="0" max="5" step="0.1"></label>
+      <label class="field"><span>Año de reacondicionamiento de pilas</span><input type="number" data-k="stackYear" value="12" min="1" max="40" step="1"></label>
+      <label class="field"><span>Coste del reacondicionamiento (% del coste de pilas)</span><input type="number" data-k="stackRepl" value="50" min="0" max="100" step="5"></label>
+      <label class="field"><span>Valor residual del electrolito (% del coste del electrolito)</span><input type="number" data-k="resid" value="60" min="0" max="100" step="5"></label>
+    </div>
+    <h4 class="eyebrow">Comparador de ion-litio</h4>
+    <div class="tool__grid">
+      <label class="field"><span>Coste instalado ($/kWh)</span><input type="number" data-k="liCapex" value="320" min="50" max="1500" step="5"></label>
+      <label class="field"><span>Eficiencia de ida y vuelta (CA) (%)</span><input type="number" data-k="liRte" value="87" min="60" max="95" step="1"></label>
+      <label class="field"><span>Vida del proyecto (años)</span><input type="number" data-k="liLife" value="15" min="3" max="30" step="1"></label>
+      <label class="field"><span>Pérdida de capacidad anual (%)</span><input type="number" data-k="liDeg" value="2" min="0" max="10" step="0.1"></label>
+      <label class="field"><span>Operación y mantenimiento ($/kW·año)</span><input type="number" data-k="liOm" value="10" min="0" max="100" step="1"></label>
+    </div>
+    <div class="stats"><div class="stat accent"><b data-out="lcos">—</b><span>LCOS de la VRFB</span></div><div class="stat"><b data-out="lcosLi">—</b><span>LCOS del ion-litio</span></div><div class="stat"><b data-out="capex">—</b><span>Coste de capital total de la VRFB</span></div><div class="stat"><b data-out="perKwh">—</b><span>Coste instalado de la VRFB</span></div><div class="stat"><b data-out="liPerKwh">—</b><span>Coste instalado del ion-litio</span></div><div class="stat"><b data-out="kg">—</b><span>V₂O₅ por kWh de capacidad</span></div><div class="stat"><b data-out="elecShare">—</b><span>Peso del electrolito en el capex</span></div></div>
+    <div class="costbar" style="display:flex;height:22px;border-radius:8px;overflow:hidden;gap:2px;background:var(--bg-2)"></div>
+    <div class="legend costbar-legend"></div>
+    <div class="legend"></div>
+    <div class="chart" role="img" aria-label="Coste nivelado de almacenamiento frente al precio del pentóxido de vanadio"></div>
+    <p class="note">La masa de vanadio por kWh se deriva de la concentración y la ventana de SOC a un voltaje nominal de celda de 1,35 V; a 1,6 M y ventana del 80 % resultan unos 6 kg de V₂O₅ por kWh. El valor residual refleja que el electrolito de vanadio puede recuperarse o realquilarse al final de la vida útil.<span class="cite"><a href="references.html#ref-14">[14]</a><a href="references.html#ref-17">[17]</a></span> La línea de ion-litio usa una ventana útil del 90 % y ningún valor residual.</p>
+  </div>
+</section>
+<section id="vanadium-market">
+  <h2>La cuestión del vanadio</h2>
+  <p>Alrededor del 85 % del vanadio se destina al acero como aditivo de refuerzo, así que su precio sigue el ciclo del acero y no el mercado de baterías. El pico de 2018, por encima de 25 dólares por libra de V₂O₅, casi duplicó el coste del electrolito; a mediados de la década de 2020 los precios se han mantenido en un solo dígito por libra.<span class="cite"><a href="references.html#ref-17">[17]</a></span></p>
+  <p>Han surgido dos respuestas. El <strong>alquiler de electrolito</strong> saca el vanadio del balance del proyecto: el proveedor conserva la propiedad y recupera el metal al final de la vida útil, convirtiendo un coste de capital en una cuota operativa.<span class="cite"><a href="references.html#ref-14">[14]</a></span> Los <strong>electrolitos alternativos</strong> (ácido mixto, mayor concentración) extraen más energía de cada kilogramo.<span class="cite"><a href="references.html#ref-3">[3]</a><a href="references.html#ref-18">[18]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">Avanzado · sensibilidad</div><p>Como el electrolito es proporcional a la energía, la sensibilidad del LCOS al precio del vanadio crece con la duración. Duplicar el V₂O₅ de 10 a 20 $/kg eleva el LCOS por defecto de 8 horas de la calculadora aproximadamente una quinta parte; a 4 horas el efecto es la mitad. La sensibilidad al coste de las pilas funciona al revés. Por eso los fabricantes de VRFB apuntan a aplicaciones de 6–12 horas mientras el ion-litio domina las de 1–4 horas.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p></div>
+</section>
+<section id="comparison">
+  <h2>Comparación de tecnologías</h2>
+  <div class="table-wrap"><table><thead><tr><th>Métrica</th><th>Flujo de vanadio</th><th>Ion-litio (LFP)</th><th>Fuente</th></tr></thead><tbody>
+  <tr><td>Eficiencia de ida y vuelta (CA)</td><td class="num">65–80 %</td><td class="num">85–90 %</td><td><span class="cite"><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>Vida en ciclos</td><td class="num">&gt; 15 000–20 000, sin desgaste del electrolito</td><td class="num">3 000–8 000</td><td><span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>Vida calendario</td><td class="num">20–25 años (reacondicionamiento de pilas a ~12–15)</td><td class="num">10–15 años</td><td><span class="cite"><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>Densidad de energía</td><td class="num">20–35 Wh/L</td><td class="num">250–400 Wh/L</td><td><span class="cite"><a href="references.html#ref-2">[2]</a></span></td></tr>
+  <tr><td>Profundidad de descarga</td><td class="num">100 % sin daño</td><td class="num">Normalmente 80–90 %</td><td><span class="cite"><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>Riesgo de incendio</td><td>Acuosa, no inflamable</td><td>Posible fuga térmica</td><td><span class="cite"><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>Huella</td><td>Grande (tanques)</td><td>Compacta</td><td><span class="cite"><a href="references.html#ref-2">[2]</a></span></td></tr>
+  <tr><td>Fin de vida</td><td>Electrolito recuperable</td><td>Reciclaje aún en desarrollo</td><td><span class="cite"><a href="references.html#ref-14">[14]</a></span></td></tr>
+  </tbody></table></div>
+</section>
+
+        <nav class="pillar-nav" aria-label="Otros pilares"><a href="chemistry.html" style="--c:#a36bff"><small>Pilar 01</small>Química</a><a href="anatomy.html" style="--c:#26d9e3"><small>Pilar 02</small>Anatomía de la batería</a><a href="engineering.html" style="--c:#5ee37a"><small>Pilar 03</small>Ingeniería</a><a href="applications.html" style="--c:#ffd23f"><small>Pilar 05</small>Aplicaciones</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
+  <script src="../../js/pillar.js"></script>
+  <script type="module" src="../../js/calc/economics.js"></script>
+</body>
+</html>

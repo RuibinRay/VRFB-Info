@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aplicaciones reales — VRFB: La ciencia de la energía de flujo</title>
+  <meta name="description" content="Desplazamiento solar, servicios de red y los proyectos emblemáticos de Dalian a Hokkaido, con un simulador de despacho de 24 horas.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="../../pillars/applications.html">
+  <link rel="alternate" hreflang="es" href="../../pillars/es/applications.html">
+  <link rel="alternate" hreflang="zh" href="../../pillars/zh/applications.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <style>:root { --accent: #ffd23f; }</style>
+</head>
+<body class="page" data-level="beginner" data-lang="es">
+  <header class="topbar">
+    <a class="brand" href="../../?lang=es">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>La ciencia de la energía de flujo</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Pilar"><a href="../../?lang=es">Recorrido</a><a href="chemistry.html">Química</a><a href="anatomy.html">Anatomía</a><a href="engineering.html">Ingeniería</a><a href="economics.html">Economía</a><a href="applications.html" aria-current="page">Aplicaciones</a><a href="references.html">Fuentes</a></nav>
+    <div class="topbar__right">
+      <div class="lang-switch" role="group"><a href="../applications.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/applications.html" lang="es" data-lang="es" title="Español" aria-current="true">ES</a><a href="../zh/applications.html" lang="zh" data-lang="zh" title="中文">中文</a></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">Pilar 05 · Aplicaciones</div>
+      <h1>Aplicaciones reales</h1>
+      <p class="lede">Desplazamiento solar, servicios de red y los proyectos emblemáticos de Dalian a Hokkaido, con un simulador de despacho de 24 horas.</p>
+      <div class="level" role="group" aria-label="Nivel de lectura"><button type="button" data-level="beginner">Principiante</button><button type="button" data-level="advanced">Avanzado</button></div><p class="level-note">El nivel avanzado muestra las ecuaciones, las tablas de datos y las notas de modelado.</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="En esta página"><div class="eyebrow">En esta página</div><ol><li><a href="#why-flow">Para qué sirven</a></li><li><a href="#dispatch-tool">Simulador de despacho</a></li><li><a href="#case-studies">Instalaciones emblemáticas</a></li><li><a href="#integration">Integración en red</a></li><li><a href="#outlook">Perspectivas</a></li></ol></aside>
+      <article class="article">
+
+<section id="why-flow">
+  <h2>Para qué sirven las baterías de flujo</h2>
+  <p>Una VRFB tarda en construirse, es pesada y tiene una eficiencia del 70–75 %, así que no es una batería para teléfonos ni para coches. Es una batería <strong>estacionaria y de larga duración</strong>: cicla cada día durante décadas sin desgastarse, no puede incendiarse y resulta más barata por kilovatio-hora cuanto más tiempo se le pide que funcione. Esas propiedades encajan con tres trabajos.<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-16">[16]</a></span></p>
+  <ul>
+    <li><strong>Desplazamiento solar.</strong> Almacenar el excedente del mediodía y entregarlo durante el pico de la tarde, de cuatro a doce horas después.</li>
+    <li><strong>Servicios de red.</strong> Regulación de frecuencia, recorte de picos, aplazamiento de refuerzos de transmisión y apoyo al arranque en negro.</li>
+    <li><strong>Microrredes y emplazamientos aislados.</strong> Islas, minas y campus que quieren renovables más suministro firme durante la noche.</li>
+  </ul>
+</section>
+<section id="dispatch-tool">
+  <h2>Simula un día de solar con almacenamiento</h2>
+  <div class="tool" id="tool-dispatch">
+    <div class="tool__head"><h3>Simulador de despacho de 24 horas</h3><span class="muted mono">pasos de 15 minutos · perfiles idealizados</span></div>
+    <div class="tool__grid">
+      <label class="field"><span>Potencia pico del parque solar <span class="val">50 MW</span></span><input type="range" data-k="solar" data-unit=" MW" value="50" min="5" max="500" step="5"></label>
+      <label class="field"><span>Potencia de la batería <span class="val">20 MW</span></span><input type="range" data-k="Pbat" data-unit=" MW" value="20" min="1" max="300" step="1"></label>
+      <label class="field"><span>Energía de la batería <span class="val">160 MWh</span></span><input type="range" data-k="Ecap" data-unit=" MWh" value="160" min="5" max="3000" step="5"></label>
+      <label class="field"><span>Carga base <span class="val">20 MW</span></span><input type="range" data-k="base" data-unit=" MW" value="20" min="1" max="300" step="1"></label>
+      <label class="field"><span>Pico de la tarde sobre la base <span class="val">25 MW</span></span><input type="range" data-k="peak" data-unit=" MW" value="25" min="0" max="300" step="1"></label>
+      <label class="field"><span>Eficiencia de ida y vuelta <span class="val">72 %</span></span><input type="range" data-k="rte" data-unit=" %" value="72" min="50" max="95" step="1"></label>
+      <label class="field"><span>Estado de carga a medianoche <span class="val">20 %</span></span><input type="range" data-k="soc0" data-unit=" %" value="20" min="0" max="100" step="5"></label>
+    </div>
+    <div class="stats"><div class="stat"><b data-out="solarE">—</b><span>Energía solar generada</span></div><div class="stat accent"><b data-out="shifted">—</b><span>Entregada por la batería</span></div><div class="stat"><b data-out="exported">—</b><span>Excedente exportado o vertido</span></div><div class="stat"><b data-out="imported">—</b><span>Importada de la red</span></div><div class="stat accent"><b data-out="self">—</b><span>Carga cubierta por solar + batería</span></div><div class="stat"><b data-out="hours">—</b><span>Duración de la batería</span></div></div>
+    <div class="legend"></div>
+    <div class="chart" role="img" aria-label="Producción solar, carga y potencia de la batería a lo largo de un día"></div>
+    <div class="chart chart--soc" role="img" aria-label="Estado de carga de la batería a lo largo de un día" style="aspect-ratio:16/5;min-height:140px;margin-top:10px"></div>
+    <p class="note">La solar sigue una curva de cielo despejado de 06:00 a 19:00; la carga es una base con un repunte matinal y un pico de tarde en torno a las 19:30. La batería solo se carga con excedente solar y solo se descarga ante un déficit, con las pérdidas repartidas a partes iguales entre carga y descarga. Prueba a duplicar la energía manteniendo la potencia: esa es la mejora más barata de una VRFB.</p>
+  </div>
+</section>
+<section id="case-studies">
+  <h2>Instalaciones emblemáticas</h2>
+  <div class="table-wrap"><table><thead><tr><th>Proyecto</th><th class="num">Potencia / energía</th><th>Año</th><th>Función</th><th>Fuente</th></tr></thead><tbody>
+  <tr><td>Central de almacenamiento con batería de flujo de Dalian, China (Rongke Power / DICP)</td><td class="num">100 MW / 400 MWh (fase 1)</td><td>2022</td><td>Recorte de picos e integración de renovables en la red de Dalian; la mayor batería de flujo del mundo</td><td><span class="cite"><a href="references.html#ref-7">[7]</a></span></td></tr>
+  <tr><td>Hokkaido Electric Power Network, subestación de Minami-Hayakita, Japón (Sumitomo Electric)</td><td class="num">15 MW / 60 MWh, luego 17 MW / 51 MWh</td><td>2015, 2022</td><td>Suavizado de la producción eólica y solar; apoyo de frecuencia y tensión</td><td><span class="cite"><a href="references.html#ref-8">[8]</a></span></td></tr>
+  <tr><td>Energy Superhub Oxford, Reino Unido (Invinity)</td><td class="num">2 MW / 5 MWh (híbrido con ion-litio)</td><td>2022</td><td>Servicios de red junto a carga de vehículos eléctricos en una batería híbrida</td><td><span class="cite"><a href="references.html#ref-12">[12]</a></span></td></tr>
+  <tr><td>San Diego Gas &amp; Electric, Escondido, EE. UU. (Sumitomo Electric)</td><td class="num">2 MW / 8 MWh</td><td>2017</td><td>Demostración de cuatro horas a nivel de distribución</td><td><span class="cite"><a href="references.html#ref-12">[12]</a></span></td></tr>
+  </tbody></table></div>
+  <p>El proyecto de Dalian es la señal más clara de dónde se sitúa la tecnología: un activo a escala de red de cuatro horas (y después ocho) construido en torno a un parque de tanques, en un mercado que valora la seguridad y la vida en ciclos por encima de la huella.<span class="cite"><a href="references.html#ref-7">[7]</a></span></p>
+</section>
+<section id="integration">
+  <h2>Cómo se conecta una VRFB a un parque solar y a la red</h2>
+  <p>Eléctricamente, la batería es un recurso basado en inversor más. La CC de las pilas pasa a un inversor bidireccional y a un transformador elevador, y de ahí al mismo punto de interconexión que el parque solar. El sistema de gestión de energía decide cuándo cargar (precios negativos, vertidos, excedente del mediodía) y cuándo descargar (pico de la tarde, llamadas a servicios auxiliares).<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-13">[13]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">Avanzado · regla de dimensionado</div><p>Para desplazar solar a la tarde, la energía de la batería debe cubrir el déficit vespertino: aproximadamente (pico de carga − solar nocturna, que es cero) × 4–6 horas. La potencia de la batería solo necesita igualar el pico del déficit, que suele ser entre un tercio y la mitad de la potencia del parque solar. Esa asimetría (potencia modesta, duración larga) es precisamente la forma que una batería de flujo produce de manera barata. El simulador de despacho anterior permite comprobarlo.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p></div>
+</section>
+<section id="outlook">
+  <h2>Perspectivas</h2>
+  <p>Las baterías de flujo de vanadio siguen siendo una pequeña parte del almacenamiento en red, pero el mercado de duraciones de 8 horas o más es el que más crece, y la seguridad frente al fuego de la química de flujo se valora cada vez más cerca de los núcleos de población. Las bajadas de coste vendrán menos de la química, ya madura, que de la escala de fabricación, las membranas más baratas y el alquiler de vanadio.<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-13">[13]</a><a href="references.html#ref-14">[14]</a></span></p>
+</section>
+
+        <nav class="pillar-nav" aria-label="Otros pilares"><a href="chemistry.html" style="--c:#a36bff"><small>Pilar 01</small>Química</a><a href="anatomy.html" style="--c:#26d9e3"><small>Pilar 02</small>Anatomía de la batería</a><a href="engineering.html" style="--c:#5ee37a"><small>Pilar 03</small>Ingeniería</a><a href="economics.html" style="--c:#ff9b2f"><small>Pilar 04</small>Economía</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
+  <script src="../../js/pillar.js"></script>
+  <script type="module" src="../../js/calc/applications.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>实际应用 — VRFB：液流储能的科学</title>
+  <meta name="description" content="光伏平移、电网服务，以及从大连到北海道的标志性项目，附 24 小时调度模拟器。">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="../../pillars/applications.html">
+  <link rel="alternate" hreflang="es" href="../../pillars/es/applications.html">
+  <link rel="alternate" hreflang="zh" href="../../pillars/zh/applications.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <style>:root { --accent: #ffd23f; }</style>
+</head>
+<body class="page" data-level="beginner" data-lang="zh">
+  <header class="topbar">
+    <a class="brand" href="../../?lang=zh">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>液流储能的科学</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="支柱"><a href="../../?lang=zh">沉浸之旅</a><a href="chemistry.html">化学原理</a><a href="anatomy.html">电池结构</a><a href="engineering.html">工程设计</a><a href="economics.html">经济分析</a><a href="applications.html" aria-current="page">实际应用</a><a href="references.html">参考文献</a></nav>
+    <div class="topbar__right">
+      <div class="lang-switch" role="group"><a href="../applications.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/applications.html" lang="es" data-lang="es" title="Español">ES</a><a href="../zh/applications.html" lang="zh" data-lang="zh" title="中文" aria-current="true">中文</a></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">支柱 05 · 实际应用</div>
+      <h1>实际应用</h1>
+      <p class="lede">光伏平移、电网服务，以及从大连到北海道的标志性项目，附 24 小时调度模拟器。</p>
+      <div class="level" role="group" aria-label="阅读层级"><button type="button" data-level="beginner">入门</button><button type="button" data-level="advanced">进阶</button></div><p class="level-note">切换到“进阶”可查看公式、数据表和建模说明。</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="本页内容"><div class="eyebrow">本页内容</div><ol><li><a href="#why-flow">用途</a></li><li><a href="#dispatch-tool">调度模拟器</a></li><li><a href="#case-studies">标志性项目</a></li><li><a href="#integration">并网集成</a></li><li><a href="#outlook">展望</a></li></ol></aside>
+      <article class="article">
+
+<section id="why-flow">
+  <h2>液流电池的用途</h2>
+  <p>VRFB 建设周期长、重量大、效率约 70–75 %，所以它不是手机电池，也不是汽车电池。它是一种<strong>固定式、长时</strong>电池：每天循环、持续数十年而不耗损，不会起火，而且被要求放电的时间越长，每千瓦时的成本就越低。这些特性对应三类任务。<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-16">[16]</a></span></p>
+  <ul>
+    <li><strong>光伏平移。</strong> 储存正午的发电盈余，在四到十二小时后的晚高峰释放。</li>
+    <li><strong>电网服务。</strong> 调频、削峰、延缓输电扩容以及黑启动支持。</li>
+    <li><strong>微电网与离网场所。</strong> 需要“可再生能源 + 夜间可靠供电”的海岛、矿山和园区。</li>
+  </ul>
+</section>
+<section id="dispatch-tool">
+  <h2>模拟“光伏 + 储能”的一天</h2>
+  <div class="tool" id="tool-dispatch">
+    <div class="tool__head"><h3>24 小时调度模拟器</h3><span class="muted mono">15 分钟步长 · 理想化曲线</span></div>
+    <div class="tool__grid">
+      <label class="field"><span>光伏电站峰值出力 <span class="val">50 MW</span></span><input type="range" data-k="solar" data-unit=" MW" value="50" min="5" max="500" step="5"></label>
+      <label class="field"><span>电池功率 <span class="val">20 MW</span></span><input type="range" data-k="Pbat" data-unit=" MW" value="20" min="1" max="300" step="1"></label>
+      <label class="field"><span>电池能量 <span class="val">160 MWh</span></span><input type="range" data-k="Ecap" data-unit=" MWh" value="160" min="5" max="3000" step="5"></label>
+      <label class="field"><span>基础负荷 <span class="val">20 MW</span></span><input type="range" data-k="base" data-unit=" MW" value="20" min="1" max="300" step="1"></label>
+      <label class="field"><span>基础负荷之上的晚高峰 <span class="val">25 MW</span></span><input type="range" data-k="peak" data-unit=" MW" value="25" min="0" max="300" step="1"></label>
+      <label class="field"><span>往返效率 <span class="val">72 %</span></span><input type="range" data-k="rte" data-unit=" %" value="72" min="50" max="95" step="1"></label>
+      <label class="field"><span>午夜荷电状态 <span class="val">20 %</span></span><input type="range" data-k="soc0" data-unit=" %" value="20" min="0" max="100" step="5"></label>
+    </div>
+    <div class="stats"><div class="stat"><b data-out="solarE">—</b><span>光伏发电量</span></div><div class="stat accent"><b data-out="shifted">—</b><span>由电池供给</span></div><div class="stat"><b data-out="exported">—</b><span>外送或弃光的盈余</span></div><div class="stat"><b data-out="imported">—</b><span>从电网购入</span></div><div class="stat accent"><b data-out="self">—</b><span>由光伏 + 电池满足的负荷</span></div><div class="stat"><b data-out="hours">—</b><span>电池时长</span></div></div>
+    <div class="legend"></div>
+    <div class="chart" role="img" aria-label="一天内的光伏出力、负荷和电池功率"></div>
+    <div class="chart chart--soc" role="img" aria-label="一天内的电池荷电状态" style="aspect-ratio:16/5;min-height:140px;margin-top:10px"></div>
+    <p class="note">光伏按 06:00 到 19:00 的晴天曲线出力；负荷由基础负荷、一个早间小高峰和约 19:30 的晚高峰组成。电池只用光伏盈余充电、只在缺口时放电，损耗在充放电之间平均分摊。试着在功率不变的情况下把能量翻倍：这正是 VRFB 最便宜的升级方式。</p>
+  </div>
+</section>
+<section id="case-studies">
+  <h2>标志性项目</h2>
+  <div class="table-wrap"><table><thead><tr><th>项目</th><th class="num">功率 / 能量</th><th>年份</th><th>作用</th><th>来源</th></tr></thead><tbody>
+  <tr><td>大连液流电池储能调峰电站，中国（融科储能 / 大连化物所）</td><td class="num">100 MW / 400 MWh（一期）</td><td>2022</td><td>大连电网的调峰与可再生能源消纳；全球最大的液流电池</td><td><span class="cite"><a href="references.html#ref-7">[7]</a></span></td></tr>
+  <tr><td>北海道电力网络公司南早来变电站，日本（住友电工）</td><td class="num">15 MW / 60 MWh，后增 17 MW / 51 MWh</td><td>2015、2022</td><td>平滑风电和光伏出力；频率与电压支撑</td><td><span class="cite"><a href="references.html#ref-8">[8]</a></span></td></tr>
+  <tr><td>牛津 Energy Superhub，英国（Invinity）</td><td class="num">2 MW / 5 MWh（与锂离子混合）</td><td>2022</td><td>在混合电池中与电动汽车充电一同提供电网服务</td><td><span class="cite"><a href="references.html#ref-12">[12]</a></span></td></tr>
+  <tr><td>圣地亚哥燃气电力公司，埃斯孔迪多，美国（住友电工）</td><td class="num">2 MW / 8 MWh</td><td>2017</td><td>配电级四小时示范</td><td><span class="cite"><a href="references.html#ref-12">[12]</a></span></td></tr>
+  </tbody></table></div>
+  <p>大连项目最清楚地表明了这项技术的定位：围绕罐区建设的四小时（后期八小时）电网级资产，面向一个把安全和循环寿命看得比占地更重要的市场。<span class="cite"><a href="references.html#ref-7">[7]</a></span></p>
+</section>
+<section id="integration">
+  <h2>VRFB 如何接入光伏电站与电网</h2>
+  <p>在电气上，电池只是又一个基于逆变器的资源。电堆输出的直流经双向逆变器和升压变压器，接入与光伏电站相同的并网点。能量管理系统决定何时充电（负电价、弃光、正午盈余）和何时放电（晚高峰、辅助服务调用）。<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-13">[13]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">进阶 · 选型经验法则</div><p>对于晚间光伏平移，电池能量应覆盖晚间缺口：大约（负荷峰值 − 夜间光伏，即零）× 4–6 小时。电池功率只需匹配缺口的峰值，通常是光伏电站额定功率的三分之一到一半。这种不对称（功率适中、时长很长）恰恰是液流电池能够低成本实现的形态。上面的调度模拟器可以验证这一点。<span class="cite"><a href="references.html#ref-5">[5]</a></span></p></div>
+</section>
+<section id="outlook">
+  <h2>展望</h2>
+  <p>全钒液流电池在电网储能中仍占很小份额，但 8 小时以上时长的市场增长最快，而液流体系的防火安全性在人口密集地区日益受到重视。未来的成本下降更多来自制造规模、更便宜的隔膜和钒租赁，而非已经成熟的化学体系本身。<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-13">[13]</a><a href="references.html#ref-14">[14]</a></span></p>
+</section>
+
+        <nav class="pillar-nav" aria-label="其他支柱"><a href="chemistry.html" style="--c:#a36bff"><small>支柱 01</small>化学原理</a><a href="anatomy.html" style="--c:#26d9e3"><small>支柱 02</small>电池结构</a><a href="engineering.html" style="--c:#5ee37a"><small>支柱 03</small>工程设计</a><a href="economics.html" style="--c:#ff9b2f"><small>支柱 04</small>经济分析</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — 液流储能的科学 · 教育用途，非商业。</span><span><a href="references.html">参考文献与引用</a> · <a href="../../?lang=zh">返回沉浸之旅</a></span></div></footer>
+  <script src="../../js/pillar.js"></script>
+  <script type="module" src="../../js/calc/applications.js"></script>
+</body>
+</html>

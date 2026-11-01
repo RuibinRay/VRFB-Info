@@ -1,4 +1,5 @@
 import { lineChart, legend, readInputs, CHART_COLORS, fmt } from './chart.js';
+import { CS } from './strings.js';
 /** System sizing: stacks, electrolyte, tanks, pumps and efficiency vs current density. */
 const F = 96485, AH_PER_MOL = 26.801;
 const root = document.getElementById('tool-sizing');
@@ -39,11 +40,11 @@ if (root) {
     out('ve', (e.ve * 100).toFixed(1) + ' %'); out('cell', (e.cell * 100).toFixed(1) + ' %'); out('sys', (e.sys * 100).toFixed(1) + ' %');
     const pts = (k) => Array.from({ length: 37 }, (_, i) => { const j = 20 + i * 5; const mm = model({ ...p, j }); return [j, efficiency(p, j, mm.pumpFrac)[k] * 100]; });
     const series = [
-      { name: 'Cell energy efficiency (CE × VE)', color: CHART_COLORS[0], points: pts('cell') },
-      { name: 'System AC-AC (pumps + inverter)', color: CHART_COLORS[1], points: pts('sys') },
-      { name: 'Voltage efficiency', color: CHART_COLORS[2], dash: [4, 4], points: pts('ve') },
+      { name: CS.eng.cell, color: CHART_COLORS[0], points: pts('cell') },
+      { name: CS.eng.sys, color: CHART_COLORS[1], points: pts('sys') },
+      { name: CS.eng.ve, color: CHART_COLORS[2], dash: [4, 4], points: pts('ve') },
     ];
-    if (!chart) { chart = lineChart(chartEl, { series, xLabel: 'Current density (mA/cm²)', yLabel: 'Efficiency (%)', yMin: 40, yMax: 100, xFormat: v => `${v}`, yFormat: v => `${Number(v).toFixed(0)}`, marker: p.j }); legend(legEl, series); }
+    if (!chart) { chart = lineChart(chartEl, { series, xLabel: CS.eng.x, yLabel: CS.eng.y, yMin: 40, yMax: 100, xFormat: v => `${v}`, yFormat: v => `${Number(v).toFixed(0)}`, marker: p.j }); legend(legEl, series); }
     else chart.update({ series, marker: p.j });
   }
   root.addEventListener('input', update); update();

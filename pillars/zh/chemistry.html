@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>化学原理 — VRFB：液流储能的科学</title>
+  <meta name="description" content="为什么一种金属的四种氧化态能造出一种“燃料”永不耗损的电池：半反应、能斯特方程，以及可交互的开路电压探索器。">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="../../pillars/chemistry.html">
+  <link rel="alternate" hreflang="es" href="../../pillars/es/chemistry.html">
+  <link rel="alternate" hreflang="zh" href="../../pillars/zh/chemistry.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <style>:root { --accent: #a36bff; }</style>
+</head>
+<body class="page" data-level="beginner" data-lang="zh">
+  <header class="topbar">
+    <a class="brand" href="../../?lang=zh">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>液流储能的科学</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="支柱"><a href="../../?lang=zh">沉浸之旅</a><a href="chemistry.html" aria-current="page">化学原理</a><a href="anatomy.html">电池结构</a><a href="engineering.html">工程设计</a><a href="economics.html">经济分析</a><a href="applications.html">实际应用</a><a href="references.html">参考文献</a></nav>
+    <div class="topbar__right">
+      <div class="lang-switch" role="group"><a href="../chemistry.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/chemistry.html" lang="es" data-lang="es" title="Español">ES</a><a href="../zh/chemistry.html" lang="zh" data-lang="zh" title="中文" aria-current="true">中文</a></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">支柱 01 · 化学原理</div>
+      <h1>化学原理</h1>
+      <p class="lede">为什么一种金属的四种氧化态能造出一种“燃料”永不耗损的电池：半反应、能斯特方程，以及可交互的开路电压探索器。</p>
+      <div class="level" role="group" aria-label="阅读层级"><button type="button" data-level="beginner">入门</button><button type="button" data-level="advanced">进阶</button></div><p class="level-note">切换到“进阶”可查看公式、数据表和建模说明。</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="本页内容"><div class="eyebrow">本页内容</div><ol><li><a href="#why-vanadium">四种氧化态</a></li><li><a href="#half-reactions">半反应</a></li><li><a href="#nernst">能斯特方程与探索器</a></li><li><a href="#electrolyte">电解液</a></li><li><a href="#side-reactions">副反应</a></li></ol></aside>
+      <article class="article">
+
+<section id="why-vanadium">
+  <h2>一种元素，四种氧化态</h2>
+  <p>大多数电池的两极使用两种不同的材料。全钒液流电池的两极使用同一种元素，只是处于两对不同的氧化态。负极储液罐中是 V²⁺ 和 V³⁺；正极储液罐中是 VO²⁺（+4 价钒）和 VO₂⁺（+5 价钒），它们都溶解在硫酸中。<span class="cite"><a href="references.html#ref-1">[1]</a><a href="references.html#ref-2">[2]</a></span></p>
+  <p>正是这一点让 VRFB 得以实用。其他液流电池体系一旦有少量电解液透过隔膜渗入另一侧，就会永久“毒化”对方。而在 VRFB 中，渗透过去的离子仍然是钒，只需定期<em>再平衡</em>，即可让两个储液罐回到相同的荷电状态。电解液本身永远不会耗损。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-16">[16]</a></span></p>
+  <div class="table-wrap"><table><thead><tr><th>物种</th><th>钒的氧化态</th><th>颜色</th><th>位置</th></tr></thead><tbody>
+  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#8b4dff"></span>紫色</td><td>负极储液罐，充电态</td></tr>
+  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#3fcf5a"></span>绿色</td><td>负极储液罐，放电态</td></tr>
+  <tr><td>VO²⁺（钒氧离子）</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#2f7bff"></span>蓝色</td><td>正极储液罐，放电态</td></tr>
+  <tr><td>VO₂⁺（二氧钒离子）</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#ffcf33"></span>黄色</td><td>正极储液罐，充电态</td></tr>
+  </tbody></table></div>
+  <p class="beginner-only">首页的沉浸之旅中，储液罐正是这样变色的：随着电池充电，左侧由绿变紫，右侧由蓝变黄。</p>
+</section>
+<section id="half-reactions">
+  <h2>半反应</h2>
+  <p>放电时，负极释放电子，正极接收电子。按放电方向写出：<span class="cite"><a href="references.html#ref-1">[1]</a><a href="references.html#ref-9">[9]</a></span></p>
+  <div class="equation">负极：&nbsp; V²⁺ → V³⁺ + e⁻ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E° = −0.255 V（相对 SHE）<br>
+正极：&nbsp;&nbsp; VO₂⁺ + 2H⁺ + e⁻ → VO²⁺ + H₂O &nbsp;&nbsp;&nbsp;E° = +1.004 V（相对 SHE）<br>
+总反应：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V²⁺ + VO₂⁺ + 2H⁺ → V³⁺ + VO²⁺ + H₂O &nbsp;&nbsp;E°<sub>电池</sub> = 1.259 V
+<small>钒电对的标准还原电位；充电时所有箭头反向。</small></div>
+  <p>请注意质子。每传递一个电子，正极就消耗两个 H⁺，因此质子必须从负极一侧穿过隔膜，才能保持两侧电解液的电中性。这就是隔膜的全部职责：让 H⁺（以及部分水）通过，而把钒离子挡在外面。<span class="cite"><a href="references.html#ref-4">[4]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">进阶 · 电子为何会移动</div><p>驱动力来自两个电对的电极电位之差。每个电位由其还原反应的吉布斯自由能决定，ΔG = −nFE。两个钒电对的 n 均为 1，因此电池每摩尔电子可输出 1.259 V × 96 485 C/mol ≈ 121 kJ，约合每摩尔转移的钒 34 Wh。从动力学上看，V²⁺/V³⁺ 电对是简单的外球电子转移；VO²⁺/VO₂⁺ 电对需要氧原子转移，动力学更慢，因此电极活化研究大多针对正极。<span class="cite"><a href="references.html#ref-10">[10]</a></span></p></div>
+</section>
+<section id="nernst">
+  <h2>电压取决于荷电状态：能斯特方程</h2>
+  <p>充满电的 VRFB 电压高于接近放空的 VRFB。二者的关系由能斯特方程描述，它在标准电位上叠加一个与浓度相关的项。对整个电池，把荷电状态记为 SOC（每一侧处于充电态的钒所占的分数）：<span class="cite"><a href="references.html#ref-9">[9]</a><a href="references.html#ref-15">[15]</a></span></p>
+  <div class="equation">E = E° + (RT/F) · ln [ (c<sub>V²⁺</sub> · c<sub>VO₂⁺</sub> · c<sub>H⁺</sub>²) / (c<sub>V³⁺</sub> · c<sub>VO²⁺</sub>) ]<br>
+&nbsp;&nbsp;= E° + (RT/F) · [ 2 ln( SOC / (1 − SOC) ) + 2 ln c<sub>H⁺</sub> ]
+<small>R = 8.314 J mol⁻¹ K⁻¹，F = 96 485 C mol⁻¹，T 以开尔文计。25 °C 时 RT/F = 25.7 mV。</small></div>
+  <p>实测的开路电压在 50 % SOC 时总是比该方程的预测高出约 50–60 mV（≈ 1.40 V 而非 ≈ 1.34 V）。Knehr 和 Kumbur 证明，这一差异来自质子活度和隔膜处的唐南电位，而简化形式忽略了这两者。<span class="cite"><a href="references.html#ref-15">[15]</a></span> 下方的探索器可以加入这一经验修正。</p>
+  <div class="tool" id="tool-nernst">
+    <div class="tool__head"><h3>开路电压探索器</h3><span class="muted mono">能斯特模型 · 可交互</span></div>
+    <div class="tool__grid">
+      <label class="field"><span>荷电状态 <span class="val">50 %</span></span><input type="range" data-k="soc" data-unit=" %" value="50" min="1" max="99" step="1"></label>
+      <label class="field"><span>温度 <span class="val">25 °C</span></span><input type="range" data-k="T" data-unit=" °C" value="25" min="5" max="50" step="1"></label>
+      <label class="field"><span>质子浓度 c<sub>H⁺</sub> <span class="val">5 M</span></span><input type="range" data-k="cH" data-unit=" M" value="5" min="1" max="8" step="0.1"></label>
+      <label class="field"><span>串联单电池数 <span class="val">40</span></span><input type="range" data-k="N" data-unit="" value="40" min="1" max="120" step="1"></label>
+      <label class="field"><span>唐南 / 活度修正</span><span><input type="checkbox" data-k="donnan" checked> 加上 +60 mV（经验值）</span></label>
+    </div>
+    <div class="stats"><div class="stat accent"><b data-out="ocv">—</b><span>单电池开路电压</span></div><div class="stat"><b data-out="stack">—</b><span>电堆开路电压</span></div><div class="stat"><b data-out="ratio">—</b><span>充电态 : 放电态钒</span></div><div class="stat"><b data-out="nernst">—</b><span>该温度下的 RT/F</span></div></div>
+    <div class="stats"><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="negtank"></b><span>负极储液罐颜色（V³⁺ → V²⁺）</span></div><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="postank"></b><span>正极储液罐颜色（VO²⁺ → VO₂⁺）</span></div></div>
+    <div class="legend"></div>
+    <div class="chart" role="img" aria-label="开路电压随荷电状态的变化"></div>
+    <p class="note">曲线在 0 % 和 100 % SOC 附近非常陡：这就是电池管理系统把运行窗口限制在大约 10–90 % 的原因，也说明开路电压在中间区段是不错的 SOC 传感器，而在两端则很不可靠。</p>
+  </div>
+</section>
+<section id="electrolyte">
+  <h2>电解液</h2>
+  <p>商用电解液通常含 1.5–2 mol/L 的钒，溶于 2–5 mol/L 的硫酸中。钒浓度决定每升能储多少能量；硫酸提供质子、维持钒的溶解并使溶液导电。<span class="cite"><a href="references.html#ref-2">[2]</a></span></p>
+  <p>能量密度并不高：1.6 M 时每升总电解液约 25 Wh，大约是锂离子电池的十分之一。对固定式储能来说可以接受，储液罐做大即可，但这也排除了车用场景。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-5">[5]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">进阶 · 溶解度与温度</div><p>钒浓度受溶解度限制。V²⁺ 和 V³⁺ 的硫酸盐在低温下析出（约 2 M 溶液在 ≈ 10 °C 以下），而电池处于高荷电态时，VO₂⁺ 在 ≈ 40 °C 以上会生成固体 V₂O₅。因此实际系统运行在 10–40 °C 之间，并避免在高温天气下让正极电解液长期处于很高的 SOC。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-11">[11]</a></span> PNNL 开发的混合酸电解液（硫酸 + 盐酸）把可用浓度提高到约 2.5 M，并把温度窗口拓宽至 −5 到 50 °C，能量密度提升 70 %。<span class="cite"><a href="references.html#ref-3">[3]</a></span> Roe 等人借助磷酸盐稳定剂把硫酸体系电解液推到了 3 M。<span class="cite"><a href="references.html#ref-18">[18]</a></span></p></div>
+  <div class="table-wrap"><table><thead><tr><th>参数</th><th class="num">典型值</th><th>来源</th></tr></thead><tbody>
+  <tr><td>钒浓度</td><td class="num">1.5–2.0 M（混合酸 2.5 M）</td><td><span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-3">[3]</a></span></td></tr>
+  <tr><td>支持酸</td><td class="num">2–5 M H₂SO₄</td><td><span class="cite"><a href="references.html#ref-2">[2]</a></span></td></tr>
+  <tr><td>能量密度（总电解液）</td><td class="num">20–35 Wh/L</td><td><span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>运行温度</td><td class="num">10–40 °C</td><td><span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-11">[11]</a></span></td></tr>
+  <tr><td>标准电池电位</td><td class="num">1.259 V</td><td><span class="cite"><a href="references.html#ref-1">[1]</a><a href="references.html#ref-9">[9]</a></span></td></tr>
+  <tr><td>50 % SOC 时的开路电压</td><td class="num">≈ 1.40 V</td><td><span class="cite"><a href="references.html#ref-15">[15]</a></span></td></tr>
+  </tbody></table></div>
+</section>
+<section id="side-reactions">
+  <h2>化学上可能出什么问题</h2>
+  <ul>
+    <li><strong>析氢。</strong> 接近充满时，负极的一部分电流会把水分解成 H₂，而不是还原 V³⁺。这会浪费电量，并使两罐电解液缓慢失衡。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-16">[16]</a></span></li>
+    <li><strong>空气氧化。</strong> V²⁺ 会与氧气反应，因此负极储液罐需要氮气保护或密封。<span class="cite"><a href="references.html#ref-2">[2]</a></span></li>
+    <li><strong>渗透（crossover）。</strong> 钒离子会扩散穿过隔膜，造成自放电，并把体积从一罐带到另一罐。与其他体系不同，这可以通过重新混合或电化学再平衡来逆转。<span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-16">[16]</a></span></li>
+    <li><strong>碳腐蚀。</strong> 高 SOC 下的 VO₂⁺ 会氧化正极碳毡和双极板，因此电堆很少充电到 95 % 以上。<span class="cite"><a href="references.html#ref-10">[10]</a></span></li>
+  </ul>
+</section>
+
+        <nav class="pillar-nav" aria-label="其他支柱"><a href="anatomy.html" style="--c:#26d9e3"><small>支柱 02</small>电池结构</a><a href="engineering.html" style="--c:#5ee37a"><small>支柱 03</small>工程设计</a><a href="economics.html" style="--c:#ff9b2f"><small>支柱 04</small>经济分析</a><a href="applications.html" style="--c:#ffd23f"><small>支柱 05</small>实际应用</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — 液流储能的科学 · 教育用途，非商业。</span><span><a href="references.html">参考文献与引用</a> · <a href="../../?lang=zh">返回沉浸之旅</a></span></div></footer>
+  <script src="../../js/pillar.js"></script>
+  <script type="module" src="../../js/calc/chemistry.js"></script>
+</body>
+</html>

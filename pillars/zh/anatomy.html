@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>电池结构 — VRFB：液流储能的科学</title>
+  <meta name="description" content="电堆的每一层和撬装系统上的每一个箱体：由什么制成、起什么作用、如何失效。">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="../../pillars/anatomy.html">
+  <link rel="alternate" hreflang="es" href="../../pillars/es/anatomy.html">
+  <link rel="alternate" hreflang="zh" href="../../pillars/zh/anatomy.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <style>:root { --accent: #26d9e3; }</style>
+</head>
+<body class="page" data-level="beginner" data-lang="zh">
+  <header class="topbar">
+    <a class="brand" href="../../?lang=zh">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>液流储能的科学</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="支柱"><a href="../../?lang=zh">沉浸之旅</a><a href="chemistry.html">化学原理</a><a href="anatomy.html" aria-current="page">电池结构</a><a href="engineering.html">工程设计</a><a href="economics.html">经济分析</a><a href="applications.html">实际应用</a><a href="references.html">参考文献</a></nav>
+    <div class="topbar__right">
+      <div class="lang-switch" role="group"><a href="../anatomy.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/anatomy.html" lang="es" data-lang="es" title="Español">ES</a><a href="../zh/anatomy.html" lang="zh" data-lang="zh" title="中文" aria-current="true">中文</a></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">支柱 02 · 电池结构</div>
+      <h1>电池结构</h1>
+      <p class="lede">电堆的每一层和撬装系统上的每一个箱体：由什么制成、起什么作用、如何失效。</p>
+      <div class="level" role="group" aria-label="阅读层级"><button type="button" data-level="beginner">入门</button><button type="button" data-level="advanced">进阶</button></div><p class="level-note">切换到“进阶”可查看公式、数据表和建模说明。</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="本页内容"><div class="eyebrow">本页内容</div><ol><li><a href="#overview">从单电池到电站</a></li><li><a href="#components">电堆，逐层拆解</a></li><li><a href="#balance-of-plant">辅助系统</a></li><li><a href="#failure-modes">失效与维护</a></li></ol></aside>
+      <article class="article">
+
+<section id="overview">
+  <h2>从单个单电池到储能电站</h2>
+  <p>一套 VRFB 由三部分拼装而成：把化学能转换为电流的<strong>电堆</strong>、储存化学能的<strong>储液罐</strong>，以及在两者之间输送液体和电子的<strong>辅助系统</strong>（泵、管路、电力电子和控制）。电堆决定以千瓦计的功率；储液罐决定以千瓦时计的能量；二者可以独立设计。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-4">[4]</a></span></p>
+  <figure class="figure"><img src="../../assets/img/stack-exploded.webp" alt="夹在两块端板之间的单个 VRFB 单电池的爆炸视图" loading="lazy"><figcaption>一个单电池的爆炸图：端板、铜集流体、流道框架、双极板、碳毡、隔膜、碳毡、双极板、流道框架、集流体、端板。首页沉浸之旅中建模的正是这些层。</figcaption></figure>
+  <p>在电堆内部，每个单电池都是一个三明治结构：隔膜夹在两片碳毡电极之间，每片碳毡背后是一块双极板。单电池在电路上串联、在液路上并联，由贯穿整个电堆的公共流道供液。<span class="cite"><a href="references.html#ref-4">[4]</a></span></p>
+</section>
+<section id="components">
+  <h2>电堆，逐层拆解</h2>
+  <p>在首页点击任一部件即可查看相同的规格。数值为所引综述中的典型值；具体产品会有差异。</p>
+
+  <article id="endplate" class="component">
+    <h3>端板</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../../assets/img/endplate-negative.webp" alt="端板" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">10–30 mm 厚的不锈钢或铝板，承受夹紧力并安装软管接头。青色 O 形圈标记负极回路；另一端板上的橙色 O 形圈标记正极回路。</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">材料</dt><dd style="margin:0">不锈钢 · 铝 · 玻纤增强塑料</dd><dt class="muted">夹紧压力</dt><dd style="margin:0">碳毡上 0.5–1.5 MPa</dd><dt class="muted">绝缘</dt><dd style="margin:0">与铜集流体之间垫聚合物薄片</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">来源 <span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p></div></div>
+  </article>
+  <article id="collector" class="component">
+    <h3>集流体</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../../assets/img/current-collector.png" alt="集流体" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">带有接线极耳的铜板，把整个电极面积上的电流汇集起来。它位于第一块双极板之后、保持干燥，因为铜在酸性电解液中会迅速腐蚀。</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">材料</dt><dd style="margin:0">铜板，1–3 mm，有时镀层</dd><dt class="muted">电阻率</dt><dd style="margin:0">1.7 × 10⁻⁸ Ω·m</dd><dt class="muted">数量</dt><dd style="margin:0">每个电堆两片（正负极端子）</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">来源 <span class="cite"><a href="references.html#ref-4">[4]</a></span></p></div></div>
+  </article>
+  <article id="gasket" class="component">
+    <h3>流道框架与密封垫</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../../assets/img/gasket-frame.png" alt="流道框架与密封垫" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">聚合物框架把碳毡固定在窗口内，并把电解液从角部的公共流道孔引入电极。两面的弹性体密封垫封住单电池边缘。狭长的进液通道是有意增加电阻，以限制流经公共流道的旁路电流。</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">框架</dt><dd style="margin:0">PVC · PP · PVDF</dd><dt class="muted">密封垫</dt><dd style="margin:0">EPDM · Viton® · PTFE</dd><dt class="muted">厚度</dt><dd style="margin:0">决定碳毡压缩率，通常 20–30 %</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">来源 <span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p></div></div>
+  </article>
+  <article id="bipolar" class="component">
+    <h3>双极板</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../../assets/img/bipolar-plate.webp" alt="双极板" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">石墨-聚合物复合板，相邻两个单电池共用：一面是前一个单电池的正极，另一面是后一个单电池的负极。电子直接穿过它，因此单电池无需导线即可串联。板面加工出的蛇形流道把电解液均匀铺展到碳毡上，与直通式设计相比可减少 30–50 % 的泵送损耗。</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">材料</dt><dd style="margin:0">石墨填充 PP / PE / PVDF，2–6 mm</dd><dt class="muted">电阻率</dt><dd style="margin:0">10⁻³–10⁻² Ω·cm</dd><dt class="muted">流场</dt><dd style="margin:0">蛇形 · 叉指形 · 直通式</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">来源 <span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-10">[10]</a><a href="references.html#ref-14">[14]</a></span></p></div></div>
+  </article>
+  <article id="felt_neg" class="component">
+    <h3>负极（碳毡）</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../../assets/img/carbon-felt.webp" alt="负极（碳毡）" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">由直径 8–12 µm 碳纤维组成的多孔毡，孔隙率 90–95 %，V²⁺/V³⁺ 在纤维表面与电子交换。碳毡通过空气中加热或酸处理活化，引入含氧官能团以加快反应。</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">材料</dt><dd style="margin:0">PAN 基或粘胶基碳毡</dd><dt class="muted">厚度</dt><dd style="margin:0">3–6 mm，压缩 20–30 %</dd><dt class="muted">纤维直径</dt><dd style="margin:0">≈ 10 µm</dd><dt class="muted">副反应</dt><dd style="margin:0">接近充满时析氢</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">来源 <span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-10">[10]</a></span></p></div></div>
+  </article>
+  <article id="membrane" class="component">
+    <h3>离子交换膜</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../../assets/img/membrane.png" alt="离子交换膜" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">25–200 µm 厚的聚合物薄膜，导通质子、阻挡钒离子。全氟磺酸膜（Nafion®）是基准；更便宜的烃类膜和阴离子交换膜则以部分选择性或电导率换取成本。它通常是电堆中最昂贵的单一部件。</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">材料</dt><dd style="margin:0">PFSA（Nafion® 115/212）· 烃类膜 · 阴离子交换膜</dd><dt class="muted">面电阻</dt><dd style="margin:0">0.5–2 Ω·cm²</dd><dt class="muted">渗透</dt><dd style="margin:0">导致自放电；通过再平衡修正</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">来源 <span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p></div></div>
+  </article>
+  <article id="felt_pos" class="component">
+    <h3>正极（碳毡）</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../../assets/img/carbon-felt-2.webp" alt="正极（碳毡）" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">负极碳毡的镜像，承载 VO²⁺/VO₂⁺。此处动力学较慢，因此催化剂（铋、金属氧化物）和表面官能化是活跃的研究方向。高 SOC 时强氧化性的 VO₂⁺ 会腐蚀碳材料本身。</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">材料</dt><dd style="margin:0">碳毡或石墨毡，表面含氧官能化</dd><dt class="muted">限制</dt><dd style="margin:0">保持在 ≈ 95 % SOC 以下</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">来源 <span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-10">[10]</a></span></p></div></div>
+  </article>
+  <article id="tierod" class="component">
+    <h3>拉杆与夹紧支架</h3>
+    <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../../assets/img/stack-assembled.webp" alt="拉杆与夹紧支架" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">穿过角孔的螺纹拉杆把两块端板拉紧；外部支架使端板保持平整。像拧车轮螺栓一样按星形顺序拧紧，以保证密封均匀。</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">材料</dt><dd style="margin:0">不锈钢，带绝缘套管</dd><dt class="muted">数量</dt><dd style="margin:0">每个电堆 4–12 根</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">来源 <span class="cite"><a href="references.html#ref-4">[4]</a></span></p></div></div>
+  </article>
+</section>
+<section id="balance-of-plant">
+  <h2>辅助系统</h2>
+  <figure class="figure"><img src="../../assets/img/system-cabinet.webp" alt="撬装 VRFB 系统，包含储液罐、泵、电堆和功率变换柜" loading="lazy"><figcaption>完整系统：左右两侧是电解液储液罐，下方是泵，中央是电堆，后方是逆变器柜和控制面板。</figcaption></figure>
+  <div class="table-wrap"><table><thead><tr><th>部件</th><th>作用</th><th>典型规格</th></tr></thead><tbody>
+  <tr><td>电解液储液罐</td><td>储存能量；容积决定放电时长</td><td>HDPE/PP 或内衬钢罐；负极罐充氮保护；总计 ≈ 40 L/kWh<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>泵（每回路一台）</td><td>以 5–10 倍化学计量流量循环电解液</td><td>磁力驱动离心泵，过流部件 PP/PVDF；寄生损耗占吞吐电量的 2–5 %<span class="cite"><a href="references.html#ref-14">[14]</a></span></td></tr>
+  <tr><td>管路与阀门</td><td>连接储液罐、泵与电堆公共流道</td><td>PVC/PP/PVDF；回路按颜色区分以防接错</td></tr>
+  <tr><td>功率变换系统</td><td>直流 ⇄ 交流变换，与电网同步</td><td>双向逆变器，单向效率 96–98 %<span class="cite"><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>电池管理系统</td><td>SOC 估算、泵调度、保护、再平衡</td><td>开路电压参比电池、温度和液位传感器<span class="cite"><a href="references.html#ref-14">[14]</a><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>换热器</td><td>把电解液保持在 10–40 °C 窗口内</td><td>炎热气候下必需；常为液-气式<span class="cite"><a href="references.html#ref-11">[11]</a></span></td></tr>
+  </tbody></table></div>
+  <div class="callout adv"><div class="eyebrow">进阶 · 旁路电流</div><p>由于所有单电池通过公共流道共用同一种导电电解液，每个单电池周围都存在一条并联电路。由此产生的旁路电流会浪费电量，并腐蚀电堆两端附近的极板。设计者会加长每个流道框架的进液通道、限制每条公共流道的单电池数，有时还把长电堆分成液路独立的模块，把这项损耗控制在几个百分点以内。<span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p></div>
+</section>
+<section id="failure-modes">
+  <h2>电堆如何失效，如何维护</h2>
+  <ul>
+    <li><strong>泄漏</strong>：密封垫蠕变或夹紧不均所致，是最常见的现场故障；重新拧紧或更换密封垫即可修复。<span class="cite"><a href="references.html#ref-14">[14]</a></span></li>
+    <li><strong>隔膜污染或降解</strong>：多年运行后电阻升高；通常在 10–15 年的电堆翻新时更换隔膜。<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-14">[14]</a></span></li>
+    <li><strong>容量衰减</strong>：由渗透和副反应造成，通过再平衡电解液修正，而不是更换电解液。<span class="cite"><a href="references.html#ref-16">[16]</a></span></li>
+    <li><strong>泵与密封件磨损</strong>：辅助系统的常规工业维护。</li>
+  </ul>
+  <p>由于电解液在寿命终止时可以回收，VRFB 电站保留着锂离子系统所没有的残值。这对经济性很重要，将在下一支柱中讨论。</p>
+</section>
+
+        <nav class="pillar-nav" aria-label="其他支柱"><a href="chemistry.html" style="--c:#a36bff"><small>支柱 01</small>化学原理</a><a href="engineering.html" style="--c:#5ee37a"><small>支柱 03</small>工程设计</a><a href="economics.html" style="--c:#ff9b2f"><small>支柱 04</small>经济分析</a><a href="applications.html" style="--c:#ffd23f"><small>支柱 05</small>实际应用</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — 液流储能的科学 · 教育用途，非商业。</span><span><a href="references.html">参考文献与引用</a> · <a href="../../?lang=zh">返回沉浸之旅</a></span></div></footer>
+  <script src="../../js/pillar.js"></script>
+  
+</body>
+</html>

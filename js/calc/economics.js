@@ -1,4 +1,5 @@
 import { lineChart, legend, readInputs, CHART_COLORS, fmt } from './chart.js';
+import { CS } from './strings.js';
 /** Levelised cost of storage (LCOS) for a VRFB vs a lithium-ion comparator. */
 const AH_PER_MOL = 26.801, M_V = 50.94, M_V2O5 = 181.88;
 export function v2o5PerKwh(c, dod, vnom) { const whPerLitreTotal = c * AH_PER_MOL * dod * vnom / 2; const litres = 1000 / whPerLitreTotal; const molV = c * litres; return molV * M_V / 1000 * (M_V2O5 / (2 * M_V)); }
@@ -37,15 +38,15 @@ if (root) {
     const p = readInputs(root); const v = lcosVRFB(p); const li = lcosLiIon(p);
     out('capex', money(v.capex)); out('perKwh', `$${fmt.n(0)(v.perKwh)}/kWh`); out('lcos', `$${fmt.n(0)(v.lcos)}/MWh`); out('lcosLi', `$${fmt.n(0)(li.lcos)}/MWh`);
     out('kg', v.kgPerKwh.toFixed(1) + ' kg'); out('elecShare', ((v.electrolyte / v.capex) * 100).toFixed(0) + ' %'); out('liPerKwh', `$${fmt.n(0)(li.perKwh)}/kWh`);
-    const parts = [['Stacks & power electronics', v.stack, CHART_COLORS[0]], ['Vanadium electrolyte', v.electrolyte, CHART_COLORS[1]], ['Tanks, pumps, BOS', v.bos, CHART_COLORS[2]], ['EPC & installation', v.epc, CHART_COLORS[3]]];
+    const parts = [[CS.econ.parts[0], v.stack, CHART_COLORS[0]], [CS.econ.parts[1], v.electrolyte, CHART_COLORS[1]], [CS.econ.parts[2], v.bos, CHART_COLORS[2]], [CS.econ.parts[3], v.epc, CHART_COLORS[3]]];
     bar.innerHTML = parts.map(([n, val, c]) => `<span title="${n}: ${money(val)}" style="width:${(val / v.capex * 100).toFixed(1)}%;background:${c}"></span>`).join('');
     barLeg.innerHTML = parts.map(([n, val, c]) => `<span><i style="background:${c}"></i>${n} · ${(val / v.capex * 100).toFixed(0)} %</span>`).join('');
     const pts = Array.from({ length: 36 }, (_, i) => { const price = 5 + i; return [price, lcosVRFB(p, price).lcos]; });
     const series = [
-      { name: 'VRFB LCOS vs V₂O₅ price', color: CHART_COLORS[0], points: pts },
-      { name: 'Li-ion comparator (your inputs)', color: CHART_COLORS[1], dash: [5, 4], points: pts.map(([x]) => [x, li.lcos]) },
+      { name: CS.econ.vrfb, color: CHART_COLORS[0], points: pts },
+      { name: CS.econ.li, color: CHART_COLORS[1], dash: [5, 4], points: pts.map(([x]) => [x, li.lcos]) },
     ];
-    if (!chart) { chart = lineChart(chartEl, { series, xLabel: 'V₂O₅ price ($/kg)', yLabel: 'LCOS ($/MWh)', xFormat: v => `${v}`, yFormat: v => `${Number(v).toFixed(0)}`, yMin: 0, marker: p.v2o5 }); legend(legEl, series); }
+    if (!chart) { chart = lineChart(chartEl, { series, xLabel: CS.econ.x, yLabel: CS.econ.y, xFormat: v => `${v}`, yFormat: v => `${Number(v).toFixed(0)}`, yMin: 0, marker: p.v2o5 }); legend(legEl, series); }
     else chart.update({ series, marker: p.v2o5 });
   }
   root.addEventListener('input', update); update();

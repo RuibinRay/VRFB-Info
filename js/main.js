@@ -14,6 +14,10 @@ import { createPanel } from './ui/panel.js';
 import { setupCaptions } from './ui/captions.js';
 import { setupNav } from './ui/nav.js';
 import { createPicker } from './ui/picker.js';
+import { init as initI18n, t, pillarPath } from './i18n/index.js';
+
+// Language first: captions, labels and the panel all read the dictionary.
+await initI18n();
 
 const canvas = document.getElementById('stage');
 const { renderer, scene, camera, resize } = createScene(canvas, env);
@@ -36,10 +40,11 @@ const flowPts = new THREE.Points(flowGeo, flowMat); flowPts.frustumCulled = fals
 const serpLen = stack.serpCurve.getLength();
 
 // --- UI --------------------------------------------------------------------
-const panel = createPanel(document.getElementById('panel'));
+const panel = createPanel(document.getElementById('panel'), { t, pillarPath, components: t('components', null) });
 const labels = createLabels(document.getElementById('labels'), camera, id => panel.open(id));
-stack.labelSpecs.forEach(s => labels.add(s, () => state.labels * (1 - state.iris)));
-micro.labelSpecs.forEach(s => labels.add(s, () => (state.view ? 1 : 0) * (1 - state.iris), 'micro'));
+const tr = (s) => ({ ...s, text: t(`labels.${s.key}.text`, s.text), sub: t(`labels.${s.key}.sub`, s.sub) });
+stack.labelSpecs.forEach(s => labels.add(tr(s), () => state.labels * (1 - state.iris)));
+micro.labelSpecs.forEach(s => labels.add(tr(s), () => (state.view ? 1 : 0) * (1 - state.iris), 'micro'));
 const { chapters } = buildTimeline(state, stack.anchors);
 setupCaptions(chapters, document.getElementById('chapters-nav'));
 setupNav();

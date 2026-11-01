@@ -62,9 +62,9 @@ export function buildMicro(M, opts = {}) {
   // label anchors
   const anchor = (x, y, z) => { const o = new THREE.Object3D(); o.position.set(x, y, z); group.add(o); return o; };
   const labelSpecs = [
-    { object: anchor(-1.4, 1.35, 0), text: 'Negative electrode', sub: 'carbon felt · V²⁺ → V³⁺ + e⁻', dir: 'up', id: 'felt_neg', offset: [0, 0, 0] },
-    { object: anchor(0, -1.4, 0.3), text: 'Membrane', sub: 'H⁺ passes · vanadium blocked', dir: 'down', id: 'membrane', offset: [0, 0, 0] },
-    { object: anchor(1.4, 1.35, 0), text: 'Positive electrode', sub: 'VO₂⁺ + 2H⁺ + e⁻ → VO²⁺ + H₂O', dir: 'up', id: 'felt_pos', offset: [0, 0, 0] },
+    { object: anchor(-1.4, 1.35, 0), text: 'Negative electrode', sub: 'carbon felt · V²⁺ → V³⁺ + e⁻', dir: 'up', id: 'felt_neg', key: 'micro_neg', offset: [0, 0, 0] },
+    { object: anchor(0, -1.4, 0.3), text: 'Membrane', sub: 'H⁺ passes · vanadium blocked', dir: 'down', id: 'membrane', key: 'micro_mem', offset: [0, 0, 0] },
+    { object: anchor(1.4, 1.35, 0), text: 'Positive electrode', sub: 'VO₂⁺ + 2H⁺ + e⁻ → VO²⁺ + H₂O', dir: 'up', id: 'felt_pos', key: 'micro_pos', offset: [0, 0, 0] },
   ];
 
   let time = 0;

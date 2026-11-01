@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>工程设计 — VRFB：液流储能的科学</title>
+  <meta name="description" content="电堆、储液罐和泵的选型；效率损失在哪里；热极限；以及一个从第一性原理出发设计系统的计算器。">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="../../pillars/engineering.html">
+  <link rel="alternate" hreflang="es" href="../../pillars/es/engineering.html">
+  <link rel="alternate" hreflang="zh" href="../../pillars/zh/engineering.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <style>:root { --accent: #5ee37a; }</style>
+</head>
+<body class="page" data-level="beginner" data-lang="zh">
+  <header class="topbar">
+    <a class="brand" href="../../?lang=zh">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
+      <span>VRFB<small>液流储能的科学</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="支柱"><a href="../../?lang=zh">沉浸之旅</a><a href="chemistry.html">化学原理</a><a href="anatomy.html">电池结构</a><a href="engineering.html" aria-current="page">工程设计</a><a href="economics.html">经济分析</a><a href="applications.html">实际应用</a><a href="references.html">参考文献</a></nav>
+    <div class="topbar__right">
+      <div class="lang-switch" role="group"><a href="../engineering.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/engineering.html" lang="es" data-lang="es" title="Español">ES</a><a href="../zh/engineering.html" lang="zh" data-lang="zh" title="中文" aria-current="true">中文</a></div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"></div>
+      <div class="eyebrow">支柱 03 · 工程设计</div>
+      <h1>工程设计</h1>
+      <p class="lede">电堆、储液罐和泵的选型；效率损失在哪里；热极限；以及一个从第一性原理出发设计系统的计算器。</p>
+      <div class="level" role="group" aria-label="阅读层级"><button type="button" data-level="beginner">入门</button><button type="button" data-level="advanced">进阶</button></div><p class="level-note">切换到“进阶”可查看公式、数据表和建模说明。</p>
+    </section>
+    <div class="page-body">
+      <aside class="toc" aria-label="本页内容"><div class="eyebrow">本页内容</div><ol><li><a href="#power-vs-energy">功率与能量</a></li><li><a href="#sizing-tool">选型计算器</a></li><li><a href="#efficiency">效率</a></li><li><a href="#thermal">热与流量</a></li><li><a href="#scaling">规模化</a></li></ol></aside>
+      <article class="article">
+
+<section id="power-vs-energy">
+  <h2>功率与能量解耦</h2>
+  <p>在传统电池中，功率和能量一起增长：电芯越多，两者都越大。在液流电池中，它们是分开采购的。<strong>功率</strong>（kW）由电堆的总电极面积决定，因为在给定电流密度下，电流随面积增长。<strong>能量</strong>（kWh）则由储液罐中溶解了多少钒决定。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-4">[4]</a></span></p>
+  <div class="equation">P ≈ N<sub>单电池</sub> · A · j · V<sub>单电池</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ 2 · V<sub>储液罐</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>标称</sub> / 2
+<small>A：每个单电池的活性面积 · j：电流密度 · c<sub>V</sub>：钒浓度 · ΔSOC：可用窗口 · 系数 ½ 的来源是每个电子在<em>两侧</em>各需要一个钒离子。</small></div>
+  <p>实际意义在于：4 小时系统和 10 小时系统可以使用完全相同的电堆，只是储液罐大小不同。时长越长，每 kWh 越便宜，这正是 VRFB 的商业定位。<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
+</section>
+<section id="sizing-tool">
+  <h2>设计一套系统</h2>
+  <div class="tool" id="tool-sizing">
+    <div class="tool__head"><h3>电堆、储液罐与泵的选型计算器</h3><span class="muted mono">一阶模型 · 假设可编辑</span></div>
+    <div class="tool__grid">
+      <label class="field"><span>额定功率 (kW)</span><input type="number" data-k="P" value="250" min="1" max="100000" step="1"></label>
+      <label class="field"><span>能量容量 (kWh)</span><input type="number" data-k="E" value="1000" min="1" max="1000000" step="1"></label>
+      <label class="field"><span>负载下单电池电压 (V)</span><input type="number" data-k="Vcell" value="1.3" min="1.0" max="1.6" step="0.01"></label>
+      <label class="field"><span>电流密度 (mA/cm²)</span><input type="number" data-k="j" value="80" min="10" max="300" step="5"></label>
+      <label class="field"><span>每个单电池的活性面积 (cm²)</span><input type="number" data-k="A" value="2500" min="100" max="20000" step="50"></label>
+      <label class="field"><span>每个电堆的单电池数</span><input type="number" data-k="N" value="40" min="1" max="200" step="1"></label>
+      <label class="field"><span>钒浓度 (mol/L)</span><input type="number" data-k="c" value="1.6" min="0.5" max="3" step="0.1"></label>
+      <label class="field"><span>可用 SOC 窗口 (分数)</span><input type="number" data-k="dod" value="0.8" min="0.3" max="1" step="0.05"></label>
+      <label class="field"><span>流量系数 λ（× 化学计量）</span><input type="number" data-k="lambda" value="8" min="1" max="20" step="0.5"></label>
+      <label class="field"><span>电堆压降 (bar)</span><input type="number" data-k="dp" value="0.6" min="0.1" max="3" step="0.1"></label>
+      <label class="field"><span>泵效率 (分数)</span><input type="number" data-k="eta" value="0.55" min="0.2" max="0.9" step="0.05"></label>
+      <label class="field"><span>面积比电阻 (Ω·cm²)</span><input type="number" data-k="asr" value="1.2" min="0.3" max="4" step="0.1"></label>
+      <label class="field"><span>库仑效率 (%)</span><input type="number" data-k="ce" value="96" min="80" max="100" step="0.5"></label>
+      <label class="field"><span>逆变器效率（单向） (%)</span><input type="number" data-k="inv" value="97" min="90" max="99.5" step="0.5"></label>
+    </div>
+    <h4 class="eyebrow">电堆</h4>
+    <div class="stats"><div class="stat"><b data-out="stackI">—</b><span>电堆电流</span></div><div class="stat"><b data-out="stackV">—</b><span>负载下电堆电压</span></div><div class="stat"><b data-out="stackP">—</b><span>单个电堆功率</span></div><div class="stat accent"><b data-out="nStacks">—</b><span>所需电堆数</span></div></div>
+    <h4 class="eyebrow">电解液与储液罐</h4>
+    <div class="stats"><div class="stat accent"><b data-out="litres">—</b><span>电解液总量（两罐）</span></div><div class="stat"><b data-out="whL">—</b><span>能量密度（总电解液）</span></div><div class="stat"><b data-out="tank">—</b><span>每罐尺寸（圆柱，H = 1.5 D）</span></div></div>
+    <h4 class="eyebrow">泵送</h4>
+    <div class="stats"><div class="stat"><b data-out="flow">—</b><span>每个电堆每回路流量</span></div><div class="stat"><b data-out="pump">—</b><span>总泵功率</span></div><div class="stat accent"><b data-out="pumpFrac">—</b><span>泵功率占额定功率比例</span></div></div>
+    <h4 class="eyebrow">所选电流密度下的效率</h4>
+    <div class="stats"><div class="stat"><b data-out="ve">—</b><span>电压效率</span></div><div class="stat"><b data-out="cell">—</b><span>单电池能量效率</span></div><div class="stat accent"><b data-out="sys">—</b><span>系统交流-交流效率</span></div></div>
+    <div class="legend"></div>
+    <div class="chart" role="img" aria-label="效率随电流密度的变化"></div>
+    <details><summary>模型说明与公式</summary><p>电堆电流 I = j·A。每侧电解液 = E / (c · 26.8 Ah/mol · ΔSOC · V<sub>单电池</sub>)。每个电堆的化学计量流量 = N·I / (F·c)，泵输送 λ 倍该流量。泵功率 = Q·Δp / η，每个电堆两条回路。电压效率采用围绕 1.40 V 开路电压的集总面积比电阻：VE = (OCV − j·ASR)/(OCV + j·ASR)。系统效率 = 单电池效率 × (1 − 泵功率比例) × 逆变器效率²。忽略了旁路电流、热管理以及 ASR 随 SOC 的变化；在 60–100 mA/cm² 下，该模型与文献报道的 65–80 % 交流-交流效率一致。<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-14">[14]</a></span></p></details>
+  </div>
+</section>
+<section id="efficiency">
+  <h2>能量去哪儿了</h2>
+  <p>三个效率相乘得到电池的往返效率。<span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p>
+  <ul>
+    <li><strong>库仑效率</strong>（95–98 %）：因渗透、旁路电流和析氢损失的电量。</li>
+    <li><strong>电压效率</strong>（80–92 %）：由电阻和反应动力学造成的充放电电压差。电流密度越高它越低，所以“压榨”电堆是在用效率换取更小更便宜的电堆。</li>
+    <li><strong>系统损耗</strong>：泵（2–5 %）和逆变器（每向 2–4 %）。</li>
+  </ul>
+  <p>综合起来，单电池直流效率可达 80–90 %，完整系统交流-交流效率 65–80 %，低于锂离子电池的 85–90 %，但在数万次循环中保持稳定。<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
+  <div class="callout adv"><div class="eyebrow">进阶 · 极化</div><p>负载下的单电池电压为 V = OCV ± (η<sub>act</sub> + η<sub>ohm</sub> + η<sub>conc</sub>)。活化过电位遵循 Butler–Volmer 动力学，由正极主导；欧姆损耗包括隔膜、电解液和接触电阻（商用单电池中合计 ≈ 1–2 Ω·cm²）；当流量系数太低、来不及在纤维表面补充钒时，就会出现浓差过电位，在 SOC 窗口两端尤为明显。带流场的双极板以及更薄、压缩更紧的碳毡能同时降低这三项。<span class="cite"><a href="references.html#ref-10">[10]</a><a href="references.html#ref-14">[14]</a></span></p></div>
+</section>
+<section id="thermal">
+  <h2>热管理与流量管理</h2>
+  <p>电阻发热和泵功都会加热电解液。由于 VO₂⁺ 在约 40 °C 以上析出、V²⁺/V³⁺ 硫酸盐在约 10 °C 以下析出，大型系统会增设换热器，并在炎热天气的待机时段保持泵运转，以免电堆“闷热”。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-11">[11]</a></span></p>
+  <p>按荷电状态调度的变速泵是一项低成本的效率提升：只有在 SOC 窗口两端、电极处钒浓度不足时才需要大流量。<span class="cite"><a href="references.html#ref-14">[14]</a></span></p>
+</section>
+<section id="scaling">
+  <h2>规模化</h2>
+  <p>商用电堆从几千瓦到每台约 30–40 kW，单电池面积 0.1–0.4 m²，每个电堆 20–100 个单电池。兆瓦级系统把许多电堆串并联，形成数百伏的直流母线，并共用容积达数百立方米的储液罐。<span class="cite"><a href="references.html#ref-14">[14]</a><a href="references.html#ref-16">[16]</a></span> 大连电站正是以这种方式实现 100 MW / 400 MWh：集装箱式电堆由罐区统一供液。<span class="cite"><a href="references.html#ref-7">[7]</a></span></p>
+</section>
+
+        <nav class="pillar-nav" aria-label="其他支柱"><a href="chemistry.html" style="--c:#a36bff"><small>支柱 01</small>化学原理</a><a href="anatomy.html" style="--c:#26d9e3"><small>支柱 02</small>电池结构</a><a href="economics.html" style="--c:#ff9b2f"><small>支柱 04</small>经济分析</a><a href="applications.html" style="--c:#ffd23f"><small>支柱 05</small>实际应用</a></nav>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer__inner"><span>VRFB — 液流储能的科学 · 教育用途，非商业。</span><span><a href="references.html">参考文献与引用</a> · <a href="../../?lang=zh">返回沉浸之旅</a></span></div></footer>
+  <script src="../../js/pillar.js"></script>
+  <script type="module" src="../../js/calc/engineering.js"></script>
+</body>
+</html>
