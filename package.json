@@ -1,0 +1,10 @@
+{
+  "name": "vrfb-info",
+  "private": true,
+  "type": "module",
+  "description": "VRFB — The Science of Flow Energy. Static site; this file only exists so `npm test` can run the calculation tests.",
+  "scripts": {
+    "test": "node --test tests/",
+    "build:pages": "python3 tools/gen_pages.py"
+  }
+}

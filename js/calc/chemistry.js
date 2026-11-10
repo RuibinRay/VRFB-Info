@@ -1,10 +1,8 @@
 import { lineChart, legend, readInputs, CHART_COLORS } from './chart.js';
 import { CS } from './strings.js';
-/** Open-circuit voltage explorer: Nernst equation for the all-vanadium cell. */
-const R = 8.314, F = 96485, E0 = 1.259; // V, standard cell potential (1.004 − (−0.255))
-const V2 = [139, 77, 255], V3 = [63, 207, 90], V4 = [47, 123, 255], V5 = [255, 207, 51];
-const mix = (a, b, t) => `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',')})`;
-export function ocv(soc, T, cH, donnan) { const s = Math.min(0.999, Math.max(0.001, soc)); return E0 + (R * T / F) * (2 * Math.log(s / (1 - s)) + 2 * Math.log(cH)) + (donnan ? 0.06 : 0); }
+import { ocv as nernst, electrolyteColor, thermalVoltage } from '../sim/electrochem.js';
+/** Open-circuit voltage explorer: Nernst equation for the all-vanadium cell (model in js/sim/electrochem.js). */
+const ocv = (soc, T, cH, donnan) => nernst(soc, { T, cH, donnan });
 
 const root = document.getElementById('tool-nernst');
 if (root) {
@@ -27,9 +25,9 @@ if (root) {
     out('ocv').textContent = E.toFixed(3) + ' V';
     out('stack').textContent = (E * p.N).toFixed(1) + ' V';
     out('ratio').textContent = `${(p.soc).toFixed(0)} : ${(100 - p.soc).toFixed(0)}`;
-    out('nernst').textContent = ((R * T / F) * 1000).toFixed(1) + ' mV';
-    root.querySelector('[data-out="negtank"]').style.background = mix(V3, V2, p.soc / 100);
-    root.querySelector('[data-out="postank"]').style.background = mix(V4, V5, p.soc / 100);
+    out('nernst').textContent = (thermalVoltage(T) * 1000).toFixed(1) + ' mV';
+    root.querySelector('[data-out="negtank"]').style.background = electrolyteColor('neg', p.soc / 100);
+    root.querySelector('[data-out="postank"]').style.background = electrolyteColor('pos', p.soc / 100);
     chart.update({ series: list, marker: p.soc });
   }
   root.addEventListener('input', update); update();
