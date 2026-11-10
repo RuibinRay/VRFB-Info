@@ -48,7 +48,7 @@ if (!gl) {
   const flowN = env.mobile ? 120 : 260;
   const flowPos = new Float32Array(flowN * 3);
   const flowGeo = new THREE.BufferGeometry(); flowGeo.setAttribute('position', new THREE.BufferAttribute(flowPos, 3));
-  const flowMat = new THREE.PointsMaterial({ size: 0.016, map: T.glow, color: 0xb08cff, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending });
+  const flowMat = new THREE.PointsMaterial({ size: 0.016, map: T.glow, color: 0x8fc0ff, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending });
   const flowPts = new THREE.Points(flowGeo, flowMat); flowPts.frustumCulled = false; macro.add(flowPts);
   const serpLen = stack.serpCurve.getLength();
 

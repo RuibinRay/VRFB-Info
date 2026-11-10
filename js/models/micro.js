@@ -13,6 +13,7 @@ function mulberry(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79
  *                   re-charges the ions exactly.
  *   state.microDir  +1 discharge (e⁻ leave the negative felt, H⁺ cross to the
  *                   positive side), −1 charge (everything reverses), 0 at rest.
+ * Layout: positive electrode on the left, negative on the right, as everywhere on the site.
  */
 export function buildMicro(M, opts = {}) {
   const group = new THREE.Group(); group.name = 'micro'; group.visible = false;
@@ -80,9 +81,9 @@ export function buildMicro(M, opts = {}) {
   // label anchors
   const anchor = (x, y, z) => { const o = new THREE.Object3D(); o.position.set(x, y, z); group.add(o); return o; };
   const labelSpecs = [
-    { object: anchor(-1.5, 1.15, 0.2), text: 'Negative electrode', sub: 'V²⁺ ⇌ V³⁺ + e⁻', dir: 'up', id: 'felt_neg', key: 'micro_neg', offset: [0, 0, 0] },
+    { object: anchor(-1.5, 1.15, 0.2), text: 'Positive electrode', sub: 'VO₂⁺ + 2H⁺ + e⁻ ⇌ VO²⁺ + H₂O', dir: 'up', id: 'felt_pos', key: 'micro_pos', offset: [0, 0, 0] },
     { object: anchor(0, -1.4, 0.3), text: 'Membrane', sub: 'H⁺ passes · vanadium blocked', dir: 'down', id: 'membrane', key: 'micro_mem', offset: [0, 0, 0] },
-    { object: anchor(1.3, 1.15, 0.2), text: 'Positive electrode', sub: 'VO₂⁺ + 2H⁺ + e⁻ ⇌ VO²⁺ + H₂O', dir: 'up', id: 'felt_pos', key: 'micro_pos', offset: [0, 0, 0] },
+    { object: anchor(1.3, 1.15, 0.2), text: 'Negative electrode', sub: 'V²⁺ ⇌ V³⁺ + e⁻', dir: 'up', id: 'felt_neg', key: 'micro_neg', offset: [0, 0, 0] },
     { object: anchor(0.42, 1.98, 0.2), text: 'External circuit', sub: 'electrons do the work here', dir: 'up', id: 'cabinet', key: 'micro_circuit', offset: [0, 0, 0] },
   ];
 
@@ -96,7 +97,7 @@ export function buildMicro(M, opts = {}) {
     const r = state.reaction;
     for (const ion of ions) {
       const flipped = r > ion.th;
-      const base = ion.side < 0 ? (flipped ? V_COLORS.v3 : V_COLORS.v2) : (flipped ? V_COLORS.v4 : V_COLORS.v5);
+      const base = ion.side > 0 ? (flipped ? V_COLORS.v3 : V_COLORS.v2) : (flipped ? V_COLORS.v4 : V_COLORS.v5); // negative electrolyte on the right
       ion.mesh.material.color.copy(base); ion.mesh.material.emissive.copy(base);
       const d = (r - ion.th) / 0.03; const pulse = Math.exp(-d * d);
       ion.mesh.scale.setScalar(1 + 0.9 * pulse);
@@ -106,10 +107,11 @@ export function buildMicro(M, opts = {}) {
         ion.p0.y + Math.cos(wobble * 0.9 + ion.ph * 1.3) * 0.06,
         ion.p0.z + Math.sin(wobble * 1.3 + ion.ph * 0.7) * 0.05);
     }
-    // discharge: H⁺ negative → positive side; electrons negative felt → wire → positive felt
-    for (const p of protons) { const u = frac(p.off + phase * 0.18 * p.sp); p.mesh.position.set(-1.0 + u * 2.0, p.y + Math.sin(wobble * 2 + p.off * 9) * 0.05, p.z); p.mesh.scale.setScalar(0.6 + 0.6 * Math.sin(u * Math.PI)); }
-    for (const e of electrons) { const u = frac(e.off + phase * 0.22 * e.sp); const x = e.side < 0 ? -0.4 - u * 1.95 : 2.35 - u * 1.95; e.mesh.position.set(x, e.y + Math.sin(u * 14) * 0.08, e.z); }
-    for (const e of wireE) { wireCurve.getPointAt(frac(e.off + phase * 0.09), v); e.mesh.position.copy(v); }
+    // discharge: H⁺ cross from the negative (right) to the positive (left) side;
+    // electrons leave the negative felt, cross the wire right → left and enter the positive felt
+    for (const p of protons) { const u = frac(p.off + phase * 0.18 * p.sp); p.mesh.position.set(1.0 - u * 2.0, p.y + Math.sin(wobble * 2 + p.off * 9) * 0.05, p.z); p.mesh.scale.setScalar(0.6 + 0.6 * Math.sin(u * Math.PI)); }
+    for (const e of electrons) { const u = frac(e.off + phase * 0.22 * e.sp); const x = e.side < 0 ? -2.35 + u * 1.95 : 0.4 + u * 1.95; e.mesh.position.set(x, e.y + Math.sin(u * 14) * 0.08, e.z); }
+    for (const e of wireE) { wireCurve.getPointAt(frac(e.off - phase * 0.09), v); e.mesh.position.copy(v); }
     // the device in the circuit glows warm as a load (discharge) and cyan as a source (charge)
     const a = Math.min(1, Math.abs(dir));
     deviceGlowMat.color.copy(cOff).lerp(dir >= 0 ? cDis : cChg, a); deviceGlowMat.emissive.copy(deviceGlowMat.color); deviceGlowMat.emissiveIntensity = 0.2 + 1.6 * a;

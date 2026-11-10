@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Charge & discharge simulator — VRFB</title>
+  <meta name="description" content="A live vanadium flow cell: electrons, ions and colours animated, with a quantitative Nernst and resistance model and charts of SOC, voltage, power and energy.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="simulator.html?lang=en">
+  <link rel="alternate" hreflang="es" href="simulator.html?lang=es">
+  <link rel="alternate" hreflang="zh" href="simulator.html?lang=zh">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/labs.css">
+</head>
+<body class="app" data-title-key="labs.simulator.title" data-desc-key="labs.simulator.lede">
+  <header class="topbar" id="topbar"></header>
+  <main class="app-main" id="app">
+    <section class="app-hero" style="--accent:#a36bff">
+      <div class="eyebrow" data-i18n="labs.simulator.eyebrow"></div>
+      <h1 data-i18n="labs.simulator.h1"></h1>
+      <p class="lede" data-i18n="labs.simulator.lede"></p>
+      <div class="provenance"><span class="chip chip--concept"><i></i><span data-i18n="labs.common.conceptual"></span></span><span class="chip chip--model"><i></i><span data-i18n="labs.common.model"></span></span></div>
+    </section>
+    <div id="levels"></div>
+    <div class="split" style="--accent:#a36bff">
+      <div class="stack-v">
+        <section class="pane">
+          <h2><span data-i18n="labs.simulator.vizTitle"></span><span class="chip chip--concept"><i></i><span data-i18n="labs.common.conceptual"></span></span></h2>
+          <div class="cellviz"><canvas id="viz" role="img" aria-label="Animated diagram of a vanadium flow cell"></canvas></div>
+          <div class="controls" style="margin-top:12px">
+            <div class="seg" role="group" id="ctl">
+              <button type="button" data-act="charge" data-i18n="labs.simulator.charge"></button>
+              <button type="button" data-act="discharge" data-i18n="labs.simulator.discharge"></button>
+              <button type="button" data-act="pause" data-i18n="labs.simulator.pause"></button>
+              <button type="button" data-act="reverse" data-i18n="labs.simulator.reverse"></button>
+              <button type="button" data-act="reset" data-i18n="labs.simulator.reset"></button>
+            </div>
+            <label class="field" style="flex-direction:row;align-items:center;gap:8px"><span data-i18n="labs.simulator.speed"></span><select id="speed" style="width:auto"><option value="300">×300</option><option value="1200" selected>×1200</option><option value="3600">×3600</option><option value="10800">×10800</option></select></label>
+          </div>
+          <p class="status" id="status" aria-live="polite"></p>
+          <div class="rx" id="rx"></div>
+          <div class="grid-2" style="margin-top:14px">
+            <div class="flowkey" id="flowkey"></div>
+            <div><label class="toggle"><span data-i18n="labs.simulator.auto"></span><input type="checkbox" id="auto"></label><label class="toggle"><span data-i18n="labs.simulator.transport"></span><input type="checkbox" id="transport"></label></div>
+          </div>
+        </section>
+        <section class="pane">
+          <h2><span data-i18n="labs.simulator.chartsTitle"></span><span class="chip chip--model"><i></i><span data-i18n="labs.common.model"></span></span></h2>
+          <div class="chart-grid">
+            <div><p class="chart-title"><span data-i18n="labs.simulator.cSoc"></span><small>%</small></p><div class="chart chart--short" id="ch-soc"></div></div>
+            <div><p class="chart-title"><span data-i18n="labs.simulator.cVolt"></span><small>V</small></p><div class="legend" id="lg-volt"></div><div class="chart chart--short" id="ch-volt"></div></div>
+            <div><p class="chart-title"><span data-i18n="labs.simulator.cPower"></span><small>kW</small></p><div class="chart chart--short" id="ch-power"></div></div>
+            <div><p class="chart-title"><span data-i18n="labs.simulator.cEnergy"></span><small>kWh</small></p><div class="legend" id="lg-energy"></div><div class="chart chart--short" id="ch-energy"></div></div>
+          </div>
+          <div id="dl" style="margin-top:14px"></div>
+        </section>
+      </div>
+      <div class="stack-v">
+        <section class="pane"><h2 data-i18n="labs.simulator.readTitle"></h2><div class="readouts" id="readouts"></div></section>
+        <section class="pane"><h2 data-i18n="labs.simulator.paramTitle"></h2><div class="fields" id="params"></div>
+          <button type="button" class="btn btn--ghost btn--sm" id="cycle" style="margin-top:14px" data-i18n="labs.simulator.runCycle"></button>
+          <div class="readouts" id="cycle-out" style="margin-top:10px"></div>
+        </section>
+        <section class="pane"><h2 data-i18n="labs.common.formulas"></h2><ol class="steps" id="steps"></ol></section>
+        <section class="pane"><h2 data-i18n="labs.common.assumptions"></h2><div id="assume" class="muted" style="font-size:0.88rem"></div></section>
+      </div>
+    </div>
+    <div id="next" style="margin-top:28px"></div>
+  </main>
+  <footer class="footer" id="footer"></footer>
+  <script type="module" src="js/labs/simulator.js"></script>
+</body>
+</html>

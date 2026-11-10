@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>VRFB vs LFP comparison lab — VRFB</title>
+  <meta name="description" content="An interactive, assumption-transparent cost comparison of vanadium flow and lithium iron phosphate batteries: CAPEX, annual costs, LCOS, NPV, payback and sensitivity over one project lifetime.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="compare.html?lang=en">
+  <link rel="alternate" hreflang="es" href="compare.html?lang=es">
+  <link rel="alternate" hreflang="zh" href="compare.html?lang=zh">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/labs.css">
+</head>
+<body class="app" data-title-key="labs.compare.title" data-desc-key="labs.compare.lede">
+  <header class="topbar" id="topbar"></header>
+  <main class="app-main" id="app">
+    <section class="app-hero" style="--accent:#ff9b2f">
+      <div class="eyebrow" data-i18n="labs.compare.eyebrow"></div>
+      <h1 data-i18n="labs.compare.h1"></h1>
+      <p class="lede" data-i18n="labs.compare.lede"></p>
+      <div class="provenance"><span class="chip chip--model"><i></i><span data-i18n="labs.common.model"></span></span><span class="chip chip--illustrative"><i></i><span data-i18n="labs.common.illustrative"></span></span></div>
+    </section>
+    <div id="levels"></div>
+    <section class="pane" style="--accent:#ff9b2f">
+      <h2 data-i18n="labs.compare.projectTitle"></h2>
+      <div class="fields" id="prj"></div>
+    </section>
+    <div class="split split--even" style="margin-top:18px">
+      <section class="pane" style="--accent:#139fae"><h2><span><i class="panel__swatch" style="background:#139fae"></i><span data-i18n="labs.compare.vrfb"></span></span></h2><div class="fields" id="v-main"></div><details class="more"><summary data-i18n="labs.compare.moreV"></summary><div class="fields" id="v-more"></div><div id="v-lease"></div></details></section>
+      <section class="pane" style="--accent:#d9711c"><h2><span><i class="panel__swatch" style="background:#d9711c"></i><span data-i18n="labs.compare.lfp"></span></span></h2><div class="fields" id="l-main"></div><details class="more"><summary data-i18n="labs.compare.moreL"></summary><div class="fields" id="l-more"></div></details></section>
+    </div>
+    <h2 class="section-title" data-i18n="labs.compare.resultsTitle"></h2>
+    <div class="verdict" id="verdict" style="--accent:#ff9b2f"></div>
+    <div class="split split--even" style="margin-top:18px">
+      <section class="pane"><h2><span><i class="panel__swatch" style="background:#139fae"></i><span data-i18n="labs.compare.vrfb"></span></span></h2><div class="readouts" id="v-out"></div></section>
+      <section class="pane"><h2><span><i class="panel__swatch" style="background:#d9711c"></i><span data-i18n="labs.compare.lfp"></span></span></h2><div class="readouts" id="l-out"></div></section>
+    </div>
+    <div class="chart-grid" style="margin-top:18px">
+      <section class="pane"><h3 data-i18n="labs.compare.cCapex"></h3><div class="legend" id="lg-capex"></div><div class="chart" id="ch-capex"></div></section>
+      <section class="pane"><h3 data-i18n="labs.compare.cLcos"></h3><div class="legend" id="lg-lcos"></div><div class="chart" id="ch-lcos"></div></section>
+      <section class="pane"><h3 data-i18n="labs.compare.cAnnual"></h3><div class="legend" id="lg-annual"></div><div class="chart" id="ch-annual"></div></section>
+      <section class="pane"><h3 data-i18n="labs.compare.cCash"></h3><div class="legend" id="lg-cash"></div><div class="chart" id="ch-cash"></div></section>
+      <section class="pane"><h3 data-i18n="labs.compare.cSweep"></h3><div class="legend" id="lg-sweep"></div><div class="chart" id="ch-sweep"></div><p class="muted" style="font-size:0.84rem;margin:8px 0 0" id="sweep-note"></p></section>
+      <section class="pane"><h3><span data-i18n="labs.compare.cTornado"></span><span class="seg" role="group" id="tor-tech"><button type="button" data-tech="vrfb" aria-pressed="true">VRFB</button><button type="button" data-tech="lfp" aria-pressed="false">LFP</button></span></h3><div class="swatch-row" id="lg-tornado"></div><div class="chart chart--tall" id="ch-tornado"></div></section>
+    </div>
+    <section class="pane" style="margin-top:18px">
+      <h2><span data-i18n="labs.compare.scenTitle"></span><button type="button" class="btn btn--ghost btn--sm" id="save-scen" data-i18n="labs.compare.scenSave"></button></h2>
+      <p class="muted" style="font-size:0.86rem" data-i18n="labs.compare.scenNote"></p>
+      <div class="table-scroll" style="max-height:none"><table id="scen"></table></div>
+    </section>
+    <section class="pane" style="margin-top:18px">
+      <h2><span data-i18n="labs.compare.tableTitle"></span><span class="seg" role="group" id="tab-tech"><button type="button" data-tech="vrfb" aria-pressed="true">VRFB</button><button type="button" data-tech="lfp" aria-pressed="false">LFP</button></span></h2>
+      <div class="table-scroll"><table id="cash"></table></div>
+      <div id="dl" style="margin-top:14px"></div>
+    </section>
+    <div class="split split--even" style="margin-top:18px">
+      <section class="pane"><h2 data-i18n="labs.compare.whenTitle"></h2><div id="when" data-autolink></div></section>
+      <section class="pane"><h2 data-i18n="labs.common.assumptions"></h2><div id="assume" class="muted" style="font-size:0.88rem"></div></section>
+    </div>
+    <section class="pane" style="margin-top:18px;max-width:760px"><h2 data-i18n="labs.compare.quizTitle"></h2><div id="quiz"></div></section>
+  </main>
+  <footer class="footer" id="footer"></footer>
+  <script type="module" src="js/labs/compare.js"></script>
+</body>
+</html>

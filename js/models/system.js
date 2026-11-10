@@ -108,9 +108,9 @@ export function buildSystem(M, opts = {}) {
   [[-0.2, 0x3ddc5f], [-0.08, 0xff4242], [0.04, 0x3ddc5f], [0.16, 0xffb020]].forEach(([x, c]) => hmi.add(mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.03, 16).rotateX(Math.PI / 2), fade(M.glow(c, 0.8)), x, -0.1, 0.255)));
   [[0xff4a3d, 0.86], [0xffb020, 0.96], [0x3ddc5f, 1.06]].forEach(([c, y]) => hmi.add(mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.1, 16), fade(M.glow(c, 0.9)), 0.25, y, 0)));
   reg(hmi, 'cabinet'); parts.cabinet.add(hmi);
-  // busbar cables: left collector is the negative terminal (black), right the positive (red)
+  // busbar cables: left collector is the positive terminal (red), right the negative (black)
   const busbars = [];
-  [[-1, 0.22, 0x1c1f24], [1, -0.22, 0xc23b2e]].forEach(([s, z, hex]) => {
+  [[-1, 0.22, 0xc23b2e], [1, -0.22, 0x1c1f24]].forEach(([s, z, hex]) => {
     const pts = [[s * 0.56, 0.72, z], [s * 0.56, 1.08, z], [s * 0.56, 1.08, -2.0], [s * 0.5 - 0.3, 0.86, -2.0]];
     const curve = roundedPolyline(pts, 0.12); busbars.push({ curve, side: s });
     const c = mesh(new THREE.TubeGeometry(curve, 48, 0.028, 10, false), fade(M.polymer(hex))); c.userData.component = 'cabinet'; c.castShadow = shadows; parts.cabinet.add(c); pickables.push(c);

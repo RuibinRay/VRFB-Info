@@ -63,6 +63,13 @@ test('replacements, residual value and the common horizon', () => {
   assert.equal(v.years.length, l.years.length);
 });
 
+test('LCOS components add up to the LCOS', () => {
+  for (const m of [vrfbModel(), lfpModel(), vrfbModel({ h: 4, life: 15 }, { lease: 1 })]) {
+    const p = m.lcosParts; near(p.capital + p.om + p.charging + p.replacement + p.residual, m.lcos, 1e-9);
+    assert.ok(p.capital > 0 && p.om > 0 && p.charging > 0);
+  }
+});
+
 test('LFP capital cost uses nameplate energy', () => {
   const c = lfpCapex({ ...PROJECT_DEFAULTS }, { ...LFP_DEFAULTS });
   near(c.nameplate, 80000 / 0.9, 1e-6, 'nameplate = usable ÷ depth of discharge');

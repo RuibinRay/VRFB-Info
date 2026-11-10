@@ -100,8 +100,10 @@ export function lfpServiceLife(l, cyclesPerYear) {
 function finish(prj, capex, rows, extra) {
   const r = prj.disc / 100, N = prj.life;
   let pvCosts = capex.total, pvEnergy = 0, npv = -capex.total, cum = -capex.total, cumDisc = -capex.total, payback = null, discPayback = null, totalEnergy = 0;
+  const pv = { om: 0, charging: 0, replacement: 0, residual: 0 };
   for (const y of rows) {
     const d = df(r, y.t);
+    pv.om += (y.om + y.lease) * d; pv.charging += y.charging * d; pv.replacement += y.replacement * d; pv.residual += y.residual * d;
     y.costs = y.om + y.lease + y.charging + y.replacement;
     y.net = y.revenue - y.costs + y.residual;
     pvCosts += (y.costs - y.residual) * d; pvEnergy += y.energy * d; npv += y.net * d; totalEnergy += y.energy;
@@ -111,7 +113,9 @@ function finish(prj, capex, rows, extra) {
     if (discPayback === null && cumDisc >= 0 && y.net > 0) discPayback = y.t - 1 + (-prevD) / (y.net * d);
   }
   const crf = r > 0 ? r / (1 - Math.pow(1 + r, -N)) : 1 / N;
-  return { capex, years: rows, lcos: pvCosts / pvEnergy, npv, payback, discPayback, pvCosts, pvEnergy, totalEnergy,
+  // LCOS split into its present-value components, $/MWh (they sum to the LCOS; the residual is a credit)
+  const lcosParts = { capital: capex.total / pvEnergy, om: pv.om / pvEnergy, charging: pv.charging / pvEnergy, replacement: pv.replacement / pvEnergy, residual: -pv.residual / pvEnergy };
+  return { capex, years: rows, lcos: pvCosts / pvEnergy, lcosParts, npv, payback, discPayback, pvCosts, pvEnergy, totalEnergy,
     perKWh: capex.total / capex.Ekwh, perKW: capex.total / capex.Pkw, annualised: pvCosts * crf, ...extra };
 }
 

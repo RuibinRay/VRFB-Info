@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Build your own energy storage project — VRFB</title>
+  <meta name="description" content="Design a solar-plus-storage project in seven steps: application, demand and solar, technology, configuration, a simulated day, economics and a 3D view, with Excel, CSV and PDF downloads.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="project.html?lang=en">
+  <link rel="alternate" hreflang="es" href="project.html?lang=es">
+  <link rel="alternate" hreflang="zh" href="project.html?lang=zh">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/labs.css">
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+  </script>
+</head>
+<body class="app" data-title-key="labs.project.title" data-desc-key="labs.project.lede">
+  <header class="topbar" id="topbar"></header>
+  <main class="app-main" id="app">
+    <section class="app-hero" style="--accent:#ffd23f">
+      <div class="eyebrow" data-i18n="labs.project.eyebrow"></div>
+      <h1 data-i18n="labs.project.h1"></h1>
+      <p class="lede" data-i18n="labs.project.lede"></p>
+      <div class="provenance"><span class="chip chip--model"><i></i><span data-i18n="labs.common.model"></span></span><span class="chip chip--illustrative"><i></i><span data-i18n="labs.common.illustrative"></span></span></div>
+    </section>
+    <div id="levels"></div>
+    <div class="wizard" style="--accent:#ffd23f">
+      <ol class="wizard__steps" id="steps"><li><button type="button" data-step="0"><b>1</b><span data-i18n="labs.project.steps.0"></span></button></li><li><button type="button" data-step="1"><b>2</b><span data-i18n="labs.project.steps.1"></span></button></li><li><button type="button" data-step="2"><b>3</b><span data-i18n="labs.project.steps.2"></span></button></li><li><button type="button" data-step="3"><b>4</b><span data-i18n="labs.project.steps.3"></span></button></li><li><button type="button" data-step="4"><b>5</b><span data-i18n="labs.project.steps.4"></span></button></li><li><button type="button" data-step="5"><b>6</b><span data-i18n="labs.project.steps.5"></span></button></li><li><button type="button" data-step="6"><b>7</b><span data-i18n="labs.project.steps.6"></span></button></li></ol>
+<section class="wizard__panel pane" data-panel="0"><h2 data-i18n="labs.project.h.0"></h2><p class="muted" style="margin-top:-4px" data-i18n="labs.project.d.0"></p><div class="choice-grid" id="apps"></div></section><section class="wizard__panel pane" data-panel="1"><h2 data-i18n="labs.project.h.1"></h2><p class="muted" style="margin-top:-4px" data-i18n="labs.project.d.1"></p><div class="fields" id="f-demand"></div><div class="readouts" id="o-demand" style="margin-top:14px"></div><div class="legend" id="lg-profile" style="margin-top:14px"></div><div class="chart chart--short" id="ch-profile"></div></section><section class="wizard__panel pane" data-panel="2"><h2 data-i18n="labs.project.h.2"></h2><p class="muted" style="margin-top:-4px" data-i18n="labs.project.d.2"></p><div class="choice-grid" id="techs"></div><div class="assume" id="tech-note"></div></section><section class="wizard__panel pane" data-panel="3"><h2 data-i18n="labs.project.h.3"></h2><p class="muted" style="margin-top:-4px" data-i18n="labs.project.d.3"></p><div class="fields" id="f-config"></div><div class="readouts" id="o-config" style="margin-top:14px"></div><details class="more"><summary data-i18n="labs.project.moreCost"></summary><div class="fields" id="f-cost"></div></details></section><section class="wizard__panel pane" data-panel="4"><h2 data-i18n="labs.project.h.4"></h2><p class="muted" style="margin-top:-4px" data-i18n="labs.project.d.4"></p><div class="readouts" id="o-day"></div><div class="legend" id="lg-day" style="margin-top:14px"></div><div class="chart" id="ch-day"></div><p class="chart-title" style="margin-top:12px"><span data-i18n="labs.project.socChart"></span><small>%</small></p><div class="chart chart--short" id="ch-soc"></div><p class="muted" style="font-size:0.84rem" data-i18n="labs.project.dayNote"></p></section><section class="wizard__panel pane" data-panel="5"><h2 data-i18n="labs.project.h.5"></h2><p class="muted" style="margin-top:-4px" data-i18n="labs.project.d.5"></p><div class="readouts" id="o-econ"></div><div class="chart-grid" style="margin-top:14px"><div><p class="chart-title" data-i18n="labs.project.capexChart"></p><div class="legend" id="lg-capex"></div><div class="chart" id="ch-capex"></div></div><div><p class="chart-title" data-i18n="labs.project.cashChart"></p><div class="chart" id="ch-cash"></div></div></div><div class="assume" id="econ-note"></div></section><section class="wizard__panel pane" data-panel="6"><h2 data-i18n="labs.project.h.6"></h2><p class="muted" style="margin-top:-4px" data-i18n="labs.project.d.6"></p><div class="verdict" id="summary"></div><div class="chart-grid" style="margin-top:16px"><div><p class="chart-title"><span data-i18n="labs.project.siteTitle"></span><small data-i18n="labs.project.schematic"></small></p><div class="site3d" id="site3d"></div></div><div><p class="chart-title" data-i18n="labs.project.flowTitle"></p><div class="sankey pe-viz" id="sankey"></div></div></div><div id="dl" style="margin-top:16px"></div><div class="assume" id="final-note"></div></section>
+      <div class="wizard__nav"><button type="button" class="btn btn--ghost" id="prev" data-i18n="labs.project.prev"></button><button type="button" class="btn btn--accent" id="next" data-i18n="labs.project.next"></button></div>
+    </div>
+  </main>
+  <footer class="footer" id="footer"></footer>
+  <script type="module" src="js/labs/project.js"></script>
+</body>
+</html>

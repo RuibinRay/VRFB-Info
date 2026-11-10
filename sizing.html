@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Power vs energy lab — VRFB</title>
+  <meta name="description" content="MW, MWh, kW, kWh, C-rate and storage duration explained with sliders: stacks set power, electrolyte sets energy, and every formula is worked through with your numbers.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="sizing.html?lang=en">
+  <link rel="alternate" hreflang="es" href="sizing.html?lang=es">
+  <link rel="alternate" hreflang="zh" href="sizing.html?lang=zh">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/labs.css">
+</head>
+<body class="app" data-title-key="labs.sizing.title" data-desc-key="labs.sizing.lede">
+  <header class="topbar" id="topbar"></header>
+  <main class="app-main" id="app">
+    <section class="app-hero" style="--accent:#5ee37a">
+      <div class="eyebrow" data-i18n="labs.sizing.eyebrow"></div>
+      <h1 data-i18n="labs.sizing.h1"></h1>
+      <p class="lede" data-i18n="labs.sizing.lede"></p>
+      <div class="provenance"><span class="chip chip--model"><i></i><span data-i18n="labs.common.model"></span></span><span class="chip chip--illustrative"><i></i><span data-i18n="labs.common.illustrative"></span></span></div>
+    </section>
+    <div id="levels"></div>
+    <div class="split" style="--accent:#5ee37a">
+      <div class="stack-v">
+        <section class="pane">
+          <h2><span data-i18n="labs.sizing.vizTitle"></span></h2>
+          <div class="pe-viz" id="viz"></div>
+          <p class="status" id="viz-note" style="margin-top:8px"></p>
+        </section>
+        <section class="pane">
+          <h2 data-i18n="labs.sizing.chartTitle"></h2>
+          <div class="legend" id="lg"></div>
+          <div class="chart chart--short" id="chart" role="img"></div>
+          <p class="muted" style="font-size:0.84rem;margin:8px 0 0" data-i18n="labs.sizing.chartNote"></p>
+        </section>
+        <section class="pane"><h2 data-i18n="labs.common.formulas"></h2><ol class="steps" id="steps"></ol></section>
+      </div>
+      <div class="stack-v">
+        <section class="pane">
+          <h2 data-i18n="labs.sizing.presets"></h2>
+          <div class="presets" id="presets"></div>
+          <div id="main" style="margin-top:16px"></div>
+          <div class="readouts" id="readouts"></div>
+          <details class="more"><summary data-i18n="labs.sizing.moreInputs"></summary><div class="fields" id="params"></div></details>
+          <div id="dl" style="margin-top:14px"></div>
+        </section>
+        <section class="pane"><h2 data-i18n="labs.sizing.examplesTitle"></h2><div class="table-scroll" style="max-height:none"><table id="examples"></table></div></section>
+        <section class="pane"><h2 data-i18n="labs.sizing.quizTitle"></h2><div id="quiz"></div></section>
+        <section class="pane"><h2 data-i18n="labs.common.assumptions"></h2><div id="assume" class="muted" style="font-size:0.88rem"></div></section>
+      </div>
+    </div>
+    <div id="next" style="margin-top:28px"></div>
+  </main>
+  <footer class="footer" id="footer"></footer>
+  <script type="module" src="js/labs/sizing.js"></script>
+</body>
+</html>

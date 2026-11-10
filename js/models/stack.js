@@ -85,15 +85,16 @@ export function buildStack(M, T, opts = {}) {
     return m;
   }
 
-  // --- build order (left → right) -------------------------------------------
+  // --- build order (left → right): the positive half-cell is on the left of every membrane,
+  //     matching the positive tank on the left of the skid --------------------------------
   addLayer('endplate', endAssembly(-1), 0.12, -1);
   addLayer('collector', collector(-1), 0.02, -1);
   addLayer('gasket', new THREE.Mesh(G.gasket, M.gasket()), 0.012, -1);
   for (let i = 0; i < N; i++) {
     addLayer('bipolar', bipolar(), 0.04, i);
-    addLayer('felt_neg', new THREE.Mesh(G.felt, M.felt()), 0.04, i);
-    addLayer('membrane', new THREE.Mesh(G.membrane, M.membrane()), 0.006, i);
     addLayer('felt_pos', new THREE.Mesh(G.felt, M.felt()), 0.04, i);
+    addLayer('membrane', new THREE.Mesh(G.membrane, M.membrane()), 0.006, i);
+    addLayer('felt_neg', new THREE.Mesh(G.felt, M.felt()), 0.04, i);
   }
   addLayer('bipolar', bipolar(), 0.04, N);
   addLayer('gasket', new THREE.Mesh(G.gasket, M.gasket()), 0.012, N + 1);
@@ -129,7 +130,7 @@ export function buildStack(M, T, opts = {}) {
   const anchors = {
     membraneX: find('membrane', C).xe,
     bipolarFaceX: find('bipolar', C).xe + 0.0205,
-    feltX: find('felt_neg', C).xe,
+    feltX: find('felt_pos', C).xe,   // the felt pressed against the centre flow field
     compactHalf: total / 2 + 0.06,
     explodedHalf: span / 2 + 0.06,
   };
@@ -144,9 +145,9 @@ export function buildStack(M, T, opts = {}) {
     ['collector', -1, 'Current collector', 'copper', 'down', -0.72],
     ['gasket', -1, 'Flow frame & gasket', 'PVC · EPDM', 'up', 1.0],
     ['bipolar', C, 'Bipolar plate', 'graphite flow field', 'down', -1.0],
-    ['felt_neg', C, 'Negative electrode', 'carbon felt · V²⁺/V³⁺', 'up', 0.72],
+    ['felt_pos', C, 'Positive electrode', 'carbon felt · VO²⁺/VO₂⁺', 'up', 0.72],
     ['membrane', C, 'Ion-exchange membrane', 'Nafion®', 'down', -0.72],
-    ['felt_pos', C, 'Positive electrode', 'carbon felt · VO²⁺/VO₂⁺', 'up', 1.0],
+    ['felt_neg', C, 'Negative electrode', 'carbon felt · V²⁺/V³⁺', 'up', 1.0],
     ['endplate', N + 1, 'Tie rods & clamps', '4 × M12', 'down', -1.0],
   ].map(([type, cell, text, sub, dir, dy]) => { const id = type === 'endplate' && cell > 0 ? 'tierod' : type; return { object: find(type, cell).mesh, text, sub, dir, id, key: id, offset: [0, dy, 0] }; });
 

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>3D Lab — VRFB</title>
+  <meta name="description" content="Free-exploration 3D laboratory: rotate, take apart and operate a vanadium redox flow battery, and inspect every component.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/labs.css">
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+  </script>
+</head>
+<body class="app lab-page" data-title-key="labs.lab.title" data-desc-key="labs.lab.lede">
+  <header class="topbar" id="topbar"></header>
+  <main class="lab" id="lab">
+    <aside class="lab__dock" id="dock" aria-label="Controls">
+      <h2 data-i18n="labs.lab.view">View</h2>
+      <div class="seg" role="group" id="views">
+        <button type="button" data-view="system" data-i18n="labs.lab.viewSystem">System</button>
+        <button type="button" data-view="stack" data-i18n="labs.lab.viewStack">Stack</button>
+        <button type="button" data-view="cell" data-i18n="labs.lab.viewCell">Cell</button>
+      </div>
+      <h2><label for="explode" data-i18n="labs.lab.explode">Explode the stack</label></h2>
+      <input type="range" id="explode" min="0" max="100" value="0" step="1">
+      <h2 data-i18n="labs.lab.operate">Operate</h2>
+      <div class="seg" role="group" id="modes">
+        <button type="button" data-mode="1" data-i18n="labs.lab.charge">Charge</button>
+        <button type="button" data-mode="0" aria-pressed="true" data-i18n="labs.lab.idle">Idle</button>
+        <button type="button" data-mode="-1" data-i18n="labs.lab.discharge">Discharge</button>
+      </div>
+      <div style="margin:10px 0 4px;display:flex;justify-content:space-between;font-size:0.8rem;color:var(--fg-2)"><span data-i18n="labs.lab.soc">State of charge</span><b id="soc-val" class="mono">50 %</b></div>
+      <div class="lab__soc" aria-hidden="true"><i id="soc-pos"></i><i id="soc-neg"></i></div>
+      <input type="range" id="soc" min="5" max="95" value="50" step="1" aria-label="State of charge" data-i18n-attr="aria-label:labs.lab.soc" style="margin-top:6px">
+      <label class="toggle"><span data-i18n="labs.lab.flowToggle">Circulate electrolyte</span><input type="checkbox" id="flow"></label>
+      <button type="button" class="btn btn--ghost btn--sm" id="tour" data-i18n="labs.lab.follow">Follow the electrolyte</button>
+      <h2 data-i18n="labs.lab.show">Show / hide</h2>
+      <label class="toggle"><span data-i18n="labs.lab.enclosure">Stack enclosure</span><input type="checkbox" data-part="casing" checked></label>
+      <label class="toggle"><span data-i18n="labs.lab.tanks">Tanks</span><input type="checkbox" data-part="tanks" checked></label>
+      <label class="toggle"><span data-i18n="labs.lab.pumps">Pumps</span><input type="checkbox" data-part="pumps" checked></label>
+      <label class="toggle"><span data-i18n="labs.lab.pipes">Pipes, valves, sensors</span><input type="checkbox" data-part="pipes" checked></label>
+      <label class="toggle"><span data-i18n="labs.lab.pcs">Power conversion</span><input type="checkbox" data-part="cabinet" checked></label>
+      <label class="toggle"><span data-i18n="labs.lab.membranes">Membranes</span><input type="checkbox" data-layer="membrane" checked></label>
+      <label class="toggle"><span data-i18n="labs.lab.electrodes">Electrodes (felt)</span><input type="checkbox" data-layer="felt" checked></label>
+      <label class="toggle"><span data-i18n="labs.lab.site">Surrounding site</span><input type="checkbox" data-part="site" checked></label>
+      <button type="button" class="btn btn--ghost btn--sm" id="reset" style="margin-top:12px" data-i18n="labs.lab.reset">Reset everything</button>
+    </aside>
+    <section class="lab__stage" id="stage-wrap">
+      <canvas id="stage" aria-label="Interactive 3D model of a vanadium redox flow battery"></canvas>
+      <div class="lab__tip" id="tip" data-i18n="labs.lab.tipDefault">Drag to rotate · scroll to zoom · click a part</div>
+      <div class="lab__hud" id="hud"></div>
+      <div class="lab__mobile">
+        <button type="button" class="btn" id="open-dock" aria-pressed="false" data-i18n="labs.lab.controls">Controls</button>
+        <button type="button" class="btn" id="open-info" aria-pressed="false" data-i18n="labs.lab.info">Component</button>
+      </div>
+    </section>
+    <aside class="lab__info" id="info" aria-live="polite"></aside>
+  </main>
+  <script type="module" src="js/lab/main.js"></script>
+</body>
+</html>
