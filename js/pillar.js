@@ -1,33 +1,28 @@
-/** Shared behaviour for pillar pages: nav, beginner/advanced level, TOC scroll-spy. */
-(function () {
-  const toggle = document.getElementById('nav-toggle'), nav = document.getElementById('nav');
-  if (toggle && nav) toggle.addEventListener('click', () => { const o = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', String(o)); });
+/**
+ * Pillar (chapter) pages. The article is static HTML generated per language by
+ * tools/gen_pages.py; this module adds the shared chrome, the learning level,
+ * glossary tooltips, lesson kits, clickable equations and the scroll-spy.
+ */
+import { init, t } from './i18n/index.js';
+import { mountChrome } from './ui/chrome.js';
+import { initGlossary, autoLink } from './ui/glossary.js';
+import { renderKit } from './learn/kit.js';
 
-  document.querySelectorAll('.lang-switch a[data-lang]').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('vrfb-lang', a.dataset.lang); } catch {} }));
+const body = document.body, root = body.dataset.root || '../', slug = body.dataset.slug || '';
+const lang = (document.documentElement.lang || 'en').slice(0, 2);
+await init({ lang, root, extra: ['learn'] });
+mountChrome({ active: slug, langHref: (code) => `${root}pillars/${code === 'en' ? '' : code + '/'}${slug}.html` });
+initGlossary(t('learn.glossary', {}));
 
-  // level toggle (persisted)
-  const body = document.body;
-  const saved = (() => { try { return localStorage.getItem('vrfb-level'); } catch { return null; } })();
-  body.dataset.level = saved === 'advanced' ? 'advanced' : 'beginner';
-  document.querySelectorAll('.level').forEach(group => {
-    const btns = group.querySelectorAll('button');
-    const sync = () => btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.level === body.dataset.level)));
-    btns.forEach(b => b.addEventListener('click', () => { body.dataset.level = b.dataset.level; try { localStorage.setItem('vrfb-level', b.dataset.level); } catch {} document.querySelectorAll('.level').forEach(g => g.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.level === body.dataset.level)))); }));
-    sync();
-  });
+document.querySelectorAll('.kit[data-lesson]').forEach(el => renderKit(el, el.dataset.lesson, { context: 'pillar' }));
+document.querySelectorAll('.article > section').forEach(sec => { sec.querySelectorAll(':scope > p, :scope > ul').forEach(p => autoLink(p, 3)); });
 
-  // TOC scroll-spy
-  const links = [...document.querySelectorAll('.toc a[href^="#"]')];
-  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  if (sections.length && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + e.target.id)); } });
-    }, { rootMargin: '-20% 0px -70% 0px' });
-    sections.forEach(s => io.observe(s));
-  }
-
-  // progress bar
-  const bar = document.querySelector('.topbar');
-  const onScroll = () => { const h = document.documentElement; const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight); bar && bar.style.setProperty('--progress', `${(p * 100).toFixed(1)}%`); };
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-})();
+// TOC scroll-spy
+const links = [...document.querySelectorAll('.toc a[href^="#"]')];
+const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if (sections.length && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + e.target.id)); }); }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => io.observe(s));
+}
+// arriving with a #hash before the kits were rendered: settle on the target again
+if (location.hash) requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView());

@@ -14,27 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/labs.css">
   <style>:root { --accent: #ffd23f; }</style>
 </head>
-<body class="page" data-level="beginner" data-lang="en">
-  <header class="topbar">
-    <a class="brand" href="../">
-      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
-      <span>VRFB<small>Science of Flow Energy</small></span>
-    </a>
-    <nav class="nav" id="nav" aria-label="Pillar"><a href="../">Journey</a><a href="chemistry.html">Chemistry</a><a href="anatomy.html">Anatomy</a><a href="engineering.html">Engineering</a><a href="economics.html">Economics</a><a href="applications.html" aria-current="page">Applications</a><a href="references.html">Sources</a></nav>
-    <div class="topbar__right">
-      <div class="lang-switch" role="group"><a href="applications.html" lang="en" data-lang="en" title="English" aria-current="true">EN</a><a href="es/applications.html" lang="es" data-lang="es" title="Español">ES</a><a href="zh/applications.html" lang="zh" data-lang="zh" title="中文">中文</a></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
+<body class="page" data-level="beginner" data-lang="en" data-root="../" data-slug="applications">
+  <header class="topbar" id="topbar"><a class="brand" href="../"><span>VRFB<small>Science of Flow Energy</small></span></a></header>
   <main>
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="eyebrow">Pillar 05 · Applications</div>
       <h1>Real-world applications</h1>
       <p class="lede">Solar shifting, grid services and the flagship projects from Dalian to Hokkaido, with a 24-hour dispatch simulator.</p>
-      <div class="level" role="group" aria-label="Reading level"><button type="button" data-level="beginner">Beginner</button><button type="button" data-level="advanced">Advanced</button></div><p class="level-note">Advanced reveals the equations, data tables and modelling notes.</p>
+      <div class="level" role="group" aria-label="Learning level"><button type="button" data-level-set="beginner">Beginner</button><button type="button" data-level-set="intermediate">Intermediate</button><button type="button" data-level-set="advanced">Advanced</button></div><p class="level-note">Intermediate adds the engineering numbers; advanced adds the equations and modelling notes. Most sections end with a lesson: an explanation at your level, a moving diagram, a worked example, an experiment and a quick check.</p>
     </section>
     <div class="page-body">
       <aside class="toc" aria-label="On this page"><div class="eyebrow">On this page</div><ol><li><a href="#why-flow">What they are for</a></li><li><a href="#dispatch-tool">Dispatch simulator</a></li><li><a href="#case-studies">Flagship installations</a></li><li><a href="#integration">Grid integration</a></li><li><a href="#outlook">Outlook</a></li></ol></aside>
@@ -42,7 +33,7 @@
 
 <section id="why-flow">
   <h2>What flow batteries are for</h2>
-  <p>A VRFB is slow to build, heavy, and about 70–75 % efficient, so it is not a phone battery or a car battery. It is a <strong>stationary, long-duration</strong> battery: it cycles every day for decades without wearing out, cannot catch fire, and gets cheaper per kilowatt-hour the longer it is asked to run. Those properties match three jobs.<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-16">[16]</a></span></p>
+  <p>A VRFB is slow to build, heavy, and about 70–75 % efficient, so it is not a phone battery or a car battery. It is a <strong>stationary, long-duration</strong> battery: it is designed to cycle daily for decades with little permanent loss of capacity, its water-based electrolyte does not burn, and it gets cheaper per kilowatt-hour the longer it is asked to run. Those properties match three jobs.<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-16">[16]</a></span></p>
   <ul>
     <li><strong>Solar shifting.</strong> Store the midday surplus and deliver it over the evening peak, four to twelve hours later.</li>
     <li><strong>Grid services.</strong> Frequency regulation, peak shaving, deferring transmission upgrades, and black-start support.</li>
@@ -66,13 +57,14 @@
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Solar output, load and battery power over a day"></div>
     <div class="chart chart--soc" role="img" aria-label="Battery state of charge over a day" style="aspect-ratio:16/5;min-height:140px;margin-top:10px"></div>
-    <p class="note">Solar follows a clear-sky curve from 06:00 to 19:00; load is a base with a morning bump and an evening peak around 19:30. The battery charges only from solar surplus and discharges only into a deficit, with losses split evenly between charging and discharging. Try doubling the energy while keeping the power fixed: that is the VRFB's cheapest upgrade.</p>
+    <p class="note">Solar follows a clear-sky curve from 06:00 to 19:00; load is a base with a morning bump and an evening peak around 19:30. The battery charges only from solar surplus and discharges only into a deficit, with losses split evenly between charging and discharging. Try doubling the energy while keeping the power fixed: that is the VRFB's cheapest upgrade. To design a whole project step by step, with economics and downloads, open the <a href="../project.html">project builder</a>.</p>
   </div>
+  <div class="kit" data-lesson="app-dispatch"></div>
 </section>
 <section id="case-studies">
   <h2>Flagship installations</h2>
   <div class="table-wrap"><table><thead><tr><th>Project</th><th class="num">Power / energy</th><th>Year</th><th>Role</th><th>Source</th></tr></thead><tbody>
-  <tr><td>Dalian Flow Battery Energy Storage Peak-shaving Power Station, China (Rongke Power / DICP)</td><td class="num">100 MW / 400 MWh (phase 1)</td><td>2022</td><td>Peak shaving and renewable integration for the Dalian grid; largest flow battery in the world</td><td><span class="cite"><a href="references.html#ref-7">[7]</a></span></td></tr>
+  <tr><td>Dalian Flow Battery Energy Storage Peak-shaving Power Station, China (Rongke Power / DICP)</td><td class="num">100 MW / 400 MWh (phase 1)</td><td>2022</td><td>Peak shaving and renewable integration for the Dalian grid; the largest flow battery in the world when commissioned</td><td><span class="cite"><a href="references.html#ref-7">[7]</a></span></td></tr>
   <tr><td>Hokkaido Electric Power Network, Minami-Hayakita substation, Japan (Sumitomo Electric)</td><td class="num">15 MW / 60 MWh, then 17 MW / 51 MWh</td><td>2015, 2022</td><td>Smoothing wind and solar output; frequency and voltage support</td><td><span class="cite"><a href="references.html#ref-8">[8]</a></span></td></tr>
   <tr><td>Energy Superhub Oxford, UK (Invinity)</td><td class="num">2 MW / 5 MWh (hybrid with Li-ion)</td><td>2022</td><td>Grid services alongside EV charging in a hybrid battery</td><td><span class="cite"><a href="references.html#ref-12">[12]</a></span></td></tr>
   <tr><td>San Diego Gas &amp; Electric, Escondido, USA (Sumitomo Electric)</td><td class="num">2 MW / 8 MWh</td><td>2017</td><td>Four-hour distribution-level demonstration</td><td><span class="cite"><a href="references.html#ref-12">[12]</a></span></td></tr>
@@ -93,8 +85,8 @@
       </article>
     </div>
   </main>
-  <footer class="footer"><div class="footer__inner"><span>VRFB — The Science of Flow Energy · Educational, non-commercial.</span><span><a href="references.html">Sources &amp; citations</a> · <a href="../">Back to the journey</a></span></div></footer>
-  <script src="../js/pillar.js"></script>
+  <footer class="footer" id="footer"><div class="footer__inner"><span>VRFB — The Science of Flow Energy · Educational, non-commercial.</span><span><a href="references.html">Sources &amp; citations</a> · <a href="../">Back to the journey</a></span></div></footer>
+  <script type="module" src="../js/pillar.js"></script>
   <script type="module" src="../js/calc/applications.js"></script>
 </body>
 </html>

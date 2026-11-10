@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Economía — VRFB: La ciencia de la energía de flujo</title>
-  <meta name="description" content="Qué cuesta una batería de flujo de vanadio, por qué importa el precio del vanadio y una calculadora de coste nivelado de almacenamiento para compararl">
+  <meta name="description" content="Qué cuesta una batería de flujo de vanadio, por qué importa el precio del vanadio y una calculadora de coste nivelado de almacenamiento para compararla con">
   <meta name="theme-color" content="#070a10">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="en" href="../../pillars/economics.html">
@@ -14,27 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/labs.css">
   <style>:root { --accent: #ff9b2f; }</style>
 </head>
-<body class="page" data-level="beginner" data-lang="es">
-  <header class="topbar">
-    <a class="brand" href="../../?lang=es">
-      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
-      <span>VRFB<small>La ciencia de la energía de flujo</small></span>
-    </a>
-    <nav class="nav" id="nav" aria-label="Pilar"><a href="../../?lang=es">Recorrido</a><a href="chemistry.html">Química</a><a href="anatomy.html">Anatomía</a><a href="engineering.html">Ingeniería</a><a href="economics.html" aria-current="page">Economía</a><a href="applications.html">Aplicaciones</a><a href="references.html">Fuentes</a></nav>
-    <div class="topbar__right">
-      <div class="lang-switch" role="group"><a href="../economics.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/economics.html" lang="es" data-lang="es" title="Español" aria-current="true">ES</a><a href="../zh/economics.html" lang="zh" data-lang="zh" title="中文">中文</a></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
+<body class="page" data-level="beginner" data-lang="es" data-root="../../" data-slug="economics">
+  <header class="topbar" id="topbar"><a class="brand" href="../../?lang=es"><span>VRFB<small>La ciencia de la energía de flujo</small></span></a></header>
   <main>
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="eyebrow">Pilar 04 · Economía</div>
       <h1>Economía</h1>
       <p class="lede">Qué cuesta una batería de flujo de vanadio, por qué importa el precio del vanadio y una calculadora de coste nivelado de almacenamiento para compararla con el ion-litio.</p>
-      <div class="level" role="group" aria-label="Nivel de lectura"><button type="button" data-level="beginner">Principiante</button><button type="button" data-level="advanced">Avanzado</button></div><p class="level-note">El nivel avanzado muestra las ecuaciones, las tablas de datos y las notas de modelado.</p>
+      <div class="level" role="group" aria-label="Nivel de aprendizaje"><button type="button" data-level-set="beginner">Principiante</button><button type="button" data-level-set="intermediate">Intermedio</button><button type="button" data-level-set="advanced">Avanzado</button></div><p class="level-note">El nivel intermedio añade las cifras de ingeniería; el avanzado añade las ecuaciones y las notas de modelado. La mayoría de las secciones termina con una lección: una explicación a tu nivel, un diagrama animado, un ejemplo resuelto, un experimento y una comprobación rápida.</p>
     </section>
     <div class="page-body">
       <aside class="toc" aria-label="En esta página"><div class="eyebrow">En esta página</div><ol><li><a href="#cost-structure">Estructura de costes</a></li><li><a href="#lcos-tool">Calculadora de LCOS</a></li><li><a href="#vanadium-market">La cuestión del vanadio</a></li><li><a href="#comparison">Comparación de tecnologías</a></li></ol></aside>
@@ -49,6 +40,7 @@
     <li><strong>Tanques, bombas, tuberías, controles, instalación</strong> escalan con ambos.</li>
   </ul>
   <p>La evaluación de 2022 del Departamento de Energía de EE. UU. sitúa los costes instalados de los sistemas de flujo de vanadio a escala de red en los pocos cientos de dólares por kWh para duraciones de 10 horas, con el electrolito como mayor partida; las cifras exactas dependen del año, el tamaño y el precio del vanadio, así que usa las entradas de la calculadora como supuestos editables, no como cotizaciones.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
+  <div class="kit" data-lesson="econ-capex"></div>
 </section>
 <section id="lcos-tool">
   <h2>Calculadora de coste nivelado de almacenamiento</h2>
@@ -97,6 +89,7 @@
     <div class="chart" role="img" aria-label="Coste nivelado de almacenamiento frente al precio del pentóxido de vanadio"></div>
     <p class="note">La masa de vanadio por kWh se deriva de la concentración y la ventana de SOC a un voltaje nominal de celda de 1,35 V; a 1,6 M y ventana del 80 % resultan unos 6 kg de V₂O₅ por kWh. El valor residual refleja que el electrolito de vanadio puede recuperarse o realquilarse al final de la vida útil.<span class="cite"><a href="references.html#ref-14">[14]</a><a href="references.html#ref-17">[17]</a></span> La línea de ion-litio usa una ventana útil del 90 % y ningún valor residual.</p>
   </div>
+  <div class="kit" data-lesson="econ-lcos"></div>
 </section>
 <section id="vanadium-market">
   <h2>La cuestión del vanadio</h2>
@@ -116,14 +109,15 @@
   <tr><td>Huella</td><td>Grande (tanques)</td><td>Compacta</td><td><span class="cite"><a href="references.html#ref-2">[2]</a></span></td></tr>
   <tr><td>Fin de vida</td><td>Electrolito recuperable</td><td>Reciclaje aún en desarrollo</td><td><span class="cite"><a href="references.html#ref-14">[14]</a></span></td></tr>
   </tbody></table></div>
+  <div class="kit" data-lesson="econ-compare"></div>
 </section>
 
         <nav class="pillar-nav" aria-label="Otros pilares"><a href="chemistry.html" style="--c:#a36bff"><small>Pilar 01</small>Química</a><a href="anatomy.html" style="--c:#26d9e3"><small>Pilar 02</small>Anatomía de la batería</a><a href="engineering.html" style="--c:#5ee37a"><small>Pilar 03</small>Ingeniería</a><a href="applications.html" style="--c:#ffd23f"><small>Pilar 05</small>Aplicaciones</a></nav>
       </article>
     </div>
   </main>
-  <footer class="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
-  <script src="../../js/pillar.js"></script>
+  <footer class="footer" id="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
+  <script type="module" src="../../js/pillar.js"></script>
   <script type="module" src="../../js/calc/economics.js"></script>
 </body>
 </html>

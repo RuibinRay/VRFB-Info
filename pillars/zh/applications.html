@@ -14,27 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/labs.css">
   <style>:root { --accent: #ffd23f; }</style>
 </head>
-<body class="page" data-level="beginner" data-lang="zh">
-  <header class="topbar">
-    <a class="brand" href="../../?lang=zh">
-      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
-      <span>VRFB<small>液流储能的科学</small></span>
-    </a>
-    <nav class="nav" id="nav" aria-label="支柱"><a href="../../?lang=zh">沉浸之旅</a><a href="chemistry.html">化学原理</a><a href="anatomy.html">电池结构</a><a href="engineering.html">工程设计</a><a href="economics.html">经济分析</a><a href="applications.html" aria-current="page">实际应用</a><a href="references.html">参考文献</a></nav>
-    <div class="topbar__right">
-      <div class="lang-switch" role="group"><a href="../applications.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/applications.html" lang="es" data-lang="es" title="Español">ES</a><a href="../zh/applications.html" lang="zh" data-lang="zh" title="中文" aria-current="true">中文</a></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
+<body class="page" data-level="beginner" data-lang="zh" data-root="../../" data-slug="applications">
+  <header class="topbar" id="topbar"><a class="brand" href="../../?lang=zh"><span>VRFB<small>液流储能的科学</small></span></a></header>
   <main>
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="eyebrow">支柱 05 · 实际应用</div>
       <h1>实际应用</h1>
       <p class="lede">光伏平移、电网服务，以及从大连到北海道的标志性项目，附 24 小时调度模拟器。</p>
-      <div class="level" role="group" aria-label="阅读层级"><button type="button" data-level="beginner">入门</button><button type="button" data-level="advanced">进阶</button></div><p class="level-note">切换到“进阶”可查看公式、数据表和建模说明。</p>
+      <div class="level" role="group" aria-label="学习层级"><button type="button" data-level-set="beginner">入门</button><button type="button" data-level-set="intermediate">进阶</button><button type="button" data-level-set="advanced">高级</button></div><p class="level-note">“进阶”会加入工程数据，“高级”会加入方程和建模说明。大多数小节以一节课收尾：按你的层级给出的讲解、动态示意图、例题、实验和小测验。</p>
     </section>
     <div class="page-body">
       <aside class="toc" aria-label="本页内容"><div class="eyebrow">本页内容</div><ol><li><a href="#why-flow">用途</a></li><li><a href="#dispatch-tool">调度模拟器</a></li><li><a href="#case-studies">标志性项目</a></li><li><a href="#integration">并网集成</a></li><li><a href="#outlook">展望</a></li></ol></aside>
@@ -68,6 +59,7 @@
     <div class="chart chart--soc" role="img" aria-label="一天内的电池荷电状态" style="aspect-ratio:16/5;min-height:140px;margin-top:10px"></div>
     <p class="note">光伏按 06:00 到 19:00 的晴天曲线出力；负荷由基础负荷、一个早间小高峰和约 19:30 的晚高峰组成。电池只用光伏盈余充电、只在缺口时放电，损耗在充放电之间平均分摊。试着在功率不变的情况下把能量翻倍：这正是 VRFB 最便宜的升级方式。</p>
   </div>
+  <div class="kit" data-lesson="app-dispatch"></div>
 </section>
 <section id="case-studies">
   <h2>标志性项目</h2>
@@ -93,8 +85,8 @@
       </article>
     </div>
   </main>
-  <footer class="footer"><div class="footer__inner"><span>VRFB — 液流储能的科学 · 教育用途，非商业。</span><span><a href="references.html">参考文献与引用</a> · <a href="../../?lang=zh">返回沉浸之旅</a></span></div></footer>
-  <script src="../../js/pillar.js"></script>
+  <footer class="footer" id="footer"><div class="footer__inner"><span>VRFB — 液流储能的科学 · 教育用途，非商业。</span><span><a href="references.html">参考文献与引用</a> · <a href="../../?lang=zh">返回沉浸之旅</a></span></div></footer>
+  <script type="module" src="../../js/pillar.js"></script>
   <script type="module" src="../../js/calc/applications.js"></script>
 </body>
 </html>

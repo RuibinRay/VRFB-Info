@@ -1,12 +1,15 @@
 """Spanish content for the pillar pages (mirrors content_en.py)."""
 from helpers import cite, field, stat
 
+# enlaces desde pillars/es/ a los laboratorios de la raíz
+LAB, SIZING, COMPARE, PROJECT = '../../lab.html?lang=es', '../../sizing.html?lang=es', '../../compare.html?lang=es', '../../project.html?lang=es'
+
 LANG = 'es'
 HTML_LANG = 'es'
 UI = {
     'nav': {'home': 'Recorrido', 'chemistry': 'Química', 'anatomy': 'Anatomía', 'engineering': 'Ingeniería', 'economics': 'Economía', 'applications': 'Aplicaciones', 'references': 'Fuentes'},
-    'on_this_page': 'En esta página', 'reading_level': 'Nivel de lectura', 'beginner': 'Principiante', 'advanced': 'Avanzado',
-    'level_note': 'El nivel avanzado muestra las ecuaciones, las tablas de datos y las notas de modelado.',
+    'on_this_page': 'En esta página', 'reading_level': 'Nivel de aprendizaje', 'beginner': 'Principiante', 'intermediate': 'Intermedio', 'advanced': 'Avanzado',
+    'level_note': 'El nivel intermedio añade las cifras de ingeniería; el avanzado añade las ecuaciones y las notas de modelado. La mayoría de las secciones termina con una lección: una explicación a tu nivel, un diagrama animado, un ejemplo resuelto, un experimento y una comprobación rápida.',
     'pillar': 'Pilar', 'other_pillars': 'Otros pilares', 'language': 'Idioma',
     'footer_tag': 'VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.', 'footer_sources': 'Fuentes y citas', 'footer_back': 'Volver al recorrido',
     'site_title': 'VRFB: La ciencia de la energía de flujo', 'brand_sub': 'La ciencia de la energía de flujo',

@@ -3,11 +3,18 @@
  * Each question is answered once; the explanation appears immediately.
  * opts.labels: { score, retry, correct, incorrect }  opts.onDone(score, total)
  */
-export function renderQuiz(el, questions, opts = {}) {
+/** Returns a copy of a question with its options in random order (the correct answer follows). */
+export function shuffled(item) {
+  const order = item.options.map((_, i) => i);
+  for (let i = order.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+  return { ...item, options: order.map(i => item.options[i]), answer: order.indexOf(item.answer) };
+}
+
+export function renderQuiz(el, source, opts = {}) {
   const L = { score: 'Score', retry: 'Try again', correct: 'Correct.', incorrect: 'Not quite.', ...opts.labels };
-  let answered, score;
+  let answered, score, questions = [];
   function draw() {
-    answered = 0; score = 0;
+    answered = 0; score = 0; questions = source.map(shuffled);   // new order on every attempt
     el.classList.add('quiz');
     el.innerHTML = questions.map((item, qi) => `<div class="quiz__q" data-q="${qi}"><p>${qi + 1}. ${item.q}</p><div class="quiz__opts" role="group">${item.options.map((o, oi) => `<button type="button" class="quiz__opt" data-o="${oi}" data-letter="${'ABCDE'[oi]}">${o}</button>`).join('')}</div></div>`).join('') + '<div class="quiz__score" aria-live="polite"></div>';
     el.querySelectorAll('.quiz__q').forEach(box => {

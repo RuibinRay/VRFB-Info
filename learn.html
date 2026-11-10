@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Learning path — VRFB</title>
+  <meta name="description" content="A complete course on vanadium redox flow batteries: fifteen lessons at three levels with animated diagrams, worked examples, experiments, quizzes, a glossary, a final assessment and saved progress.">
+  <meta name="theme-color" content="#070a10">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="learn.html?lang=en">
+  <link rel="alternate" hreflang="es" href="learn.html?lang=es">
+  <link rel="alternate" hreflang="zh" href="learn.html?lang=zh">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/labs.css">
+</head>
+<body class="app" data-title-key="learn.ui.title" data-desc-key="learn.ui.lede">
+  <header class="topbar" id="topbar"></header>
+  <main class="app-main" id="app">
+    <section class="app-hero" style="--accent:#3b8cff">
+      <div class="eyebrow" data-i18n="learn.ui.eyebrow"></div>
+      <h1 data-i18n="learn.ui.h1"></h1>
+      <p class="lede" data-i18n="learn.ui.lede"></p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px">
+        <div class="level" role="group" aria-label="Level" id="level-seg"><button type="button" data-level-set="beginner" data-i18n="nav.beginner"></button><button type="button" data-level-set="intermediate" data-i18n="nav.intermediate"></button><button type="button" data-level-set="advanced" data-i18n="nav.advanced"></button></div>
+        <a class="btn btn--primary" id="continue" href="#path"></a>
+      </div>
+      <p class="level-note" id="level-note"></p>
+    </section>
+    <section class="pane" id="progress-pane" style="--accent:#3b8cff">
+      <h2><span data-i18n="learn.ui.progressTitle"></span><span class="mono" id="progress-text" style="font-size:0.9rem;color:var(--fg-2)"></span></h2>
+      <div class="progress"><i id="progress-bar"></i></div>
+      <div class="summary-grid" id="progress-stats" style="margin-top:14px"></div>
+      <p class="muted" style="font-size:0.8rem;margin:10px 0 0" data-i18n="learn.ui.privacy"></p>
+    </section>
+    <div class="grid-3" id="how" style="margin-top:18px"></div>
+    <h2 class="section-title" id="path-title" data-i18n="learn.ui.pathTitle"></h2>
+    <div class="path" id="path"></div>
+    <h2 class="section-title" id="glossary" data-i18n="learn.ui.glossaryTitle" style="scroll-margin-top:calc(var(--nav-h) + 16px)"></h2>
+    <p class="muted" data-i18n="learn.ui.glossaryNote"></p>
+    <input type="search" class="search" id="gloss-search" aria-label="Search" style="margin:8px 0 16px">
+    <div class="gloss-grid" id="gloss-grid"></div>
+    <h2 class="section-title" id="assessment" data-i18n="learn.ui.assessTitle" style="scroll-margin-top:calc(var(--nav-h) + 16px)"></h2>
+    <section class="pane" style="--accent:#3b8cff;max-width:860px"><div id="assess"></div></section>
+    <h2 class="section-title" data-i18n="learn.ui.historyTitle"></h2>
+    <section class="pane" style="max-width:860px"><div id="history"></div><p style="margin:14px 0 0"><button type="button" class="btn btn--danger btn--sm" id="reset-progress" data-i18n="learn.ui.reset"></button></p></section>
+  </main>
+  <footer class="footer" id="footer"></footer>
+  <script type="module" src="js/learn/main.js"></script>
+</body>
+</html>

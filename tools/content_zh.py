@@ -1,12 +1,15 @@
 """Simplified Chinese content for the pillar pages (mirrors content_en.py)."""
 from helpers import cite, field, stat
 
+# 从 pillars/zh/ 指向根目录各实验室的链接
+LAB, SIZING, COMPARE, PROJECT = '../../lab.html?lang=zh', '../../sizing.html?lang=zh', '../../compare.html?lang=zh', '../../project.html?lang=zh'
+
 LANG = 'zh'
 HTML_LANG = 'zh-CN'
 UI = {
     'nav': {'home': '沉浸之旅', 'chemistry': '化学原理', 'anatomy': '电池结构', 'engineering': '工程设计', 'economics': '经济分析', 'applications': '实际应用', 'references': '参考文献'},
-    'on_this_page': '本页内容', 'reading_level': '阅读层级', 'beginner': '入门', 'advanced': '进阶',
-    'level_note': '切换到“进阶”可查看公式、数据表和建模说明。',
+    'on_this_page': '本页内容', 'reading_level': '学习层级', 'beginner': '入门', 'intermediate': '进阶', 'advanced': '高级',
+    'level_note': '“进阶”会加入工程数据，“高级”会加入方程和建模说明。大多数小节以一节课收尾：按你的层级给出的讲解、动态示意图、例题、实验和小测验。',
     'pillar': '支柱', 'other_pillars': '其他支柱', 'language': '语言',
     'footer_tag': 'VRFB — 液流储能的科学 · 教育用途，非商业。', 'footer_sources': '参考文献与引用', 'footer_back': '返回沉浸之旅',
     'site_title': 'VRFB：液流储能的科学', 'brand_sub': '液流储能的科学',

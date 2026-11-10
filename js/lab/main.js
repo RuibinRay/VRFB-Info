@@ -13,7 +13,7 @@ import { makeMaterials } from '../models/materials.js';
 import { buildStack } from '../models/stack.js';
 import { buildSystem } from '../models/system.js';
 import { buildGrid } from '../models/grid.js';
-import { COMPONENTS } from '../data/components.js';
+import { COMPONENTS, anatomyAnchor } from '../data/components.js';
 import { ocv, electrolyteColor } from '../sim/electrochem.js';
 import { init as initI18n, t, pillarPath } from '../i18n/index.js';
 import { mountChrome } from '../ui/chrome.js';
@@ -60,7 +60,7 @@ function renderInfo() {
       <button type="button" class="btn btn--ghost btn--sm" id="btn-isolate" aria-pressed="${isolated}" ${gl ? '' : 'disabled'}>${isolated ? L('showAll') : L('isolate')}</button>
       <button type="button" class="btn btn--ghost btn--sm" id="btn-focus" ${gl ? '' : 'disabled'}>${L('focus')}</button>
     </div>
-    <p class="panel__refs">${L('sources')}: ${c.refs.map(r => `<a href="${pillarPath('references')}#ref-${r}">[${r}]</a>`).join(' ')} · <a href="${pillarPath('anatomy')}#${selected}">${L('more')}</a></p>
+    <p class="panel__refs">${L('sources')}: ${c.refs.map(r => `<a href="${pillarPath('references')}#ref-${r}">[${r}]</a>`).join(' ')} · <a href="${pillarPath('anatomy')}#${anatomyAnchor(selected)}">${L('more')}</a></p>
     <button type="button" class="btn btn--ghost btn--sm" id="btn-clear">${L('deselect')}</button>`;
   info.querySelectorAll('[data-depth]').forEach(b => b.addEventListener('click', () => { depth = +b.dataset.depth; renderInfo(); }));
   info.querySelector('#btn-isolate')?.addEventListener('click', () => actions.isolate(!isolated));

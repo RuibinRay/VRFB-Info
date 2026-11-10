@@ -14,27 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/labs.css">
   <style>:root { --accent: #ff9b2f; }</style>
 </head>
-<body class="page" data-level="beginner" data-lang="en">
-  <header class="topbar">
-    <a class="brand" href="../">
-      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
-      <span>VRFB<small>Science of Flow Energy</small></span>
-    </a>
-    <nav class="nav" id="nav" aria-label="Pillar"><a href="../">Journey</a><a href="chemistry.html">Chemistry</a><a href="anatomy.html">Anatomy</a><a href="engineering.html">Engineering</a><a href="economics.html" aria-current="page">Economics</a><a href="applications.html">Applications</a><a href="references.html">Sources</a></nav>
-    <div class="topbar__right">
-      <div class="lang-switch" role="group"><a href="economics.html" lang="en" data-lang="en" title="English" aria-current="true">EN</a><a href="es/economics.html" lang="es" data-lang="es" title="Español">ES</a><a href="zh/economics.html" lang="zh" data-lang="zh" title="中文">中文</a></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
+<body class="page" data-level="beginner" data-lang="en" data-root="../" data-slug="economics">
+  <header class="topbar" id="topbar"><a class="brand" href="../"><span>VRFB<small>Science of Flow Energy</small></span></a></header>
   <main>
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="eyebrow">Pillar 04 · Economics</div>
       <h1>Economics</h1>
       <p class="lede">What a vanadium flow battery costs, why the vanadium price matters, and a levelised-cost-of-storage calculator to compare it with lithium-ion.</p>
-      <div class="level" role="group" aria-label="Reading level"><button type="button" data-level="beginner">Beginner</button><button type="button" data-level="advanced">Advanced</button></div><p class="level-note">Advanced reveals the equations, data tables and modelling notes.</p>
+      <div class="level" role="group" aria-label="Learning level"><button type="button" data-level-set="beginner">Beginner</button><button type="button" data-level-set="intermediate">Intermediate</button><button type="button" data-level-set="advanced">Advanced</button></div><p class="level-note">Intermediate adds the engineering numbers; advanced adds the equations and modelling notes. Most sections end with a lesson: an explanation at your level, a moving diagram, a worked example, an experiment and a quick check.</p>
     </section>
     <div class="page-body">
       <aside class="toc" aria-label="On this page"><div class="eyebrow">On this page</div><ol><li><a href="#cost-structure">Cost structure</a></li><li><a href="#lcos-tool">LCOS calculator</a></li><li><a href="#vanadium-market">The vanadium question</a></li><li><a href="#comparison">Technology comparison</a></li></ol></aside>
@@ -42,26 +33,27 @@
 
 <section id="cost-structure">
   <h2>What a VRFB costs, and why</h2>
-  <p>A lithium-ion system is mostly cells. A VRFB is roughly a third stacks, a third electrolyte and a third everything else, and the split moves with duration: at 2 hours the stacks dominate; at 10 hours the electrolyte does.<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-14">[14]</a></span></p>
+  <p>A lithium-ion system is mostly cells. A VRFB splits between stacks, electrolyte and everything else, and the split moves with duration: at 2 hours the stacks are the largest item; at 10 hours the electrolyte is.<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-14">[14]</a></span></p>
   <ul>
     <li><strong>Stacks and power electronics</strong> scale with kilowatts. Membrane and bipolar plates are the costliest stack parts.<span class="cite"><a href="references.html#ref-14">[14]</a></span></li>
     <li><strong>Electrolyte</strong> scales with kilowatt-hours and tracks the vanadium pentoxide (V₂O₅) price, which has swung from about $5 to over $25 per pound within a decade.<span class="cite"><a href="references.html#ref-17">[17]</a></span></li>
     <li><strong>Tanks, pumps, piping, controls, installation</strong> scale with both.</li>
   </ul>
   <p>The U.S. Department of Energy's 2022 assessment puts installed costs for utility-scale vanadium flow systems in the low hundreds of dollars per kWh for 10-hour durations, with electrolyte the largest single line item; the exact figures depend on year, size and vanadium price, so use the calculator's inputs as editable assumptions rather than quotes.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
+  <div class="kit" data-lesson="econ-capex"></div>
 </section>
 <section id="lcos-tool">
   <h2>Levelised cost of storage calculator</h2>
   <p>The levelised cost of storage (LCOS) spreads every lifetime cost over every megawatt-hour the battery will ever discharge, discounted to today. It is the fairest single number for comparing technologies with different lifetimes.<span class="cite"><a href="references.html#ref-6">[6]</a><a href="references.html#ref-13">[13]</a></span></p>
   <div class="equation">LCOS = [ CAPEX + Σ<sub>t</sub> (O&amp;M<sub>t</sub> + charging<sub>t</sub> + replacements<sub>t</sub>) / (1+r)<sup>t</sup> − residual / (1+r)<sup>N</sup> ] / Σ<sub>t</sub> E<sub>discharged,t</sub> / (1+r)<sup>t</sup></div>
   <div class="tool" id="tool-lcos">
-    <div class="tool__head"><h3>VRFB vs lithium-ion LCOS</h3><span class="muted mono">all inputs editable · defaults are illustrative</span></div>
+    <div class="tool__head"><h3>VRFB vs LFP: levelised cost of storage</h3><span class="muted mono">all inputs editable · defaults are illustrative</span></div>
     <h4 class="eyebrow">Project</h4>
     <div class="tool__grid">
       <label class="field"><span>Power (MW)</span><input type="number" data-k="P" value="10" min="0.1" max="1000" step="0.1"></label>
       <label class="field"><span>Duration (hours)</span><input type="number" data-k="h" value="8" min="1" max="24" step="0.5"></label>
       <label class="field"><span>Full cycles per year</span><input type="number" data-k="cycles" value="330" min="1" max="730" step="1"></label>
-      <label class="field"><span>VRFB project life (years)</span><input type="number" data-k="life" value="25" min="5" max="40" step="1"></label>
+      <label class="field"><span>Project life (both technologies) (years)</span><input type="number" data-k="life" value="25" min="5" max="40" step="1"></label>
       <label class="field"><span>Discount rate (%)</span><input type="number" data-k="disc" value="7" min="0" max="20" step="0.5"></label>
       <label class="field"><span>Charging electricity price ($/MWh)</span><input type="number" data-k="chg" value="30" min="0" max="200" step="1"></label>
     </div>
@@ -71,59 +63,65 @@
       <label class="field"><span>Vanadium concentration (mol/L)</span><input type="number" data-k="c" value="1.6" min="0.8" max="3" step="0.1"></label>
       <label class="field"><span>Usable SOC window (fraction)</span><input type="number" data-k="dod" value="0.8" min="0.4" max="1" step="0.05"></label>
       <label class="field"><span>Acid, water, processing ($/kWh)</span><input type="number" data-k="acidProc" value="15" min="0" max="100" step="1"></label>
-      <label class="field"><span>Stacks + power electronics ($/kW)</span><input type="number" data-k="stackCost" value="650" min="100" max="3000" step="10"></label>
+      <label class="field"><span>Stacks ($/kW)</span><input type="number" data-k="stackCost" value="450" min="100" max="3000" step="10"></label>
+      <label class="field"><span>Power conversion system ($/kW)</span><input type="number" data-k="pcsCost" value="100" min="0" max="500" step="5"></label>
       <label class="field"><span>Tanks and BOS (energy part) ($/kWh)</span><input type="number" data-k="bosE" value="60" min="0" max="300" step="5"></label>
       <label class="field"><span>Pumps and BOS (power part) ($/kW)</span><input type="number" data-k="bosP" value="150" min="0" max="1000" step="10"></label>
       <label class="field"><span>EPC and installation (% of equipment)</span><input type="number" data-k="epc" value="20" min="0" max="60" step="1"></label>
       <label class="field"><span>Operations and maintenance ($/kW·yr)</span><input type="number" data-k="om" value="15" min="0" max="100" step="1"></label>
       <label class="field"><span>Round-trip efficiency (AC) (%)</span><input type="number" data-k="rte" value="72" min="50" max="90" step="1"></label>
-      <label class="field"><span>Capacity fade per year (%)</span><input type="number" data-k="deg" value="0.3" min="0" max="5" step="0.1"></label>
-      <label class="field"><span>Stack refurbishment year</span><input type="number" data-k="stackYear" value="12" min="1" max="40" step="1"></label>
+      <label class="field"><span>Unrecovered capacity fade per year (%)</span><input type="number" data-k="deg" value="0.3" min="0" max="5" step="0.1"></label>
+      <label class="field"><span>Stack refurbishment interval (years)</span><input type="number" data-k="stackYear" value="12" min="1" max="40" step="1"></label>
       <label class="field"><span>Refurbishment cost (% of stack cost)</span><input type="number" data-k="stackRepl" value="50" min="0" max="100" step="5"></label>
       <label class="field"><span>Electrolyte residual value (% of electrolyte cost)</span><input type="number" data-k="resid" value="60" min="0" max="100" step="5"></label>
     </div>
-    <h4 class="eyebrow">Lithium-ion comparator</h4>
+    <h4 class="eyebrow">LFP comparator</h4>
     <div class="tool__grid">
-      <label class="field"><span>Installed cost ($/kWh)</span><input type="number" data-k="liCapex" value="320" min="50" max="1500" step="5"></label>
-      <label class="field"><span>Round-trip efficiency (AC) (%)</span><input type="number" data-k="liRte" value="87" min="60" max="95" step="1"></label>
-      <label class="field"><span>Project life (years)</span><input type="number" data-k="liLife" value="15" min="3" max="30" step="1"></label>
-      <label class="field"><span>Capacity fade per year (%)</span><input type="number" data-k="liDeg" value="2" min="0" max="10" step="0.1"></label>
+      <label class="field"><span>Installed cost (per nameplate kWh) ($/kWh)</span><input type="number" data-k="liCapex" value="250" min="50" max="1500" step="5"></label>
+      <label class="field"><span>Depth of discharge (%)</span><input type="number" data-k="liDod" value="90" min="50" max="100" step="1"></label>
+      <label class="field"><span>Round-trip efficiency (AC) (%)</span><input type="number" data-k="liRte" value="86" min="60" max="95" step="1"></label>
+      <label class="field"><span>Maximum calendar life (years)</span><input type="number" data-k="liLife" value="15" min="3" max="30" step="1"></label>
+      <label class="field"><span>Calendar fade per year (%)</span><input type="number" data-k="liDeg" value="1.5" min="0" max="10" step="0.1"></label>
+      <label class="field"><span>Replacement cost (% of first cost)</span><input type="number" data-k="liRepl" value="60" min="10" max="120" step="5"></label>
       <label class="field"><span>Operations and maintenance ($/kW·yr)</span><input type="number" data-k="liOm" value="10" min="0" max="100" step="1"></label>
     </div>
-    <div class="stats"><div class="stat accent"><b data-out="lcos">—</b><span>VRFB LCOS</span></div><div class="stat"><b data-out="lcosLi">—</b><span>Li-ion LCOS</span></div><div class="stat"><b data-out="capex">—</b><span>VRFB total capital cost</span></div><div class="stat"><b data-out="perKwh">—</b><span>VRFB installed cost</span></div><div class="stat"><b data-out="liPerKwh">—</b><span>Li-ion installed cost</span></div><div class="stat"><b data-out="kg">—</b><span>V₂O₅ per kWh of capacity</span></div><div class="stat"><b data-out="elecShare">—</b><span>Electrolyte share of capex</span></div></div>
+    <div class="stats"><div class="stat accent"><b data-out="lcos">—</b><span>VRFB LCOS</span></div><div class="stat"><b data-out="lcosLi">—</b><span>LFP LCOS</span></div><div class="stat"><b data-out="capex">—</b><span>VRFB total capital cost</span></div><div class="stat"><b data-out="perKwh">—</b><span>VRFB installed cost</span></div><div class="stat"><b data-out="liPerKwh">—</b><span>LFP installed cost</span></div><div class="stat"><b data-out="kg">—</b><span>V₂O₅ per usable kWh</span></div><div class="stat"><b data-out="elecShare">—</b><span>Electrolyte share of capex</span></div><div class="stat"><b data-out="vRepl">—</b><span>Stack refurbishment in year</span></div><div class="stat"><b data-out="liRepl">—</b><span>LFP replaced in year</span></div></div>
     <div class="costbar" style="display:flex;height:22px;border-radius:8px;overflow:hidden;gap:2px;background:var(--bg-2)"></div>
     <div class="legend costbar-legend"></div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Levelised cost of storage against vanadium pentoxide price"></div>
-    <p class="note">Vanadium mass per kWh is derived from the concentration and SOC window at a 1.35 V nominal cell voltage; at 1.6 M and 80 % window that is about 6 kg of V₂O₅ per kWh. Residual value reflects that vanadium electrolyte can be recovered or re-leased at end of life.<span class="cite"><a href="references.html#ref-14">[14]</a><a href="references.html#ref-17">[17]</a></span> The lithium-ion line uses a 90 % usable window and no residual value.</p>
+    <p class="note">Both technologies are evaluated over the same project life. LFP is replaced when its capacity reaches 70 % or its calendar life ends, and whatever life is left at the end is credited as salvage. Vanadium per kWh is derived from the concentration and SOC window at 1.35 V and sized for the DC energy behind the discharge losses: about 7.4 kg of V₂O₅ per usable kWh at 1.6 M, an 80 % window and 72 % round-trip efficiency. Residual value reflects that vanadium electrolyte can be recovered or re-leased at end of life.<span class="cite"><a href="references.html#ref-14">[14]</a><a href="references.html#ref-17">[17]</a><a href="references.html#ref-21">[21]</a></span> For every input, including electrolyte leasing, cycle fade, net present value, payback and sensitivity charts, open the <a href="../compare.html">comparison lab</a>.</p>
   </div>
+  <div class="kit" data-lesson="econ-lcos"></div>
 </section>
 <section id="vanadium-market">
   <h2>The vanadium question</h2>
-  <p>About 85 % of vanadium goes into steel as a strengthening additive, so its price follows the steel cycle rather than the battery market. The 2018 spike to above $25 per pound of V₂O₅ nearly doubled electrolyte costs; prices in the mid-2020s have been in the single digits per pound.<span class="cite"><a href="references.html#ref-17">[17]</a></span></p>
+  <p>Roughly 90 % of vanadium goes into steel as a strengthening additive, so its price follows the steel cycle rather than the battery market. The 2018 spike to above $25 per pound of V₂O₅ nearly doubled electrolyte costs; prices in the mid-2020s have been in the single digits per pound.<span class="cite"><a href="references.html#ref-17">[17]</a></span></p>
   <p>Two responses have emerged. <strong>Electrolyte leasing</strong> moves the vanadium off the project's balance sheet: the supplier retains ownership and recovers the metal at end of life, converting a capital cost into an operating fee.<span class="cite"><a href="references.html#ref-14">[14]</a></span> <strong>Alternative electrolytes</strong> (mixed-acid, higher concentration) squeeze more energy from each kilogram.<span class="cite"><a href="references.html#ref-3">[3]</a><a href="references.html#ref-18">[18]</a></span></p>
-  <div class="callout adv"><div class="eyebrow">Advanced · sensitivity</div><p>Because electrolyte is proportional to energy, LCOS sensitivity to vanadium price grows with duration. Doubling V₂O₅ from $10 to $20 per kg raises the calculator's default 8-hour LCOS by roughly a fifth; at 4 hours the effect is about half that. Stack cost sensitivity works the other way. This is why VRFB vendors target 6–12 hour applications while lithium-ion dominates 1–4 hours.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p></div>
+  <div class="callout adv"><div class="eyebrow">Advanced · sensitivity</div><p>Because electrolyte is proportional to energy, LCOS sensitivity to vanadium price grows with duration. Doubling V₂O₅ from $10 to $20 per kg raises the calculator's default 8-hour LCOS by roughly a sixth; at 4 hours the effect is smaller, about an eighth. Stack cost sensitivity works the other way. This is why VRFB vendors target 6–12 hour applications while lithium-ion dominates 1–4 hours.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p></div>
 </section>
 <section id="comparison">
   <h2>How the technologies compare</h2>
   <div class="table-wrap"><table><thead><tr><th>Metric</th><th>Vanadium flow</th><th>Lithium-ion (LFP)</th><th>Source</th></tr></thead><tbody>
   <tr><td>Round-trip efficiency (AC)</td><td class="num">65–80 %</td><td class="num">85–90 %</td><td><span class="cite"><a href="references.html#ref-5">[5]</a></span></td></tr>
-  <tr><td>Cycle life</td><td class="num">&gt; 15 000–20 000, no electrolyte wear</td><td class="num">3 000–8 000</td><td><span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-16">[16]</a></span></td></tr>
-  <tr><td>Calendar life</td><td class="num">20–25 years (stack refurbishment ~12–15)</td><td class="num">10–15 years</td><td><span class="cite"><a href="references.html#ref-5">[5]</a></span></td></tr>
+  <tr><td>Cycle life</td><td class="num">&gt; 10 000; makers claim 15 000–20 000; electrolyte capacity recoverable</td><td class="num">3 000–10 000 to 70–80 % capacity</td><td><span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>Calendar life</td><td class="num">20–25 years expected, stacks refurbished after 10–15</td><td class="num">10–20 years</td><td><span class="cite"><a href="references.html#ref-5">[5]</a></span></td></tr>
   <tr><td>Energy density</td><td class="num">20–35 Wh/L</td><td class="num">250–400 Wh/L</td><td><span class="cite"><a href="references.html#ref-2">[2]</a></span></td></tr>
-  <tr><td>Depth of discharge</td><td class="num">100 % without damage</td><td class="num">Typically 80–90 %</td><td><span class="cite"><a href="references.html#ref-16">[16]</a></span></td></tr>
-  <tr><td>Fire risk</td><td>Aqueous, non-flammable</td><td>Thermal runaway possible</td><td><span class="cite"><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>Depth of discharge</td><td class="num">Deep discharge does not damage the cell; 80 % window typical</td><td class="num">80–95 %</td><td><span class="cite"><a href="references.html#ref-16">[16]</a></span></td></tr>
+  <tr><td>Fire behaviour</td><td>Water-based electrolyte does not burn; it is corrosive</td><td>Thermal runaway possible; managed by design and spacing</td><td><span class="cite"><a href="references.html#ref-16">[16]</a></span></td></tr>
   <tr><td>Footprint</td><td>Large (tanks)</td><td>Compact</td><td><span class="cite"><a href="references.html#ref-2">[2]</a></span></td></tr>
-  <tr><td>End-of-life</td><td>Electrolyte recoverable</td><td>Recycling still developing</td><td><span class="cite"><a href="references.html#ref-14">[14]</a></span></td></tr>
+  <tr><td>End of life</td><td>Electrolyte can be recovered and reused</td><td>Recycling exists and is scaling up</td><td><span class="cite"><a href="references.html#ref-14">[14]</a></span></td></tr>
   </tbody></table></div>
+  <p class="note">Ranges combine published assessments with manufacturer claims, labelled where they apply. Neither technology yet has decades of field data at grid scale, and neither is cheaper in every case: test your own assumptions in the <a href="../compare.html">comparison lab</a>.</p>
+  <div class="kit" data-lesson="econ-compare"></div>
 </section>
 
         <nav class="pillar-nav" aria-label="Other pillars"><a href="chemistry.html" style="--c:#a36bff"><small>Pillar 01</small>Chemistry</a><a href="anatomy.html" style="--c:#26d9e3"><small>Pillar 02</small>Battery anatomy</a><a href="engineering.html" style="--c:#5ee37a"><small>Pillar 03</small>Engineering</a><a href="applications.html" style="--c:#ffd23f"><small>Pillar 05</small>Applications</a></nav>
       </article>
     </div>
   </main>
-  <footer class="footer"><div class="footer__inner"><span>VRFB — The Science of Flow Energy · Educational, non-commercial.</span><span><a href="references.html">Sources &amp; citations</a> · <a href="../">Back to the journey</a></span></div></footer>
-  <script src="../js/pillar.js"></script>
+  <footer class="footer" id="footer"><div class="footer__inner"><span>VRFB — The Science of Flow Energy · Educational, non-commercial.</span><span><a href="references.html">Sources &amp; citations</a> · <a href="../">Back to the journey</a></span></div></footer>
+  <script type="module" src="../js/pillar.js"></script>
   <script type="module" src="../js/calc/economics.js"></script>
 </body>
 </html>

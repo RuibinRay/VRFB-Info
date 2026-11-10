@@ -105,7 +105,7 @@ export const COMPONENTS = {
     name: 'Sensors and instruments', kicker: 'Monitoring · control', color: '#36e0a0',
     role: 'Flow meters, pressure gauges, temperature probes and tank-level gauges tell the battery management system what the hydraulics are doing. A small reference cell reads open-circuit voltage, which gives the state of charge.',
     specs: [['Flow', 'Electromagnetic or ultrasonic meters on each supply line'], ['Pressure', 'Across the stack: rising pressure drop can mean a blocked felt or precipitate'], ['Temperature', 'Kept roughly within 10–40 °C to avoid vanadium precipitation'], ['Level', 'A drifting level difference between tanks signals crossover and the need to rebalance']],
-    facts: ['Open-circuit voltage is a good state-of-charge sensor in the middle of the range but a poor one near 0 % and 100 %, where the Nernst curve turns steep.'],
+    facts: ['Around 50 % state of charge the open-circuit voltage moves only about 2 mV per percent, so the reference cell must be read to the millivolt; near 0 % and 100 % the Nernst curve turns steep.'],
     refs: [2, 14, 16],
   },
   casing: {
@@ -130,3 +130,7 @@ export const COMPONENTS = {
     refs: [5, 14],
   },
 };
+
+/** Section of the Anatomy pillar that describes a component (stack layers have their own anchors). */
+const BOP = new Set(['tank_neg', 'tank_pos', 'pump', 'pipe', 'valve', 'sensor', 'cabinet', 'casing']);
+export const anatomyAnchor = (id) => (BOP.has(id) ? 'balance-of-plant' : id === 'port_neg' || id === 'port_pos' ? 'endplate' : id);

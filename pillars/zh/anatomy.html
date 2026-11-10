@@ -14,27 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/labs.css">
   <style>:root { --accent: #26d9e3; }</style>
 </head>
-<body class="page" data-level="beginner" data-lang="zh">
-  <header class="topbar">
-    <a class="brand" href="../../?lang=zh">
-      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
-      <span>VRFB<small>液流储能的科学</small></span>
-    </a>
-    <nav class="nav" id="nav" aria-label="支柱"><a href="../../?lang=zh">沉浸之旅</a><a href="chemistry.html">化学原理</a><a href="anatomy.html" aria-current="page">电池结构</a><a href="engineering.html">工程设计</a><a href="economics.html">经济分析</a><a href="applications.html">实际应用</a><a href="references.html">参考文献</a></nav>
-    <div class="topbar__right">
-      <div class="lang-switch" role="group"><a href="../anatomy.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/anatomy.html" lang="es" data-lang="es" title="Español">ES</a><a href="../zh/anatomy.html" lang="zh" data-lang="zh" title="中文" aria-current="true">中文</a></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
+<body class="page" data-level="beginner" data-lang="zh" data-root="../../" data-slug="anatomy">
+  <header class="topbar" id="topbar"><a class="brand" href="../../?lang=zh"><span>VRFB<small>液流储能的科学</small></span></a></header>
   <main>
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="eyebrow">支柱 02 · 电池结构</div>
       <h1>电池结构</h1>
       <p class="lede">电堆的每一层和撬装系统上的每一个箱体：由什么制成、起什么作用、如何失效。</p>
-      <div class="level" role="group" aria-label="阅读层级"><button type="button" data-level="beginner">入门</button><button type="button" data-level="advanced">进阶</button></div><p class="level-note">切换到“进阶”可查看公式、数据表和建模说明。</p>
+      <div class="level" role="group" aria-label="学习层级"><button type="button" data-level-set="beginner">入门</button><button type="button" data-level-set="intermediate">进阶</button><button type="button" data-level-set="advanced">高级</button></div><p class="level-note">“进阶”会加入工程数据，“高级”会加入方程和建模说明。大多数小节以一节课收尾：按你的层级给出的讲解、动态示意图、例题、实验和小测验。</p>
     </section>
     <div class="page-body">
       <aside class="toc" aria-label="本页内容"><div class="eyebrow">本页内容</div><ol><li><a href="#overview">从单电池到电站</a></li><li><a href="#components">电堆，逐层拆解</a></li><li><a href="#balance-of-plant">辅助系统</a></li><li><a href="#failure-modes">失效与维护</a></li></ol></aside>
@@ -45,6 +36,7 @@
   <p>一套 VRFB 由三部分拼装而成：把化学能转换为电流的<strong>电堆</strong>、储存化学能的<strong>储液罐</strong>，以及在两者之间输送液体和电子的<strong>辅助系统</strong>（泵、管路、电力电子和控制）。电堆决定以千瓦计的功率；储液罐决定以千瓦时计的能量；二者可以独立设计。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-4">[4]</a></span></p>
   <figure class="figure"><img src="../../assets/img/stack-exploded.webp" alt="夹在两块端板之间的单个 VRFB 单电池的爆炸视图" loading="lazy"><figcaption>一个单电池的爆炸图：端板、铜集流体、流道框架、双极板、碳毡、隔膜、碳毡、双极板、流道框架、集流体、端板。首页沉浸之旅中建模的正是这些层。</figcaption></figure>
   <p>在电堆内部，每个单电池都是一个三明治结构：隔膜夹在两片碳毡电极之间，每片碳毡背后是一块双极板。单电池在电路上串联、在液路上并联，由贯穿整个电堆的公共流道供液。<span class="cite"><a href="references.html#ref-4">[4]</a></span></p>
+  <div class="kit" data-lesson="anat-cell"></div>
 </section>
 <section id="components">
   <h2>电堆，逐层拆解</h2>
@@ -82,6 +74,7 @@
     <h3>拉杆与夹紧支架</h3>
     <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../../assets/img/stack-assembled.webp" alt="拉杆与夹紧支架" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">穿过角孔的螺纹拉杆把两块端板拉紧；外部支架使端板保持平整。像拧车轮螺栓一样按星形顺序拧紧，以保证密封均匀。</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">材料</dt><dd style="margin:0">不锈钢，带绝缘套管</dd><dt class="muted">数量</dt><dd style="margin:0">每个电堆 4–12 根</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">来源 <span class="cite"><a href="references.html#ref-4">[4]</a></span></p></div></div>
   </article>
+  <div class="kit" data-lesson="anat-membrane"></div>
 </section>
 <section id="balance-of-plant">
   <h2>辅助系统</h2>
@@ -95,6 +88,7 @@
   <tr><td>换热器</td><td>把电解液保持在 10–40 °C 窗口内</td><td>炎热气候下必需；常为液-气式<span class="cite"><a href="references.html#ref-11">[11]</a></span></td></tr>
   </tbody></table></div>
   <div class="callout adv"><div class="eyebrow">进阶 · 旁路电流</div><p>由于所有单电池通过公共流道共用同一种导电电解液，每个单电池周围都存在一条并联电路。由此产生的旁路电流会浪费电量，并腐蚀电堆两端附近的极板。设计者会加长每个流道框架的进液通道、限制每条公共流道的单电池数，有时还把长电堆分成液路独立的模块，把这项损耗控制在几个百分点以内。<span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p></div>
+  <div class="kit" data-lesson="anat-bop"></div>
 </section>
 <section id="failure-modes">
   <h2>电堆如何失效，如何维护</h2>
@@ -111,8 +105,8 @@
       </article>
     </div>
   </main>
-  <footer class="footer"><div class="footer__inner"><span>VRFB — 液流储能的科学 · 教育用途，非商业。</span><span><a href="references.html">参考文献与引用</a> · <a href="../../?lang=zh">返回沉浸之旅</a></span></div></footer>
-  <script src="../../js/pillar.js"></script>
+  <footer class="footer" id="footer"><div class="footer__inner"><span>VRFB — 液流储能的科学 · 教育用途，非商业。</span><span><a href="references.html">参考文献与引用</a> · <a href="../../?lang=zh">返回沉浸之旅</a></span></div></footer>
+  <script type="module" src="../../js/pillar.js"></script>
   
 </body>
 </html>

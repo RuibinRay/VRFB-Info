@@ -14,27 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/labs.css">
   <style>:root { --accent: #5ee37a; }</style>
 </head>
-<body class="page" data-level="beginner" data-lang="es">
-  <header class="topbar">
-    <a class="brand" href="../../?lang=es">
-      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
-      <span>VRFB<small>La ciencia de la energía de flujo</small></span>
-    </a>
-    <nav class="nav" id="nav" aria-label="Pilar"><a href="../../?lang=es">Recorrido</a><a href="chemistry.html">Química</a><a href="anatomy.html">Anatomía</a><a href="engineering.html" aria-current="page">Ingeniería</a><a href="economics.html">Economía</a><a href="applications.html">Aplicaciones</a><a href="references.html">Fuentes</a></nav>
-    <div class="topbar__right">
-      <div class="lang-switch" role="group"><a href="../engineering.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/engineering.html" lang="es" data-lang="es" title="Español" aria-current="true">ES</a><a href="../zh/engineering.html" lang="zh" data-lang="zh" title="中文">中文</a></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
+<body class="page" data-level="beginner" data-lang="es" data-root="../../" data-slug="engineering">
+  <header class="topbar" id="topbar"><a class="brand" href="../../?lang=es"><span>VRFB<small>La ciencia de la energía de flujo</small></span></a></header>
   <main>
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="eyebrow">Pilar 03 · Ingeniería</div>
       <h1>Ingeniería</h1>
       <p class="lede">Dimensionar pilas, tanques y bombas; adónde va la eficiencia; límites térmicos; y una calculadora que diseña un sistema desde los primeros principios.</p>
-      <div class="level" role="group" aria-label="Nivel de lectura"><button type="button" data-level="beginner">Principiante</button><button type="button" data-level="advanced">Avanzado</button></div><p class="level-note">El nivel avanzado muestra las ecuaciones, las tablas de datos y las notas de modelado.</p>
+      <div class="level" role="group" aria-label="Nivel de aprendizaje"><button type="button" data-level-set="beginner">Principiante</button><button type="button" data-level-set="intermediate">Intermedio</button><button type="button" data-level-set="advanced">Avanzado</button></div><p class="level-note">El nivel intermedio añade las cifras de ingeniería; el avanzado añade las ecuaciones y las notas de modelado. La mayoría de las secciones termina con una lección: una explicación a tu nivel, un diagrama animado, un ejemplo resuelto, un experimento y una comprobación rápida.</p>
     </section>
     <div class="page-body">
       <aside class="toc" aria-label="En esta página"><div class="eyebrow">En esta página</div><ol><li><a href="#power-vs-energy">Potencia frente a energía</a></li><li><a href="#sizing-tool">Calculadora de dimensionado</a></li><li><a href="#efficiency">Eficiencia</a></li><li><a href="#thermal">Térmica y caudal</a></li><li><a href="#scaling">Escalar</a></li></ol></aside>
@@ -46,6 +37,7 @@
   <div class="equation">P ≈ N<sub>celdas</sub> · A · j · V<sub>celda</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ 2 · V<sub>tanque</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>nominal</sub> / 2
 <small>A: área activa por celda · j: densidad de corriente · c<sub>V</sub>: concentración de vanadio · ΔSOC: ventana útil · el factor ½ aparece porque cada electrón necesita un ion de vanadio en <em>cada</em> lado.</small></div>
   <p>La consecuencia práctica: un sistema de 4 horas y uno de 10 horas pueden compartir pilas idénticas y diferir solo en el tamaño de los tanques. Las duraciones largas resultan más baratas por kWh, y ese es el nicho comercial de la VRFB.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
+  <div class="kit" data-lesson="eng-power-energy"></div>
 </section>
 <section id="sizing-tool">
   <h2>Diseña un sistema</h2>
@@ -90,11 +82,13 @@
   </ul>
   <p>En conjunto, las celdas alcanzan 80–90 % en CC y los sistemas completos 65–80 % CA-CA, menos que el 85–90 % del ion-litio, pero estable durante decenas de miles de ciclos.<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
   <div class="callout adv"><div class="eyebrow">Avanzado · polarización</div><p>El voltaje de celda bajo carga es V = OCV ± (η<sub>act</sub> + η<sub>ohm</sub> + η<sub>conc</sub>). El sobrepotencial de activación sigue la cinética de Butler–Volmer y está dominado por el electrodo positivo; la pérdida óhmica es la membrana más el electrolito más la resistencia de contacto (en conjunto ≈ 1–2 Ω·cm² en celdas comerciales); el sobrepotencial de concentración aparece cuando el factor de caudal es demasiado bajo para reponer vanadio en la superficie de la fibra, sobre todo cerca de los extremos de la ventana de SOC. Las placas con campo de flujo y los fieltros más finos y comprimidos reducen los tres.<span class="cite"><a href="references.html#ref-10">[10]</a><a href="references.html#ref-14">[14]</a></span></p></div>
+  <div class="kit" data-lesson="eng-efficiency"></div>
 </section>
 <section id="thermal">
   <h2>Gestión térmica y de caudal</h2>
   <p>El calentamiento resistivo y el trabajo de las bombas calientan el electrolito. Como el VO₂⁺ precipita por encima de unos 40 °C y los sulfatos de V²⁺/V³⁺ por debajo de unos 10 °C, los sistemas grandes añaden un intercambiador de calor y mantienen las bombas en marcha durante los periodos de reposo con calor para que la pila no se sobrecaliente.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-11">[11]</a></span></p>
   <p>Las bombas de velocidad variable programadas según el estado de carga son una mejora de eficiencia barata: solo hace falta caudal alto cerca de los extremos de la ventana de SOC, donde la concentración de vanadio en el electrodo escasea.<span class="cite"><a href="references.html#ref-14">[14]</a></span></p>
+  <div class="kit" data-lesson="eng-flow"></div>
 </section>
 <section id="scaling">
   <h2>Escalar</h2>
@@ -105,8 +99,8 @@
       </article>
     </div>
   </main>
-  <footer class="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
-  <script src="../../js/pillar.js"></script>
+  <footer class="footer" id="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
+  <script type="module" src="../../js/pillar.js"></script>
   <script type="module" src="../../js/calc/engineering.js"></script>
 </body>
 </html>

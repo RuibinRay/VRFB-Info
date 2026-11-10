@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Química — VRFB: La ciencia de la energía de flujo</title>
-  <meta name="description" content="Por qué un metal en cuatro estados de oxidación da una batería que nunca desgasta su combustible: las semirreacciones, la ecuación de Nernst y un expl">
+  <meta name="description" content="Por qué un metal en cuatro estados de oxidación da una batería que nunca desgasta su combustible: las semirreacciones, la ecuación de Nernst y un explorado">
   <meta name="theme-color" content="#070a10">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="en" href="../../pillars/chemistry.html">
@@ -14,27 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/labs.css">
   <style>:root { --accent: #a36bff; }</style>
 </head>
-<body class="page" data-level="beginner" data-lang="es">
-  <header class="topbar">
-    <a class="brand" href="../../?lang=es">
-      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
-      <span>VRFB<small>La ciencia de la energía de flujo</small></span>
-    </a>
-    <nav class="nav" id="nav" aria-label="Pilar"><a href="../../?lang=es">Recorrido</a><a href="chemistry.html" aria-current="page">Química</a><a href="anatomy.html">Anatomía</a><a href="engineering.html">Ingeniería</a><a href="economics.html">Economía</a><a href="applications.html">Aplicaciones</a><a href="references.html">Fuentes</a></nav>
-    <div class="topbar__right">
-      <div class="lang-switch" role="group"><a href="../chemistry.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/chemistry.html" lang="es" data-lang="es" title="Español" aria-current="true">ES</a><a href="../zh/chemistry.html" lang="zh" data-lang="zh" title="中文">中文</a></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
+<body class="page" data-level="beginner" data-lang="es" data-root="../../" data-slug="chemistry">
+  <header class="topbar" id="topbar"><a class="brand" href="../../?lang=es"><span>VRFB<small>La ciencia de la energía de flujo</small></span></a></header>
   <main>
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="eyebrow">Pilar 01 · Química</div>
       <h1>Química</h1>
       <p class="lede">Por qué un metal en cuatro estados de oxidación da una batería que nunca desgasta su combustible: las semirreacciones, la ecuación de Nernst y un explorador interactivo de voltaje de circuito abierto.</p>
-      <div class="level" role="group" aria-label="Nivel de lectura"><button type="button" data-level="beginner">Principiante</button><button type="button" data-level="advanced">Avanzado</button></div><p class="level-note">El nivel avanzado muestra las ecuaciones, las tablas de datos y las notas de modelado.</p>
+      <div class="level" role="group" aria-label="Nivel de aprendizaje"><button type="button" data-level-set="beginner">Principiante</button><button type="button" data-level-set="intermediate">Intermedio</button><button type="button" data-level-set="advanced">Avanzado</button></div><p class="level-note">El nivel intermedio añade las cifras de ingeniería; el avanzado añade las ecuaciones y las notas de modelado. La mayoría de las secciones termina con una lección: una explicación a tu nivel, un diagrama animado, un ejemplo resuelto, un experimento y una comprobación rápida.</p>
     </section>
     <div class="page-body">
       <aside class="toc" aria-label="En esta página"><div class="eyebrow">En esta página</div><ol><li><a href="#why-vanadium">Cuatro estados de oxidación</a></li><li><a href="#half-reactions">Semirreacciones</a></li><li><a href="#nernst">Ecuación de Nernst y explorador</a></li><li><a href="#electrolyte">El electrolito</a></li><li><a href="#side-reactions">Reacciones secundarias</a></li></ol></aside>
@@ -51,6 +42,7 @@
   <tr><td>VO₂⁺ (dioxovanadio)</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#ffcf33"></span>Amarillo</td><td>Tanque positivo, cargado</td></tr>
   </tbody></table></div>
   <p class="beginner-only">En el recorrido de la página de inicio los tanques cambian de color exactamente así: de verde a violeta a la izquierda y de azul a amarillo a la derecha, a medida que la batería se carga.</p>
+  <div class="kit" data-lesson="chem-states"></div>
 </section>
 <section id="half-reactions">
   <h2>Las semirreacciones</h2>
@@ -61,6 +53,7 @@ Global:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 <small>Potenciales estándar de reducción de los pares de vanadio; al cargar, todas las flechas se invierten.</small></div>
   <p>Fíjate en los protones. Cada vez que se entrega un electrón se consumen dos H⁺ en el lado positivo, así que los protones deben cruzar la membrana desde el lado negativo para que ambos electrolitos sigan siendo eléctricamente neutros. Ese es todo el trabajo de la membrana: dejar pasar H⁺ (y algo de agua) y retener el vanadio.<span class="cite"><a href="references.html#ref-4">[4]</a></span></p>
   <div class="callout adv"><div class="eyebrow">Avanzado · por qué se mueven los electrones</div><p>La fuerza impulsora es la diferencia entre los potenciales de electrodo de los dos pares. Cada uno viene fijado por la energía libre de Gibbs de su reducción, ΔG = −nFE. Con n = 1 para ambos pares, la celda entrega 1,259 V × 96 485 C/mol ≈ 121 kJ por mol de electrones, unos 34 Wh por mol de vanadio transferido. Cinéticamente, el par V²⁺/V³⁺ es una transferencia electrónica de esfera externa sencilla; el par VO²⁺/VO₂⁺ exige una transferencia de oxígeno y tiene una cinética más lenta, por eso la mayor parte de la investigación en activación de electrodos se centra en el lado positivo.<span class="cite"><a href="references.html#ref-10">[10]</a></span></p></div>
+  <div class="kit" data-lesson="chem-reactions"></div>
 </section>
 <section id="nernst">
   <h2>El voltaje depende del estado de carga: la ecuación de Nernst</h2>
@@ -84,6 +77,7 @@ Global:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
     <div class="chart" role="img" aria-label="Voltaje de circuito abierto frente al estado de carga"></div>
     <p class="note">La curva es muy pronunciada cerca del 0 % y del 100 % de SOC: por eso los sistemas de gestión de batería mantienen la ventana de operación en torno al 10–90 %, y por eso el OCV es un buen sensor de SOC en la zona central del rango pero malo en los extremos.</p>
   </div>
+  <div class="kit" data-lesson="chem-nernst"></div>
 </section>
 <section id="electrolyte">
   <h2>El electrolito</h2>
@@ -98,6 +92,7 @@ Global:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
   <tr><td>Potencial estándar de celda</td><td class="num">1,259 V</td><td><span class="cite"><a href="references.html#ref-1">[1]</a><a href="references.html#ref-9">[9]</a></span></td></tr>
   <tr><td>Voltaje de circuito abierto al 50 % de SOC</td><td class="num">≈ 1,40 V</td><td><span class="cite"><a href="references.html#ref-15">[15]</a></span></td></tr>
   </tbody></table></div>
+  <div class="kit" data-lesson="chem-electrolyte"></div>
 </section>
 <section id="side-reactions">
   <h2>Qué puede salir mal químicamente</h2>
@@ -107,14 +102,15 @@ Global:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
     <li><strong>Cruce (crossover).</strong> Los iones de vanadio difunden a través de la membrana, autodescargan la celda y trasladan volumen de un tanque al otro. A diferencia de otras químicas, esto se revierte remezclando o con reequilibrado electroquímico.<span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-16">[16]</a></span></li>
     <li><strong>Corrosión del carbono.</strong> El VO₂⁺ a SOC alto puede oxidar el fieltro positivo y la placa bipolar, por lo que las pilas rara vez se cargan más allá del 95 %.<span class="cite"><a href="references.html#ref-10">[10]</a></span></li>
   </ul>
+  <div class="kit" data-lesson="chem-side"></div>
 </section>
 
         <nav class="pillar-nav" aria-label="Otros pilares"><a href="anatomy.html" style="--c:#26d9e3"><small>Pilar 02</small>Anatomía de la batería</a><a href="engineering.html" style="--c:#5ee37a"><small>Pilar 03</small>Ingeniería</a><a href="economics.html" style="--c:#ff9b2f"><small>Pilar 04</small>Economía</a><a href="applications.html" style="--c:#ffd23f"><small>Pilar 05</small>Aplicaciones</a></nav>
       </article>
     </div>
   </main>
-  <footer class="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
-  <script src="../../js/pillar.js"></script>
+  <footer class="footer" id="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
+  <script type="module" src="../../js/pillar.js"></script>
   <script type="module" src="../../js/calc/chemistry.js"></script>
 </body>
 </html>

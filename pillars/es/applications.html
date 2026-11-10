@@ -14,27 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/labs.css">
   <style>:root { --accent: #ffd23f; }</style>
 </head>
-<body class="page" data-level="beginner" data-lang="es">
-  <header class="topbar">
-    <a class="brand" href="../../?lang=es">
-      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
-      <span>VRFB<small>La ciencia de la energía de flujo</small></span>
-    </a>
-    <nav class="nav" id="nav" aria-label="Pilar"><a href="../../?lang=es">Recorrido</a><a href="chemistry.html">Química</a><a href="anatomy.html">Anatomía</a><a href="engineering.html">Ingeniería</a><a href="economics.html">Economía</a><a href="applications.html" aria-current="page">Aplicaciones</a><a href="references.html">Fuentes</a></nav>
-    <div class="topbar__right">
-      <div class="lang-switch" role="group"><a href="../applications.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/applications.html" lang="es" data-lang="es" title="Español" aria-current="true">ES</a><a href="../zh/applications.html" lang="zh" data-lang="zh" title="中文">中文</a></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
+<body class="page" data-level="beginner" data-lang="es" data-root="../../" data-slug="applications">
+  <header class="topbar" id="topbar"><a class="brand" href="../../?lang=es"><span>VRFB<small>La ciencia de la energía de flujo</small></span></a></header>
   <main>
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="eyebrow">Pilar 05 · Aplicaciones</div>
       <h1>Aplicaciones reales</h1>
       <p class="lede">Desplazamiento solar, servicios de red y los proyectos emblemáticos de Dalian a Hokkaido, con un simulador de despacho de 24 horas.</p>
-      <div class="level" role="group" aria-label="Nivel de lectura"><button type="button" data-level="beginner">Principiante</button><button type="button" data-level="advanced">Avanzado</button></div><p class="level-note">El nivel avanzado muestra las ecuaciones, las tablas de datos y las notas de modelado.</p>
+      <div class="level" role="group" aria-label="Nivel de aprendizaje"><button type="button" data-level-set="beginner">Principiante</button><button type="button" data-level-set="intermediate">Intermedio</button><button type="button" data-level-set="advanced">Avanzado</button></div><p class="level-note">El nivel intermedio añade las cifras de ingeniería; el avanzado añade las ecuaciones y las notas de modelado. La mayoría de las secciones termina con una lección: una explicación a tu nivel, un diagrama animado, un ejemplo resuelto, un experimento y una comprobación rápida.</p>
     </section>
     <div class="page-body">
       <aside class="toc" aria-label="En esta página"><div class="eyebrow">En esta página</div><ol><li><a href="#why-flow">Para qué sirven</a></li><li><a href="#dispatch-tool">Simulador de despacho</a></li><li><a href="#case-studies">Instalaciones emblemáticas</a></li><li><a href="#integration">Integración en red</a></li><li><a href="#outlook">Perspectivas</a></li></ol></aside>
@@ -68,6 +59,7 @@
     <div class="chart chart--soc" role="img" aria-label="Estado de carga de la batería a lo largo de un día" style="aspect-ratio:16/5;min-height:140px;margin-top:10px"></div>
     <p class="note">La solar sigue una curva de cielo despejado de 06:00 a 19:00; la carga es una base con un repunte matinal y un pico de tarde en torno a las 19:30. La batería solo se carga con excedente solar y solo se descarga ante un déficit, con las pérdidas repartidas a partes iguales entre carga y descarga. Prueba a duplicar la energía manteniendo la potencia: esa es la mejora más barata de una VRFB.</p>
   </div>
+  <div class="kit" data-lesson="app-dispatch"></div>
 </section>
 <section id="case-studies">
   <h2>Instalaciones emblemáticas</h2>
@@ -93,8 +85,8 @@
       </article>
     </div>
   </main>
-  <footer class="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
-  <script src="../../js/pillar.js"></script>
+  <footer class="footer" id="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
+  <script type="module" src="../../js/pillar.js"></script>
   <script type="module" src="../../js/calc/applications.js"></script>
 </body>
 </html>

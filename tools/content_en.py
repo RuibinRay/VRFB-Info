@@ -1,12 +1,15 @@
 """English content for the pillar pages. Mirrored by content_es.py and content_zh.py."""
 from helpers import cite, field, stat
 
+# links from pillars/ to the root-level laboratories
+LAB, SIZING, COMPARE, PROJECT = '../lab.html', '../sizing.html', '../compare.html', '../project.html'
+
 LANG = 'en'
 HTML_LANG = 'en'
 UI = {
     'nav': {'home': 'Journey', 'chemistry': 'Chemistry', 'anatomy': 'Anatomy', 'engineering': 'Engineering', 'economics': 'Economics', 'applications': 'Applications', 'references': 'Sources'},
-    'on_this_page': 'On this page', 'reading_level': 'Reading level', 'beginner': 'Beginner', 'advanced': 'Advanced',
-    'level_note': 'Advanced reveals the equations, data tables and modelling notes.',
+    'on_this_page': 'On this page', 'reading_level': 'Learning level', 'beginner': 'Beginner', 'intermediate': 'Intermediate', 'advanced': 'Advanced',
+    'level_note': 'Intermediate adds the engineering numbers; advanced adds the equations and modelling notes. Most sections end with a lesson: an explanation at your level, a moving diagram, a worked example, an experiment and a quick check.',
     'pillar': 'Pillar', 'other_pillars': 'Other pillars', 'language': 'Language',
     'footer_tag': 'VRFB — The Science of Flow Energy · Educational, non-commercial.', 'footer_sources': 'Sources &amp; citations', 'footer_back': 'Back to the journey',
     'site_title': 'VRFB: The Science of Flow Energy', 'brand_sub': 'Science of Flow Energy',
@@ -18,14 +21,14 @@ CHEM = f'''
 <section id="why-vanadium">
   <h2>One element, four oxidation states</h2>
   <p>Most batteries use two different materials for their two sides. The vanadium flow battery uses the same element on both, in two different pairs of oxidation states. The negative tank holds V²⁺ and V³⁺; the positive tank holds VO²⁺ (vanadium +4) and VO₂⁺ (vanadium +5), all dissolved in sulfuric acid.{cite(1, 2)}</p>
-  <p>This is the single idea that makes the VRFB practical. Every other flow chemistry suffers when a little of one electrolyte leaks through the membrane into the other, poisoning it for good. In a VRFB the leaked ion is still vanadium; it just needs a periodic <em>rebalancing</em> to restore the two tanks to the same state of charge. The electrolyte itself never wears out.{cite(2, 16)}</p>
+  <p>This is the single idea that makes the VRFB practical. Every other flow chemistry suffers when a little of one electrolyte leaks through the membrane into the other, poisoning it for good. In a VRFB the leaked ion is still vanadium; it just needs a periodic <em>rebalancing</em> to restore the two tanks to the same state of charge. The vanadium is not consumed, and most of the capacity lost this way can be recovered.{cite(2, 16)}</p>
   <div class="table-wrap"><table><thead><tr><th>Species</th><th>Vanadium oxidation state</th><th>Colour</th><th>Where</th></tr></thead><tbody>
-  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#8b4dff"></span>Violet</td><td>Negative tank, charged</td></tr>
-  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#3fcf5a"></span>Green</td><td>Negative tank, discharged</td></tr>
-  <tr><td>VO²⁺ (vanadyl)</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#2f7bff"></span>Blue</td><td>Positive tank, discharged</td></tr>
-  <tr><td>VO₂⁺ (dioxovanadium)</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#ffcf33"></span>Yellow</td><td>Positive tank, charged</td></tr>
+  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#7c3aed"></span>Violet</td><td>Negative tank, charged</td></tr>
+  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#1fae45"></span>Green</td><td>Negative tank, discharged</td></tr>
+  <tr><td>VO²⁺ (vanadyl)</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#1d63f0"></span>Blue</td><td>Positive tank, discharged</td></tr>
+  <tr><td>VO₂⁺ (dioxovanadium)</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#f2c21a"></span>Yellow</td><td>Positive tank, charged</td></tr>
   </tbody></table></div>
-  <p class="beginner-only">In the homepage journey the tanks change colour exactly this way: green-to-violet on the left, blue-to-yellow on the right, as the battery charges.</p>
+  <p class="beginner-only">In the homepage journey the tanks change colour exactly this way as the battery charges: blue to yellow in the positive tank on the left, green to violet in the negative tank on the right.</p>
 </section>
 <section id="half-reactions">
   <h2>The half-reactions</h2>
@@ -57,7 +60,7 @@ Overall:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div class="stats"><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="negtank"></b><span>Negative tank colour (V³⁺ → V²⁺)</span></div><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="postank"></b><span>Positive tank colour (VO²⁺ → VO₂⁺)</span></div></div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Open-circuit voltage against state of charge"></div>
-    <p class="note">The curve is steep near 0 % and 100 % SOC: this is why battery-management systems keep the operating window at roughly 10–90 %, and why OCV is a useful SOC sensor in the middle of the range but a poor one at the extremes.</p>
+    <p class="note">The curve is steep near 0 % and 100 % SOC, which is one reason battery-management systems keep the operating window at roughly 10–90 %. In the flat middle the voltage moves only about 2 mV per percent of SOC, so a reference cell has to be read to the millivolt to serve as a fuel gauge.</p>
   </div>
 </section>
 <section id="electrolyte">
@@ -86,10 +89,10 @@ Overall:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 '''
 
 ANAT_ITEMS = [
- ('endplate', 'End plate', 'endplate-negative.webp', 'Stainless steel or aluminium plate, 10–30 mm, that carries the clamping load and hosts the hose-barb ports. The cyan O-rings mark the negative loop; the orange ones on the opposite plate mark the positive loop.', [('Material', 'Stainless steel · aluminium · GFRP'), ('Clamping pressure', '0.5–1.5 MPa on the felt'), ('Insulation', 'Polymer sheet to the copper collector')], (4, 14)),
+ ('endplate', 'End plate', 'endplate-negative.webp', 'Stainless steel or aluminium plate, 10–30 mm, that carries the clamping load and hosts the hose-barb ports. In the 3D model the orange O-rings mark the positive loop and the cyan ones on the opposite plate mark the negative loop.', [('Material', 'Stainless steel · aluminium · GFRP'), ('Clamping pressure', '0.5–1.5 MPa on the felt'), ('Insulation', 'Polymer sheet to the copper collector')], (4, 14)),
  ('collector', 'Current collector', 'current-collector.png', 'A copper sheet with a terminal tab that gathers current from the full electrode area. It sits dry, behind the first bipolar plate, because copper corrodes rapidly in the acid electrolyte.', [('Material', 'Copper, 1–3 mm, sometimes plated'), ('Resistivity', '1.7 × 10⁻⁸ Ω·m'), ('Count', 'Two per stack (terminals)')], (4,)),
  ('gasket', 'Flow frame & gasket', 'gasket-frame.png', 'A polymer frame holds the felt in its window and routes electrolyte from the manifold holes in the corners into the electrode. Elastomer gaskets on each face seal the cell. Long, narrow channels deliberately add resistance to limit shunt currents through the shared manifold.', [('Frame', 'PVC · PP · PVDF'), ('Gasket', 'EPDM · Viton® · PTFE'), ('Thickness', 'Sets felt compression, 20–30 %')], (4, 14)),
- ('bipolar', 'Bipolar plate', 'bipolar-plate.webp', 'A graphite–polymer composite plate shared by neighbouring cells: positive face of one, negative face of the next. Electrons pass through it so cells connect in series. The serpentine flow field spreads electrolyte across the felt and cuts pumping losses by 30–50 % versus flow-through designs.', [('Material', 'Graphite-filled PP / PE / PVDF, 2–6 mm'), ('Resistivity', '10⁻³–10⁻² Ω·cm'), ('Flow field', 'Serpentine · interdigitated · flow-through')], (4, 10, 14)),
+ ('bipolar', 'Bipolar plate', 'bipolar-plate.webp', 'A graphite–polymer composite plate shared by neighbouring cells: positive face of one, negative face of the next. Electrons pass through it so cells connect in series. The serpentine flow field spreads electrolyte across the felt and lowers the pressure drop compared with forcing all of it through a thick felt.', [('Material', 'Graphite-filled PP / PE / PVDF, 2–6 mm'), ('Resistivity', '10⁻³–10⁻² Ω·cm'), ('Flow field', 'Serpentine · interdigitated · flow-through')], (4, 10, 14)),
  ('felt_neg', 'Negative electrode (carbon felt)', 'carbon-felt.webp', 'A porous mat of 8–12 µm carbon fibres, 90–95 % porosity, where V²⁺/V³⁺ exchange electrons with the fibre surface. Felts are activated by heating in air or acid treatment, which adds oxygen groups that accelerate the reaction.', [('Material', 'PAN- or rayon-based carbon felt'), ('Thickness', '3–6 mm, compressed 20–30 %'), ('Fibre diameter', '≈ 10 µm'), ('Side reaction', 'H₂ evolution near full charge')], (2, 10)),
  ('membrane', 'Ion-exchange membrane', 'membrane.png', 'A 25–200 µm polymer film that conducts protons and blocks vanadium. Perfluorosulfonic-acid membranes (Nafion®) are the benchmark; cheaper hydrocarbon and anion-exchange membranes trade some selectivity or conductivity for cost. It is usually the most expensive single component of the stack.', [('Material', 'PFSA (Nafion® 115/212) · hydrocarbon · AEM'), ('Area resistance', '0.5–2 Ω·cm²'), ('Crossover', 'Causes self-discharge; corrected by rebalancing')], (2, 4, 14)),
  ('felt_pos', 'Positive electrode (carbon felt)', 'carbon-felt-2.webp', 'The mirror of the negative felt, hosting VO²⁺/VO₂⁺. Kinetics are slower here, so catalysts (bismuth, metal oxides) and surface functionalisation are active research areas. At high SOC the strongly oxidising VO₂⁺ can corrode the carbon itself.', [('Material', 'Carbon or graphite felt, O-functionalised'), ('Limit', 'Keep below ≈ 95 % SOC')], (2, 10)),
@@ -105,7 +108,7 @@ ANAT = f'''
 </section>
 <section id="components">
   <h2>The stack, layer by layer</h2>
-  <p>Click any component on the homepage for the same specification. Figures are typical values from the reviews cited; specific products vary.</p>
+  <p>Click any component on the homepage, or open the <a href="{LAB}">3D lab</a> to isolate it and see what happens when it fails. Figures are typical values from the reviews cited; specific products vary.</p>
 ''' + ''.join(f'''
   <article id="{cid}" class="component">
     <h3>{name}</h3>
@@ -133,7 +136,7 @@ ANAT = f'''
     <li><strong>Capacity fade</strong> from crossover and side reactions is corrected by rebalancing the electrolytes, not by replacing them.{cite(16)}</li>
     <li><strong>Pump and seal wear</strong> on the balance of plant is ordinary industrial maintenance.</li>
   </ul>
-  <p>Because the electrolyte is recoverable at end of life, a VRFB installation retains residual value that lithium-ion systems do not. That matters for the economics, covered in the next pillar.</p>
+  <p>Because the vanadium electrolyte can be recovered and reused at end of life, a VRFB installation can retain residual value; how much depends on the vanadium market at the time. That matters for the economics, covered in the next pillar.</p>
 </section>
 '''
 
@@ -141,9 +144,9 @@ ENG = f'''
 <section id="power-vs-energy">
   <h2>Decoupling power from energy</h2>
   <p>In a conventional battery, power and energy scale together: more cells means more of both. In a flow battery they are separate purchases. <strong>Power</strong> (kW) is set by the total electrode area in the stacks, since current scales with area at a chosen current density. <strong>Energy</strong> (kWh) is set by how much vanadium is dissolved in the tanks.{cite(2, 4)}</p>
-  <div class="equation">P ≈ N<sub>cells</sub> · A · j · V<sub>cell</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ 2 · V<sub>tank</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>nominal</sub> / 2
-<small>A: active area per cell · j: current density · c<sub>V</sub>: vanadium concentration · ΔSOC: usable window · the factor ½ appears because each electron needs one vanadium ion on <em>each</em> side.</small></div>
-  <p>The practical consequence: a 4-hour system and a 10-hour system can share identical stacks and differ only in tank size. Longer durations get cheaper per kWh, which is the VRFB's commercial niche.{cite(5)}</p>
+  <div class="equation">P ≈ N<sub>cells</sub> · A · j · V<sub>cell</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ V<sub>tank</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>cell</sub>
+<small>A: active area per cell · j: current density · V<sub>tank</sub>: volume of one tank · c<sub>V</sub>: vanadium concentration · ΔSOC: usable window. Each electron needs one vanadium ion in <em>each</em> tank, so both tanks hold this capacity.</small></div>
+  <p>The practical consequence: a 4-hour system and a 10-hour system can share identical stacks and differ only in tank size. Longer durations get cheaper per kWh, which is the VRFB's commercial niche.{cite(5)} The <a href="{SIZING}">power vs energy lab</a> lets you move MW and MWh separately and see every step of the calculation.</p>
 </section>
 <section id="sizing-tool">
   <h2>Design a system</h2>
@@ -175,7 +178,7 @@ ENG = f'''
     <div class="stats">{stat('ve', 'Voltage efficiency')}{stat('cell', 'Cell energy efficiency')}{stat('sys', 'System AC-to-AC efficiency', True)}</div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Efficiency against current density"></div>
-    <details><summary>Model notes and formulas</summary><p>Stack current I = j·A. Electrolyte per side = E / (c · 26.8 Ah/mol · ΔSOC · V<sub>cell</sub>). Stoichiometric flow per stack = N·I / (F·c); the pump delivers λ times that. Pump power = Q·Δp / η for two loops per stack. Voltage efficiency uses a lumped area-specific resistance around an open-circuit voltage of 1.40 V: VE = (OCV − j·ASR)/(OCV + j·ASR). System efficiency multiplies cell efficiency by (1 − pump fraction) and the inverter efficiency twice. Shunt currents, thermal management and the SOC-dependence of ASR are neglected; published system values of 65–80 % AC-AC are consistent with this model at 60–100 mA/cm².{cite(5, 14)}</p></details>
+    <details><summary>Model notes and formulas</summary><p>Stack current I = j·A. Electrolyte per side = E / (c · 26.8 Ah/mol · ΔSOC · V<sub>cell</sub>). Stoichiometric flow per stack = N·I / (F·c); the pump delivers λ times that. Pump power = Q·Δp / η for two loops per stack. Voltage efficiency uses a lumped area-specific resistance around an open-circuit voltage of 1.40 V: VE = (OCV − j·ASR)/(OCV + j·ASR). System efficiency multiplies cell efficiency by the inverter efficiency twice and by (1 − f)/(1 + f) for a pump fraction f, because the pumps run during both charging and discharging. The flow factor λ is referenced to the total vanadium concentration; relative to the reactant still available at 50 % SOC the same flow corresponds to λ/2. Shunt currents, thermal management and the SOC-dependence of ASR are neglected; published system values of 65–80 % AC-AC are consistent with this model at 60–100 mA/cm².{cite(5, 14)}</p></details>
   </div>
 </section>
 <section id="efficiency">
@@ -203,7 +206,7 @@ ENG = f'''
 ECON = f'''
 <section id="cost-structure">
   <h2>What a VRFB costs, and why</h2>
-  <p>A lithium-ion system is mostly cells. A VRFB is roughly a third stacks, a third electrolyte and a third everything else, and the split moves with duration: at 2 hours the stacks dominate; at 10 hours the electrolyte does.{cite(5, 14)}</p>
+  <p>A lithium-ion system is mostly cells. A VRFB splits between stacks, electrolyte and everything else, and the split moves with duration: at 2 hours the stacks are the largest item; at 10 hours the electrolyte is.{cite(5, 14)}</p>
   <ul>
     <li><strong>Stacks and power electronics</strong> scale with kilowatts. Membrane and bipolar plates are the costliest stack parts.{cite(14)}</li>
     <li><strong>Electrolyte</strong> scales with kilowatt-hours and tracks the vanadium pentoxide (V₂O₅) price, which has swung from about $5 to over $25 per pound within a decade.{cite(17)}</li>
@@ -216,13 +219,13 @@ ECON = f'''
   <p>The levelised cost of storage (LCOS) spreads every lifetime cost over every megawatt-hour the battery will ever discharge, discounted to today. It is the fairest single number for comparing technologies with different lifetimes.{cite(6, 13)}</p>
   <div class="equation">LCOS = [ CAPEX + Σ<sub>t</sub> (O&amp;M<sub>t</sub> + charging<sub>t</sub> + replacements<sub>t</sub>) / (1+r)<sup>t</sup> − residual / (1+r)<sup>N</sup> ] / Σ<sub>t</sub> E<sub>discharged,t</sub> / (1+r)<sup>t</sup></div>
   <div class="tool" id="tool-lcos">
-    <div class="tool__head"><h3>VRFB vs lithium-ion LCOS</h3><span class="muted mono">all inputs editable · defaults are illustrative</span></div>
+    <div class="tool__head"><h3>VRFB vs LFP: levelised cost of storage</h3><span class="muted mono">all inputs editable · defaults are illustrative</span></div>
     <h4 class="eyebrow">Project</h4>
     <div class="tool__grid">
       {field('P', 'Power', 10, 'MW', 0.1, 1000, 0.1)}
       {field('h', 'Duration', 8, 'hours', 1, 24, 0.5)}
       {field('cycles', 'Full cycles per year', 330, '', 1, 730, 1)}
-      {field('life', 'VRFB project life', 25, 'years', 5, 40, 1)}
+      {field('life', 'Project life (both technologies)', 25, 'years', 5, 40, 1)}
       {field('disc', 'Discount rate', 7, '%', 0, 20, 0.5)}
       {field('chg', 'Charging electricity price', 30, '$/MWh', 0, 200, 1)}
     </div>
@@ -232,58 +235,62 @@ ECON = f'''
       {field('c', 'Vanadium concentration', 1.6, 'mol/L', 0.8, 3, 0.1)}
       {field('dod', 'Usable SOC window', 0.8, 'fraction', 0.4, 1, 0.05)}
       {field('acidProc', 'Acid, water, processing', 15, '$/kWh', 0, 100, 1)}
-      {field('stackCost', 'Stacks + power electronics', 650, '$/kW', 100, 3000, 10)}
+      {field('stackCost', 'Stacks', 450, '$/kW', 100, 3000, 10)}
+      {field('pcsCost', 'Power conversion system', 100, '$/kW', 0, 500, 5)}
       {field('bosE', 'Tanks and BOS (energy part)', 60, '$/kWh', 0, 300, 5)}
       {field('bosP', 'Pumps and BOS (power part)', 150, '$/kW', 0, 1000, 10)}
       {field('epc', 'EPC and installation', 20, '% of equipment', 0, 60, 1)}
       {field('om', 'Operations and maintenance', 15, '$/kW·yr', 0, 100, 1)}
       {field('rte', 'Round-trip efficiency (AC)', 72, '%', 50, 90, 1)}
-      {field('deg', 'Capacity fade per year', 0.3, '%', 0, 5, 0.1)}
-      {field('stackYear', 'Stack refurbishment year', 12, '', 1, 40, 1)}
+      {field('deg', 'Unrecovered capacity fade per year', 0.3, '%', 0, 5, 0.1)}
+      {field('stackYear', 'Stack refurbishment interval', 12, 'years', 1, 40, 1)}
       {field('stackRepl', 'Refurbishment cost', 50, '% of stack cost', 0, 100, 5)}
       {field('resid', 'Electrolyte residual value', 60, '% of electrolyte cost', 0, 100, 5)}
     </div>
-    <h4 class="eyebrow">Lithium-ion comparator</h4>
+    <h4 class="eyebrow">LFP comparator</h4>
     <div class="tool__grid">
-      {field('liCapex', 'Installed cost', 320, '$/kWh', 50, 1500, 5)}
-      {field('liRte', 'Round-trip efficiency (AC)', 87, '%', 60, 95, 1)}
-      {field('liLife', 'Project life', 15, 'years', 3, 30, 1)}
-      {field('liDeg', 'Capacity fade per year', 2, '%', 0, 10, 0.1)}
+      {field('liCapex', 'Installed cost (per nameplate kWh)', 250, '$/kWh', 50, 1500, 5)}
+      {field('liDod', 'Depth of discharge', 90, '%', 50, 100, 1)}
+      {field('liRte', 'Round-trip efficiency (AC)', 86, '%', 60, 95, 1)}
+      {field('liLife', 'Maximum calendar life', 15, 'years', 3, 30, 1)}
+      {field('liDeg', 'Calendar fade per year', 1.5, '%', 0, 10, 0.1)}
+      {field('liRepl', 'Replacement cost', 60, '% of first cost', 10, 120, 5)}
       {field('liOm', 'Operations and maintenance', 10, '$/kW·yr', 0, 100, 1)}
     </div>
-    <div class="stats">{stat('lcos', 'VRFB LCOS', True)}{stat('lcosLi', 'Li-ion LCOS')}{stat('capex', 'VRFB total capital cost')}{stat('perKwh', 'VRFB installed cost')}{stat('liPerKwh', 'Li-ion installed cost')}{stat('kg', 'V₂O₅ per kWh of capacity')}{stat('elecShare', 'Electrolyte share of capex')}</div>
+    <div class="stats">{stat('lcos', 'VRFB LCOS', True)}{stat('lcosLi', 'LFP LCOS')}{stat('capex', 'VRFB total capital cost')}{stat('perKwh', 'VRFB installed cost')}{stat('liPerKwh', 'LFP installed cost')}{stat('kg', 'V₂O₅ per usable kWh')}{stat('elecShare', 'Electrolyte share of capex')}{stat('vRepl', 'Stack refurbishment in year')}{stat('liRepl', 'LFP replaced in year')}</div>
     <div class="costbar" style="display:flex;height:22px;border-radius:8px;overflow:hidden;gap:2px;background:var(--bg-2)"></div>
     <div class="legend costbar-legend"></div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Levelised cost of storage against vanadium pentoxide price"></div>
-    <p class="note">Vanadium mass per kWh is derived from the concentration and SOC window at a 1.35 V nominal cell voltage; at 1.6 M and 80 % window that is about 6 kg of V₂O₅ per kWh. Residual value reflects that vanadium electrolyte can be recovered or re-leased at end of life.{cite(14, 17)} The lithium-ion line uses a 90 % usable window and no residual value.</p>
+    <p class="note">Both technologies are evaluated over the same project life. LFP is replaced when its capacity reaches 70 % or its calendar life ends, and whatever life is left at the end is credited as salvage. Vanadium per kWh is derived from the concentration and SOC window at 1.35 V and sized for the DC energy behind the discharge losses: about 7.4 kg of V₂O₅ per usable kWh at 1.6 M, an 80 % window and 72 % round-trip efficiency. Residual value reflects that vanadium electrolyte can be recovered or re-leased at end of life.{cite(14, 17, 21)} For every input, including electrolyte leasing, cycle fade, net present value, payback and sensitivity charts, open the <a href="{COMPARE}">comparison lab</a>.</p>
   </div>
 </section>
 <section id="vanadium-market">
   <h2>The vanadium question</h2>
-  <p>About 85 % of vanadium goes into steel as a strengthening additive, so its price follows the steel cycle rather than the battery market. The 2018 spike to above $25 per pound of V₂O₅ nearly doubled electrolyte costs; prices in the mid-2020s have been in the single digits per pound.{cite(17)}</p>
+  <p>Roughly 90 % of vanadium goes into steel as a strengthening additive, so its price follows the steel cycle rather than the battery market. The 2018 spike to above $25 per pound of V₂O₅ nearly doubled electrolyte costs; prices in the mid-2020s have been in the single digits per pound.{cite(17)}</p>
   <p>Two responses have emerged. <strong>Electrolyte leasing</strong> moves the vanadium off the project's balance sheet: the supplier retains ownership and recovers the metal at end of life, converting a capital cost into an operating fee.{cite(14)} <strong>Alternative electrolytes</strong> (mixed-acid, higher concentration) squeeze more energy from each kilogram.{cite(3, 18)}</p>
-  <div class="callout adv"><div class="eyebrow">Advanced · sensitivity</div><p>Because electrolyte is proportional to energy, LCOS sensitivity to vanadium price grows with duration. Doubling V₂O₅ from $10 to $20 per kg raises the calculator's default 8-hour LCOS by roughly a fifth; at 4 hours the effect is about half that. Stack cost sensitivity works the other way. This is why VRFB vendors target 6–12 hour applications while lithium-ion dominates 1–4 hours.{cite(5)}</p></div>
+  <div class="callout adv"><div class="eyebrow">Advanced · sensitivity</div><p>Because electrolyte is proportional to energy, LCOS sensitivity to vanadium price grows with duration. Doubling V₂O₅ from $10 to $20 per kg raises the calculator's default 8-hour LCOS by roughly a sixth; at 4 hours the effect is smaller, about an eighth. Stack cost sensitivity works the other way. This is why VRFB vendors target 6–12 hour applications while lithium-ion dominates 1–4 hours.{cite(5)}</p></div>
 </section>
 <section id="comparison">
   <h2>How the technologies compare</h2>
   <div class="table-wrap"><table><thead><tr><th>Metric</th><th>Vanadium flow</th><th>Lithium-ion (LFP)</th><th>Source</th></tr></thead><tbody>
   <tr><td>Round-trip efficiency (AC)</td><td class="num">65–80 %</td><td class="num">85–90 %</td><td>{cite(5)}</td></tr>
-  <tr><td>Cycle life</td><td class="num">&gt; 15 000–20 000, no electrolyte wear</td><td class="num">3 000–8 000</td><td>{cite(5, 16)}</td></tr>
-  <tr><td>Calendar life</td><td class="num">20–25 years (stack refurbishment ~12–15)</td><td class="num">10–15 years</td><td>{cite(5)}</td></tr>
+  <tr><td>Cycle life</td><td class="num">&gt; 10 000; makers claim 15 000–20 000; electrolyte capacity recoverable</td><td class="num">3 000–10 000 to 70–80 % capacity</td><td>{cite(5, 16)}</td></tr>
+  <tr><td>Calendar life</td><td class="num">20–25 years expected, stacks refurbished after 10–15</td><td class="num">10–20 years</td><td>{cite(5)}</td></tr>
   <tr><td>Energy density</td><td class="num">20–35 Wh/L</td><td class="num">250–400 Wh/L</td><td>{cite(2)}</td></tr>
-  <tr><td>Depth of discharge</td><td class="num">100 % without damage</td><td class="num">Typically 80–90 %</td><td>{cite(16)}</td></tr>
-  <tr><td>Fire risk</td><td>Aqueous, non-flammable</td><td>Thermal runaway possible</td><td>{cite(16)}</td></tr>
+  <tr><td>Depth of discharge</td><td class="num">Deep discharge does not damage the cell; 80 % window typical</td><td class="num">80–95 %</td><td>{cite(16)}</td></tr>
+  <tr><td>Fire behaviour</td><td>Water-based electrolyte does not burn; it is corrosive</td><td>Thermal runaway possible; managed by design and spacing</td><td>{cite(16)}</td></tr>
   <tr><td>Footprint</td><td>Large (tanks)</td><td>Compact</td><td>{cite(2)}</td></tr>
-  <tr><td>End-of-life</td><td>Electrolyte recoverable</td><td>Recycling still developing</td><td>{cite(14)}</td></tr>
+  <tr><td>End of life</td><td>Electrolyte can be recovered and reused</td><td>Recycling exists and is scaling up</td><td>{cite(14)}</td></tr>
   </tbody></table></div>
+  <p class="note">Ranges combine published assessments with manufacturer claims, labelled where they apply. Neither technology yet has decades of field data at grid scale, and neither is cheaper in every case: test your own assumptions in the <a href="{COMPARE}">comparison lab</a>.</p>
 </section>
 '''
 
 APPS = f'''
 <section id="why-flow">
   <h2>What flow batteries are for</h2>
-  <p>A VRFB is slow to build, heavy, and about 70–75 % efficient, so it is not a phone battery or a car battery. It is a <strong>stationary, long-duration</strong> battery: it cycles every day for decades without wearing out, cannot catch fire, and gets cheaper per kilowatt-hour the longer it is asked to run. Those properties match three jobs.{cite(5, 16)}</p>
+  <p>A VRFB is slow to build, heavy, and about 70–75 % efficient, so it is not a phone battery or a car battery. It is a <strong>stationary, long-duration</strong> battery: it is designed to cycle daily for decades with little permanent loss of capacity, its water-based electrolyte does not burn, and it gets cheaper per kilowatt-hour the longer it is asked to run. Those properties match three jobs.{cite(5, 16)}</p>
   <ul>
     <li><strong>Solar shifting.</strong> Store the midday surplus and deliver it over the evening peak, four to twelve hours later.</li>
     <li><strong>Grid services.</strong> Frequency regulation, peak shaving, deferring transmission upgrades, and black-start support.</li>
@@ -307,13 +314,13 @@ APPS = f'''
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Solar output, load and battery power over a day"></div>
     <div class="chart chart--soc" role="img" aria-label="Battery state of charge over a day" style="aspect-ratio:16/5;min-height:140px;margin-top:10px"></div>
-    <p class="note">Solar follows a clear-sky curve from 06:00 to 19:00; load is a base with a morning bump and an evening peak around 19:30. The battery charges only from solar surplus and discharges only into a deficit, with losses split evenly between charging and discharging. Try doubling the energy while keeping the power fixed: that is the VRFB's cheapest upgrade.</p>
+    <p class="note">Solar follows a clear-sky curve from 06:00 to 19:00; load is a base with a morning bump and an evening peak around 19:30. The battery charges only from solar surplus and discharges only into a deficit, with losses split evenly between charging and discharging. Try doubling the energy while keeping the power fixed: that is the VRFB's cheapest upgrade. To design a whole project step by step, with economics and downloads, open the <a href="{PROJECT}">project builder</a>.</p>
   </div>
 </section>
 <section id="case-studies">
   <h2>Flagship installations</h2>
   <div class="table-wrap"><table><thead><tr><th>Project</th><th class="num">Power / energy</th><th>Year</th><th>Role</th><th>Source</th></tr></thead><tbody>
-  <tr><td>Dalian Flow Battery Energy Storage Peak-shaving Power Station, China (Rongke Power / DICP)</td><td class="num">100 MW / 400 MWh (phase 1)</td><td>2022</td><td>Peak shaving and renewable integration for the Dalian grid; largest flow battery in the world</td><td>{cite(7)}</td></tr>
+  <tr><td>Dalian Flow Battery Energy Storage Peak-shaving Power Station, China (Rongke Power / DICP)</td><td class="num">100 MW / 400 MWh (phase 1)</td><td>2022</td><td>Peak shaving and renewable integration for the Dalian grid; the largest flow battery in the world when commissioned</td><td>{cite(7)}</td></tr>
   <tr><td>Hokkaido Electric Power Network, Minami-Hayakita substation, Japan (Sumitomo Electric)</td><td class="num">15 MW / 60 MWh, then 17 MW / 51 MWh</td><td>2015, 2022</td><td>Smoothing wind and solar output; frequency and voltage support</td><td>{cite(8)}</td></tr>
   <tr><td>Energy Superhub Oxford, UK (Invinity)</td><td class="num">2 MW / 5 MWh (hybrid with Li-ion)</td><td>2022</td><td>Grid services alongside EV charging in a hybrid battery</td><td>{cite(12)}</td></tr>
   <tr><td>San Diego Gas &amp; Electric, Escondido, USA (Sumitomo Electric)</td><td class="num">2 MW / 8 MWh</td><td>2017</td><td>Four-hour distribution-level demonstration</td><td>{cite(12)}</td></tr>
@@ -350,11 +357,18 @@ REFS = [
  ('Lourenssen, K., Williams, J., Ahmadpour, F., Clemmer, R., Tasnim, S. (2019). Vanadium redox flow batteries: A comprehensive review. <em>Journal of Energy Storage</em>, 25, 100844.', 'https://doi.org/10.1016/j.est.2019.100844'),
  ('Vanitec. Vanadium price information (V₂O₅ flake, ferrovanadium), historical series.', 'https://vanitec.org/vanadium/price'),
  ('Roe, S., Menictas, C., Skyllas-Kazacos, M. (2016). A High Energy Density Vanadium Redox Flow Battery with 3 M Vanadium Electrolyte. <em>Journal of The Electrochemical Society</em>, 163(1), A5023–A5028.', 'https://doi.org/10.1149/2.0041601jes'),
+ ('U.S. Department of Energy, Office of Electricity (2023). <em>Technology Strategy Assessment: Findings from Storage Innovations 2030 — Flow Batteries</em>.', 'https://www.energy.gov/oe/storage-innovations-2030'),
+ ('Tang, A., Bao, J., Skyllas-Kazacos, M. (2014). Studies on pressure losses and flow rate optimization in vanadium redox flow battery. <em>Journal of Power Sources</em>, 248, 154–162.', 'https://doi.org/10.1016/j.jpowsour.2013.09.071'),
+ ('Rodby, K. E., Carney, T. J., Ashraf Gandomi, Y., Barton, J. L., Darling, R. M., Brushett, F. R. (2020). Assessing the levelized cost of vanadium redox flow batteries with capacity fade and rebalancing. <em>Journal of Power Sources</em>, 460, 227958.', 'https://doi.org/10.1016/j.jpowsour.2020.227958'),
+ ('Schmidt, O., Melchior, S., Hawkes, A., Staffell, I. (2019). Projecting the Future Levelized Cost of Electricity Storage Technologies. <em>Joule</em>, 3(1), 81–100.', 'https://doi.org/10.1016/j.joule.2018.12.008'),
+ ('National Renewable Energy Laboratory. Annual Technology Baseline: Utility-Scale Battery Storage (cost and performance projections for lithium-ion systems).', 'https://atb.nrel.gov/electricity/2024/utility-scale_battery_storage'),
 ]
 REFS_BODY = '''
 <section id="how-to-read">
   <h2>How this site is sourced</h2>
   <p>Every bracketed number on the site links to an entry below. Standard electrode potentials, concentrations, temperature limits and efficiencies come from peer-reviewed reviews and primary papers; cost figures come from U.S. national-laboratory and industry assessments and are presented as ranges or editable assumptions, never as quotes. Where a value is a rule of thumb or a model simplification, the page says so next to the number.</p>
+  <p>Four kinds of number appear on the site, and they are not equally solid:</p>
+  <div class="provenance"><span class="chip chip--measured"><i></i>Measured data: laboratory or field measurements from the cited papers</span><span class="chip chip--model"><i></i>Model results: calculated by this site's documented, tested models</span><span class="chip chip--illustrative"><i></i>Illustrative defaults: editable starting values inside published ranges</span><span class="chip chip--claim"><i></i>Manufacturer claims: stated by suppliers, not independently verified here</span></div>
   <p>Links point to DOIs or publisher pages where available. If you find an error or a better source, open an issue on <a href="https://github.com/RuibinRay/VRFB-Info/issues">the repository</a>.</p>
 </section>
 <section id="references">
@@ -367,18 +381,22 @@ REFS_BODY = '''
     <li><strong>E° values.</strong> −0.255 V (V³⁺/V²⁺) and +1.004 V (VO₂⁺/VO²⁺) vs SHE are the widely tabulated standard potentials; the literature also quotes −0.26 V and +1.00 V. The cell standard potential is therefore 1.26 V.</li>
     <li><strong>Open-circuit voltage.</strong> ≈ 1.40 V at 50 % SOC is the measured value discussed by Knehr and Kumbur [15]; the simple Nernst form predicts about 1.34 V in 5 M acid.</li>
     <li><strong>Energy density.</strong> 20–35 Wh/L refers to the total of both electrolytes; some sources quote per-side values twice as high.</li>
-    <li><strong>Costs.</strong> The calculator defaults (stack $650/kW, V₂O₅ $18/kg, BOS $60/kWh + $150/kW, Li-ion $320/kWh) are illustrative values within the ranges in [5], [6] and [14], not vendor data. Change them to your own.</li>
+    <li><strong>Costs.</strong> The calculator defaults (stacks $450/kW, power conversion $100/kW, V₂O₅ $18/kg, balance of system $60/kWh + $150/kW, LFP $250 per nameplate kWh) are illustrative values within the ranges in [5], [6], [14], [19] and [23], not vendor data. Battery prices, LFP prices especially, change quickly: replace them with current figures.</li>
+    <li><strong>Lifetimes.</strong> Cycle-life and calendar-life figures above about 10 000 cycles or 20 years are design targets or manufacturer claims for both technologies; long-term field data at grid scale is still limited [5], [19].</li>
+    <li><strong>Efficiency.</strong> 65–80 % AC round trip for vanadium flow systems and 85–90 % for LFP are ranges from [5]; a specific product may sit outside them.</li>
+    <li><strong>Flow and pumping.</strong> Flow factors of 5–10 and pump shares of 2–5 % are typical values from [14] and [20]; the optimum depends on the stack design and the state of charge.</li>
+    <li><strong>Models.</strong> The calculation modules behind every tool are in <code>js/sim/</code> of the repository and are covered by automated tests (<code>npm test</code>), including energy balance, charge balance of the reactions and hand-checked LCOS cases.</li>
     <li><strong>Project figures.</strong> Dalian phase 1 (100 MW / 400 MWh, 2022) per DICP/Rongke Power announcements [7]; Hokkaido figures per Sumitomo Electric [8].</li>
   </ul>
 </section>
 '''
 
 PAGES = [
- dict(slug='chemistry', title='Chemistry', accent='#a36bff', kicker='Pillar 01 · Chemistry', lede='Why one metal in four oxidation states makes a battery that never wears out its fuel: the half-reactions, the Nernst equation, and an interactive open-circuit-voltage explorer.', toc=[('why-vanadium', 'Four oxidation states'), ('half-reactions', 'Half-reactions'), ('nernst', 'Nernst equation & explorer'), ('electrolyte', 'The electrolyte'), ('side-reactions', 'Side reactions')], body=CHEM, scripts=['chemistry']),
+ dict(slug='chemistry', title='Chemistry', accent='#a36bff', kicker='Pillar 01 · Chemistry', lede='Why one metal in four oxidation states makes a battery whose active material is not used up: the half-reactions, the Nernst equation, and an interactive open-circuit-voltage explorer.', toc=[('why-vanadium', 'Four oxidation states'), ('half-reactions', 'Half-reactions'), ('nernst', 'Nernst equation & explorer'), ('electrolyte', 'The electrolyte'), ('side-reactions', 'Side reactions')], body=CHEM, scripts=['chemistry']),
  dict(slug='anatomy', title='Battery anatomy', accent='#26d9e3', kicker='Pillar 02 · Anatomy', lede='Every layer of the stack and every box on the skid: what it is made of, what it does, and how it fails.', toc=[('overview', 'Cell to power station'), ('components', 'The stack, layer by layer'), ('balance-of-plant', 'Balance of plant'), ('failure-modes', 'Failure and maintenance')], body=ANAT),
  dict(slug='engineering', title='Engineering', accent='#5ee37a', kicker='Pillar 03 · Engineering', lede='Sizing stacks, tanks and pumps; where the efficiency goes; thermal limits; and a calculator that designs a system from first principles.', toc=[('power-vs-energy', 'Power vs energy'), ('sizing-tool', 'Sizing calculator'), ('efficiency', 'Efficiency'), ('thermal', 'Thermal & flow'), ('scaling', 'Scaling up')], body=ENG, scripts=['engineering']),
  dict(slug='economics', title='Economics', accent='#ff9b2f', kicker='Pillar 04 · Economics', lede='What a vanadium flow battery costs, why the vanadium price matters, and a levelised-cost-of-storage calculator to compare it with lithium-ion.', toc=[('cost-structure', 'Cost structure'), ('lcos-tool', 'LCOS calculator'), ('vanadium-market', 'The vanadium question'), ('comparison', 'Technology comparison')], body=ECON, scripts=['economics']),
  dict(slug='applications', title='Real-world applications', accent='#ffd23f', kicker='Pillar 05 · Applications', lede='Solar shifting, grid services and the flagship projects from Dalian to Hokkaido, with a 24-hour dispatch simulator.', toc=[('why-flow', 'What they are for'), ('dispatch-tool', 'Dispatch simulator'), ('case-studies', 'Flagship installations'), ('integration', 'Grid integration'), ('outlook', 'Outlook')], body=APPS, scripts=['applications']),
- dict(slug='references', title='Sources & citations', accent='#26d9e3', kicker='Verified data', lede='Every number on this site traces back to one of the sources below.', toggle=False, toc=[('how-to-read', 'How this site is sourced'), ('references', 'References'), ('data-notes', 'Notes on specific numbers')], body=REFS_BODY),
+ dict(slug='references', title='Sources & citations', accent='#26d9e3', kicker='Verified data', lede='Every number on this site traces back to one of the sources below, and is labelled as measured, modelled, illustrative or claimed.', toggle=False, toc=[('how-to-read', 'How this site is sourced'), ('references', 'References'), ('data-notes', 'Notes on specific numbers')], body=REFS_BODY),
 ]
 

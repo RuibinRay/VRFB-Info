@@ -14,27 +14,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/labs.css">
   <style>:root { --accent: #26d9e3; }</style>
 </head>
-<body class="page" data-level="beginner" data-lang="es">
-  <header class="topbar">
-    <a class="brand" href="../../?lang=es">
-      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
-      <span>VRFB<small>La ciencia de la energía de flujo</small></span>
-    </a>
-    <nav class="nav" id="nav" aria-label="Pilar"><a href="../../?lang=es">Recorrido</a><a href="chemistry.html">Química</a><a href="anatomy.html" aria-current="page">Anatomía</a><a href="engineering.html">Ingeniería</a><a href="economics.html">Economía</a><a href="applications.html">Aplicaciones</a><a href="references.html">Fuentes</a></nav>
-    <div class="topbar__right">
-      <div class="lang-switch" role="group"><a href="../anatomy.html" lang="en" data-lang="en" title="English">EN</a><a href="../es/anatomy.html" lang="es" data-lang="es" title="Español" aria-current="true">ES</a><a href="../zh/anatomy.html" lang="zh" data-lang="zh" title="中文">中文</a></div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
+<body class="page" data-level="beginner" data-lang="es" data-root="../../" data-slug="anatomy">
+  <header class="topbar" id="topbar"><a class="brand" href="../../?lang=es"><span>VRFB<small>La ciencia de la energía de flujo</small></span></a></header>
   <main>
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="eyebrow">Pilar 02 · Anatomía</div>
       <h1>Anatomía de la batería</h1>
       <p class="lede">Cada capa de la pila y cada caja de la bancada: de qué está hecha, qué hace y cómo falla.</p>
-      <div class="level" role="group" aria-label="Nivel de lectura"><button type="button" data-level="beginner">Principiante</button><button type="button" data-level="advanced">Avanzado</button></div><p class="level-note">El nivel avanzado muestra las ecuaciones, las tablas de datos y las notas de modelado.</p>
+      <div class="level" role="group" aria-label="Nivel de aprendizaje"><button type="button" data-level-set="beginner">Principiante</button><button type="button" data-level-set="intermediate">Intermedio</button><button type="button" data-level-set="advanced">Avanzado</button></div><p class="level-note">El nivel intermedio añade las cifras de ingeniería; el avanzado añade las ecuaciones y las notas de modelado. La mayoría de las secciones termina con una lección: una explicación a tu nivel, un diagrama animado, un ejemplo resuelto, un experimento y una comprobación rápida.</p>
     </section>
     <div class="page-body">
       <aside class="toc" aria-label="En esta página"><div class="eyebrow">En esta página</div><ol><li><a href="#overview">De la celda a la central</a></li><li><a href="#components">La pila, capa por capa</a></li><li><a href="#balance-of-plant">Balance de planta</a></li><li><a href="#failure-modes">Fallos y mantenimiento</a></li></ol></aside>
@@ -45,6 +36,7 @@
   <p>Una VRFB son tres cosas atornilladas entre sí: una <strong>pila</strong> (stack) que convierte química en corriente, unos <strong>tanques</strong> que almacenan la química y un <strong>balance de planta</strong> (bombas, tuberías, electrónica de potencia y controles) que mueve líquido y electrones entre ambos. La pila decide la potencia en kilovatios; los tanques deciden la energía en kilovatios-hora; y ambos pueden dimensionarse de forma independiente.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-4">[4]</a></span></p>
   <figure class="figure"><img src="../../assets/img/stack-exploded.webp" alt="Vista explosionada de una celda de VRFB entre sus placas terminales" loading="lazy"><figcaption>Una celda explosionada: placa terminal, colector de cobre, marco de flujo, placa bipolar, fieltro, membrana, fieltro, placa bipolar, marco de flujo, colector, placa terminal. Las mismas capas se modelan en el recorrido de la página de inicio.</figcaption></figure>
   <p>Dentro de la pila, cada celda es un sándwich: una membrana entre dos electrodos de fieltro de carbono, cada uno respaldado por una placa bipolar. Las celdas se apilan eléctricamente en serie e hidráulicamente en paralelo, alimentadas por colectores que recorren toda la pila.<span class="cite"><a href="references.html#ref-4">[4]</a></span></p>
+  <div class="kit" data-lesson="anat-cell"></div>
 </section>
 <section id="components">
   <h2>La pila, capa por capa</h2>
@@ -82,6 +74,7 @@
     <h3>Tirantes y bridas de apriete</h3>
     <div class="figure" style="display:grid;grid-template-columns:140px 1fr;gap:0;align-items:start"><img src="../../assets/img/stack-assembled.webp" alt="Tirantes y bridas de apriete" loading="lazy" style="width:140px;aspect-ratio:1;object-fit:cover"><div style="padding:14px 18px"><p style="margin-bottom:8px">Varillas roscadas que pasan por los orificios de las esquinas y aprietan las placas terminales entre sí; las bridas externas mantienen las placas planas. Se aprietan en estrella, como una rueda, para sellar de forma uniforme.</p><dl style="display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:0.88rem"><dt class="muted">Material</dt><dd style="margin:0">Acero inoxidable con manguitos aislantes</dd><dt class="muted">Cantidad</dt><dd style="margin:0">4–12 por pila</dd></dl><p class="muted" style="margin:8px 0 0;font-size:0.8rem">Fuentes <span class="cite"><a href="references.html#ref-4">[4]</a></span></p></div></div>
   </article>
+  <div class="kit" data-lesson="anat-membrane"></div>
 </section>
 <section id="balance-of-plant">
   <h2>Balance de planta</h2>
@@ -95,6 +88,7 @@
   <tr><td>Intercambiador de calor</td><td>Mantiene el electrolito en la ventana de 10–40 °C</td><td>Necesario en climas cálidos; a menudo líquido-aire<span class="cite"><a href="references.html#ref-11">[11]</a></span></td></tr>
   </tbody></table></div>
   <div class="callout adv"><div class="eyebrow">Avanzado · corrientes de derivación</div><p>Como todas las celdas comparten el mismo electrolito conductor a través de los colectores, existe un camino eléctrico paralelo alrededor de cada celda. Las corrientes de derivación resultantes desperdician carga y corroen las placas cercanas a los extremos de la pila. Los diseñadores alargan los canales de entrada de cada marco de flujo, limitan el número de celdas por colector y a veces dividen las pilas largas en módulos hidráulicamente separados para mantener esta pérdida en pocos puntos porcentuales.<span class="cite"><a href="references.html#ref-4">[4]</a><a href="references.html#ref-14">[14]</a></span></p></div>
+  <div class="kit" data-lesson="anat-bop"></div>
 </section>
 <section id="failure-modes">
   <h2>Cómo fallan las pilas y cómo se mantienen</h2>
@@ -111,8 +105,8 @@
       </article>
     </div>
   </main>
-  <footer class="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
-  <script src="../../js/pillar.js"></script>
+  <footer class="footer" id="footer"><div class="footer__inner"><span>VRFB — La ciencia de la energía de flujo · Educativo, sin fines comerciales.</span><span><a href="references.html">Fuentes y citas</a> · <a href="../../?lang=es">Volver al recorrido</a></span></div></footer>
+  <script type="module" src="../../js/pillar.js"></script>
   
 </body>
 </html>

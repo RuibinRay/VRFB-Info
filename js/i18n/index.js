@@ -9,7 +9,7 @@
  * Elements carrying data-i18n get their innerHTML from the dictionary.
  */
 export const LANGS = { en: { short: 'EN', name: 'English', html: 'en' }, es: { short: 'ES', name: 'Español', html: 'es' }, zh: { short: '中文', name: '中文', html: 'zh-CN' } };
-let dict = {}, lang = 'en', root = '';
+let dict = {}, lang = 'en', root = '', staticPage = false;
 
 export function detect() {
   const q = new URLSearchParams(location.search).get('lang');
@@ -29,7 +29,8 @@ export function detect() {
 export async function init(opts = {}) {
   if (Array.isArray(opts)) opts = { extra: opts };
   root = opts.root || '';
-  lang = opts.lang && LANGS[opts.lang] ? opts.lang : detect();
+  staticPage = !!(opts.lang && LANGS[opts.lang]);   // per-language static page: keep its own <title> and lang
+  lang = staticPage ? opts.lang : detect();
   const [base, ...bundles] = await Promise.all([import(`./${lang}.js`), ...(opts.extra || []).map(n => import(`./${n}.${lang}.js`))]);
   dict = { ...base.default };
   (opts.extra || []).forEach((n, i) => { dict[n] = bundles[i].default; });
@@ -59,7 +60,7 @@ export function applyDom(scope = document) {
   scope.querySelectorAll('[data-pillar]').forEach(el => { el.setAttribute('href', pillarPath(el.dataset.pillar) + (el.dataset.hash || '')); });
   scope.querySelectorAll('[data-page]').forEach(el => { el.setAttribute('href', pagePath(el.dataset.page, el.dataset.hash || '')); });
   scope.querySelectorAll('.chapter[data-chapter]').forEach(el => { const v = t(`chapters.${el.dataset.chapter}.title`); if (v) el.dataset.title = v; });
-  if (scope === document) {
+  if (scope === document && !staticPage) {
     const key = document.body.dataset.titleKey || 'meta.title';
     const title = t(key); if (title) document.title = key === 'meta.title' ? title : `${title} — ${t('meta.site', 'VRFB')}`;
     const desc = t(document.body.dataset.descKey || 'meta.description'); const m = document.querySelector('meta[name="description"]'); if (desc && m) m.setAttribute('content', String(desc).replace(/<[^>]+>/g, ''));
