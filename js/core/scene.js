@@ -24,7 +24,7 @@ export function createScene(canvas, env) {
   const fill = new THREE.DirectionalLight(0x8fb6ff, 0.7); fill.position.set(-6, 3, -2);
   const rim = new THREE.DirectionalLight(0x26d9e3, 1.0); rim.position.set(-3, 2.5, -7);
   const rim2 = new THREE.DirectionalLight(0xff9b2f, 0.6); rim2.position.set(5, 1.5, -6);
-  const amb = new THREE.HemisphereLight(0x3c4a66, 0x05070b, 0.5);
+  const amb = new THREE.HemisphereLight(0x52648a, 0x080b12, 0.75);
   scene.add(key, fill, rim, rim2, amb);
 
   function resize() {

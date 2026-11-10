@@ -91,6 +91,50 @@ export function panelTexture() {
   return tex(c, true);
 }
 
+
+/** Soft radial glow for additive sprites (halos, light pools). */
+export function glowTexture() {
+  const c = canvas(128, 128); const g = c.getContext('2d');
+  const grd = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+  grd.addColorStop(0, 'rgba(255,255,255,1)'); grd.addColorStop(0.25, 'rgba(255,255,255,0.55)'); grd.addColorStop(0.6, 'rgba(255,255,255,0.12)'); grd.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = grd; g.fillRect(0, 0, 128, 128);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+
+/** Pressure-gauge face with tick marks and a needle. */
+export function dialTexture() {
+  const c = canvas(128, 128); const g = c.getContext('2d');
+  g.fillStyle = '#f2f4f7'; g.beginPath(); g.arc(64, 64, 62, 0, Math.PI * 2); g.fill();
+  g.strokeStyle = '#1b2230'; g.lineWidth = 3;
+  for (let i = 0; i <= 10; i++) { const a = Math.PI * 0.75 + i * Math.PI * 1.5 / 10; g.beginPath(); g.moveTo(64 + Math.cos(a) * 46, 64 + Math.sin(a) * 46); g.lineTo(64 + Math.cos(a) * 56, 64 + Math.sin(a) * 56); g.stroke(); }
+  g.strokeStyle = '#2bb673'; g.lineWidth = 6; g.beginPath(); g.arc(64, 64, 40, Math.PI * 0.75, Math.PI * 1.6); g.stroke();
+  g.strokeStyle = '#e5484d'; g.beginPath(); g.arc(64, 64, 40, Math.PI * 1.9, Math.PI * 2.25); g.stroke();
+  g.strokeStyle = '#d9361e'; g.lineWidth = 4; g.beginPath(); g.moveTo(64, 64); g.lineTo(64 + Math.cos(Math.PI * 1.35) * 44, 64 + Math.sin(Math.PI * 1.35) * 44); g.stroke();
+  g.fillStyle = '#1b2230'; g.beginPath(); g.arc(64, 64, 6, 0, Math.PI * 2); g.fill();
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t;
+}
+
+/** Poured-concrete pad: mottled grey with expansion joints. */
+export function concreteTexture() {
+  const c = canvas(512, 512); const g = c.getContext('2d'); const r = mulberry(21);
+  g.fillStyle = '#8f96a0'; g.fillRect(0, 0, 512, 512);
+  for (let i = 0; i < 14000; i++) { const k = 110 + r() * 80; g.fillStyle = `rgba(${k},${k + 2},${k + 6},${0.05 + r() * 0.1})`; const s = 1 + r() * 5; g.fillRect(r() * 512, r() * 512, s, s); }
+  g.strokeStyle = 'rgba(30,34,42,0.55)'; g.lineWidth = 2;
+  for (let i = 0; i <= 512; i += 128) { g.beginPath(); g.moveTo(i, 0); g.lineTo(i, 512); g.moveTo(0, i); g.lineTo(512, i); g.stroke(); }
+  const t = tex(c, true); t.repeat.set(4, 4); return t;
+}
+
+/** Corrugated battery-container wall with a door outline and vents. */
+export function containerTexture() {
+  const c = canvas(512, 256); const g = c.getContext('2d');
+  g.fillStyle = '#c7ccd3'; g.fillRect(0, 0, 512, 256);
+  for (let x = 0; x < 512; x += 16) { g.fillStyle = 'rgba(0,0,0,0.10)'; g.fillRect(x, 0, 6, 256); g.fillStyle = 'rgba(255,255,255,0.10)'; g.fillRect(x + 8, 0, 4, 256); }
+  g.strokeStyle = 'rgba(20,24,32,0.45)'; g.lineWidth = 3; g.strokeRect(24, 30, 150, 210); g.strokeRect(190, 30, 150, 210);
+  g.fillStyle = '#5d646e'; for (let i = 0; i < 8; i++) g.fillRect(376, 44 + i * 12, 110, 5);
+  g.fillStyle = '#26d9e3'; g.fillRect(376, 170, 110, 6);
+  return tex(c, true);
+}
+
 export function buildTextures() {
-  return { brushed: brushedTexture(), serp: serpentineTextures(), felt: feltTexture(), louver: louverTexture(), panel: panelTexture() };
+  return { brushed: brushedTexture(), serp: serpentineTextures(), felt: feltTexture(), louver: louverTexture(), panel: panelTexture(), glow: glowTexture(), dial: dialTexture(), concrete: concreteTexture(), container: containerTexture() };
 }

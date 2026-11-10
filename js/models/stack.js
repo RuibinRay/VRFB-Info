@@ -4,6 +4,8 @@ import { SERP } from './textures.js';
 
 export const STACK = { H: 1.2, W: 0.9, cells: 8, center: 4 };
 const END_TYPES = new Set(['endplate', 'collector', 'gasket']);
+/** Distance the layers right of the centre flow field slide away when state.reveal = 1. */
+export const REVEAL = 1.8;
 
 /**
  * Procedural VRFB stack: end plates, collectors, flow frames, bipolar plates,
@@ -36,6 +38,7 @@ export function buildStack(M, T, opts = {}) {
     ridge: new THREE.TorusGeometry(0.052, 0.008, 8, 24).rotateY(Math.PI / 2),
     collar: new THREE.CylinderGeometry(0.07, 0.07, 0.03, 24).rotateZ(Math.PI / 2),
     oring: new THREE.TorusGeometry(0.08, 0.016, 10, 32).rotateY(Math.PI / 2),
+    washer: new THREE.CylinderGeometry(0.05, 0.036, 0.012, 16).rotateZ(Math.PI / 2),
   };
 
   const mark = (mesh, id, extra = {}) => { mesh.userData.component = id; Object.assign(mesh.userData, extra); mesh.castShadow = shadows; mesh.receiveShadow = shadows; return mesh; };
@@ -115,13 +118,18 @@ export function buildStack(M, T, opts = {}) {
   const frame = new THREE.Group(); group.add(frame);
   const rods = corner.map(([z, y]) => { const r = new THREE.Mesh(rodGeometry(0.016), M.steel()); r.position.set(0, y * 1.12, z * 1.1); r.userData.component = 'tierod'; r.castShadow = shadows; frame.add(r); pickables.push(r); return r; });
   const nuts = [];
-  corner.forEach(([z, y]) => [-1, 1].forEach(s => { const n = new THREE.Mesh(G.nut, M.steel()); n.position.set(0, y * 1.12, z * 1.1); n.userData.component = 'tierod'; n.userData.side = s; frame.add(n); nuts.push(n); }));
+  corner.forEach(([z, y]) => [-1, 1].forEach(s => {
+    const n = new THREE.Mesh(G.nut, M.steel()); n.position.set(0, y * 1.12, z * 1.1); n.userData.component = 'tierod'; n.userData.side = s; frame.add(n); nuts.push(n);
+    // disc-spring stack under each nut keeps the clamping force constant as gaskets creep
+    [0.03, 0.045, 0.06].forEach((dx, i) => { const w = new THREE.Mesh(G.washer, M.steelPolished()); w.position.x = -s * dx; w.scale.setScalar(i === 1 ? 0.82 : 1); w.userData.component = 'tierod'; w.castShadow = shadows; n.add(w); });
+  }));
 
   // --- anchors used by the camera timeline ---------------------------------
   const find = (type, cell) => layers.find(L => L.type === type && L.cell === cell);
   const anchors = {
     membraneX: find('membrane', C).xe,
     bipolarFaceX: find('bipolar', C).xe + 0.0205,
+    feltX: find('felt_neg', C).xe,
     compactHalf: total / 2 + 0.06,
     explodedHalf: span / 2 + 0.06,
   };
@@ -145,7 +153,7 @@ export function buildStack(M, T, opts = {}) {
   const revealFrom = layers.indexOf(find('bipolar', C)) + 1;
   function update(state) {
     const e = state.explode, rv = state.reveal || 0;
-    for (let i = 0; i < layers.length; i++) { const L = layers[i]; L.mesh.position.x = L.xc + (L.xe - L.xc) * e + (i >= revealFrom ? rv * 1.8 : 0); }
+    for (let i = 0; i < layers.length; i++) { const L = layers[i]; L.mesh.position.x = L.xc + (L.xe - L.xc) * e + (i >= revealFrom ? rv * REVEAL : 0); }
     const xl = layers[0].mesh.position.x - 0.06 - 0.21, xr = layers[layers.length - 1].mesh.position.x + 0.06 + 0.21;
     rods.forEach(r => { r.scale.x = (xr - xl) + 0.2; r.position.x = (xl + xr) / 2; });
     nuts.forEach(n => { n.position.x = n.userData.side < 0 ? xl + 0.02 : xr - 0.02; });

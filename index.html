@@ -32,60 +32,66 @@
     <div><div class="loader__ring"></div><p data-i18n="loader">Building the cell</p></div>
   </div>
 
-  <canvas id="stage" aria-label="3D model of a vanadium redox flow battery system that responds to scrolling"></canvas>
+  <div class="poster" aria-hidden="true"></div>
+  <canvas id="stage" aria-label="3D model of a vanadium redox flow battery installation that responds to scrolling"></canvas>
   <div class="iris" id="iris"></div>
   <div class="labels" id="labels"></div>
 
-  <header class="topbar">
-    <a class="brand" href="./">
-      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="6" width="9" height="20" rx="2" stroke="#26d9e3" stroke-width="2"/><rect x="20" y="6" width="9" height="20" rx="2" stroke="#ff9b2f" stroke-width="2"/><path d="M12 12h8M12 20h8" stroke="#e8edf5" stroke-width="2"/></svg>
-      <span>VRFB<small data-i18n="hero.sub">Science of Flow Energy</small></span>
-    </a>
-    <nav class="nav" id="nav" aria-label="Pillars">
-      <a href="./" aria-current="page" data-i18n="nav.home">Journey</a>
-      <a href="pillars/chemistry.html" data-pillar="chemistry" data-i18n="nav.chemistry">Chemistry</a>
-      <a href="pillars/anatomy.html" data-pillar="anatomy" data-i18n="nav.anatomy">Anatomy</a>
-      <a href="pillars/engineering.html" data-pillar="engineering" data-i18n="nav.engineering">Engineering</a>
-      <a href="pillars/economics.html" data-pillar="economics" data-i18n="nav.economics">Economics</a>
-      <a href="pillars/applications.html" data-pillar="applications" data-i18n="nav.applications">Applications</a>
-      <a href="pillars/references.html" data-pillar="references" data-i18n="nav.references">Sources</a>
-    </nav>
-    <div class="topbar__right">
-      <div class="lang-switch" role="group" aria-label="Language" data-i18n-attr="aria-label:nav.language">
-        <button type="button" data-set-lang="en" lang="en" title="English">EN</button>
-        <button type="button" data-set-lang="es" lang="es" title="Español">ES</button>
-        <button type="button" data-set-lang="zh" lang="zh" title="中文">中文</button>
-      </div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" data-i18n-attr="aria-label:nav.menu">☰</button>
-    </div>
-  </header>
+  <header class="topbar" id="topbar"></header>
 
   <nav class="chapters-nav" id="chapters-nav" aria-label="Chapters"></nav>
 
   <main id="scroll-track" class="scroll-track">
 
-    <section class="chapter" data-chapter="hero" data-title="The system" style="--vh:170">
+    <section class="chapter" data-chapter="hero" data-title="Installation" style="--vh:170">
       <div class="chapter__sticky">
         <div class="caption caption--hero">
           <div class="eyebrow" data-i18n="hero.eyebrow">Interactive scientific documentary</div>
           <h1>VRFB</h1>
           <p class="sub" data-i18n="hero.sub">The Science of Flow Energy</p>
-          <p class="lede" data-i18n="hero.lede">A battery that stores electricity in two tanks of liquid vanadium. Scroll to zoom in, take the stack apart layer by layer, watch electrons change hands, follow the electrolyte, and put it all back together before plugging it into the grid.</p>
+          <p class="lede" data-i18n="hero.lede">A battery that stores electricity in two tanks of liquid vanadium.</p>
           <div class="actions">
-            <a class="btn btn--primary" href="#pillars" data-i18n="hero.cta1">Jump to the five pillars</a>
-            <a class="btn btn--ghost" href="pillars/references.html" data-pillar="references" data-i18n="hero.cta2">Verified sources</a>
+            <a class="btn btn--primary" href="lab.html" data-page="lab" data-i18n="hero.cta1">Explore the 3D lab</a>
+            <a class="btn btn--ghost" href="learn.html" data-page="learn" data-i18n="hero.cta2">Start the course</a>
           </div>
         </div>
-        <div class="scroll-cue" data-i18n="hero.scroll">Scroll</div>
+        <div class="scroll-cue" data-i18n="hero.scroll">Scroll to begin</div>
       </div>
     </section>
 
-    <section class="chapter" data-chapter="approach" data-title="The stack" style="--vh:130">
+    <section class="chapter" data-chapter="approach" data-title="Fly in" style="--vh:150">
       <div class="chapter__sticky">
         <div class="caption caption--right caption--glass">
           <div class="eyebrow" data-i18n="chapters.approach.eyebrow">01 · Power and energy, separated</div>
           <h2 data-i18n="chapters.approach.h2">Power lives in the stack. Energy lives in the tanks.</h2>
-          <p data-i18n="chapters.approach.p">Dozens of cells are pressed between two steel end plates. Their total electrode area sets how many kilowatts the battery can deliver. The two tanks beside it hold the electrolyte, and their volume alone sets how many hours it can run. Need more hours? Buy bigger tanks, not more stacks.<span class="cite">[2]</span></p>
+          <p data-i18n="chapters.approach.p">Dozens of cells are pressed between two steel end plates.</p>
+          <p class="more lv-i" data-i18n="chapters.approach.i"></p>
+          <p class="more lv-a" data-i18n="chapters.approach.a"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="plant" data-title="Tanks & pumps" style="--vh:220">
+      <div class="chapter__sticky">
+        <div class="caption caption--glass caption--bottom">
+          <div class="eyebrow" data-i18n="chapters.plant.eyebrow">02 · Tanks, pumps and pipes</div>
+          <h2 data-i18n="chapters.plant.h2">Watch the colour change as it charges.</h2>
+          <p data-i18n="chapters.plant.p">Nothing is plated, nothing is burned.</p>
+          <p class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 13V5a2 2 0 1 1 4 0v6M12 11V9a2 2 0 1 1 4 0v3M16 12a2 2 0 1 1 4 0v3a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.3L3.7 15a2 2 0 0 1 3.3-2.3L8 14"/></svg> <span data-i18n="chapters.plant.hint">Click any component for its specification</span></p>
+          <p class="more lv-i" data-i18n="chapters.plant.i"></p>
+          <p class="more lv-a" data-i18n="chapters.plant.a"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="pipe" data-title="Electrolyte loops" style="--vh:160">
+      <div class="chapter__sticky">
+        <div class="caption caption--glass">
+          <div class="eyebrow" data-i18n="chapters.pipe.eyebrow">03 · Follow the electrolyte</div>
+          <h2 data-i18n="chapters.pipe.h2">Two closed loops that never mix.</h2>
+          <p data-i18n="chapters.pipe.p">Each electrolyte travels its own circuit.</p>
+          <p class="more lv-i" data-i18n="chapters.pipe.i"></p>
+          <p class="more lv-a" data-i18n="chapters.pipe.a"></p>
         </div>
       </div>
     </section>
@@ -93,99 +99,152 @@
     <section class="chapter" data-chapter="explode" data-title="Anatomy" style="--vh:200">
       <div class="chapter__sticky">
         <div class="caption caption--glass">
-          <div class="eyebrow" data-i18n="chapters.explode.eyebrow">02 · Anatomy of a cell</div>
+          <div class="eyebrow" data-i18n="chapters.explode.eyebrow">04 · Anatomy of a cell</div>
           <h2 data-i18n="chapters.explode.h2">Eleven layers, one cell.</h2>
-          <p data-i18n="chapters.explode.p">End plate, copper current collector, flow frame, graphite bipolar plate, carbon-felt electrode, ion-exchange membrane, and the same again in mirror. Every neighbouring cell shares a bipolar plate, so a stack of 40 cells is 40 membranes and 41 plates.<span class="cite">[4]</span></p>
+          <p data-i18n="chapters.explode.p">End plate, copper current collector, flow frame.</p>
           <p class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 13V5a2 2 0 1 1 4 0v6M12 11V9a2 2 0 1 1 4 0v3M16 12a2 2 0 1 1 4 0v3a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.3L3.7 15a2 2 0 0 1 3.3-2.3L8 14"/></svg> <span data-i18n="chapters.explode.hint">Click any component for its specification</span></p>
+          <p class="more lv-i" data-i18n="chapters.explode.i"></p>
+          <p class="more lv-a" data-i18n="chapters.explode.a"></p>
         </div>
       </div>
     </section>
 
-    <section class="chapter" data-chapter="dive" data-title="Into the electrode" style="--vh:120">
+    <section class="chapter" data-chapter="flowcell" data-title="Flow field" style="--vh:180">
+      <div class="chapter__sticky">
+        <div class="caption caption--right caption--glass">
+          <div class="eyebrow" data-i18n="chapters.flowcell.eyebrow">05 · The flow field</div>
+          <h2 data-i18n="chapters.flowcell.h2">A serpentine for every cell.</h2>
+          <p data-i18n="chapters.flowcell.p">Pumps push electrolyte through channels.</p>
+          <p class="more lv-i" data-i18n="chapters.flowcell.i"></p>
+          <p class="more lv-a" data-i18n="chapters.flowcell.a"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" data-chapter="dive" data-title="Into the felt" style="--vh:150">
       <div class="chapter__sticky">
         <div class="caption caption--center">
-          <div class="eyebrow" data-i18n="chapters.dive.eyebrow">03 · Going microscopic</div>
+          <div class="eyebrow" data-i18n="chapters.dive.eyebrow">06 · Going microscopic</div>
           <h2 data-i18n="chapters.dive.h2">Into the felt.</h2>
-          <p data-i18n="chapters.dive.p">The electrode is a mat of carbon fibres a few millimetres thick, each fibre about 10 µm across. Electrolyte seeps through the pores and the reaction happens on the fibre surface, where ions meet electrons.<span class="cite">[10]</span></p>
+          <p data-i18n="chapters.dive.p">The electrode is a mat of carbon fibres.</p>
+          <p class="more lv-i" data-i18n="chapters.dive.i"></p>
+          <p class="more lv-a" data-i18n="chapters.dive.a"></p>
         </div>
       </div>
     </section>
 
-    <section class="chapter" data-chapter="micro" data-title="Electrochemistry" style="--vh:240">
+    <section class="chapter" data-chapter="micro" data-title="Discharge" style="--vh:240">
       <div class="chapter__sticky">
         <div class="caption caption--glass caption--bottom">
-          <div class="eyebrow" data-i18n="chapters.micro.eyebrow">04 · Discharge, at the fibre surface</div>
-          <h2 data-i18n="chapters.micro.h2">Four oxidation states of one metal.</h2>
-          <div class="equation" data-i18n="chapters.micro.eq">Negative:&nbsp; V<sup>2+</sup> → V<sup>3+</sup> + e<sup>−</sup> &nbsp;&nbsp; E° = −0.255 V<br>Positive:&nbsp;&nbsp; VO<sub>2</sub><sup>+</sup> + 2H<sup>+</sup> + e<sup>−</sup> → VO<sup>2+</sup> + H<sub>2</sub>O &nbsp;&nbsp; E° = +1.004 V<br>Cell:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E°<sub>cell</sub> ≈ 1.26 V (open-circuit ≈ 1.4 V at 50 % SOC)<small>Standard potentials vs SHE; Skyllas-Kazacos et al. 1986; Knehr &amp; Kumbur 2011.<span class="cite">[1][15]</span></small></div>
-          <div class="legend-dots" data-i18n="chapters.micro.legend">
-            <span><i style="color:#a36bff"></i>V²⁺ violet</span>
-            <span><i style="color:#5ee37a"></i>V³⁺ green</span>
-            <span><i style="color:#3b8cff"></i>VO²⁺ blue</span>
-            <span><i style="color:#ffd23f"></i>VO₂⁺ yellow</span>
-            <span><i style="color:#ffffff"></i>H⁺ crossing membrane</span>
-            <span><i style="color:#26d9e3"></i>e⁻ in the fibre</span>
-          </div>
+          <div class="eyebrow" data-i18n="chapters.micro.eyebrow">07 · Discharge</div>
+          <h2 data-i18n="chapters.micro.h2">Electrons take the long way round.</h2>
+          <p data-i18n="chapters.micro.p">On the negative side, each V²⁺ ion gives up an electron.</p>
+          <div class="equation" data-i18n="chapters.micro.eq"></div>
+          <div class="legend-dots" data-i18n="chapters.micro.legend"></div>
+          <p class="more lv-i" data-i18n="chapters.micro.i"></p>
+          <p class="more lv-a" data-i18n="chapters.micro.a"></p>
         </div>
       </div>
     </section>
 
-    <section class="chapter" data-chapter="flowcell" data-title="Electrolyte flow" style="--vh:170">
+    <section class="chapter" data-chapter="charge" data-title="Charge" style="--vh:220">
       <div class="chapter__sticky">
-        <div class="caption caption--right caption--glass">
-          <div class="eyebrow" data-i18n="chapters.flowcell.eyebrow">05 · Follow the flow</div>
-          <h2 data-i18n="chapters.flowcell.h2">A serpentine for every cell.</h2>
-          <p data-i18n="chapters.flowcell.p">Pumps push electrolyte through channels machined into the bipolar plate so that it sweeps evenly across the felt. Engineers run the pumps at 5–10× the stoichiometric minimum: too little flow starves the fibres of vanadium, too much wastes pump power.<span class="cite">[14]</span></p>
+        <div class="caption caption--glass caption--bottom">
+          <div class="eyebrow" data-i18n="chapters.charge.eyebrow">08 · Charge</div>
+          <h2 data-i18n="chapters.charge.h2">Now run every arrow backwards.</h2>
+          <p data-i18n="chapters.charge.p">Apply a voltage higher than the cell’s own and the current reverses.</p>
+          <div class="equation" data-i18n="chapters.charge.eq"></div>
+          <div class="legend-dots" data-i18n="chapters.charge.legend"></div>
+          <p class="more lv-i" data-i18n="chapters.charge.i"></p>
+          <p class="more lv-a" data-i18n="chapters.charge.a"></p>
         </div>
       </div>
     </section>
 
-    <section class="chapter" data-chapter="rebuild" data-title="Reassembly" style="--vh:150">
+    <section class="chapter" data-chapter="rebuild" data-title="Reassembly" style="--vh:170">
       <div class="chapter__sticky">
         <div class="caption caption--glass">
-          <div class="eyebrow" data-i18n="chapters.rebuild.eyebrow">06 · Back together</div>
+          <div class="eyebrow" data-i18n="chapters.rebuild.eyebrow">09 · Back together</div>
           <h2 data-i18n="chapters.rebuild.h2">Cells in series add volts.</h2>
-          <p data-i18n="chapters.rebuild.p">Tie rods clamp the layers to about 1 MPa so the felt is compressed and the gaskets seal. Forty cells at 1.3 V make a 52 V stack; a container of stacks makes a megawatt.<span class="cite">[4]</span></p>
+          <p data-i18n="chapters.rebuild.p">Tie rods clamp the layers.</p>
+          <p class="more lv-i" data-i18n="chapters.rebuild.i"></p>
+          <p class="more lv-a" data-i18n="chapters.rebuild.a"></p>
         </div>
       </div>
     </section>
 
-    <section class="chapter" data-chapter="system" data-title="Charging" style="--vh:190">
-      <div class="chapter__sticky">
-        <div class="caption caption--right caption--glass">
-          <div class="eyebrow" data-i18n="chapters.system.eyebrow">07 · Energy in the tanks</div>
-          <h2 data-i18n="chapters.system.h2">Watch the colour change as it charges.</h2>
-          <p data-i18n="chapters.system.p">Nothing is plated, nothing is consumed. Charging simply converts V³⁺ to V²⁺ in the negative tank (green to violet) and VO²⁺ to VO₂⁺ in the positive tank (blue to yellow). The same electrolyte has cycled more than 20,000 times in field systems.<span class="cite">[5][8]</span></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter" data-chapter="grid" data-title="Solar and grid" style="--vh:190">
+    <section class="chapter" data-chapter="grid" data-title="Solar & grid" style="--vh:220">
       <div class="chapter__sticky">
         <div class="caption caption--glass">
-          <div class="eyebrow" data-i18n="chapters.grid.eyebrow">08 · From the solar farm to the grid</div>
+          <div class="eyebrow" data-i18n="chapters.grid.eyebrow">10 · From the solar farm to the grid</div>
           <h2 data-i18n="chapters.grid.h2">Midday sun, delivered at dinner time.</h2>
-          <p data-i18n="chapters.grid.p">A flow battery sized for 4–12 hours soaks up the midday solar peak and releases it through the evening ramp. The world's largest, in Dalian, China, stores 400 MWh and delivers 100 MW.<span class="cite">[7]</span></p>
+          <p data-i18n="chapters.grid.p">A flow battery sized for 4–12 hours.</p>
+          <p class="more lv-i" data-i18n="chapters.grid.i"></p>
+          <p class="more lv-a" data-i18n="chapters.grid.a"></p>
         </div>
       </div>
     </section>
 
-    <section class="chapter" data-chapter="outro" data-title="Pillars" style="--vh:90">
+    <section class="chapter" data-chapter="outro" data-title="Explore" style="--vh:90">
       <div class="chapter__sticky">
         <div class="caption caption--center">
-          <div class="eyebrow" data-i18n="chapters.outro.eyebrow">Choose your depth</div>
-          <h2 data-i18n="chapters.outro.h2">Five pillars, beginner to advanced.</h2>
+          <div class="eyebrow" data-i18n="chapters.outro.eyebrow">Your turn</div>
+          <h2 data-i18n="chapters.outro.h2">Now explore it yourself.</h2>
         </div>
       </div>
     </section>
 
   </main>
 
-  <section id="pillars" class="pillars">
+  <section id="explore" class="pillars">
     <div class="pillars__inner">
       <div class="pillars__intro">
+        <div class="eyebrow" data-i18n="explore.eyebrow">Hands-on laboratories</div>
+        <h2 data-i18n="explore.h2">See it, change it, calculate it.</h2>
+        <p data-i18n="explore.p"></p>
+      </div>
+      <div class="pillar-grid">
+        <a class="pillar-card" href="lab.html" data-page="lab" style="--c:#26d9e3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7.5v9L12 21l9-4.5v-9L12 3Z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg>
+          <span class="num" data-i18n="explore.cards.lab.num"></span><h3 data-i18n="explore.cards.lab.h3"></h3>
+          <p data-i18n="explore.cards.lab.p"></p>
+          <div class="tags" data-i18n="explore.cards.lab.tags"></div>
+        </a>
+        <a class="pillar-card" href="simulator.html" data-page="simulator" style="--c:#a36bff">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="15" height="10" rx="2"/><path d="M21 10v4M8 10v4M11 12H8M13.5 9.5 11 13h3l-2.5 3.5"/></svg>
+          <span class="num" data-i18n="explore.cards.simulator.num"></span><h3 data-i18n="explore.cards.simulator.h3"></h3>
+          <p data-i18n="explore.cards.simulator.p"></p>
+          <div class="tags" data-i18n="explore.cards.simulator.tags"></div>
+        </a>
+        <a class="pillar-card" href="sizing.html" data-page="sizing" style="--c:#5ee37a">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+          <span class="num" data-i18n="explore.cards.sizing.num"></span><h3 data-i18n="explore.cards.sizing.h3"></h3>
+          <p data-i18n="explore.cards.sizing.p"></p>
+          <div class="tags" data-i18n="explore.cards.sizing.tags"></div>
+        </a>
+        <a class="pillar-card" href="compare.html" data-page="compare" style="--c:#ff9b2f">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 7h14M5 7l-3 7a3.5 3.5 0 0 0 6 0L5 7ZM19 7l-3 7a3.5 3.5 0 0 0 6 0l-3-7Z"/></svg>
+          <span class="num" data-i18n="explore.cards.compare.num"></span><h3 data-i18n="explore.cards.compare.h3"></h3>
+          <p data-i18n="explore.cards.compare.p"></p>
+          <div class="tags" data-i18n="explore.cards.compare.tags"></div>
+        </a>
+        <a class="pillar-card" href="project.html" data-page="project" style="--c:#ffd23f">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+          <span class="num" data-i18n="explore.cards.project.num"></span><h3 data-i18n="explore.cards.project.h3"></h3>
+          <p data-i18n="explore.cards.project.p"></p>
+          <div class="tags" data-i18n="explore.cards.project.tags"></div>
+        </a>
+        <a class="pillar-card" href="learn.html" data-page="learn" style="--c:#3b8cff">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5 12 4l10 4.5L12 13 2 8.5Z"/><path d="M6 10.5V16c2 2 10 2 12 0v-5.5M22 8.5V14"/></svg>
+          <span class="num" data-i18n="explore.cards.learn.num"></span><h3 data-i18n="explore.cards.learn.h3"></h3>
+          <p data-i18n="explore.cards.learn.p"></p>
+          <div class="tags" data-i18n="explore.cards.learn.tags"></div>
+        </a>
+      </div>
+      <div class="pillars__intro" id="pillars" style="margin-top:72px">
         <div class="eyebrow" data-i18n="pillars.eyebrow">The curriculum</div>
         <h2 data-i18n="pillars.h2">Everything a VRFB is, in five pillars.</h2>
-        <p data-i18n="pillars.p">Each pillar starts at beginner level and lets you switch to advanced for the equations, the data, and the citations. Every number on this site links to a published source.</p>
+        <p data-i18n="pillars.p"></p>
       </div>
       <div class="pillar-grid">
         <a class="pillar-card" href="pillars/chemistry.html" data-pillar="chemistry" style="--c:#a36bff">
@@ -220,19 +279,14 @@
         </a>
       </div>
       <div class="sourcing">
-        <div><h3 data-i18n="pillars.sourcing.h1">Scientifically verified</h3><p data-i18n="pillars.sourcing.p1">Standard potentials, concentrations, efficiencies and costs are taken from peer-reviewed papers and national-laboratory reports, listed with DOIs on the <a href="pillars/references.html" data-pillar="references">sources page</a>. Where a figure is an estimate or an assumption, the page says so.</p></div>
-        <div><h3 data-i18n="pillars.sourcing.h2">Built as one experience</h3><p data-i18n="pillars.sourcing.p2">The 3D journey is driven entirely by your scroll position, so it plays forwards and backwards. The model geometry is procedural, built in Three.js from the reference renders, and the colours of the tanks follow the real oxidation-state colours of vanadium.</p></div>
-        <div><h3 data-i18n="pillars.sourcing.h3">Open and portable</h3><p data-i18n="pillars.sourcing.p3">Plain HTML, CSS and JavaScript with no build step. Fork the repository, edit the data files, and host it on GitHub Pages.</p></div>
+        <div><h3 data-i18n="pillars.sourcing.h1"></h3><p data-i18n="pillars.sourcing.p1"></p></div>
+        <div><h3 data-i18n="pillars.sourcing.h2"></h3><p data-i18n="pillars.sourcing.p2"></p></div>
+        <div><h3 data-i18n="pillars.sourcing.h3"></h3><p data-i18n="pillars.sourcing.p3"></p></div>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      <span data-i18n="footer.tag">VRFB — The Science of Flow Energy · Educational, non-commercial.</span>
-      <span><a href="pillars/references.html" data-pillar="references" data-i18n="footer.sources">Sources &amp; citations</a> · <a href="https://github.com/RuibinRay/VRFB-Info" data-i18n="footer.repo">GitHub repository</a></span>
-    </div>
-  </footer>
+  <footer class="footer" id="footer"></footer>
 
   <aside id="panel" class="panel" aria-hidden="true" role="dialog" aria-labelledby="panel-title">
     <div class="panel__head">

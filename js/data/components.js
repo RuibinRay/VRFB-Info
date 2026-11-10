@@ -28,7 +28,7 @@ export const COMPONENTS = {
     name: 'Bipolar plate', kicker: 'Conduction · flow field', color: '#2a2d32',
     role: 'A graphite–polymer composite plate that is the positive side of one cell and the negative side of the next. Electrons pass straight through it, so cells connect in series without wiring. Serpentine or interdigitated channels machined into its face spread the electrolyte across the felt.',
     specs: [['Material', 'Graphite–polymer composite (PP, PE or PVDF binder), 2–6 mm'], ['In-plane resistivity', '≈ 10⁻³ – 10⁻² Ω·cm'], ['Flow field', 'Serpentine, interdigitated or flow-through (no channels)'], ['Must be', 'Liquid-tight: the two electrolytes must never mix across the plate']],
-    facts: ['A flow field cuts pumping losses by 30–50 % compared with pushing electrolyte straight through a thick felt.'],
+    facts: ['Flow-field channels let the electrolyte bypass most of the felt thickness, which lowers the pressure drop compared with forcing all of it straight through a thick felt; the size of the saving depends on the design.'],
     refs: [4, 10, 14],
   },
   felt_neg: {
@@ -68,7 +68,7 @@ export const COMPONENTS = {
   },
   port_pos: {
     name: 'Electrolyte port (positive loop)', kicker: 'Hydraulics', color: '#ff9b2f',
-    role: 'The same as the negative port but for the VO²⁺/VO₂⁺ electrolyte. Many commercial stacks put both loops on one end plate; this model follows the reference renders with one loop per end.',
+    role: 'The same as the negative port but for the VO²⁺/VO₂⁺ electrolyte. Many commercial stacks put both loops on one end plate; this model puts one loop on each end so that the two circuits are easy to follow.',
     specs: [['Fluid', 'VO²⁺/VO₂⁺ in 2–5 M H₂SO₄'], ['Seal', 'EPDM or Viton® O-ring']],
     facts: ['VO₂⁺ electrolyte is strongly oxidising, so positive-side plumbing must be PVC, PP or PVDF rather than most rubbers.'],
     refs: [2],
@@ -86,6 +86,34 @@ export const COMPONENTS = {
     specs: [['Material', 'HDPE, PP or lined steel'], ['Temperature limit', 'Keep below ≈ 40 °C or V(V) precipitates as V₂O₅']],
     facts: ['A rebalancing line between the tanks corrects the slow capacity fade caused by vanadium crossover through the membrane.'],
     refs: [2, 11],
+  },
+  pipe: {
+    name: 'Electrolyte piping', kicker: 'Hydraulics', color: '#8fb6ff',
+    role: 'Two separate circuits, one per electrolyte, each running tank → pump → stack → tank. The pumps always push in the same direction; only the electric current reverses between charge and discharge.',
+    specs: [['Material', 'PVC, PP or PVDF: plastics that resist sulfuric acid and vanadium(V)'], ['Layout', 'Supply to the bottom of the stack, return from the top, so gas bubbles are carried out'], ['Joints', 'Solvent-welded or flanged with EPDM / FKM seals']],
+    facts: ['The two circuits must never be cross-connected: mixing the electrolytes discharges the battery as heat.'],
+    refs: [4, 14],
+  },
+  valve: {
+    name: 'Isolation valves', kicker: 'Hydraulics · safety', color: '#d43d2f',
+    role: 'Manual and actuated valves isolate a tank, a pump or a stack for maintenance, and close automatically if a leak is detected. A small rebalancing line between the tanks is normally kept shut.',
+    specs: [['Types', 'Ball valves for isolation, globe or diaphragm valves for throttling'], ['Wetted parts', 'PVC, PP, PVDF with EPDM or FKM seats'], ['Actuation', 'Hand lever, or electric / pneumatic for automatic shutdown']],
+    facts: ['Draining the stack when the battery is idle for a long time stops self-discharge through the membrane.'],
+    refs: [14],
+  },
+  sensor: {
+    name: 'Sensors and instruments', kicker: 'Monitoring · control', color: '#36e0a0',
+    role: 'Flow meters, pressure gauges, temperature probes and tank-level gauges tell the battery management system what the hydraulics are doing. A small reference cell reads open-circuit voltage, which gives the state of charge.',
+    specs: [['Flow', 'Electromagnetic or ultrasonic meters on each supply line'], ['Pressure', 'Across the stack: rising pressure drop can mean a blocked felt or precipitate'], ['Temperature', 'Kept roughly within 10–40 °C to avoid vanadium precipitation'], ['Level', 'A drifting level difference between tanks signals crossover and the need to rebalance']],
+    facts: ['Open-circuit voltage is a good state-of-charge sensor in the middle of the range but a poor one near 0 % and 100 %, where the Nernst curve turns steep.'],
+    refs: [2, 14, 16],
+  },
+  casing: {
+    name: 'Stack enclosure', kicker: 'Safety · containment', color: '#bfe6ff',
+    role: 'A clear splash guard and drip tray around the stack. If a gasket weeps, the acidic electrolyte is caught and a leak sensor in the tray stops the pumps.',
+    specs: [['Material', 'Polycarbonate or PVC panels on a coated steel frame'], ['Function', 'Secondary containment, touch protection for the DC terminals'], ['Sized for', 'Site rules usually require containment for the full tank volume at plant level']],
+    facts: ['Vanadium electrolyte is water-based and does not burn, but it is corrosive and must be contained.'],
+    refs: [14, 16],
   },
   pump: {
     name: 'Circulation pump', kicker: 'Balance of plant', color: '#3b8cff',

@@ -1,12 +1,15 @@
 /**
- * Runtime internationalisation for the homepage.
- * Language = ?lang= query → localStorage('vrfb-lang') → navigator.language → 'en'.
- * Dictionaries live in ./en.js, ./es.js, ./zh.js. Elements carrying data-i18n get
- * their innerHTML from the dictionary; data-pillar links point at the language's
- * pillar directory. Pillar pages are static per language (pillars/, pillars/es/, pillars/zh/).
+ * Runtime internationalisation shared by every page.
+ *
+ * Language = forced (static pillar pages) → ?lang= query → localStorage('vrfb-lang')
+ *            → navigator.language → 'en'.
+ * Dictionaries: ./en.js, ./es.js, ./zh.js (navigation, homepage) plus optional
+ * bundles named in init({ extra }) such as ./labs.en.js or ./learn.en.js, which
+ * are merged under their own key (t('labs.sim.title')).
+ * Elements carrying data-i18n get their innerHTML from the dictionary.
  */
 export const LANGS = { en: { short: 'EN', name: 'English', html: 'en' }, es: { short: 'ES', name: 'Español', html: 'es' }, zh: { short: '中文', name: '中文', html: 'zh-CN' } };
-let dict = null, lang = 'en';
+let dict = {}, lang = 'en', root = '';
 
 export function detect() {
   const q = new URLSearchParams(location.search).get('lang');
@@ -18,26 +21,47 @@ export function detect() {
   return 'en';
 }
 
-export async function init() {
-  lang = detect();
-  dict = (await import(`./${lang}.js`)).default;
-  document.documentElement.lang = LANGS[lang].html;
+/**
+ * opts.extra  bundles to load, e.g. ['labs', 'learn']
+ * opts.lang   force a language (static per-language pages pass their own)
+ * opts.root   relative path from the page to the site root ('' or '../' or '../../')
+ */
+export async function init(opts = {}) {
+  if (Array.isArray(opts)) opts = { extra: opts };
+  root = opts.root || '';
+  lang = opts.lang && LANGS[opts.lang] ? opts.lang : detect();
+  const [base, ...bundles] = await Promise.all([import(`./${lang}.js`), ...(opts.extra || []).map(n => import(`./${n}.${lang}.js`))]);
+  dict = { ...base.default };
+  (opts.extra || []).forEach((n, i) => { dict[n] = bundles[i].default; });
+  if (!opts.lang) document.documentElement.lang = LANGS[lang].html;
   document.body.dataset.lang = lang;
   applyDom();
   return lang;
 }
 
 export const getLang = () => lang;
+export const getRoot = () => root;
 export function t(key, fallback = '') { return key.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), dict) ?? fallback; }
-export function pillarPath(slug) { return `pillars/${lang === 'en' ? '' : lang + '/'}${slug}.html`; }
+/** t() with {placeholders} replaced from an object. */
+export function tf(key, vars = {}, fallback = '') { return String(t(key, fallback)).replace(/\{(\w+)\}/g, (_, k) => (vars[k] !== undefined ? vars[k] : `{${k}}`)); }
+const q = () => (lang === 'en' ? '' : `?lang=${lang}`);
+export function pillarPath(slug) { return `${root}pillars/${lang === 'en' ? '' : lang + '/'}${slug}.html`; }
+/** Root-level app pages (lab, simulator, sizing, compare, project, learn). */
+export function pagePath(name, hash = '') { return `${root}${name}.html${q()}${hash}`; }
+export function homePath() { return `${root || './'}${q()}`; }
 export function setLang(code) { if (!LANGS[code]) return; try { localStorage.setItem('vrfb-lang', code); } catch {} const u = new URL(location.href); u.searchParams.set('lang', code); location.replace(u.toString()); }
+/** Locale-aware number formatting. */
+export function num(v, digits = 0) { return Number(v).toLocaleString(LANGS[lang].html, { minimumFractionDigits: digits, maximumFractionDigits: digits }); }
 
-export function applyDom(root = document) {
-  root.querySelectorAll('[data-i18n]').forEach(el => { const v = t(el.dataset.i18n); if (v) el.innerHTML = v; });
-  root.querySelectorAll('[data-i18n-attr]').forEach(el => { el.dataset.i18nAttr.split(',').forEach(pair => { const [attr, key] = pair.split(':'); const v = t(key); if (v) el.setAttribute(attr, v); }); });
-  root.querySelectorAll('[data-pillar]').forEach(el => { el.setAttribute('href', pillarPath(el.dataset.pillar) + (el.dataset.hash || '')); });
-  root.querySelectorAll('.chapter[data-chapter]').forEach(el => { const v = t(`chapters.${el.dataset.chapter}.title`); if (v) el.dataset.title = v; });
-  root.querySelectorAll('.lang-switch [data-set-lang]').forEach(b => { b.setAttribute('aria-current', String(b.dataset.setLang === lang)); b.addEventListener('click', () => setLang(b.dataset.setLang)); });
-  const title = t('meta.title'); if (title) document.title = title;
-  const desc = t('meta.description'); const m = document.querySelector('meta[name="description"]'); if (desc && m) m.setAttribute('content', desc);
+export function applyDom(scope = document) {
+  scope.querySelectorAll('[data-i18n]').forEach(el => { const v = t(el.dataset.i18n); if (v) el.innerHTML = v; });
+  scope.querySelectorAll('[data-i18n-attr]').forEach(el => { el.dataset.i18nAttr.split(',').forEach(pair => { const [attr, key] = pair.split(':'); const v = t(key); if (v) el.setAttribute(attr, v); }); });
+  scope.querySelectorAll('[data-pillar]').forEach(el => { el.setAttribute('href', pillarPath(el.dataset.pillar) + (el.dataset.hash || '')); });
+  scope.querySelectorAll('[data-page]').forEach(el => { el.setAttribute('href', pagePath(el.dataset.page, el.dataset.hash || '')); });
+  scope.querySelectorAll('.chapter[data-chapter]').forEach(el => { const v = t(`chapters.${el.dataset.chapter}.title`); if (v) el.dataset.title = v; });
+  if (scope === document) {
+    const key = document.body.dataset.titleKey || 'meta.title';
+    const title = t(key); if (title) document.title = key === 'meta.title' ? title : `${title} — ${t('meta.site', 'VRFB')}`;
+    const desc = t(document.body.dataset.descKey || 'meta.description'); const m = document.querySelector('meta[name="description"]'); if (desc && m) m.setAttribute('content', String(desc).replace(/<[^>]+>/g, ''));
+  }
 }

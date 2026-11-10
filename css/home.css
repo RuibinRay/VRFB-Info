@@ -24,7 +24,7 @@ body.home { background: radial-gradient(120% 80% at 50% 0%, #0f1727 0%, #070a10 
 .caption--glass { background: rgba(10, 15, 26, 0.55); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 24px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .caption .equation { background: rgba(10,15,26,0.75); }
 .caption .legend-dots { display: flex; gap: 14px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.78rem; color: var(--fg-2); margin-top: 8px; }
-.caption .legend-dots i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; box-shadow: 0 0 10px currentColor; }
+.caption .legend-dots i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; background: currentColor; box-shadow: 0 0 10px currentColor; }
 .caption .hint { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-top: 6px; }
 .caption .hint svg { width: 16px; height: 16px; }
 
@@ -101,3 +101,18 @@ body.home { background: radial-gradient(120% 80% at 50% 0%, #0f1727 0%, #070a10 
   .caption { transition: none; }
   .scroll-cue::after { animation: none; }
 }
+
+/* Level-specific extra lines in the captions */
+.caption .more { font-size: 0.86rem; line-height: 1.5; color: var(--fg-2); border-left: 2px solid var(--cyan); padding-left: 12px; margin: 10px 0 0; }
+.caption .more.lv-a { border-left-color: var(--violet); }
+.caption .more:empty { display: none !important; }
+.caption--glass { max-width: 500px; }
+.caption .equation { font-size: 0.86rem; line-height: 1.7; }
+.label.plant .label__dot { background: var(--green); box-shadow: 0 0 0 3px rgba(94,227,122,0.25), 0 0 14px var(--green); }
+.label.plant .label__line { background: linear-gradient(90deg, var(--green), rgba(94,227,122,0.2)); }
+/* Still image shown behind the captions when WebGL is unavailable */
+.poster { display: none; position: fixed; inset: 0; z-index: 0; background: #070a10 url("../assets/img/system-wide-discharged.webp") center / cover no-repeat; opacity: 0.55; }
+body.no-webgl .poster { display: block; }
+body.no-webgl #stage { display: none; }
+#explore .pillars__intro p { max-width: 62ch; }
+@media (max-width: 700px) { .caption .more { font-size: 0.78rem; margin-top: 6px; } .caption .equation { font-size: 0.68rem; } }
