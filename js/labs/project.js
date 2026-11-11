@@ -71,6 +71,7 @@ const dayChart = lineChart($('ch-day'), { series: [], xLabel: L('hour'), xFormat
 const socChart = lineChart($('ch-soc'), { series: [], xLabel: L('hour'), yMin: 0, yMax: 100, xFormat: hh, yFormat: v => num(v, 0) });
 const capexChart = barChart($('ch-capex'), { categories: [], series: [], stacked: true, yFormat: v => money(v, 1) });
 const cashChart = lineChart($('ch-cash'), { series: [], xLabel: L('year'), xFormat: v => num(v, 0), yFormat: v => money(v, 1) });
+const cashChart2 = lineChart($('ch-cash2'), { series: [], xLabel: L('year'), xFormat: v => num(v, 0), yFormat: v => money(v, 1) });
 const site = createSite3D($('site3d'), { solar: L('s.solar'), battery: L('s.battery'), load: L('s.load') });
 
 // --- model -------------------------------------------------------------------------------------
@@ -138,7 +139,8 @@ function render() {
   out(el, 'capex', money(fin.capex.total)); out(el, 'perKWh', `$${num(fin.perKWh, 0)}/kWh`); out(el, 'saving', money(y1.revenue - y1.costs)); out(el, 'lcos', `$${num(fin.lcos, 0)}/MWh`); out(el, 'npv', money(fin.npv)); out(el, 'payback', fin.payback === null ? L('never') : `${num(fin.payback, 1)} ${L('yr')}`);
   const cs = ['power', 'storage', 'bos', 'epc'].map((k, i) => ({ name: t(`labs.compare.c.${k}`), color: CHART_COLORS[i], values: [fin.capex.parts[k]] }));
   capexChart.update({ categories: [L(`techs.${S.tech}.name`)], series: cs }); legend($('lg-capex'), cs);
-  cashChart.update({ series: [{ name: L('cashChart'), color: CHART_COLORS[0], fill: true, points: [[0, -fin.capex.total], ...fin.years.map(y => [y.t, y.cumDisc])] }] });
+  const cashSeries = [{ name: L('cashChart'), color: CHART_COLORS[0], fill: true, points: [[0, -fin.capex.total], ...fin.years.map(y => [y.t, y.cumDisc])] }];
+  cashChart.update({ series: cashSeries }); cashChart2.update({ series: cashSeries });
   // step 7
   const good = fin.npv > 0;
   $('summary').style.setProperty('--accent', good ? '#5ee37a' : '#ff9b2f');
