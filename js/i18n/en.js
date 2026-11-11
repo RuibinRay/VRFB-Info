@@ -4,6 +4,7 @@ export default {
     main: 'Main', home: 'Journey', lab: '3D Lab', sims: 'Simulators', simulator: 'Charge & discharge', sizing: 'Power vs energy', compare: 'VRFB vs LFP', project: 'Build a project',
     course: 'Course', learn: 'Learning path', chemistry: 'Chemistry', anatomy: 'Anatomy', engineering: 'Engineering', economics: 'Economics', applications: 'Applications', glossary: 'Glossary', assessment: 'Final assessment', references: 'Sources',
     menu: 'Open navigation', language: 'Language', level: 'Learning level', beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced',
+    skip: 'Skip to content',
     hint: { simulator: 'Live electrochemical cell', sizing: 'MW, MWh, C-rate and duration', compare: 'Costs, LCOS, NPV and sensitivity', project: 'Design solar + storage step by step', learn: '15 lessons with progress tracking', glossary: 'Every term, illustrated', assessment: 'Test what you have learned' },
   },
   loader: 'Building the cell',

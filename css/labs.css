@@ -160,3 +160,22 @@ body.lab-page { overflow: hidden; }
 .certificate { border: 1px solid color-mix(in srgb, var(--cyan) 50%, transparent); border-radius: var(--radius); padding: 22px; background: linear-gradient(140deg, rgba(38,217,227,0.1), rgba(163,107,255,0.08)); }
 .bar-row { display: grid; grid-template-columns: 130px 1fr 52px; gap: 10px; align-items: center; font-size: 0.84rem; color: var(--fg-2); margin: 6px 0; }
 .bar-row .progress > i { background: var(--c, var(--cyan)); }
+
+/* Grid children must be allowed to shrink below their content width, otherwise
+   one unbreakable line (an equation, a reaction, a table) widens the whole page on phones. */
+.stack-v, .path { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 1000px) { .split, .split--even { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 760px) { .chart-grid { grid-template-columns: minmax(0, 1fr); } }
+.pane, .kit, .wizard__panel, .app-main > * { min-width: 0; max-width: 100%; }
+.kit__pane, .eq-live, .worked li, .steps li { min-width: 0; overflow-wrap: anywhere; }
+.controls { min-width: 0; }
+.controls .seg { max-width: 100%; }
+@media (max-width: 560px) {
+  .app-main { padding-left: 14px; padding-right: 14px; }
+  .pane { padding: 14px; }
+  .fields { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+  .readouts { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
+  .readout b { font-size: 1.05rem; }
+  .bar-row { grid-template-columns: 96px 1fr 44px; }
+  .choice-grid { grid-template-columns: minmax(0, 1fr); }
+}

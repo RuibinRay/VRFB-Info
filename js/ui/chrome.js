@@ -38,6 +38,8 @@ export function mountChrome({ active = '', langHref = null, footer = true } = {}
   let header = document.getElementById('topbar');
   if (!header) { header = document.createElement('header'); header.id = 'topbar'; document.body.prepend(header); }
   header.className = 'topbar';
+  const main = document.querySelector('main'); if (main && !main.id) main.id = 'main';
+  if (main && !document.querySelector('.skip')) { const skip = document.createElement('a'); skip.className = 'skip'; skip.href = `#${main.id}`; skip.textContent = t('nav.skip', 'Skip to content'); document.body.prepend(skip); }
   header.innerHTML = `
     <a class="brand" href="${homePath()}">${MARK}<span>VRFB<small>${t('hero.sub', 'The Science of Flow Energy')}</small></span></a>
     <nav class="nav" id="nav" aria-label="${t('nav.main', 'Main')}">${items}</nav>

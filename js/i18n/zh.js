@@ -6,6 +6,7 @@ export default {
     main: '主导航', home: '沉浸之旅', lab: '3D 实验室', sims: '仿真器', simulator: '充电与放电', sizing: '功率与能量', compare: 'VRFB 对比 LFP', project: '搭建项目',
     course: '课程', learn: '学习路径', chemistry: '化学原理', anatomy: '电池结构', engineering: '工程设计', economics: '经济分析', applications: '实际应用', glossary: '术语表', assessment: '结业测评', references: '参考文献',
     menu: '打开导航', language: '语言', level: '学习层级', beginner: '入门', intermediate: '进阶', advanced: '高级',
+    skip: '跳到正文',
     hint: { simulator: '实时电化学单电池', sizing: 'MW、MWh、倍率与时长', compare: '成本、LCOS、净现值与敏感性', project: '一步步设计光伏 + 储能', learn: '15 节课，自动记录进度', glossary: '每个术语都配图解释', assessment: '检验你学到了什么' },
   },
   loader: '正在搭建电池',

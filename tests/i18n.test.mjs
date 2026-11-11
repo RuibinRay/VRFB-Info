@@ -74,3 +74,29 @@ test('translated component specifications cover every component', async () => {
     for (const [id, base] of Object.entries(COMPONENTS)) { assert.ok(c[id]?.name && c[id].role, `${lang}: ${id}`); assert.equal(c[id].specs.length, base.specs.length, `${lang}: ${id} specs`); }
   }
 });
+
+test('every lesson diagram renders to SVG', async () => {
+  const { diagram, DIAGRAM_KEYS } = await import('../js/learn/diagrams.js');
+  const learn = await load('learn.', 'en');
+  for (const l of LESSONS) {
+    assert.ok(DIAGRAM_KEYS.includes(l.visual), `diagram ${l.visual}`);
+    const svg = diagram(l.visual, (k) => learn.ui.d[k] ?? `MISSING:${k}`);
+    assert.ok(svg.startsWith('<svg') && svg.endsWith('</svg>'), l.visual);
+    assert.ok(!svg.includes('MISSING:'), `${l.visual} uses an untranslated label: ${(svg.match(/MISSING:\w+/) || [])[0]}`);
+    assert.ok(!svg.includes('NaN') && !svg.includes('undefined'), `${l.visual} has no broken numbers`);
+  }
+});
+
+test('generated chapter pages carry every lesson kit, in every language', async () => {
+  const { readFileSync } = await import('node:fs');
+  const gen = readFileSync(new URL('../tools/gen_pages.py', import.meta.url), 'utf8');
+  for (const l of LESSONS) {
+    assert.ok(gen.includes(`'${l.at}': '${l.id}'`), `tools/gen_pages.py places ${l.id} at #${l.at}`);
+    for (const dir of ['', 'es/', 'zh/']) {
+      const html = readFileSync(new URL(`../pillars/${dir}${l.pillar}.html`, import.meta.url), 'utf8');
+      assert.ok(html.includes(`<section id="${l.at}">`), `pillars/${dir}${l.pillar}.html has #${l.at}`);
+      assert.ok(html.includes(`data-lesson="${l.id}"`), `pillars/${dir}${l.pillar}.html has the ${l.id} kit`);
+      assert.ok(!/\{[A-Z]{3,}\}/.test(html), 'no unresolved template placeholders');
+    }
+  }
+});

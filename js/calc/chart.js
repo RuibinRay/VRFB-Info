@@ -13,7 +13,16 @@ function niceTicks(min, max, n = 5) {
   return out;
 }
 
+
+/** Gives a chart container an accessible name taken from the nearest title, if the page did not set one. */
+function nameChart(el) {
+  if (el.getAttribute('aria-label')) return;
+  const title = el.parentElement?.querySelector('.chart-title span, .chart-title, h3, h2') || el.closest('section')?.querySelector('h2, h3');
+  if (title) { el.setAttribute('role', 'img'); el.setAttribute('aria-label', title.textContent.trim()); }
+}
+
 export function lineChart(el, cfg) {
+  nameChart(el);
   const canvas = document.createElement('canvas'); el.appendChild(canvas);
   const tip = document.createElement('div'); tip.className = 'chart__tip'; el.appendChild(tip);
   const ctx = canvas.getContext('2d');
@@ -101,6 +110,7 @@ function roundedBar(ctx, x, y, w, h, r, up = true) {
  * cfg: { categories: [label], series: [{ name, color, values: [number] }], stacked, yLabel, yFormat, yMin }
  */
 export function barChart(el, cfg) {
+  nameChart(el);
   const { canvas, tip, ctx } = setup(el);
   let data = cfg, hover = -1;
   const pad = { l: 60, r: 14, t: 14, b: 44 };
@@ -158,6 +168,7 @@ export function barChart(el, cfg) {
  * cfg: { rows: [{ label, low, high }], base, format, lowColor, highColor, lowLabel, highLabel }
  */
 export function tornadoChart(el, cfg) {
+  nameChart(el);
   const { canvas, tip, ctx } = setup(el);
   let data = cfg, hover = -1;
   const pad = { l: 176, r: 20, t: 26, b: 30 };

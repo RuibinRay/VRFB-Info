@@ -12,8 +12,11 @@ import { vrfbCapex, durationSweep, breakevenDuration, PROJECT_DEFAULTS, VRFB_DEF
 const W = 640, H = 300, FG = '#e8edf5', MU = '#8291a8', CY = '#26d9e3', OR = '#ff9b2f', VI = '#a36bff', GR = '#5ee37a', LINE = 'rgba(160,180,210,0.3)';
 const C = ['#139fae', '#d9711c', '#9d66f5', '#45a157'];
 const tx = (x, y, s, o = {}) => `<text x="${x}" y="${y}" text-anchor="${o.a || 'middle'}" fill="${o.c || FG}" font-size="${o.s || 13}"${o.w ? ` font-weight="${o.w}"` : ''}${o.m ? ' font-family="JetBrains Mono, monospace"' : ''}>${s}</text>`;
-const svg = (body, label) => `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${label}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="context-stroke"/></marker><style>@media (prefers-reduced-motion: reduce){animate,animateMotion,animateTransform{display:none}}</style></defs>${body}</svg>`;
-const mover = (path, color, dur, n = 3, r = 4) => Array.from({ length: n }, (_, i) => `<circle r="${r}" fill="${color}"><animateMotion dur="${dur}s" begin="${-(i * dur / n).toFixed(2)}s" repeatCount="indefinite" path="${path}"/></circle>`).join('');
+const svg = (body, label) => `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${label}"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="context-stroke"/></marker></defs>${body}</svg>`;
+/** Visitors who ask for reduced motion get the same diagrams as still pictures. */
+const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const still = (markup) => (REDUCED ? markup.replace(/<animate(Motion|Transform)?\b[^>]*\/>/g, '') : markup);
+const mover = (path, color, dur, n = 3, r = 4) => REDUCED ? '' : Array.from({ length: n }, (_, i) => `<circle r="${r}" fill="${color}"><animateMotion dur="${dur}s" begin="${-(i * dur / n).toFixed(2)}s" repeatCount="indefinite" path="${path}"/></circle>`).join('');
 const tankShape = (x, y, w, h, color, level = 0.78) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(200,215,235,0.55)" stroke-width="1.5"/><rect x="${x + 3}" y="${y + h * (1 - level)}" width="${w - 6}" height="${h * level - 3}" rx="7" fill="${color}" opacity="0.92"/>`;
 
 const D = {
@@ -55,7 +58,7 @@ const D = {
   layers(L) {
     const parts = [['#c9ced4', 16, 'endplate'], ['#d8793a', 5, 'collector'], ['#aab0b8', 5, 'frame'], ['#2f3338', 10, 'bipolar'], ['#4a4f57', 12, 'felt'], ['#cdeedd', 4, 'membrane'], ['#4a4f57', 12, 'felt'], ['#2f3338', 10, 'bipolar'], ['#aab0b8', 5, 'frame'], ['#d8793a', 5, 'collector'], ['#c9ced4', 16, 'endplate']];
     const total = parts.reduce((s, p) => s + p[1], 0), gap = 34, spread = total + gap * (parts.length - 1); let xc = 320 - total / 2, xe = 320 - spread / 2, out = '', labels = '';
-    parts.forEach(([c, w, key], i) => { out += `<rect y="70" width="${w}" height="150" rx="2" fill="${c}" stroke="rgba(255,255,255,0.25)" x="${xc}"><animate attributeName="x" values="${xc};${xe};${xe};${xc}" keyTimes="0;0.35;0.75;1" dur="8s" repeatCount="indefinite"/></rect>`; if (i < 6) labels += `<g opacity="0"><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.35;0.75;1" dur="8s" repeatCount="indefinite"/>${tx(xe + w / 2, i % 2 ? 250 : 52, L(key), { s: 11, c: i === 5 ? GR : FG })}</g>`; xc += w; xe += w + gap; });
+    parts.forEach(([c, w, key], i) => { out += `<rect y="70" width="${w}" height="150" rx="2" fill="${c}" stroke="rgba(255,255,255,0.25)" x="${REDUCED ? xe : xc}"><animate attributeName="x" values="${xc};${xe};${xe};${xc}" keyTimes="0;0.35;0.75;1" dur="8s" repeatCount="indefinite"/></rect>`; if (i < 6) labels += `<g opacity="${REDUCED ? 1 : 0}"><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.35;0.75;1" dur="8s" repeatCount="indefinite"/>${tx(xe + w / 2, i % 2 ? 250 : 52, L(key), { s: 11, c: i === 5 ? GR : FG })}</g>`; xc += w; xe += w + gap; });
     return svg(`${out}${labels}${tx(320, 290, L('layersNote'), { s: 12, c: MU })}`, L('layersNote'));
   },
   membrane(L) {
@@ -129,5 +132,5 @@ const D = {
   },
 };
 
-export function diagram(key, L) { const f = D[key]; return f ? f(L) : ''; }
+export function diagram(key, L) { const f = D[key]; return f ? still(f(L)) : ''; }
 export const DIAGRAM_KEYS = Object.keys(D);

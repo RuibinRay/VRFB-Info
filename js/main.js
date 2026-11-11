@@ -14,7 +14,7 @@ import { createPanel } from './ui/panel.js';
 import { setupCaptions } from './ui/captions.js';
 import { createPicker } from './ui/picker.js';
 import { mountChrome } from './ui/chrome.js';
-import { init as initI18n, t, pillarPath } from './i18n/index.js';
+import { init as initI18n, t, pillarPath, pagePath } from './i18n/index.js';
 
 // Language first: chrome, captions, labels and the panel all read the dictionary.
 await initI18n();
@@ -53,7 +53,7 @@ if (!gl) {
   const serpLen = stack.serpCurve.getLength();
 
   // --- UI --------------------------------------------------------------------
-  const panel = createPanel(document.getElementById('panel'), { t, pillarPath, components: t('components', null) });
+  const panel = createPanel(document.getElementById('panel'), { t, pillarPath, components: t('components', null), labPath: (id) => { const p = pagePath('lab'); return `${p}${p.includes('?') ? '&' : '?'}part=${id}`; } });
   const labels = createLabels(document.getElementById('labels'), camera, id => panel.open(id));
   const tr = (s) => ({ ...s, text: t(`labels.${s.key}.text`, s.text), sub: t(`labels.${s.key}.sub`, s.sub) });
   stack.labelSpecs.forEach(s => labels.add(tr(s), () => state.labels * (1 - state.iris)));

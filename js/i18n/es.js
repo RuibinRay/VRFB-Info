@@ -6,6 +6,7 @@ export default {
     main: 'Principal', home: 'Recorrido', lab: 'Laboratorio 3D', sims: 'Simuladores', simulator: 'Carga y descarga', sizing: 'Potencia y energía', compare: 'VRFB frente a LFP', project: 'Crea un proyecto',
     course: 'Curso', learn: 'Ruta de aprendizaje', chemistry: 'Química', anatomy: 'Anatomía', engineering: 'Ingeniería', economics: 'Economía', applications: 'Aplicaciones', glossary: 'Glosario', assessment: 'Evaluación final', references: 'Fuentes',
     menu: 'Abrir el menú', language: 'Idioma', level: 'Nivel de aprendizaje', beginner: 'Principiante', intermediate: 'Intermedio', advanced: 'Avanzado',
+    skip: 'Saltar al contenido',
     hint: { simulator: 'Celda electroquímica en vivo', sizing: 'MW, MWh, tasa C y duración', compare: 'Costes, LCOS, VAN y sensibilidad', project: 'Diseña solar + almacenamiento paso a paso', learn: '15 lecciones con seguimiento del progreso', glossary: 'Cada término, ilustrado', assessment: 'Comprueba lo que has aprendido' },
   },
   loader: 'Construyendo la celda',

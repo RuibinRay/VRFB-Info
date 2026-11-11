@@ -16,7 +16,7 @@ export function createPanel(root, opts = {}) {
     body.innerHTML = `<p>${c.role}</p>
       <h4>${t('panel.spec', 'Specification')}</h4><dl>${c.specs.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
       ${c.facts?.length ? `<h4>${t('panel.facts', 'Worth knowing')}</h4>${c.facts.map(f => `<p>${f}</p>`).join('')}` : ''}
-      <h4>${t('panel.sources', 'Sources')}</h4><p class="panel__refs">${c.refs.map(r => `<a href="${pillarPath('references')}#ref-${r}">[${r}]</a>`).join(' ')} · <a href="${pillarPath('anatomy')}#${anatomyAnchor(id)}">${t('panel.more', 'Read more in Anatomy →')}</a></p>`;
+      <h4>${t('panel.sources', 'Sources')}</h4><p class="panel__refs">${c.refs.map(r => `<a href="${pillarPath('references')}#ref-${r}">[${r}]</a>`).join(' ')} · <a href="${pillarPath('anatomy')}#${anatomyAnchor(id)}">${t('panel.more', 'Read more in Anatomy →')}</a>${opts.labPath ? ` · <a href="${opts.labPath(id)}">${t('panel.lab', 'Inspect in the 3D lab →')}</a>` : ''}</p>`;
     root.classList.add('is-open'); root.setAttribute('aria-hidden', 'false');
   }
   function close() { root.classList.remove('is-open'); root.setAttribute('aria-hidden', 'true'); }

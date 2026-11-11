@@ -116,7 +116,7 @@ sub, sup { line-height: 0; }
 .page-hero p.lede { font-size: clamp(1.05rem, 1.8vw, 1.3rem); color: var(--fg-2); max-width: 62ch; }
 .page-hero__bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(60% 50% at 20% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%); }
 .page-body { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
-@media (max-width: 900px) { .page-body { grid-template-columns: 1fr; gap: 24px; } }
+@media (max-width: 900px) { .page-body { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
 .toc { position: sticky; top: calc(var(--nav-h) + 16px); align-self: start; font-size: 0.88rem; }
 .toc ol { list-style: none; padding: 0; margin: 0 0 20px; border-left: 1px solid var(--line); }
 .toc li a { display: block; padding: 6px 14px; color: var(--muted); border-left: 2px solid transparent; margin-left: -1px; }
@@ -149,7 +149,7 @@ tr:last-child td { border-bottom: 0; }
 .tool { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); padding: 22px; margin: 24px 0 32px; }
 .tool__head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
 .tool__head h3 { margin: 0; }
-.tool__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px 18px; margin-bottom: 18px; }
+.tool__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 14px 18px; margin-bottom: 18px; }
 .field { display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; color: var(--muted); }
 .field span.val { font-family: var(--font-mono); color: var(--fg); }
 .field input[type="number"], .field select { background: var(--bg-2); border: 1px solid var(--line); color: var(--fg); border-radius: 8px; padding: 8px 10px; font-family: var(--font-mono); font-size: 0.9rem; width: 100%; }

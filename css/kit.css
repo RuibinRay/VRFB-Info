@@ -140,3 +140,20 @@ body[data-level="intermediate"] .only-b, body[data-level="advanced"] .only-b, bo
 .footer__inner p { margin: 6px 0 0; font-size: 0.8rem; }
 .footer__links { display: flex; flex-wrap: wrap; gap: 6px 16px; align-content: flex-start; max-width: 520px; }
 @media print { .topbar, .footer, .toc, .no-print { display: none !important; } body { background: #fff; color: #000; } }
+
+/* Small phones: keep the top bar inside the screen */
+@media (max-width: 480px) {
+  .topbar { padding: 0 12px; }
+  .topbar__right { gap: 6px; }
+  .level-pick { padding-left: 6px; }
+  .level-pick svg { display: none; }
+  .level-pick select { max-width: 76px; font-size: 0.72rem; }
+  .lang-switch a, .lang-switch button { padding: 5px 6px; font-size: 0.68rem; }
+  .nav-toggle { width: 38px; height: 38px; }
+}
+.kit { max-width: 100%; }
+.article { min-width: 0; }
+.article .kit, .article .tool, .article .table-wrap, .article .equation { max-width: 100%; }
+
+.skip { position: fixed; left: 12px; top: -60px; z-index: 200; background: var(--cyan); color: #04141a; padding: 10px 14px; border-radius: 10px; font-weight: 600; transition: top 120ms; }
+.skip:focus { top: 12px; text-decoration: none; }
