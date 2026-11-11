@@ -20,14 +20,14 @@ CHEM = f'''
 <section id="why-vanadium">
   <h2>Un elemento, cuatro estados de oxidación</h2>
   <p>La mayoría de las baterías usan dos materiales distintos en sus dos lados. La batería de flujo de vanadio usa el mismo elemento en ambos, en dos pares distintos de estados de oxidación. El tanque negativo contiene V²⁺ y V³⁺; el positivo contiene VO²⁺ (vanadio +4) y VO₂⁺ (vanadio +5), todos disueltos en ácido sulfúrico.{cite(1, 2)}</p>
-  <p>Esta es la idea que hace práctica a la VRFB. Cualquier otra química de flujo sufre cuando un poco de un electrolito se filtra por la membrana hacia el otro y lo envenena para siempre. En una VRFB el ion que se filtra sigue siendo vanadio; solo hace falta un <em>reequilibrado</em> periódico para devolver los dos tanques al mismo estado de carga. El electrolito en sí nunca se desgasta.{cite(2, 16)}</p>
+  <p>Esta es la idea que hace práctica a la VRFB. Cualquier otra química de flujo sufre cuando un poco de un electrolito se filtra por la membrana hacia el otro y lo envenena para siempre. En una VRFB el ion que se filtra sigue siendo vanadio; solo hace falta un <em>reequilibrado</em> periódico para devolver los dos tanques al mismo estado de carga. El vanadio no se consume, y la mayor parte de la capacidad perdida de este modo puede recuperarse.{cite(2, 16)}</p>
   <div class="table-wrap"><table><thead><tr><th>Especie</th><th>Estado de oxidación del vanadio</th><th>Color</th><th>Dónde</th></tr></thead><tbody>
-  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#8b4dff"></span>Violeta</td><td>Tanque negativo, cargado</td></tr>
-  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#3fcf5a"></span>Verde</td><td>Tanque negativo, descargado</td></tr>
-  <tr><td>VO²⁺ (vanadilo)</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#2f7bff"></span>Azul</td><td>Tanque positivo, descargado</td></tr>
-  <tr><td>VO₂⁺ (dioxovanadio)</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#ffcf33"></span>Amarillo</td><td>Tanque positivo, cargado</td></tr>
+  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#7c3aed"></span>Violeta</td><td>Tanque negativo, cargado</td></tr>
+  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#1fae45"></span>Verde</td><td>Tanque negativo, descargado</td></tr>
+  <tr><td>VO²⁺ (vanadilo)</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#1d63f0"></span>Azul</td><td>Tanque positivo, descargado</td></tr>
+  <tr><td>VO₂⁺ (dioxovanadio)</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#f2c21a"></span>Amarillo</td><td>Tanque positivo, cargado</td></tr>
   </tbody></table></div>
-  <p class="beginner-only">En el recorrido de la página de inicio los tanques cambian de color exactamente así: de verde a violeta a la izquierda y de azul a amarillo a la derecha, a medida que la batería se carga.</p>
+  <p class="beginner-only">En el recorrido de la página de inicio los tanques cambian de color exactamente así a medida que la batería se carga: de azul a amarillo en el tanque positivo, a la izquierda, y de verde a violeta en el negativo, a la derecha.</p>
 </section>
 <section id="half-reactions">
   <h2>Las semirreacciones</h2>
@@ -59,7 +59,7 @@ Global:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
     <div class="stats"><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="negtank"></b><span>Color del tanque negativo (V³⁺ → V²⁺)</span></div><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="postank"></b><span>Color del tanque positivo (VO²⁺ → VO₂⁺)</span></div></div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Voltaje de circuito abierto frente al estado de carga"></div>
-    <p class="note">La curva es muy pronunciada cerca del 0 % y del 100 % de SOC: por eso los sistemas de gestión de batería mantienen la ventana de operación en torno al 10–90 %, y por eso el OCV es un buen sensor de SOC en la zona central del rango pero malo en los extremos.</p>
+    <p class="note">La curva es muy pronunciada cerca del 0 % y del 100 % de SOC, y esa es una de las razones por las que los sistemas de gestión de batería mantienen la ventana de operación en torno al 10–90 %. En la zona central, más plana, el voltaje cambia solo unos 2 mV por punto porcentual de SOC, así que una celda de referencia debe leerse con precisión de milivoltios para servir de indicador de nivel.</p>
   </div>
 </section>
 <section id="electrolyte">
@@ -88,10 +88,10 @@ Global:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
 '''
 
 ANAT_ITEMS = [
- ('endplate', 'Placa terminal', 'endplate-negative.webp', 'Placa de acero inoxidable o aluminio, de 10–30 mm, que soporta la fuerza de apriete y aloja las conexiones de manguera. Las juntas tóricas cian marcan el circuito negativo; las naranjas, en la placa opuesta, marcan el positivo.', [('Material', 'Acero inoxidable · aluminio · GFRP'), ('Presión de apriete', '0,5–1,5 MPa sobre el fieltro'), ('Aislamiento', 'Lámina polimérica frente al colector de cobre')], (4, 14)),
+ ('endplate', 'Placa terminal', 'endplate-negative.webp', 'Placa de acero inoxidable o aluminio, de 10–30 mm, que soporta la fuerza de apriete y aloja las conexiones de manguera. En el modelo 3D las juntas tóricas naranjas marcan el circuito positivo y las cian, en la placa opuesta, el negativo.', [('Material', 'Acero inoxidable · aluminio · GFRP'), ('Presión de apriete', '0,5–1,5 MPa sobre el fieltro'), ('Aislamiento', 'Lámina polimérica frente al colector de cobre')], (4, 14)),
  ('collector', 'Colector de corriente', 'current-collector.png', 'Lámina de cobre con una pestaña terminal que recoge la corriente de toda el área del electrodo. Se mantiene seca, detrás de la primera placa bipolar, porque el cobre se corroe rápidamente en el electrolito ácido.', [('Material', 'Cobre, 1–3 mm, a veces recubierto'), ('Resistividad', '1,7 × 10⁻⁸ Ω·m'), ('Cantidad', 'Dos por pila (terminales)')], (4,)),
  ('gasket', 'Marco de flujo y junta', 'gasket-frame.png', 'Un marco polimérico sujeta el fieltro en su ventana y conduce el electrolito desde los orificios del colector en las esquinas hasta el electrodo. Juntas de elastómero en cada cara sellan la celda. Los canales largos y estrechos añaden resistencia a propósito para limitar las corrientes de derivación por el colector compartido.', [('Marco', 'PVC · PP · PVDF'), ('Junta', 'EPDM · Viton® · PTFE'), ('Espesor', 'Fija la compresión del fieltro, 20–30 %')], (4, 14)),
- ('bipolar', 'Placa bipolar', 'bipolar-plate.webp', 'Placa compuesta de grafito y polímero compartida por celdas vecinas: cara positiva de una y negativa de la siguiente. Los electrones la atraviesan, así que las celdas se conectan en serie. El campo de flujo serpentín reparte el electrolito por el fieltro y reduce las pérdidas de bombeo un 30–50 % frente a los diseños de flujo pasante.', [('Material', 'PP / PE / PVDF cargado con grafito, 2–6 mm'), ('Resistividad', '10⁻³–10⁻² Ω·cm'), ('Campo de flujo', 'Serpentín · interdigitado · pasante')], (4, 10, 14)),
+ ('bipolar', 'Placa bipolar', 'bipolar-plate.webp', 'Placa compuesta de grafito y polímero compartida por celdas vecinas: cara positiva de una y negativa de la siguiente. Los electrones la atraviesan, así que las celdas se conectan en serie. El campo de flujo en serpentín reparte el electrolito por el fieltro y reduce la caída de presión frente a forzarlo todo a través de un fieltro grueso.', [('Material', 'PP / PE / PVDF cargado con grafito, 2–6 mm'), ('Resistividad', '10⁻³–10⁻² Ω·cm'), ('Campo de flujo', 'Serpentín · interdigitado · pasante')], (4, 10, 14)),
  ('felt_neg', 'Electrodo negativo (fieltro de carbono)', 'carbon-felt.webp', 'Manta porosa de fibras de carbono de 8–12 µm, con 90–95 % de porosidad, donde V²⁺/V³⁺ intercambian electrones con la superficie de la fibra. Los fieltros se activan calentándolos en aire o con tratamiento ácido, lo que añade grupos oxigenados que aceleran la reacción.', [('Material', 'Fieltro de carbono base PAN o rayón'), ('Espesor', '3–6 mm, comprimido un 20–30 %'), ('Diámetro de fibra', '≈ 10 µm'), ('Reacción secundaria', 'Evolución de H₂ cerca de la carga completa')], (2, 10)),
  ('membrane', 'Membrana de intercambio iónico', 'membrane.png', 'Película polimérica de 25–200 µm que conduce protones y bloquea el vanadio. Las membranas de ácido perfluorosulfónico (Nafion®) son la referencia; las de hidrocarburo y las de intercambio aniónico, más baratas, sacrifican algo de selectividad o conductividad. Suele ser el componente individual más caro de la pila.', [('Material', 'PFSA (Nafion® 115/212) · hidrocarburo · AEM'), ('Resistencia de área', '0,5–2 Ω·cm²'), ('Cruce', 'Causa autodescarga; se corrige reequilibrando')], (2, 4, 14)),
  ('felt_pos', 'Electrodo positivo (fieltro de carbono)', 'carbon-felt-2.webp', 'El espejo del fieltro negativo, que aloja VO²⁺/VO₂⁺. Aquí la cinética es más lenta, así que los catalizadores (bismuto, óxidos metálicos) y la funcionalización superficial son áreas activas de investigación. A SOC alto, el VO₂⁺, fuertemente oxidante, puede corroer el propio carbono.', [('Material', 'Fieltro de carbono o grafito, funcionalizado con O'), ('Límite', 'Mantener por debajo de ≈ 95 % de SOC')], (2, 10)),
@@ -107,7 +107,7 @@ ANAT = f'''
 </section>
 <section id="components">
   <h2>La pila, capa por capa</h2>
-  <p>Haz clic en cualquier componente de la página de inicio para ver la misma ficha. Las cifras son valores típicos de las revisiones citadas; cada producto concreto varía.</p>
+  <p>Haz clic en cualquier componente de la página de inicio, o abre el <a href="{LAB}">laboratorio 3D</a> para aislarlo y ver qué ocurre cuando falla. Las cifras son valores típicos de las revisiones citadas; cada producto concreto varía.</p>
 ''' + ''.join(f'''
   <article id="{cid}" class="component">
     <h3>{name}</h3>
@@ -135,7 +135,7 @@ ANAT = f'''
     <li><strong>Pérdida de capacidad</strong> por cruce y reacciones secundarias, que se corrige reequilibrando los electrolitos, no sustituyéndolos.{cite(16)}</li>
     <li><strong>Desgaste de bombas y sellos</strong> en el balance de planta: mantenimiento industrial ordinario.</li>
   </ul>
-  <p>Como el electrolito es recuperable al final de la vida útil, una instalación VRFB conserva un valor residual que los sistemas de ion-litio no tienen. Eso importa para la economía, tratada en el siguiente pilar.</p>
+  <p>Como el electrolito de vanadio puede recuperarse y reutilizarse al final de la vida útil, una instalación VRFB puede conservar un valor residual; cuánto depende del mercado del vanadio en ese momento. Eso importa para la economía, tratada en el siguiente pilar.</p>
 </section>
 '''
 
@@ -143,9 +143,9 @@ ENG = f'''
 <section id="power-vs-energy">
   <h2>Desacoplar potencia y energía</h2>
   <p>En una batería convencional, potencia y energía escalan juntas: más celdas significa más de ambas. En una batería de flujo son compras separadas. La <strong>potencia</strong> (kW) la fija el área total de electrodo de las pilas, ya que la corriente escala con el área a una densidad de corriente dada. La <strong>energía</strong> (kWh) la fija cuánto vanadio hay disuelto en los tanques.{cite(2, 4)}</p>
-  <div class="equation">P ≈ N<sub>celdas</sub> · A · j · V<sub>celda</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ 2 · V<sub>tanque</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>nominal</sub> / 2
-<small>A: área activa por celda · j: densidad de corriente · c<sub>V</sub>: concentración de vanadio · ΔSOC: ventana útil · el factor ½ aparece porque cada electrón necesita un ion de vanadio en <em>cada</em> lado.</small></div>
-  <p>La consecuencia práctica: un sistema de 4 horas y uno de 10 horas pueden compartir pilas idénticas y diferir solo en el tamaño de los tanques. Las duraciones largas resultan más baratas por kWh, y ese es el nicho comercial de la VRFB.{cite(5)}</p>
+  <div class="equation">P ≈ N<sub>celdas</sub> · A · j · V<sub>celda</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ V<sub>tanque</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>celda</sub>
+<small>A: área activa por celda · j: densidad de corriente · V<sub>tanque</sub>: volumen de un tanque · c<sub>V</sub>: concentración de vanadio · ΔSOC: ventana útil. Cada electrón necesita un ion de vanadio en <em>cada</em> tanque, así que los dos tanques tienen esta capacidad.</small></div>
+  <p>La consecuencia práctica: un sistema de 4 horas y uno de 10 horas pueden compartir pilas idénticas y diferir solo en el tamaño de los tanques. Las duraciones largas resultan más baratas por kWh, y ese es el nicho comercial de la VRFB.{cite(5)} El <a href="{SIZING}">laboratorio de potencia y energía</a> permite mover los MW y los MWh por separado y ver cada paso del cálculo.</p>
 </section>
 <section id="sizing-tool">
   <h2>Diseña un sistema</h2>
@@ -177,7 +177,7 @@ ENG = f'''
     <div class="stats">{stat('ve', 'Eficiencia de voltaje')}{stat('cell', 'Eficiencia energética de la celda')}{stat('sys', 'Eficiencia del sistema CA-CA', True)}</div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Eficiencia frente a densidad de corriente"></div>
-    <details><summary>Notas del modelo y fórmulas</summary><p>Corriente de la pila I = j·A. Electrolito por lado = E / (c · 26,8 Ah/mol · ΔSOC · V<sub>celda</sub>). Caudal estequiométrico por pila = N·I / (F·c); la bomba entrega λ veces ese valor. Potencia de bombeo = Q·Δp / η para dos circuitos por pila. La eficiencia de voltaje usa una resistencia específica de área concentrada en torno a un voltaje de circuito abierto de 1,40 V: VE = (OCV − j·ASR)/(OCV + j·ASR). La eficiencia del sistema multiplica la de la celda por (1 − fracción de bombeo) y por la eficiencia del inversor dos veces. Se desprecian las corrientes de derivación, la gestión térmica y la dependencia de la ASR con el SOC; los valores publicados de 65–80 % CA-CA concuerdan con este modelo a 60–100 mA/cm².{cite(5, 14)}</p></details>
+    <details><summary>Notas del modelo y fórmulas</summary><p>Corriente de la pila I = j·A. Electrolito por lado = E / (c · 26,8 Ah/mol · ΔSOC · V<sub>celda</sub>). Caudal estequiométrico por pila = N·I / (F·c); la bomba entrega λ veces ese valor. Potencia de bombeo = Q·Δp / η para dos circuitos por pila. La eficiencia de voltaje usa una resistencia específica de área concentrada en torno a un voltaje de circuito abierto de 1,40 V: VE = (OCV − j·ASR)/(OCV + j·ASR). La eficiencia del sistema multiplica la de la celda por la eficiencia del inversor dos veces y por (1 − f)/(1 + f) para una fracción de bombeo f, porque las bombas funcionan tanto en la carga como en la descarga. El factor de flujo λ está referido a la concentración total de vanadio; respecto al reactivo aún disponible al 50 % de SOC, el mismo caudal corresponde a λ/2. Se desprecian las corrientes de derivación, la gestión térmica y la dependencia de la ASR con el SOC; los valores publicados de 65–80 % CA-CA concuerdan con este modelo a 60–100 mA/cm².{cite(5, 14)}</p></details>
   </div>
 </section>
 <section id="efficiency">
@@ -205,7 +205,7 @@ ENG = f'''
 ECON = f'''
 <section id="cost-structure">
   <h2>Qué cuesta una VRFB, y por qué</h2>
-  <p>Un sistema de ion-litio es sobre todo celdas. Una VRFB es, grosso modo, un tercio pilas, un tercio electrolito y un tercio todo lo demás, y el reparto cambia con la duración: a 2 horas dominan las pilas; a 10 horas, el electrolito.{cite(5, 14)}</p>
+  <p>Un sistema de ion-litio es sobre todo celdas. Una VRFB se reparte entre pilas, electrolito y todo lo demás, y el reparto cambia con la duración: a 2 horas las pilas son la partida mayor; a 10 horas lo es el electrolito.{cite(5, 14)}</p>
   <ul>
     <li><strong>Pilas y electrónica de potencia</strong> escalan con los kilovatios. La membrana y las placas bipolares son las partes más caras de la pila.{cite(14)}</li>
     <li><strong>Electrolito</strong> escala con los kilovatios-hora y sigue el precio del pentóxido de vanadio (V₂O₅), que ha oscilado entre unos 5 y más de 25 dólares por libra en una década.{cite(17)}</li>
@@ -218,13 +218,13 @@ ECON = f'''
   <p>El coste nivelado de almacenamiento (LCOS) reparte todos los costes a lo largo de la vida útil entre todos los megavatios-hora que la batería llegará a descargar, descontados a hoy. Es la cifra única más justa para comparar tecnologías con vidas útiles distintas.{cite(6, 13)}</p>
   <div class="equation">LCOS = [ CAPEX + Σ<sub>t</sub> (O&amp;M<sub>t</sub> + carga<sub>t</sub> + reemplazos<sub>t</sub>) / (1+r)<sup>t</sup> − residual / (1+r)<sup>N</sup> ] / Σ<sub>t</sub> E<sub>descargada,t</sub> / (1+r)<sup>t</sup></div>
   <div class="tool" id="tool-lcos">
-    <div class="tool__head"><h3>LCOS de VRFB frente a ion-litio</h3><span class="muted mono">todas las entradas editables · valores por defecto ilustrativos</span></div>
+    <div class="tool__head"><h3>VRFB frente a LFP: coste nivelado de almacenamiento</h3><span class="muted mono">todas las entradas editables · valores por defecto ilustrativos</span></div>
     <h4 class="eyebrow">Proyecto</h4>
     <div class="tool__grid">
       {field('P', 'Potencia', 10, 'MW', 0.1, 1000, 0.1)}
       {field('h', 'Duración', 8, 'horas', 1, 24, 0.5)}
       {field('cycles', 'Ciclos completos por año', 330, '', 1, 730, 1)}
-      {field('life', 'Vida del proyecto VRFB', 25, 'años', 5, 40, 1)}
+      {field('life', 'Vida del proyecto (ambas tecnologías)', 25, 'años', 5, 40, 1)}
       {field('disc', 'Tasa de descuento', 7, '%', 0, 20, 0.5)}
       {field('chg', 'Precio de la electricidad de carga', 30, '$/MWh', 0, 200, 1)}
     </div>
@@ -234,58 +234,62 @@ ECON = f'''
       {field('c', 'Concentración de vanadio', 1.6, 'mol/L', 0.8, 3, 0.1)}
       {field('dod', 'Ventana de SOC útil', 0.8, 'fracción', 0.4, 1, 0.05)}
       {field('acidProc', 'Ácido, agua, procesado', 15, '$/kWh', 0, 100, 1)}
-      {field('stackCost', 'Pilas + electrónica de potencia', 650, '$/kW', 100, 3000, 10)}
+      {field('stackCost', 'Pilas', 450, '$/kW', 100, 3000, 10)}
+      {field('pcsCost', 'Sistema de conversión de potencia', 100, '$/kW', 0, 500, 5)}
       {field('bosE', 'Tanques y BOS (parte de energía)', 60, '$/kWh', 0, 300, 5)}
       {field('bosP', 'Bombas y BOS (parte de potencia)', 150, '$/kW', 0, 1000, 10)}
       {field('epc', 'EPC e instalación', 20, '% del equipo', 0, 60, 1)}
       {field('om', 'Operación y mantenimiento', 15, '$/kW·año', 0, 100, 1)}
       {field('rte', 'Eficiencia de ida y vuelta (CA)', 72, '%', 50, 90, 1)}
-      {field('deg', 'Pérdida de capacidad anual', 0.3, '%', 0, 5, 0.1)}
-      {field('stackYear', 'Año de reacondicionamiento de pilas', 12, '', 1, 40, 1)}
+      {field('deg', 'Pérdida de capacidad no recuperada al año', 0.3, '%', 0, 5, 0.1)}
+      {field('stackYear', 'Intervalo de reacondicionamiento de pilas', 12, 'años', 1, 40, 1)}
       {field('stackRepl', 'Coste del reacondicionamiento', 50, '% del coste de pilas', 0, 100, 5)}
       {field('resid', 'Valor residual del electrolito', 60, '% del coste del electrolito', 0, 100, 5)}
     </div>
-    <h4 class="eyebrow">Comparador de ion-litio</h4>
+    <h4 class="eyebrow">Comparador LFP</h4>
     <div class="tool__grid">
-      {field('liCapex', 'Coste instalado', 320, '$/kWh', 50, 1500, 5)}
-      {field('liRte', 'Eficiencia de ida y vuelta (CA)', 87, '%', 60, 95, 1)}
-      {field('liLife', 'Vida del proyecto', 15, 'años', 3, 30, 1)}
-      {field('liDeg', 'Pérdida de capacidad anual', 2, '%', 0, 10, 0.1)}
+      {field('liCapex', 'Coste instalado (por kWh nominal)', 250, '$/kWh', 50, 1500, 5)}
+      {field('liDod', 'Profundidad de descarga', 90, '%', 50, 100, 1)}
+      {field('liRte', 'Eficiencia de ida y vuelta (CA)', 86, '%', 60, 95, 1)}
+      {field('liLife', 'Vida máxima de calendario', 15, 'años', 3, 30, 1)}
+      {field('liDeg', 'Degradación de calendario al año', 1.5, '%', 0, 10, 0.1)}
+      {field('liRepl', 'Coste de sustitución', 60, '% del coste inicial', 10, 120, 5)}
       {field('liOm', 'Operación y mantenimiento', 10, '$/kW·año', 0, 100, 1)}
     </div>
-    <div class="stats">{stat('lcos', 'LCOS de la VRFB', True)}{stat('lcosLi', 'LCOS del ion-litio')}{stat('capex', 'Coste de capital total de la VRFB')}{stat('perKwh', 'Coste instalado de la VRFB')}{stat('liPerKwh', 'Coste instalado del ion-litio')}{stat('kg', 'V₂O₅ por kWh de capacidad')}{stat('elecShare', 'Peso del electrolito en el capex')}</div>
+    <div class="stats">{stat('lcos', 'LCOS de la VRFB', True)}{stat('lcosLi', 'LCOS de la LFP')}{stat('capex', 'Coste de capital total de la VRFB')}{stat('perKwh', 'Coste instalado de la VRFB')}{stat('liPerKwh', 'Coste instalado de la LFP')}{stat('kg', 'V₂O₅ por kWh útil')}{stat('elecShare', 'Peso del electrolito en el capex')}{stat('vRepl', 'Reacondicionamiento de pilas en el año')}{stat('liRepl', 'LFP sustituida en el año')}</div>
     <div class="costbar" style="display:flex;height:22px;border-radius:8px;overflow:hidden;gap:2px;background:var(--bg-2)"></div>
     <div class="legend costbar-legend"></div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Coste nivelado de almacenamiento frente al precio del pentóxido de vanadio"></div>
-    <p class="note">La masa de vanadio por kWh se deriva de la concentración y la ventana de SOC a un voltaje nominal de celda de 1,35 V; a 1,6 M y ventana del 80 % resultan unos 6 kg de V₂O₅ por kWh. El valor residual refleja que el electrolito de vanadio puede recuperarse o realquilarse al final de la vida útil.{cite(14, 17)} La línea de ion-litio usa una ventana útil del 90 % y ningún valor residual.</p>
+    <p class="note">Las dos tecnologías se evalúan durante la misma vida de proyecto. La LFP se sustituye cuando su capacidad llega al 70 % o termina su vida de calendario, y la vida que quede al final se abona como valor residual. El vanadio por kWh se deriva de la concentración y la ventana de SOC a 1,35 V y se dimensiona para la energía de CC que hay detrás de las pérdidas de descarga: unos 7,4 kg de V₂O₅ por kWh útil a 1,6 M, con una ventana del 80 % y un 72 % de eficiencia de ida y vuelta. El valor residual refleja que el electrolito de vanadio puede recuperarse o volver a arrendarse al final de la vida útil.{cite(14, 17, 21)} Para ver todas las entradas, incluidos el arrendamiento del electrolito, la degradación por ciclos, el valor actual neto, el plazo de recuperación y las gráficas de sensibilidad, abre el <a href="{COMPARE}">laboratorio de comparación</a>.</p>
   </div>
 </section>
 <section id="vanadium-market">
   <h2>La cuestión del vanadio</h2>
-  <p>Alrededor del 85 % del vanadio se destina al acero como aditivo de refuerzo, así que su precio sigue el ciclo del acero y no el mercado de baterías. El pico de 2018, por encima de 25 dólares por libra de V₂O₅, casi duplicó el coste del electrolito; a mediados de la década de 2020 los precios se han mantenido en un solo dígito por libra.{cite(17)}</p>
+  <p>Aproximadamente el 90 % del vanadio se destina al acero como aditivo de refuerzo, así que su precio sigue el ciclo del acero y no el mercado de baterías. El pico de 2018, por encima de 25 dólares por libra de V₂O₅, casi duplicó el coste del electrolito; a mediados de la década de 2020 los precios se han mantenido en un solo dígito por libra.{cite(17)}</p>
   <p>Han surgido dos respuestas. El <strong>alquiler de electrolito</strong> saca el vanadio del balance del proyecto: el proveedor conserva la propiedad y recupera el metal al final de la vida útil, convirtiendo un coste de capital en una cuota operativa.{cite(14)} Los <strong>electrolitos alternativos</strong> (ácido mixto, mayor concentración) extraen más energía de cada kilogramo.{cite(3, 18)}</p>
-  <div class="callout adv"><div class="eyebrow">Avanzado · sensibilidad</div><p>Como el electrolito es proporcional a la energía, la sensibilidad del LCOS al precio del vanadio crece con la duración. Duplicar el V₂O₅ de 10 a 20 $/kg eleva el LCOS por defecto de 8 horas de la calculadora aproximadamente una quinta parte; a 4 horas el efecto es la mitad. La sensibilidad al coste de las pilas funciona al revés. Por eso los fabricantes de VRFB apuntan a aplicaciones de 6–12 horas mientras el ion-litio domina las de 1–4 horas.{cite(5)}</p></div>
+  <div class="callout adv"><div class="eyebrow">Avanzado · sensibilidad</div><p>Como el electrolito es proporcional a la energía, la sensibilidad del LCOS al precio del vanadio crece con la duración. Duplicar el V₂O₅ de 10 a 20 $/kg eleva el LCOS por defecto de 8 horas de la calculadora aproximadamente una sexta parte; a 4 horas el efecto es menor, alrededor de una octava parte. La sensibilidad al coste de las pilas funciona al revés. Por eso los fabricantes de VRFB apuntan a aplicaciones de 6–12 horas mientras el ion-litio domina las de 1–4 horas.{cite(5)}</p></div>
 </section>
 <section id="comparison">
   <h2>Comparación de tecnologías</h2>
   <div class="table-wrap"><table><thead><tr><th>Métrica</th><th>Flujo de vanadio</th><th>Ion-litio (LFP)</th><th>Fuente</th></tr></thead><tbody>
   <tr><td>Eficiencia de ida y vuelta (CA)</td><td class="num">65–80 %</td><td class="num">85–90 %</td><td>{cite(5)}</td></tr>
-  <tr><td>Vida en ciclos</td><td class="num">&gt; 15 000–20 000, sin desgaste del electrolito</td><td class="num">3 000–8 000</td><td>{cite(5, 16)}</td></tr>
-  <tr><td>Vida calendario</td><td class="num">20–25 años (reacondicionamiento de pilas a ~12–15)</td><td class="num">10–15 años</td><td>{cite(5)}</td></tr>
+  <tr><td>Vida en ciclos</td><td class="num">&gt; 10 000; los fabricantes declaran 15 000–20 000; capacidad del electrolito recuperable</td><td class="num">3 000–10 000 hasta el 70–80 % de capacidad</td><td>{cite(5, 16)}</td></tr>
+  <tr><td>Vida calendario</td><td class="num">20–25 años previstos, con reacondicionamiento de pilas a los 10–15</td><td class="num">10–20 años</td><td>{cite(5)}</td></tr>
   <tr><td>Densidad de energía</td><td class="num">20–35 Wh/L</td><td class="num">250–400 Wh/L</td><td>{cite(2)}</td></tr>
-  <tr><td>Profundidad de descarga</td><td class="num">100 % sin daño</td><td class="num">Normalmente 80–90 %</td><td>{cite(16)}</td></tr>
-  <tr><td>Riesgo de incendio</td><td>Acuosa, no inflamable</td><td>Posible fuga térmica</td><td>{cite(16)}</td></tr>
+  <tr><td>Profundidad de descarga</td><td class="num">La descarga profunda no daña la celda; ventana típica del 80 %</td><td class="num">80–95 %</td><td>{cite(16)}</td></tr>
+  <tr><td>Comportamiento ante el fuego</td><td>El electrolito de base acuosa no arde; es corrosivo</td><td>Posible fuga térmica; se gestiona con el diseño y la separación</td><td>{cite(16)}</td></tr>
   <tr><td>Huella</td><td>Grande (tanques)</td><td>Compacta</td><td>{cite(2)}</td></tr>
-  <tr><td>Fin de vida</td><td>Electrolito recuperable</td><td>Reciclaje aún en desarrollo</td><td>{cite(14)}</td></tr>
+  <tr><td>Fin de vida</td><td>El electrolito puede recuperarse y reutilizarse</td><td>El reciclaje existe y está creciendo</td><td>{cite(14)}</td></tr>
   </tbody></table></div>
+  <p class="note">Los rangos combinan evaluaciones publicadas con afirmaciones de fabricantes, indicadas donde corresponde. Ninguna de las dos tecnologías tiene todavía décadas de datos de campo a escala de red, y ninguna es más barata en todos los casos: pon a prueba tus propios supuestos en el <a href="{COMPARE}">laboratorio de comparación</a>.</p>
 </section>
 '''
 
 APPS = f'''
 <section id="why-flow">
   <h2>Para qué sirven las baterías de flujo</h2>
-  <p>Una VRFB tarda en construirse, es pesada y tiene una eficiencia del 70–75 %, así que no es una batería para teléfonos ni para coches. Es una batería <strong>estacionaria y de larga duración</strong>: cicla cada día durante décadas sin desgastarse, no puede incendiarse y resulta más barata por kilovatio-hora cuanto más tiempo se le pide que funcione. Esas propiedades encajan con tres trabajos.{cite(5, 16)}</p>
+  <p>Una VRFB tarda en construirse, es pesada y tiene una eficiencia del 70–75 %, así que no es una batería para teléfonos ni para coches. Es una batería <strong>estacionaria y de larga duración</strong>: está diseñada para ciclar a diario durante décadas con poca pérdida permanente de capacidad, su electrolito de base acuosa no arde y resulta más barata por kilovatio-hora cuanto más tiempo se le pide que funcione. Esas propiedades encajan con tres trabajos.{cite(5, 16)}</p>
   <ul>
     <li><strong>Desplazamiento solar.</strong> Almacenar el excedente del mediodía y entregarlo durante el pico de la tarde, de cuatro a doce horas después.</li>
     <li><strong>Servicios de red.</strong> Regulación de frecuencia, recorte de picos, aplazamiento de refuerzos de transmisión y apoyo al arranque en negro.</li>
@@ -309,13 +313,13 @@ APPS = f'''
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Producción solar, carga y potencia de la batería a lo largo de un día"></div>
     <div class="chart chart--soc" role="img" aria-label="Estado de carga de la batería a lo largo de un día" style="aspect-ratio:16/5;min-height:140px;margin-top:10px"></div>
-    <p class="note">La solar sigue una curva de cielo despejado de 06:00 a 19:00; la carga es una base con un repunte matinal y un pico de tarde en torno a las 19:30. La batería solo se carga con excedente solar y solo se descarga ante un déficit, con las pérdidas repartidas a partes iguales entre carga y descarga. Prueba a duplicar la energía manteniendo la potencia: esa es la mejora más barata de una VRFB.</p>
+    <p class="note">La solar sigue una curva de cielo despejado de 06:00 a 19:00; la carga es una base con un repunte matinal y un pico de tarde en torno a las 19:30. La batería solo se carga con excedente solar y solo se descarga ante un déficit, con las pérdidas repartidas a partes iguales entre carga y descarga. Prueba a duplicar la energía manteniendo la potencia: esa es la mejora más barata de una VRFB. Para diseñar un proyecto completo paso a paso, con economía y descargas, abre el <a href="{PROJECT}">constructor de proyectos</a>.</p>
   </div>
 </section>
 <section id="case-studies">
   <h2>Instalaciones emblemáticas</h2>
   <div class="table-wrap"><table><thead><tr><th>Proyecto</th><th class="num">Potencia / energía</th><th>Año</th><th>Función</th><th>Fuente</th></tr></thead><tbody>
-  <tr><td>Central de almacenamiento con batería de flujo de Dalian, China (Rongke Power / DICP)</td><td class="num">100 MW / 400 MWh (fase 1)</td><td>2022</td><td>Recorte de picos e integración de renovables en la red de Dalian; la mayor batería de flujo del mundo</td><td>{cite(7)}</td></tr>
+  <tr><td>Central de almacenamiento con batería de flujo de Dalian, China (Rongke Power / DICP)</td><td class="num">100 MW / 400 MWh (fase 1)</td><td>2022</td><td>Recorte de picos e integración de renovables en la red de Dalian; la mayor batería de flujo del mundo cuando se puso en servicio</td><td>{cite(7)}</td></tr>
   <tr><td>Hokkaido Electric Power Network, subestación de Minami-Hayakita, Japón (Sumitomo Electric)</td><td class="num">15 MW / 60 MWh, luego 17 MW / 51 MWh</td><td>2015, 2022</td><td>Suavizado de la producción eólica y solar; apoyo de frecuencia y tensión</td><td>{cite(8)}</td></tr>
   <tr><td>Energy Superhub Oxford, Reino Unido (Invinity)</td><td class="num">2 MW / 5 MWh (híbrido con ion-litio)</td><td>2022</td><td>Servicios de red junto a carga de vehículos eléctricos en una batería híbrida</td><td>{cite(12)}</td></tr>
   <tr><td>San Diego Gas &amp; Electric, Escondido, EE. UU. (Sumitomo Electric)</td><td class="num">2 MW / 8 MWh</td><td>2017</td><td>Demostración de cuatro horas a nivel de distribución</td><td>{cite(12)}</td></tr>
@@ -338,6 +342,8 @@ REFS_BODY = '''
 <section id="how-to-read">
   <h2>Cómo se documenta este sitio</h2>
   <p>Cada número entre corchetes del sitio enlaza con una entrada de la lista inferior. Los potenciales de electrodo estándar, las concentraciones, los límites de temperatura y las eficiencias proceden de revisiones y artículos primarios revisados por pares; las cifras de coste proceden de evaluaciones de laboratorios nacionales de EE. UU. y de la industria y se presentan como rangos o supuestos editables, nunca como cotizaciones. Cuando un valor es una regla general o una simplificación de modelo, la página lo indica junto al número.</p>
+  <p>En el sitio aparecen cuatro tipos de cifras, y no todas son igual de sólidas:</p>
+  <div class="provenance"><span class="chip chip--measured"><i></i>Datos medidos: medidas de laboratorio o de campo de los artículos citados</span><span class="chip chip--model"><i></i>Resultados de modelos: calculados por los modelos documentados y probados de este sitio</span><span class="chip chip--illustrative"><i></i>Valores ilustrativos: valores iniciales editables dentro de rangos publicados</span><span class="chip chip--claim"><i></i>Afirmaciones de fabricantes: declaradas por los proveedores, sin verificación independiente aquí</span></div>
   <p>Los enlaces apuntan a DOI o páginas del editor cuando existen. Si encuentras un error o una fuente mejor, abre un issue en <a href="https://github.com/RuibinRay/VRFB-Info/issues">el repositorio</a>. Las referencias se citan en su idioma original.</p>
 </section>
 <section id="references">
@@ -350,17 +356,21 @@ REFS_BODY = '''
     <li><strong>Valores de E°.</strong> −0,255 V (V³⁺/V²⁺) y +1,004 V (VO₂⁺/VO²⁺) frente a SHE son los potenciales estándar tabulados habitualmente; la literatura también cita −0,26 V y +1,00 V. El potencial estándar de celda es, por tanto, 1,26 V.</li>
     <li><strong>Voltaje de circuito abierto.</strong> ≈ 1,40 V al 50 % de SOC es el valor medido que discuten Knehr y Kumbur [15]; la forma simple de Nernst predice unos 1,34 V en ácido 5 M.</li>
     <li><strong>Densidad de energía.</strong> 20–35 Wh/L se refiere al total de ambos electrolitos; algunas fuentes citan valores por lado el doble de altos.</li>
-    <li><strong>Costes.</strong> Los valores por defecto de la calculadora (pilas 650 $/kW, V₂O₅ 18 $/kg, BOS 60 $/kWh + 150 $/kW, ion-litio 320 $/kWh) son valores ilustrativos dentro de los rangos de [5], [6] y [14], no datos de fabricantes. Cámbialos por los tuyos.</li>
+    <li><strong>Costes.</strong> Los valores por defecto de las calculadoras (pilas 450 $/kW, conversión de potencia 100 $/kW, V₂O₅ 18 $/kg, resto del sistema 60 $/kWh + 150 $/kW, LFP 250 $ por kWh nominal) son valores ilustrativos dentro de los rangos de [5], [6], [14], [19] y [23], no datos de fabricantes. Los precios de las baterías, sobre todo los de la LFP, cambian deprisa: sustitúyelos por cifras actuales.</li>
+    <li><strong>Vidas útiles.</strong> Las cifras de ciclos y de vida de calendario por encima de unos 10 000 ciclos o 20 años son objetivos de diseño o afirmaciones de fabricantes en las dos tecnologías; los datos de campo a largo plazo y a escala de red aún son limitados [5], [19].</li>
+    <li><strong>Eficiencia.</strong> El 65–80 % de ida y vuelta en CA de los sistemas de flujo de vanadio y el 85–90 % de la LFP son rangos de [5]; un producto concreto puede quedar fuera de ellos.</li>
+    <li><strong>Caudal y bombeo.</strong> Los factores de flujo de 5–10 y los consumos de bombeo del 2–5 % son valores típicos de [14] y [20]; el óptimo depende del diseño de la pila y del estado de carga.</li>
+    <li><strong>Modelos.</strong> Los módulos de cálculo de todas las herramientas están en <code>js/sim/</code> del repositorio y cuentan con pruebas automáticas (<code>npm test</code>), que incluyen el balance de energía, el balance de carga de las reacciones y casos de LCOS comprobados a mano.</li>
     <li><strong>Cifras de proyectos.</strong> Dalian fase 1 (100 MW / 400 MWh, 2022) según los anuncios de DICP/Rongke Power [7]; cifras de Hokkaido según Sumitomo Electric [8].</li>
   </ul>
 </section>
 '''
 
 PAGES = [
- dict(slug='chemistry', title='Química', accent='#a36bff', kicker='Pilar 01 · Química', lede='Por qué un metal en cuatro estados de oxidación da una batería que nunca desgasta su combustible: las semirreacciones, la ecuación de Nernst y un explorador interactivo de voltaje de circuito abierto.', toc=[('why-vanadium', 'Cuatro estados de oxidación'), ('half-reactions', 'Semirreacciones'), ('nernst', 'Ecuación de Nernst y explorador'), ('electrolyte', 'El electrolito'), ('side-reactions', 'Reacciones secundarias')], body=CHEM, scripts=['chemistry']),
+ dict(slug='chemistry', title='Química', accent='#a36bff', kicker='Pilar 01 · Química', lede='Por qué un metal en cuatro estados de oxidación da una batería cuyo material activo no se consume: las semirreacciones, la ecuación de Nernst y un explorador interactivo de voltaje de circuito abierto.', toc=[('why-vanadium', 'Cuatro estados de oxidación'), ('half-reactions', 'Semirreacciones'), ('nernst', 'Ecuación de Nernst y explorador'), ('electrolyte', 'El electrolito'), ('side-reactions', 'Reacciones secundarias')], body=CHEM, scripts=['chemistry']),
  dict(slug='anatomy', title='Anatomía de la batería', accent='#26d9e3', kicker='Pilar 02 · Anatomía', lede='Cada capa de la pila y cada caja de la bancada: de qué está hecha, qué hace y cómo falla.', toc=[('overview', 'De la celda a la central'), ('components', 'La pila, capa por capa'), ('balance-of-plant', 'Balance de planta'), ('failure-modes', 'Fallos y mantenimiento')], body=ANAT),
  dict(slug='engineering', title='Ingeniería', accent='#5ee37a', kicker='Pilar 03 · Ingeniería', lede='Dimensionar pilas, tanques y bombas; adónde va la eficiencia; límites térmicos; y una calculadora que diseña un sistema desde los primeros principios.', toc=[('power-vs-energy', 'Potencia frente a energía'), ('sizing-tool', 'Calculadora de dimensionado'), ('efficiency', 'Eficiencia'), ('thermal', 'Térmica y caudal'), ('scaling', 'Escalar')], body=ENG, scripts=['engineering']),
  dict(slug='economics', title='Economía', accent='#ff9b2f', kicker='Pilar 04 · Economía', lede='Qué cuesta una batería de flujo de vanadio, por qué importa el precio del vanadio y una calculadora de coste nivelado de almacenamiento para compararla con el ion-litio.', toc=[('cost-structure', 'Estructura de costes'), ('lcos-tool', 'Calculadora de LCOS'), ('vanadium-market', 'La cuestión del vanadio'), ('comparison', 'Comparación de tecnologías')], body=ECON, scripts=['economics']),
  dict(slug='applications', title='Aplicaciones reales', accent='#ffd23f', kicker='Pilar 05 · Aplicaciones', lede='Desplazamiento solar, servicios de red y los proyectos emblemáticos de Dalian a Hokkaido, con un simulador de despacho de 24 horas.', toc=[('why-flow', 'Para qué sirven'), ('dispatch-tool', 'Simulador de despacho'), ('case-studies', 'Instalaciones emblemáticas'), ('integration', 'Integración en red'), ('outlook', 'Perspectivas')], body=APPS, scripts=['applications']),
- dict(slug='references', title='Fuentes y citas', accent='#26d9e3', kicker='Datos verificados', lede='Cada número de este sitio remite a una de las fuentes siguientes.', toggle=False, toc=[('how-to-read', 'Cómo se documenta el sitio'), ('references', 'Referencias'), ('data-notes', 'Notas sobre cifras concretas')], body=REFS_BODY),
+ dict(slug='references', title='Fuentes y citas', accent='#26d9e3', kicker='Datos verificados', lede='Cada número de este sitio remite a una de las fuentes siguientes y está etiquetado como medido, modelado, ilustrativo o declarado.', toggle=False, toc=[('how-to-read', 'Cómo se documenta el sitio'), ('references', 'Referencias'), ('data-notes', 'Notas sobre cifras concretas')], body=REFS_BODY),
 ]

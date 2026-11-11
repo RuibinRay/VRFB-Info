@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>参考文献与引用 — VRFB：液流储能的科学</title>
-  <meta name="description" content="本站的每一个数字都可追溯到下列来源之一。">
+  <meta name="description" content="本站的每一个数字都可追溯到下列来源之一，并标明它是实测、模型计算、示意性取值还是厂商声明。">
   <meta name="theme-color" content="#070a10">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="en" href="../../pillars/references.html">
@@ -24,7 +24,7 @@
       <div class="page-hero__bg"></div>
       <div class="eyebrow">经核实的数据</div>
       <h1>参考文献与引用</h1>
-      <p class="lede">本站的每一个数字都可追溯到下列来源之一。</p>
+      <p class="lede">本站的每一个数字都可追溯到下列来源之一，并标明它是实测、模型计算、示意性取值还是厂商声明。</p>
       
     </section>
     <div class="page-body">
@@ -34,6 +34,8 @@
 <section id="how-to-read">
   <h2>本站的资料来源方式</h2>
   <p>本站每个方括号中的数字都链接到下方的一条文献。标准电极电位、浓度、温度极限和效率均来自同行评审的综述和原始论文；成本数据来自美国国家实验室和行业评估，并以区间或可编辑的假设形式给出，绝非报价。凡是经验法则或模型简化的数值，页面都会在数字旁注明。</p>
+  <p>本站出现四类数字，它们的可靠程度并不相同：</p>
+  <div class="provenance"><span class="chip chip--measured"><i></i>实测数据：所引论文中的实验室或现场测量结果</span><span class="chip chip--model"><i></i>模型结果：由本站有文档说明并经过测试的模型计算得出</span><span class="chip chip--illustrative"><i></i>示意性默认值：落在已发表范围内、可以修改的初始值</span><span class="chip chip--claim"><i></i>厂商声明：由供应商给出，本站未作独立核实</span></div>
   <p>链接尽可能指向 DOI 或出版方页面。如果发现错误或更好的来源，请在<a href="https://github.com/RuibinRay/VRFB-Info/issues">代码仓库</a>提交 issue。参考文献保留原文语言。</p>
 </section>
 <section id="references">
@@ -46,7 +48,11 @@
     <li><strong>E° 数值。</strong> 相对 SHE 的 −0.255 V（V³⁺/V²⁺）和 +1.004 V（VO₂⁺/VO²⁺）是常见的标准电位表值；文献中也常写作 −0.26 V 和 +1.00 V。因此标准电池电位为 1.26 V。</li>
     <li><strong>开路电压。</strong> 50 % SOC 时 ≈ 1.40 V 是 Knehr 和 Kumbur [15] 讨论的实测值；简化的能斯特形式在 5 M 酸中预测约 1.34 V。</li>
     <li><strong>能量密度。</strong> 20–35 Wh/L 指两侧电解液的总和；部分文献给出的单侧数值是其两倍。</li>
-    <li><strong>成本。</strong> 计算器默认值（电堆 650 $/kW、V₂O₅ 18 $/kg、辅助系统 60 $/kWh + 150 $/kW、锂离子 320 $/kWh）是 [5]、[6]、[14] 区间内的示意值，并非厂商数据。请换成你自己的数据。</li>
+    <li><strong>成本。</strong> 各计算器的默认值（电堆 450 $/kW、功率变换 100 $/kW、V₂O₅ 18 $/kg、辅助系统 60 $/kWh + 150 $/kW、LFP 每铭牌 kWh 250 $）是 [5]、[6]、[14]、[19] 和 [23] 所给范围内的示意值，并非厂商数据。电池价格变化很快，LFP 尤其如此：请换成当前的数字。</li>
+    <li><strong>寿命。</strong> 超过约 10 000 次循环或 20 年的循环寿命和日历寿命数字，对两种技术而言都是设计目标或厂商声明；电网级的长期运行数据仍然有限 [5]、[19]。</li>
+    <li><strong>效率。</strong> 钒液流系统 65–80 % 和 LFP 85–90 % 的交流往返效率是 [5] 给出的范围；具体产品可能落在范围之外。</li>
+    <li><strong>流量与泵耗。</strong> 5–10 的流量系数和 2–5 % 的泵耗比例是 [14] 和 [20] 中的典型值；最佳值取决于电堆设计和荷电状态。</li>
+    <li><strong>模型。</strong> 所有工具背后的计算模块都在代码仓库的 <code>js/sim/</code> 目录中，并有自动化测试覆盖（<code>npm test</code>），包括能量平衡、反应的电荷平衡，以及手工核对过的 LCOS 算例。</li>
     <li><strong>项目数据。</strong> 大连一期（100 MW / 400 MWh，2022 年）依据大连化物所/融科储能的公告 [7]；北海道数据依据住友电工 [8]。</li>
   </ul>
 </section>

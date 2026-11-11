@@ -34,9 +34,9 @@
 <section id="power-vs-energy">
   <h2>功率与能量解耦</h2>
   <p>在传统电池中，功率和能量一起增长：电芯越多，两者都越大。在液流电池中，它们是分开采购的。<strong>功率</strong>（kW）由电堆的总电极面积决定，因为在给定电流密度下，电流随面积增长。<strong>能量</strong>（kWh）则由储液罐中溶解了多少钒决定。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-4">[4]</a></span></p>
-  <div class="equation">P ≈ N<sub>单电池</sub> · A · j · V<sub>单电池</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ 2 · V<sub>储液罐</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>标称</sub> / 2
-<small>A：每个单电池的活性面积 · j：电流密度 · c<sub>V</sub>：钒浓度 · ΔSOC：可用窗口 · 系数 ½ 的来源是每个电子在<em>两侧</em>各需要一个钒离子。</small></div>
-  <p>实际意义在于：4 小时系统和 10 小时系统可以使用完全相同的电堆，只是储液罐大小不同。时长越长，每 kWh 越便宜，这正是 VRFB 的商业定位。<span class="cite"><a href="references.html#ref-5">[5]</a></span></p>
+  <div class="equation">P ≈ N<sub>单电池</sub> · A · j · V<sub>单电池</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ V<sub>储液罐</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>cell</sub>
+<small>A：每个单电池的活性面积 · j：电流密度 · V<sub>储液罐</sub>：单个储液罐的体积 · c<sub>V</sub>：钒浓度 · ΔSOC：可用窗口。每个电子在<em>两个</em>储液罐中各需要一个钒离子，所以两个罐各有这么多容量。</small></div>
+  <p>实际意义在于：4 小时系统和 10 小时系统可以使用完全相同的电堆，只是储液罐大小不同。时长越长，每 kWh 越便宜，这正是 VRFB 的商业定位。<span class="cite"><a href="references.html#ref-5">[5]</a></span> 在<a href="../../sizing.html?lang=zh">功率与能量实验室</a>中，可以分别调节 MW 和 MWh，并看到计算的每一步。</p>
   <div class="kit" data-lesson="eng-power-energy"></div>
 </section>
 <section id="sizing-tool">
@@ -69,7 +69,7 @@
     <div class="stats"><div class="stat"><b data-out="ve">—</b><span>电压效率</span></div><div class="stat"><b data-out="cell">—</b><span>单电池能量效率</span></div><div class="stat accent"><b data-out="sys">—</b><span>系统交流-交流效率</span></div></div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="效率随电流密度的变化"></div>
-    <details><summary>模型说明与公式</summary><p>电堆电流 I = j·A。每侧电解液 = E / (c · 26.8 Ah/mol · ΔSOC · V<sub>单电池</sub>)。每个电堆的化学计量流量 = N·I / (F·c)，泵输送 λ 倍该流量。泵功率 = Q·Δp / η，每个电堆两条回路。电压效率采用围绕 1.40 V 开路电压的集总面积比电阻：VE = (OCV − j·ASR)/(OCV + j·ASR)。系统效率 = 单电池效率 × (1 − 泵功率比例) × 逆变器效率²。忽略了旁路电流、热管理以及 ASR 随 SOC 的变化；在 60–100 mA/cm² 下，该模型与文献报道的 65–80 % 交流-交流效率一致。<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-14">[14]</a></span></p></details>
+    <details><summary>模型说明与公式</summary><p>电堆电流 I = j·A。每侧电解液 = E / (c · 26.8 Ah/mol · ΔSOC · V<sub>单电池</sub>)。每个电堆的化学计量流量 = N·I / (F·c)，泵输送 λ 倍该流量。泵功率 = Q·Δp / η，每个电堆两条回路。电压效率采用围绕 1.40 V 开路电压的集总面积比电阻：VE = (OCV − j·ASR)/(OCV + j·ASR)。系统效率 = 单电池效率 × 逆变器效率² × (1 − f)/(1 + f)，其中 f 为泵耗比例，因为泵在充电和放电时都在运行。流量系数 λ 以总钒浓度为基准；若以 50 % SOC 时仍可参加反应的钒为基准，同样的流量相当于 λ/2。忽略了旁路电流、热管理以及 ASR 随 SOC 的变化；在 60–100 mA/cm² 下，该模型与文献报道的 65–80 % 交流-交流效率一致。<span class="cite"><a href="references.html#ref-5">[5]</a><a href="references.html#ref-14">[14]</a></span></p></details>
   </div>
 </section>
 <section id="efficiency">

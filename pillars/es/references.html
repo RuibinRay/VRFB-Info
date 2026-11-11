@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Fuentes y citas — VRFB: La ciencia de la energía de flujo</title>
-  <meta name="description" content="Cada número de este sitio remite a una de las fuentes siguientes.">
+  <meta name="description" content="Cada número de este sitio remite a una de las fuentes siguientes y está etiquetado como medido, modelado, ilustrativo o declarado.">
   <meta name="theme-color" content="#070a10">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="en" href="../../pillars/references.html">
@@ -24,7 +24,7 @@
       <div class="page-hero__bg"></div>
       <div class="eyebrow">Datos verificados</div>
       <h1>Fuentes y citas</h1>
-      <p class="lede">Cada número de este sitio remite a una de las fuentes siguientes.</p>
+      <p class="lede">Cada número de este sitio remite a una de las fuentes siguientes y está etiquetado como medido, modelado, ilustrativo o declarado.</p>
       
     </section>
     <div class="page-body">
@@ -34,6 +34,8 @@
 <section id="how-to-read">
   <h2>Cómo se documenta este sitio</h2>
   <p>Cada número entre corchetes del sitio enlaza con una entrada de la lista inferior. Los potenciales de electrodo estándar, las concentraciones, los límites de temperatura y las eficiencias proceden de revisiones y artículos primarios revisados por pares; las cifras de coste proceden de evaluaciones de laboratorios nacionales de EE. UU. y de la industria y se presentan como rangos o supuestos editables, nunca como cotizaciones. Cuando un valor es una regla general o una simplificación de modelo, la página lo indica junto al número.</p>
+  <p>En el sitio aparecen cuatro tipos de cifras, y no todas son igual de sólidas:</p>
+  <div class="provenance"><span class="chip chip--measured"><i></i>Datos medidos: medidas de laboratorio o de campo de los artículos citados</span><span class="chip chip--model"><i></i>Resultados de modelos: calculados por los modelos documentados y probados de este sitio</span><span class="chip chip--illustrative"><i></i>Valores ilustrativos: valores iniciales editables dentro de rangos publicados</span><span class="chip chip--claim"><i></i>Afirmaciones de fabricantes: declaradas por los proveedores, sin verificación independiente aquí</span></div>
   <p>Los enlaces apuntan a DOI o páginas del editor cuando existen. Si encuentras un error o una fuente mejor, abre un issue en <a href="https://github.com/RuibinRay/VRFB-Info/issues">el repositorio</a>. Las referencias se citan en su idioma original.</p>
 </section>
 <section id="references">
@@ -46,7 +48,11 @@
     <li><strong>Valores de E°.</strong> −0,255 V (V³⁺/V²⁺) y +1,004 V (VO₂⁺/VO²⁺) frente a SHE son los potenciales estándar tabulados habitualmente; la literatura también cita −0,26 V y +1,00 V. El potencial estándar de celda es, por tanto, 1,26 V.</li>
     <li><strong>Voltaje de circuito abierto.</strong> ≈ 1,40 V al 50 % de SOC es el valor medido que discuten Knehr y Kumbur [15]; la forma simple de Nernst predice unos 1,34 V en ácido 5 M.</li>
     <li><strong>Densidad de energía.</strong> 20–35 Wh/L se refiere al total de ambos electrolitos; algunas fuentes citan valores por lado el doble de altos.</li>
-    <li><strong>Costes.</strong> Los valores por defecto de la calculadora (pilas 650 $/kW, V₂O₅ 18 $/kg, BOS 60 $/kWh + 150 $/kW, ion-litio 320 $/kWh) son valores ilustrativos dentro de los rangos de [5], [6] y [14], no datos de fabricantes. Cámbialos por los tuyos.</li>
+    <li><strong>Costes.</strong> Los valores por defecto de las calculadoras (pilas 450 $/kW, conversión de potencia 100 $/kW, V₂O₅ 18 $/kg, resto del sistema 60 $/kWh + 150 $/kW, LFP 250 $ por kWh nominal) son valores ilustrativos dentro de los rangos de [5], [6], [14], [19] y [23], no datos de fabricantes. Los precios de las baterías, sobre todo los de la LFP, cambian deprisa: sustitúyelos por cifras actuales.</li>
+    <li><strong>Vidas útiles.</strong> Las cifras de ciclos y de vida de calendario por encima de unos 10 000 ciclos o 20 años son objetivos de diseño o afirmaciones de fabricantes en las dos tecnologías; los datos de campo a largo plazo y a escala de red aún son limitados [5], [19].</li>
+    <li><strong>Eficiencia.</strong> El 65–80 % de ida y vuelta en CA de los sistemas de flujo de vanadio y el 85–90 % de la LFP son rangos de [5]; un producto concreto puede quedar fuera de ellos.</li>
+    <li><strong>Caudal y bombeo.</strong> Los factores de flujo de 5–10 y los consumos de bombeo del 2–5 % son valores típicos de [14] y [20]; el óptimo depende del diseño de la pila y del estado de carga.</li>
+    <li><strong>Modelos.</strong> Los módulos de cálculo de todas las herramientas están en <code>js/sim/</code> del repositorio y cuentan con pruebas automáticas (<code>npm test</code>), que incluyen el balance de energía, el balance de carga de las reacciones y casos de LCOS comprobados a mano.</li>
     <li><strong>Cifras de proyectos.</strong> Dalian fase 1 (100 MW / 400 MWh, 2022) según los anuncios de DICP/Rongke Power [7]; cifras de Hokkaido según Sumitomo Electric [8].</li>
   </ul>
 </section>

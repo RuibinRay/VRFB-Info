@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>化学原理 — VRFB：液流储能的科学</title>
-  <meta name="description" content="为什么一种金属的四种氧化态能造出一种“燃料”永不耗损的电池：半反应、能斯特方程，以及可交互的开路电压探索器。">
+  <meta name="description" content="为什么一种金属的四种氧化态能造出一种活性物质不会被消耗的电池：半反应、能斯特方程，以及可交互的开路电压探索器。">
   <meta name="theme-color" content="#070a10">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="en" href="../../pillars/chemistry.html">
@@ -24,7 +24,7 @@
       <div class="page-hero__bg"></div>
       <div class="eyebrow">支柱 01 · 化学原理</div>
       <h1>化学原理</h1>
-      <p class="lede">为什么一种金属的四种氧化态能造出一种“燃料”永不耗损的电池：半反应、能斯特方程，以及可交互的开路电压探索器。</p>
+      <p class="lede">为什么一种金属的四种氧化态能造出一种活性物质不会被消耗的电池：半反应、能斯特方程，以及可交互的开路电压探索器。</p>
       <div class="level" role="group" aria-label="学习层级"><button type="button" data-level-set="beginner">入门</button><button type="button" data-level-set="intermediate">进阶</button><button type="button" data-level-set="advanced">高级</button></div><p class="level-note">“进阶”会加入工程数据，“高级”会加入方程和建模说明。大多数小节以一节课收尾：按你的层级给出的讲解、动态示意图、例题、实验和小测验。</p>
     </section>
     <div class="page-body">
@@ -34,14 +34,14 @@
 <section id="why-vanadium">
   <h2>一种元素，四种氧化态</h2>
   <p>大多数电池的两极使用两种不同的材料。全钒液流电池的两极使用同一种元素，只是处于两对不同的氧化态。负极储液罐中是 V²⁺ 和 V³⁺；正极储液罐中是 VO²⁺（+4 价钒）和 VO₂⁺（+5 价钒），它们都溶解在硫酸中。<span class="cite"><a href="references.html#ref-1">[1]</a><a href="references.html#ref-2">[2]</a></span></p>
-  <p>正是这一点让 VRFB 得以实用。其他液流电池体系一旦有少量电解液透过隔膜渗入另一侧，就会永久“毒化”对方。而在 VRFB 中，渗透过去的离子仍然是钒，只需定期<em>再平衡</em>，即可让两个储液罐回到相同的荷电状态。电解液本身永远不会耗损。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-16">[16]</a></span></p>
+  <p>正是这一点让 VRFB 得以实用。其他液流电池体系一旦有少量电解液透过隔膜渗入另一侧，就会永久“毒化”对方。而在 VRFB 中，渗透过去的离子仍然是钒，只需定期<em>再平衡</em>，即可让两个储液罐回到相同的荷电状态。钒并没有被消耗，这样损失的容量大部分可以恢复。<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-16">[16]</a></span></p>
   <div class="table-wrap"><table><thead><tr><th>物种</th><th>钒的氧化态</th><th>颜色</th><th>位置</th></tr></thead><tbody>
-  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#8b4dff"></span>紫色</td><td>负极储液罐，充电态</td></tr>
-  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#3fcf5a"></span>绿色</td><td>负极储液罐，放电态</td></tr>
-  <tr><td>VO²⁺（钒氧离子）</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#2f7bff"></span>蓝色</td><td>正极储液罐，放电态</td></tr>
-  <tr><td>VO₂⁺（二氧钒离子）</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#ffcf33"></span>黄色</td><td>正极储液罐，充电态</td></tr>
+  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#7c3aed"></span>紫色</td><td>负极储液罐，充电态</td></tr>
+  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#1fae45"></span>绿色</td><td>负极储液罐，放电态</td></tr>
+  <tr><td>VO²⁺（钒氧离子）</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#1d63f0"></span>蓝色</td><td>正极储液罐，放电态</td></tr>
+  <tr><td>VO₂⁺（二氧钒离子）</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#f2c21a"></span>黄色</td><td>正极储液罐，充电态</td></tr>
   </tbody></table></div>
-  <p class="beginner-only">首页的沉浸之旅中，储液罐正是这样变色的：随着电池充电，左侧由绿变紫，右侧由蓝变黄。</p>
+  <p class="beginner-only">首页的沉浸之旅中，储液罐正是这样变色的：随着电池充电，左侧的正极罐由蓝变黄，右侧的负极罐由绿变紫。</p>
   <div class="kit" data-lesson="chem-states"></div>
 </section>
 <section id="half-reactions">
@@ -75,7 +75,7 @@
     <div class="stats"><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="negtank"></b><span>负极储液罐颜色（V³⁺ → V²⁺）</span></div><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="postank"></b><span>正极储液罐颜色（VO²⁺ → VO₂⁺）</span></div></div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="开路电压随荷电状态的变化"></div>
-    <p class="note">曲线在 0 % 和 100 % SOC 附近非常陡：这就是电池管理系统把运行窗口限制在大约 10–90 % 的原因，也说明开路电压在中间区段是不错的 SOC 传感器，而在两端则很不可靠。</p>
+    <p class="note">曲线在 0 % 和 100 % SOC 附近非常陡，这是电池管理系统把运行窗口限制在大约 10–90 % 的原因之一。在较平的中间区段，SOC 每变化 1 %，电压只移动约 2 mV，所以参比电池必须读到毫伏级，才能当作电量表使用。</p>
   </div>
   <div class="kit" data-lesson="chem-nernst"></div>
 </section>

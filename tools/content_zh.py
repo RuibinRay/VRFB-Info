@@ -20,14 +20,14 @@ CHEM = f'''
 <section id="why-vanadium">
   <h2>一种元素，四种氧化态</h2>
   <p>大多数电池的两极使用两种不同的材料。全钒液流电池的两极使用同一种元素，只是处于两对不同的氧化态。负极储液罐中是 V²⁺ 和 V³⁺；正极储液罐中是 VO²⁺（+4 价钒）和 VO₂⁺（+5 价钒），它们都溶解在硫酸中。{cite(1, 2)}</p>
-  <p>正是这一点让 VRFB 得以实用。其他液流电池体系一旦有少量电解液透过隔膜渗入另一侧，就会永久“毒化”对方。而在 VRFB 中，渗透过去的离子仍然是钒，只需定期<em>再平衡</em>，即可让两个储液罐回到相同的荷电状态。电解液本身永远不会耗损。{cite(2, 16)}</p>
+  <p>正是这一点让 VRFB 得以实用。其他液流电池体系一旦有少量电解液透过隔膜渗入另一侧，就会永久“毒化”对方。而在 VRFB 中，渗透过去的离子仍然是钒，只需定期<em>再平衡</em>，即可让两个储液罐回到相同的荷电状态。钒并没有被消耗，这样损失的容量大部分可以恢复。{cite(2, 16)}</p>
   <div class="table-wrap"><table><thead><tr><th>物种</th><th>钒的氧化态</th><th>颜色</th><th>位置</th></tr></thead><tbody>
-  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#8b4dff"></span>紫色</td><td>负极储液罐，充电态</td></tr>
-  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#3fcf5a"></span>绿色</td><td>负极储液罐，放电态</td></tr>
-  <tr><td>VO²⁺（钒氧离子）</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#2f7bff"></span>蓝色</td><td>正极储液罐，放电态</td></tr>
-  <tr><td>VO₂⁺（二氧钒离子）</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#ffcf33"></span>黄色</td><td>正极储液罐，充电态</td></tr>
+  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#7c3aed"></span>紫色</td><td>负极储液罐，充电态</td></tr>
+  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#1fae45"></span>绿色</td><td>负极储液罐，放电态</td></tr>
+  <tr><td>VO²⁺（钒氧离子）</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#1d63f0"></span>蓝色</td><td>正极储液罐，放电态</td></tr>
+  <tr><td>VO₂⁺（二氧钒离子）</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#f2c21a"></span>黄色</td><td>正极储液罐，充电态</td></tr>
   </tbody></table></div>
-  <p class="beginner-only">首页的沉浸之旅中，储液罐正是这样变色的：随着电池充电，左侧由绿变紫，右侧由蓝变黄。</p>
+  <p class="beginner-only">首页的沉浸之旅中，储液罐正是这样变色的：随着电池充电，左侧的正极罐由蓝变黄，右侧的负极罐由绿变紫。</p>
 </section>
 <section id="half-reactions">
   <h2>半反应</h2>
@@ -59,7 +59,7 @@ CHEM = f'''
     <div class="stats"><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="negtank"></b><span>负极储液罐颜色（V³⁺ → V²⁺）</span></div><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="postank"></b><span>正极储液罐颜色（VO²⁺ → VO₂⁺）</span></div></div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="开路电压随荷电状态的变化"></div>
-    <p class="note">曲线在 0 % 和 100 % SOC 附近非常陡：这就是电池管理系统把运行窗口限制在大约 10–90 % 的原因，也说明开路电压在中间区段是不错的 SOC 传感器，而在两端则很不可靠。</p>
+    <p class="note">曲线在 0 % 和 100 % SOC 附近非常陡，这是电池管理系统把运行窗口限制在大约 10–90 % 的原因之一。在较平的中间区段，SOC 每变化 1 %，电压只移动约 2 mV，所以参比电池必须读到毫伏级，才能当作电量表使用。</p>
   </div>
 </section>
 <section id="electrolyte">
@@ -88,10 +88,10 @@ CHEM = f'''
 '''
 
 ANAT_ITEMS = [
- ('endplate', '端板', 'endplate-negative.webp', '10–30 mm 厚的不锈钢或铝板，承受夹紧力并安装软管接头。青色 O 形圈标记负极回路；另一端板上的橙色 O 形圈标记正极回路。', [('材料', '不锈钢 · 铝 · 玻纤增强塑料'), ('夹紧压力', '碳毡上 0.5–1.5 MPa'), ('绝缘', '与铜集流体之间垫聚合物薄片')], (4, 14)),
+ ('endplate', '端板', 'endplate-negative.webp', '10–30 mm 厚的不锈钢或铝板，承受夹紧力并安装软管接头。在 3D 模型中，橙色 O 形圈标记正极回路，另一块端板上的青色 O 形圈标记负极回路。', [('材料', '不锈钢 · 铝 · 玻纤增强塑料'), ('夹紧压力', '碳毡上 0.5–1.5 MPa'), ('绝缘', '与铜集流体之间垫聚合物薄片')], (4, 14)),
  ('collector', '集流体', 'current-collector.png', '带有接线极耳的铜板，把整个电极面积上的电流汇集起来。它位于第一块双极板之后、保持干燥，因为铜在酸性电解液中会迅速腐蚀。', [('材料', '铜板，1–3 mm，有时镀层'), ('电阻率', '1.7 × 10⁻⁸ Ω·m'), ('数量', '每个电堆两片（正负极端子）')], (4,)),
  ('gasket', '流道框架与密封垫', 'gasket-frame.png', '聚合物框架把碳毡固定在窗口内，并把电解液从角部的公共流道孔引入电极。两面的弹性体密封垫封住单电池边缘。狭长的进液通道是有意增加电阻，以限制流经公共流道的旁路电流。', [('框架', 'PVC · PP · PVDF'), ('密封垫', 'EPDM · Viton® · PTFE'), ('厚度', '决定碳毡压缩率，通常 20–30 %')], (4, 14)),
- ('bipolar', '双极板', 'bipolar-plate.webp', '石墨-聚合物复合板，相邻两个单电池共用：一面是前一个单电池的正极，另一面是后一个单电池的负极。电子直接穿过它，因此单电池无需导线即可串联。板面加工出的蛇形流道把电解液均匀铺展到碳毡上，与直通式设计相比可减少 30–50 % 的泵送损耗。', [('材料', '石墨填充 PP / PE / PVDF，2–6 mm'), ('电阻率', '10⁻³–10⁻² Ω·cm'), ('流场', '蛇形 · 叉指形 · 直通式')], (4, 10, 14)),
+ ('bipolar', '双极板', 'bipolar-plate.webp', '石墨-聚合物复合板，相邻两个单电池共用：一面是前一个单电池的正极，另一面是后一个单电池的负极。电子直接穿过它，因此单电池无需导线即可串联。板面加工出的蛇形流道把电解液均匀铺展到碳毡上，与强迫全部电解液穿过厚碳毡相比，压降更低。', [('材料', '石墨填充 PP / PE / PVDF，2–6 mm'), ('电阻率', '10⁻³–10⁻² Ω·cm'), ('流场', '蛇形 · 叉指形 · 直通式')], (4, 10, 14)),
  ('felt_neg', '负极（碳毡）', 'carbon-felt.webp', '由直径 8–12 µm 碳纤维组成的多孔毡，孔隙率 90–95 %，V²⁺/V³⁺ 在纤维表面与电子交换。碳毡通过空气中加热或酸处理活化，引入含氧官能团以加快反应。', [('材料', 'PAN 基或粘胶基碳毡'), ('厚度', '3–6 mm，压缩 20–30 %'), ('纤维直径', '≈ 10 µm'), ('副反应', '接近充满时析氢')], (2, 10)),
  ('membrane', '离子交换膜', 'membrane.png', '25–200 µm 厚的聚合物薄膜，导通质子、阻挡钒离子。全氟磺酸膜（Nafion®）是基准；更便宜的烃类膜和阴离子交换膜则以部分选择性或电导率换取成本。它通常是电堆中最昂贵的单一部件。', [('材料', 'PFSA（Nafion® 115/212）· 烃类膜 · 阴离子交换膜'), ('面电阻', '0.5–2 Ω·cm²'), ('渗透', '导致自放电；通过再平衡修正')], (2, 4, 14)),
  ('felt_pos', '正极（碳毡）', 'carbon-felt-2.webp', '负极碳毡的镜像，承载 VO²⁺/VO₂⁺。此处动力学较慢，因此催化剂（铋、金属氧化物）和表面官能化是活跃的研究方向。高 SOC 时强氧化性的 VO₂⁺ 会腐蚀碳材料本身。', [('材料', '碳毡或石墨毡，表面含氧官能化'), ('限制', '保持在 ≈ 95 % SOC 以下')], (2, 10)),
@@ -107,7 +107,7 @@ ANAT = f'''
 </section>
 <section id="components">
   <h2>电堆，逐层拆解</h2>
-  <p>在首页点击任一部件即可查看相同的规格。数值为所引综述中的典型值；具体产品会有差异。</p>
+  <p>在首页点击任一部件即可查看相同的规格，也可以打开 <a href="{LAB}">3D 实验室</a>把它单独显示出来，看看它失效时会怎样。数值为所引综述中的典型值；具体产品会有差异。</p>
 ''' + ''.join(f'''
   <article id="{cid}" class="component">
     <h3>{name}</h3>
@@ -135,7 +135,7 @@ ANAT = f'''
     <li><strong>容量衰减</strong>：由渗透和副反应造成，通过再平衡电解液修正，而不是更换电解液。{cite(16)}</li>
     <li><strong>泵与密封件磨损</strong>：辅助系统的常规工业维护。</li>
   </ul>
-  <p>由于电解液在寿命终止时可以回收，VRFB 电站保留着锂离子系统所没有的残值。这对经济性很重要，将在下一支柱中讨论。</p>
+  <p>由于钒电解液在寿命终止时可以回收再利用，VRFB 电站可以保有残值；能保有多少取决于届时的钒市场。这对经济性很重要，将在下一支柱中讨论。</p>
 </section>
 '''
 
@@ -143,9 +143,9 @@ ENG = f'''
 <section id="power-vs-energy">
   <h2>功率与能量解耦</h2>
   <p>在传统电池中，功率和能量一起增长：电芯越多，两者都越大。在液流电池中，它们是分开采购的。<strong>功率</strong>（kW）由电堆的总电极面积决定，因为在给定电流密度下，电流随面积增长。<strong>能量</strong>（kWh）则由储液罐中溶解了多少钒决定。{cite(2, 4)}</p>
-  <div class="equation">P ≈ N<sub>单电池</sub> · A · j · V<sub>单电池</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ 2 · V<sub>储液罐</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>标称</sub> / 2
-<small>A：每个单电池的活性面积 · j：电流密度 · c<sub>V</sub>：钒浓度 · ΔSOC：可用窗口 · 系数 ½ 的来源是每个电子在<em>两侧</em>各需要一个钒离子。</small></div>
-  <p>实际意义在于：4 小时系统和 10 小时系统可以使用完全相同的电堆，只是储液罐大小不同。时长越长，每 kWh 越便宜，这正是 VRFB 的商业定位。{cite(5)}</p>
+  <div class="equation">P ≈ N<sub>单电池</sub> · A · j · V<sub>单电池</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E ≈ V<sub>储液罐</sub> · c<sub>V</sub> · F · ΔSOC · V<sub>cell</sub>
+<small>A：每个单电池的活性面积 · j：电流密度 · V<sub>储液罐</sub>：单个储液罐的体积 · c<sub>V</sub>：钒浓度 · ΔSOC：可用窗口。每个电子在<em>两个</em>储液罐中各需要一个钒离子，所以两个罐各有这么多容量。</small></div>
+  <p>实际意义在于：4 小时系统和 10 小时系统可以使用完全相同的电堆，只是储液罐大小不同。时长越长，每 kWh 越便宜，这正是 VRFB 的商业定位。{cite(5)} 在<a href="{SIZING}">功率与能量实验室</a>中，可以分别调节 MW 和 MWh，并看到计算的每一步。</p>
 </section>
 <section id="sizing-tool">
   <h2>设计一套系统</h2>
@@ -177,7 +177,7 @@ ENG = f'''
     <div class="stats">{stat('ve', '电压效率')}{stat('cell', '单电池能量效率')}{stat('sys', '系统交流-交流效率', True)}</div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="效率随电流密度的变化"></div>
-    <details><summary>模型说明与公式</summary><p>电堆电流 I = j·A。每侧电解液 = E / (c · 26.8 Ah/mol · ΔSOC · V<sub>单电池</sub>)。每个电堆的化学计量流量 = N·I / (F·c)，泵输送 λ 倍该流量。泵功率 = Q·Δp / η，每个电堆两条回路。电压效率采用围绕 1.40 V 开路电压的集总面积比电阻：VE = (OCV − j·ASR)/(OCV + j·ASR)。系统效率 = 单电池效率 × (1 − 泵功率比例) × 逆变器效率²。忽略了旁路电流、热管理以及 ASR 随 SOC 的变化；在 60–100 mA/cm² 下，该模型与文献报道的 65–80 % 交流-交流效率一致。{cite(5, 14)}</p></details>
+    <details><summary>模型说明与公式</summary><p>电堆电流 I = j·A。每侧电解液 = E / (c · 26.8 Ah/mol · ΔSOC · V<sub>单电池</sub>)。每个电堆的化学计量流量 = N·I / (F·c)，泵输送 λ 倍该流量。泵功率 = Q·Δp / η，每个电堆两条回路。电压效率采用围绕 1.40 V 开路电压的集总面积比电阻：VE = (OCV − j·ASR)/(OCV + j·ASR)。系统效率 = 单电池效率 × 逆变器效率² × (1 − f)/(1 + f)，其中 f 为泵耗比例，因为泵在充电和放电时都在运行。流量系数 λ 以总钒浓度为基准；若以 50 % SOC 时仍可参加反应的钒为基准，同样的流量相当于 λ/2。忽略了旁路电流、热管理以及 ASR 随 SOC 的变化；在 60–100 mA/cm² 下，该模型与文献报道的 65–80 % 交流-交流效率一致。{cite(5, 14)}</p></details>
   </div>
 </section>
 <section id="efficiency">
@@ -205,7 +205,7 @@ ENG = f'''
 ECON = f'''
 <section id="cost-structure">
   <h2>VRFB 的成本构成及原因</h2>
-  <p>锂离子系统的成本主要是电芯。VRFB 则大致是三分之一电堆、三分之一电解液、三分之一其他，并且这一比例随时长变化：2 小时系统以电堆为主；10 小时系统以电解液为主。{cite(5, 14)}</p>
+  <p>锂离子系统的成本主要是电芯。VRFB 的成本则分为电堆、电解液和其他部分，并且比例随时长变化：2 小时系统中电堆是最大的一项；10 小时系统中电解液是最大的一项。{cite(5, 14)}</p>
   <ul>
     <li><strong>电堆与电力电子</strong>随千瓦数增长。隔膜和双极板是电堆中最贵的部件。{cite(14)}</li>
     <li><strong>电解液</strong>随千瓦时数增长，并跟随五氧化二钒（V₂O₅）价格波动，后者在十年内曾从每磅约 5 美元升至 25 美元以上。{cite(17)}</li>
@@ -218,13 +218,13 @@ ECON = f'''
   <p>平准化储能成本（LCOS）把全寿命周期内的全部成本分摊到电池一生将放出的每一兆瓦时上，并折现到今天。它是比较寿命不同的技术时最公平的单一指标。{cite(6, 13)}</p>
   <div class="equation">LCOS = [ CAPEX + Σ<sub>t</sub> (运维<sub>t</sub> + 充电成本<sub>t</sub> + 更换<sub>t</sub>) / (1+r)<sup>t</sup> − 残值 / (1+r)<sup>N</sup> ] / Σ<sub>t</sub> E<sub>放电,t</sub> / (1+r)<sup>t</sup></div>
   <div class="tool" id="tool-lcos">
-    <div class="tool__head"><h3>VRFB 与锂离子电池的 LCOS 对比</h3><span class="muted mono">所有输入可编辑 · 默认值仅作示意</span></div>
+    <div class="tool__head"><h3>VRFB 对比 LFP：平准化储能成本</h3><span class="muted mono">所有输入可编辑 · 默认值仅作示意</span></div>
     <h4 class="eyebrow">项目</h4>
     <div class="tool__grid">
       {field('P', '功率', 10, 'MW', 0.1, 1000, 0.1)}
       {field('h', '时长', 8, '小时', 1, 24, 0.5)}
       {field('cycles', '每年完整循环次数', 330, '', 1, 730, 1)}
-      {field('life', 'VRFB 项目寿命', 25, '年', 5, 40, 1)}
+      {field('life', '项目寿命（两种技术相同）', 25, '年', 5, 40, 1)}
       {field('disc', '折现率', 7, '%', 0, 20, 0.5)}
       {field('chg', '充电电价', 30, '$/MWh', 0, 200, 1)}
     </div>
@@ -234,58 +234,62 @@ ECON = f'''
       {field('c', '钒浓度', 1.6, 'mol/L', 0.8, 3, 0.1)}
       {field('dod', '可用 SOC 窗口', 0.8, '分数', 0.4, 1, 0.05)}
       {field('acidProc', '酸、水与加工', 15, '$/kWh', 0, 100, 1)}
-      {field('stackCost', '电堆 + 电力电子', 650, '$/kW', 100, 3000, 10)}
+      {field('stackCost', '电堆', 450, '$/kW', 100, 3000, 10)}
+      {field('pcsCost', '功率变换系统', 100, '$/kW', 0, 500, 5)}
       {field('bosE', '储液罐与辅助系统（能量部分）', 60, '$/kWh', 0, 300, 5)}
       {field('bosP', '泵与辅助系统（功率部分）', 150, '$/kW', 0, 1000, 10)}
       {field('epc', 'EPC 与安装', 20, '% 设备成本', 0, 60, 1)}
       {field('om', '运行与维护', 15, '$/kW·年', 0, 100, 1)}
       {field('rte', '往返效率（交流）', 72, '%', 50, 90, 1)}
-      {field('deg', '年容量衰减', 0.3, '%', 0, 5, 0.1)}
-      {field('stackYear', '电堆翻新年份', 12, '', 1, 40, 1)}
+      {field('deg', '每年不可恢复的容量衰减', 0.3, '%', 0, 5, 0.1)}
+      {field('stackYear', '电堆翻新周期', 12, '年', 1, 40, 1)}
       {field('stackRepl', '翻新成本', 50, '% 电堆成本', 0, 100, 5)}
       {field('resid', '电解液残值', 60, '% 电解液成本', 0, 100, 5)}
     </div>
-    <h4 class="eyebrow">锂离子对比方案</h4>
+    <h4 class="eyebrow">LFP 对比方案</h4>
     <div class="tool__grid">
-      {field('liCapex', '安装成本', 320, '$/kWh', 50, 1500, 5)}
-      {field('liRte', '往返效率（交流）', 87, '%', 60, 95, 1)}
-      {field('liLife', '项目寿命', 15, '年', 3, 30, 1)}
-      {field('liDeg', '年容量衰减', 2, '%', 0, 10, 0.1)}
+      {field('liCapex', '安装成本（按铭牌 kWh）', 250, '$/kWh', 50, 1500, 5)}
+      {field('liDod', '放电深度', 90, '%', 50, 100, 1)}
+      {field('liRte', '往返效率（交流）', 86, '%', 60, 95, 1)}
+      {field('liLife', '最长日历寿命', 15, '年', 3, 30, 1)}
+      {field('liDeg', '每年日历衰减', 1.5, '%', 0, 10, 0.1)}
+      {field('liRepl', '更换成本', 60, '% 初始成本', 10, 120, 5)}
       {field('liOm', '运行与维护', 10, '$/kW·年', 0, 100, 1)}
     </div>
-    <div class="stats">{stat('lcos', 'VRFB 的 LCOS', True)}{stat('lcosLi', '锂离子的 LCOS')}{stat('capex', 'VRFB 总资本成本')}{stat('perKwh', 'VRFB 安装成本')}{stat('liPerKwh', '锂离子安装成本')}{stat('kg', '每 kWh 容量所需 V₂O₅')}{stat('elecShare', '电解液占资本成本比例')}</div>
+    <div class="stats">{stat('lcos', 'VRFB 的 LCOS', True)}{stat('lcosLi', 'LFP 的 LCOS')}{stat('capex', 'VRFB 总资本成本')}{stat('perKwh', 'VRFB 安装成本')}{stat('liPerKwh', 'LFP 安装成本')}{stat('kg', '每可用 kWh 所需 V₂O₅')}{stat('elecShare', '电解液占资本成本比例')}{stat('vRepl', '电堆翻新年份')}{stat('liRepl', 'LFP 更换年份')}</div>
     <div class="costbar" style="display:flex;height:22px;border-radius:8px;overflow:hidden;gap:2px;background:var(--bg-2)"></div>
     <div class="legend costbar-legend"></div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="平准化储能成本随五氧化二钒价格的变化"></div>
-    <p class="note">每 kWh 的钒质量由浓度和 SOC 窗口在 1.35 V 标称单电池电压下推算；1.6 M、80 % 窗口时约为每 kWh 6 kg V₂O₅。残值反映了钒电解液在寿命终止时可回收或再租赁。{cite(14, 17)} 锂离子曲线采用 90 % 可用窗口且无残值。</p>
+    <p class="note">两种技术在相同的项目寿命内评估。LFP 在容量降到 70 % 或日历寿命到期时更换，期末尚未用完的寿命计为残值。每 kWh 的钒用量由浓度和 SOC 窗口在 1.35 V 下推算，并按扣除放电损耗之前的直流能量确定：在 1.6 M、80 % 窗口和 72 % 往返效率下，每可用 kWh 约需 7.4 kg V₂O₅。残值反映的是钒电解液在寿命终止时可以回收或再次出租。{cite(14, 17, 21)} 如需查看全部输入项（包括电解液租赁、循环衰减、净现值、回收期和敏感性图），请打开<a href="{COMPARE}">对比实验室</a>。</p>
   </div>
 </section>
 <section id="vanadium-market">
   <h2>钒的问题</h2>
-  <p>约 85 % 的钒用于炼钢作为强化添加剂，因此其价格跟随钢铁周期而非电池市场。2018 年 V₂O₅ 价格飙升至每磅 25 美元以上，使电解液成本几乎翻倍；2020 年代中期价格则维持在每磅个位数美元。{cite(17)}</p>
+  <p>约 90 % 的钒用于炼钢作为强化添加剂，因此其价格跟随钢铁周期而非电池市场。2018 年 V₂O₅ 价格飙升至每磅 25 美元以上，使电解液成本几乎翻倍；2020 年代中期价格则维持在每磅个位数美元。{cite(17)}</p>
   <p>业界出现了两种应对。<strong>电解液租赁</strong>把钒移出项目的资产负债表：供应商保留所有权并在寿命终止时回收金属，把资本支出变成运营费用。{cite(14)} <strong>替代电解液</strong>（混合酸、更高浓度）则从每公斤钒中榨取更多能量。{cite(3, 18)}</p>
-  <div class="callout adv"><div class="eyebrow">进阶 · 敏感性</div><p>由于电解液与能量成正比，LCOS 对钒价的敏感性随时长增加。把 V₂O₅ 从 10 $/kg 翻倍到 20 $/kg，计算器默认的 8 小时 LCOS 大约上升五分之一；4 小时时影响约为一半。电堆成本的敏感性则相反。这就是 VRFB 厂商瞄准 6–12 小时应用、而锂离子主导 1–4 小时应用的原因。{cite(5)}</p></div>
+  <div class="callout adv"><div class="eyebrow">进阶 · 敏感性</div><p>由于电解液与能量成正比，LCOS 对钒价的敏感性随时长增加。把 V₂O₅ 从 10 $/kg 翻倍到 20 $/kg，计算器默认的 8 小时 LCOS 大约上升六分之一；4 小时时影响更小，约为八分之一。电堆成本的敏感性则相反。这就是 VRFB 厂商瞄准 6–12 小时应用、而锂离子主导 1–4 小时应用的原因。{cite(5)}</p></div>
 </section>
 <section id="comparison">
   <h2>技术对比</h2>
   <div class="table-wrap"><table><thead><tr><th>指标</th><th>全钒液流</th><th>锂离子（LFP）</th><th>来源</th></tr></thead><tbody>
   <tr><td>往返效率（交流）</td><td class="num">65–80 %</td><td class="num">85–90 %</td><td>{cite(5)}</td></tr>
-  <tr><td>循环寿命</td><td class="num">&gt; 15 000–20 000 次，电解液不耗损</td><td class="num">3 000–8 000 次</td><td>{cite(5, 16)}</td></tr>
-  <tr><td>日历寿命</td><td class="num">20–25 年（约 12–15 年翻新电堆）</td><td class="num">10–15 年</td><td>{cite(5)}</td></tr>
+  <tr><td>循环寿命</td><td class="num">&gt; 10 000 次；厂商声称 15 000–20 000 次；电解液容量可恢复</td><td class="num">3 000–10 000 次（降到 70–80 % 容量）</td><td>{cite(5, 16)}</td></tr>
+  <tr><td>日历寿命</td><td class="num">预期 20–25 年，电堆在 10–15 年后翻新</td><td class="num">10–20 年</td><td>{cite(5)}</td></tr>
   <tr><td>能量密度</td><td class="num">20–35 Wh/L</td><td class="num">250–400 Wh/L</td><td>{cite(2)}</td></tr>
-  <tr><td>放电深度</td><td class="num">100 % 且无损伤</td><td class="num">通常 80–90 %</td><td>{cite(16)}</td></tr>
-  <tr><td>火灾风险</td><td>水系，不可燃</td><td>可能热失控</td><td>{cite(16)}</td></tr>
+  <tr><td>放电深度</td><td class="num">深度放电不会损伤电池；通常使用 80 % 窗口</td><td class="num">80–95 %</td><td>{cite(16)}</td></tr>
+  <tr><td>燃烧特性</td><td>水基电解液不会燃烧；具有腐蚀性</td><td>可能热失控；通过设计和间距加以管控</td><td>{cite(16)}</td></tr>
   <tr><td>占地</td><td>大（储液罐）</td><td>紧凑</td><td>{cite(2)}</td></tr>
-  <tr><td>寿命终止</td><td>电解液可回收</td><td>回收体系仍在发展</td><td>{cite(14)}</td></tr>
+  <tr><td>寿命终止</td><td>电解液可以回收再利用</td><td>已有回收体系，规模正在扩大</td><td>{cite(14)}</td></tr>
   </tbody></table></div>
+  <p class="note">这些范围综合了已发表的评估和厂商声明，凡属厂商声明之处均已注明。两种技术都还没有数十年的电网级运行数据，也都不是在所有情况下更便宜：请在<a href="{COMPARE}">对比实验室</a>中检验你自己的假设。</p>
 </section>
 '''
 
 APPS = f'''
 <section id="why-flow">
   <h2>液流电池的用途</h2>
-  <p>VRFB 建设周期长、重量大、效率约 70–75 %，所以它不是手机电池，也不是汽车电池。它是一种<strong>固定式、长时</strong>电池：每天循环、持续数十年而不耗损，不会起火，而且被要求放电的时间越长，每千瓦时的成本就越低。这些特性对应三类任务。{cite(5, 16)}</p>
+  <p>VRFB 建设周期长、重量大、效率约 70–75 %，所以它不是手机电池，也不是汽车电池。它是一种<strong>固定式、长时</strong>电池：按每天循环、运行数十年而几乎没有永久性容量损失来设计，水基电解液不会燃烧，而且被要求放电的时间越长，每千瓦时的成本就越低。这些特性对应三类任务。{cite(5, 16)}</p>
   <ul>
     <li><strong>光伏平移。</strong> 储存正午的发电盈余，在四到十二小时后的晚高峰释放。</li>
     <li><strong>电网服务。</strong> 调频、削峰、延缓输电扩容以及黑启动支持。</li>
@@ -309,13 +313,13 @@ APPS = f'''
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="一天内的光伏出力、负荷和电池功率"></div>
     <div class="chart chart--soc" role="img" aria-label="一天内的电池荷电状态" style="aspect-ratio:16/5;min-height:140px;margin-top:10px"></div>
-    <p class="note">光伏按 06:00 到 19:00 的晴天曲线出力；负荷由基础负荷、一个早间小高峰和约 19:30 的晚高峰组成。电池只用光伏盈余充电、只在缺口时放电，损耗在充放电之间平均分摊。试着在功率不变的情况下把能量翻倍：这正是 VRFB 最便宜的升级方式。</p>
+    <p class="note">光伏按 06:00 到 19:00 的晴天曲线出力；负荷由基础负荷、一个早间小高峰和约 19:30 的晚高峰组成。电池只用光伏盈余充电、只在缺口时放电，损耗在充放电之间平均分摊。试着在功率不变的情况下把能量翻倍：这正是 VRFB 最便宜的升级方式。如果想一步步设计一个完整的项目，并得到经济性分析和可下载的文件，请打开<a href="{PROJECT}">项目搭建器</a>。</p>
   </div>
 </section>
 <section id="case-studies">
   <h2>标志性项目</h2>
   <div class="table-wrap"><table><thead><tr><th>项目</th><th class="num">功率 / 能量</th><th>年份</th><th>作用</th><th>来源</th></tr></thead><tbody>
-  <tr><td>大连液流电池储能调峰电站，中国（融科储能 / 大连化物所）</td><td class="num">100 MW / 400 MWh（一期）</td><td>2022</td><td>大连电网的调峰与可再生能源消纳；全球最大的液流电池</td><td>{cite(7)}</td></tr>
+  <tr><td>大连液流电池储能调峰电站，中国（融科储能 / 大连化物所）</td><td class="num">100 MW / 400 MWh（一期）</td><td>2022</td><td>大连电网的调峰与可再生能源消纳；投运时为全球最大的液流电池</td><td>{cite(7)}</td></tr>
   <tr><td>北海道电力网络公司南早来变电站，日本（住友电工）</td><td class="num">15 MW / 60 MWh，后增 17 MW / 51 MWh</td><td>2015、2022</td><td>平滑风电和光伏出力；频率与电压支撑</td><td>{cite(8)}</td></tr>
   <tr><td>牛津 Energy Superhub，英国（Invinity）</td><td class="num">2 MW / 5 MWh（与锂离子混合）</td><td>2022</td><td>在混合电池中与电动汽车充电一同提供电网服务</td><td>{cite(12)}</td></tr>
   <tr><td>圣地亚哥燃气电力公司，埃斯孔迪多，美国（住友电工）</td><td class="num">2 MW / 8 MWh</td><td>2017</td><td>配电级四小时示范</td><td>{cite(12)}</td></tr>
@@ -338,6 +342,8 @@ REFS_BODY = '''
 <section id="how-to-read">
   <h2>本站的资料来源方式</h2>
   <p>本站每个方括号中的数字都链接到下方的一条文献。标准电极电位、浓度、温度极限和效率均来自同行评审的综述和原始论文；成本数据来自美国国家实验室和行业评估，并以区间或可编辑的假设形式给出，绝非报价。凡是经验法则或模型简化的数值，页面都会在数字旁注明。</p>
+  <p>本站出现四类数字，它们的可靠程度并不相同：</p>
+  <div class="provenance"><span class="chip chip--measured"><i></i>实测数据：所引论文中的实验室或现场测量结果</span><span class="chip chip--model"><i></i>模型结果：由本站有文档说明并经过测试的模型计算得出</span><span class="chip chip--illustrative"><i></i>示意性默认值：落在已发表范围内、可以修改的初始值</span><span class="chip chip--claim"><i></i>厂商声明：由供应商给出，本站未作独立核实</span></div>
   <p>链接尽可能指向 DOI 或出版方页面。如果发现错误或更好的来源，请在<a href="https://github.com/RuibinRay/VRFB-Info/issues">代码仓库</a>提交 issue。参考文献保留原文语言。</p>
 </section>
 <section id="references">
@@ -350,17 +356,21 @@ REFS_BODY = '''
     <li><strong>E° 数值。</strong> 相对 SHE 的 −0.255 V（V³⁺/V²⁺）和 +1.004 V（VO₂⁺/VO²⁺）是常见的标准电位表值；文献中也常写作 −0.26 V 和 +1.00 V。因此标准电池电位为 1.26 V。</li>
     <li><strong>开路电压。</strong> 50 % SOC 时 ≈ 1.40 V 是 Knehr 和 Kumbur [15] 讨论的实测值；简化的能斯特形式在 5 M 酸中预测约 1.34 V。</li>
     <li><strong>能量密度。</strong> 20–35 Wh/L 指两侧电解液的总和；部分文献给出的单侧数值是其两倍。</li>
-    <li><strong>成本。</strong> 计算器默认值（电堆 650 $/kW、V₂O₅ 18 $/kg、辅助系统 60 $/kWh + 150 $/kW、锂离子 320 $/kWh）是 [5]、[6]、[14] 区间内的示意值，并非厂商数据。请换成你自己的数据。</li>
+    <li><strong>成本。</strong> 各计算器的默认值（电堆 450 $/kW、功率变换 100 $/kW、V₂O₅ 18 $/kg、辅助系统 60 $/kWh + 150 $/kW、LFP 每铭牌 kWh 250 $）是 [5]、[6]、[14]、[19] 和 [23] 所给范围内的示意值，并非厂商数据。电池价格变化很快，LFP 尤其如此：请换成当前的数字。</li>
+    <li><strong>寿命。</strong> 超过约 10 000 次循环或 20 年的循环寿命和日历寿命数字，对两种技术而言都是设计目标或厂商声明；电网级的长期运行数据仍然有限 [5]、[19]。</li>
+    <li><strong>效率。</strong> 钒液流系统 65–80 % 和 LFP 85–90 % 的交流往返效率是 [5] 给出的范围；具体产品可能落在范围之外。</li>
+    <li><strong>流量与泵耗。</strong> 5–10 的流量系数和 2–5 % 的泵耗比例是 [14] 和 [20] 中的典型值；最佳值取决于电堆设计和荷电状态。</li>
+    <li><strong>模型。</strong> 所有工具背后的计算模块都在代码仓库的 <code>js/sim/</code> 目录中，并有自动化测试覆盖（<code>npm test</code>），包括能量平衡、反应的电荷平衡，以及手工核对过的 LCOS 算例。</li>
     <li><strong>项目数据。</strong> 大连一期（100 MW / 400 MWh，2022 年）依据大连化物所/融科储能的公告 [7]；北海道数据依据住友电工 [8]。</li>
   </ul>
 </section>
 '''
 
 PAGES = [
- dict(slug='chemistry', title='化学原理', accent='#a36bff', kicker='支柱 01 · 化学原理', lede='为什么一种金属的四种氧化态能造出一种“燃料”永不耗损的电池：半反应、能斯特方程，以及可交互的开路电压探索器。', toc=[('why-vanadium', '四种氧化态'), ('half-reactions', '半反应'), ('nernst', '能斯特方程与探索器'), ('electrolyte', '电解液'), ('side-reactions', '副反应')], body=CHEM, scripts=['chemistry']),
+ dict(slug='chemistry', title='化学原理', accent='#a36bff', kicker='支柱 01 · 化学原理', lede='为什么一种金属的四种氧化态能造出一种活性物质不会被消耗的电池：半反应、能斯特方程，以及可交互的开路电压探索器。', toc=[('why-vanadium', '四种氧化态'), ('half-reactions', '半反应'), ('nernst', '能斯特方程与探索器'), ('electrolyte', '电解液'), ('side-reactions', '副反应')], body=CHEM, scripts=['chemistry']),
  dict(slug='anatomy', title='电池结构', accent='#26d9e3', kicker='支柱 02 · 电池结构', lede='电堆的每一层和撬装系统上的每一个箱体：由什么制成、起什么作用、如何失效。', toc=[('overview', '从单电池到电站'), ('components', '电堆，逐层拆解'), ('balance-of-plant', '辅助系统'), ('failure-modes', '失效与维护')], body=ANAT),
  dict(slug='engineering', title='工程设计', accent='#5ee37a', kicker='支柱 03 · 工程设计', lede='电堆、储液罐和泵的选型；效率损失在哪里；热极限；以及一个从第一性原理出发设计系统的计算器。', toc=[('power-vs-energy', '功率与能量'), ('sizing-tool', '选型计算器'), ('efficiency', '效率'), ('thermal', '热与流量'), ('scaling', '规模化')], body=ENG, scripts=['engineering']),
  dict(slug='economics', title='经济分析', accent='#ff9b2f', kicker='支柱 04 · 经济分析', lede='全钒液流电池的成本、钒价为何重要，以及一个与锂离子电池对比的平准化储能成本计算器。', toc=[('cost-structure', '成本构成'), ('lcos-tool', 'LCOS 计算器'), ('vanadium-market', '钒的问题'), ('comparison', '技术对比')], body=ECON, scripts=['economics']),
  dict(slug='applications', title='实际应用', accent='#ffd23f', kicker='支柱 05 · 实际应用', lede='光伏平移、电网服务，以及从大连到北海道的标志性项目，附 24 小时调度模拟器。', toc=[('why-flow', '用途'), ('dispatch-tool', '调度模拟器'), ('case-studies', '标志性项目'), ('integration', '并网集成'), ('outlook', '展望')], body=APPS, scripts=['applications']),
- dict(slug='references', title='参考文献与引用', accent='#26d9e3', kicker='经核实的数据', lede='本站的每一个数字都可追溯到下列来源之一。', toggle=False, toc=[('how-to-read', '资料来源方式'), ('references', '参考文献'), ('data-notes', '关于具体数值的说明')], body=REFS_BODY),
+ dict(slug='references', title='参考文献与引用', accent='#26d9e3', kicker='经核实的数据', lede='本站的每一个数字都可追溯到下列来源之一，并标明它是实测、模型计算、示意性取值还是厂商声明。', toggle=False, toc=[('how-to-read', '资料来源方式'), ('references', '参考文献'), ('data-notes', '关于具体数值的说明')], body=REFS_BODY),
 ]

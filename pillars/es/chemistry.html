@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Química — VRFB: La ciencia de la energía de flujo</title>
-  <meta name="description" content="Por qué un metal en cuatro estados de oxidación da una batería que nunca desgasta su combustible: las semirreacciones, la ecuación de Nernst y un explorado">
+  <meta name="description" content="Por qué un metal en cuatro estados de oxidación da una batería cuyo material activo no se consume: las semirreacciones, la ecuación de Nernst y un explorad">
   <meta name="theme-color" content="#070a10">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="alternate" hreflang="en" href="../../pillars/chemistry.html">
@@ -24,7 +24,7 @@
       <div class="page-hero__bg"></div>
       <div class="eyebrow">Pilar 01 · Química</div>
       <h1>Química</h1>
-      <p class="lede">Por qué un metal en cuatro estados de oxidación da una batería que nunca desgasta su combustible: las semirreacciones, la ecuación de Nernst y un explorador interactivo de voltaje de circuito abierto.</p>
+      <p class="lede">Por qué un metal en cuatro estados de oxidación da una batería cuyo material activo no se consume: las semirreacciones, la ecuación de Nernst y un explorador interactivo de voltaje de circuito abierto.</p>
       <div class="level" role="group" aria-label="Nivel de aprendizaje"><button type="button" data-level-set="beginner">Principiante</button><button type="button" data-level-set="intermediate">Intermedio</button><button type="button" data-level-set="advanced">Avanzado</button></div><p class="level-note">El nivel intermedio añade las cifras de ingeniería; el avanzado añade las ecuaciones y las notas de modelado. La mayoría de las secciones termina con una lección: una explicación a tu nivel, un diagrama animado, un ejemplo resuelto, un experimento y una comprobación rápida.</p>
     </section>
     <div class="page-body">
@@ -34,14 +34,14 @@
 <section id="why-vanadium">
   <h2>Un elemento, cuatro estados de oxidación</h2>
   <p>La mayoría de las baterías usan dos materiales distintos en sus dos lados. La batería de flujo de vanadio usa el mismo elemento en ambos, en dos pares distintos de estados de oxidación. El tanque negativo contiene V²⁺ y V³⁺; el positivo contiene VO²⁺ (vanadio +4) y VO₂⁺ (vanadio +5), todos disueltos en ácido sulfúrico.<span class="cite"><a href="references.html#ref-1">[1]</a><a href="references.html#ref-2">[2]</a></span></p>
-  <p>Esta es la idea que hace práctica a la VRFB. Cualquier otra química de flujo sufre cuando un poco de un electrolito se filtra por la membrana hacia el otro y lo envenena para siempre. En una VRFB el ion que se filtra sigue siendo vanadio; solo hace falta un <em>reequilibrado</em> periódico para devolver los dos tanques al mismo estado de carga. El electrolito en sí nunca se desgasta.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-16">[16]</a></span></p>
+  <p>Esta es la idea que hace práctica a la VRFB. Cualquier otra química de flujo sufre cuando un poco de un electrolito se filtra por la membrana hacia el otro y lo envenena para siempre. En una VRFB el ion que se filtra sigue siendo vanadio; solo hace falta un <em>reequilibrado</em> periódico para devolver los dos tanques al mismo estado de carga. El vanadio no se consume, y la mayor parte de la capacidad perdida de este modo puede recuperarse.<span class="cite"><a href="references.html#ref-2">[2]</a><a href="references.html#ref-16">[16]</a></span></p>
   <div class="table-wrap"><table><thead><tr><th>Especie</th><th>Estado de oxidación del vanadio</th><th>Color</th><th>Dónde</th></tr></thead><tbody>
-  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#8b4dff"></span>Violeta</td><td>Tanque negativo, cargado</td></tr>
-  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#3fcf5a"></span>Verde</td><td>Tanque negativo, descargado</td></tr>
-  <tr><td>VO²⁺ (vanadilo)</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#2f7bff"></span>Azul</td><td>Tanque positivo, descargado</td></tr>
-  <tr><td>VO₂⁺ (dioxovanadio)</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#ffcf33"></span>Amarillo</td><td>Tanque positivo, cargado</td></tr>
+  <tr><td>V²⁺</td><td class="num">+2</td><td><span class="panel__swatch" style="background:#7c3aed"></span>Violeta</td><td>Tanque negativo, cargado</td></tr>
+  <tr><td>V³⁺</td><td class="num">+3</td><td><span class="panel__swatch" style="background:#1fae45"></span>Verde</td><td>Tanque negativo, descargado</td></tr>
+  <tr><td>VO²⁺ (vanadilo)</td><td class="num">+4</td><td><span class="panel__swatch" style="background:#1d63f0"></span>Azul</td><td>Tanque positivo, descargado</td></tr>
+  <tr><td>VO₂⁺ (dioxovanadio)</td><td class="num">+5</td><td><span class="panel__swatch" style="background:#f2c21a"></span>Amarillo</td><td>Tanque positivo, cargado</td></tr>
   </tbody></table></div>
-  <p class="beginner-only">En el recorrido de la página de inicio los tanques cambian de color exactamente así: de verde a violeta a la izquierda y de azul a amarillo a la derecha, a medida que la batería se carga.</p>
+  <p class="beginner-only">En el recorrido de la página de inicio los tanques cambian de color exactamente así a medida que la batería se carga: de azul a amarillo en el tanque positivo, a la izquierda, y de verde a violeta en el negativo, a la derecha.</p>
   <div class="kit" data-lesson="chem-states"></div>
 </section>
 <section id="half-reactions">
@@ -75,7 +75,7 @@ Global:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&
     <div class="stats"><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="negtank"></b><span>Color del tanque negativo (V³⁺ → V²⁺)</span></div><div class="stat"><b style="display:block;height:26px;border-radius:6px" data-out="postank"></b><span>Color del tanque positivo (VO²⁺ → VO₂⁺)</span></div></div>
     <div class="legend"></div>
     <div class="chart" role="img" aria-label="Voltaje de circuito abierto frente al estado de carga"></div>
-    <p class="note">La curva es muy pronunciada cerca del 0 % y del 100 % de SOC: por eso los sistemas de gestión de batería mantienen la ventana de operación en torno al 10–90 %, y por eso el OCV es un buen sensor de SOC en la zona central del rango pero malo en los extremos.</p>
+    <p class="note">La curva es muy pronunciada cerca del 0 % y del 100 % de SOC, y esa es una de las razones por las que los sistemas de gestión de batería mantienen la ventana de operación en torno al 10–90 %. En la zona central, más plana, el voltaje cambia solo unos 2 mV por punto porcentual de SOC, así que una celda de referencia debe leerse con precisión de milivoltios para servir de indicador de nivel.</p>
   </div>
   <div class="kit" data-lesson="chem-nernst"></div>
 </section>
